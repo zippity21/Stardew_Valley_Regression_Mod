@@ -17,3 +17,12 @@ I am unable to locate the original author of this code, who posted it back in 20
 - u/mrnogee,
 - u/crinklycuddles,
 - u/vulpix77
+
+## Installation Instructions
+### Prerequisites
+- Stardew Valley (version 1.5.5-beta)
+- SMAPI (version 3.13.0-beta.20211018)
+- PyTk (version 1.22.8)
+
+## Installation
+1) Unzip contents of the release into the Mods directory created during SMAPI installation.
