@@ -15,65 +15,75 @@ namespace PrimevalTitmouse
 {
     internal static class Animations
     {
+        //Magic Constants
+        public const string SPRITES = "Assets/sprites.png";
+        public const int PAUSE_TIME = 20000;
+        public const float DRINK_ANIMATION_INTERVAL = 80f;
+        public const int DRINK_ANIMATION_FRAMES = 8;
+        enum FaceDirection : int
+        {
+            Down  = 2,
+            Left  = 1,
+            Right = 3,
+            Up    = 0
+        };
+
         public static Texture2D sprites;
         private static Data t;
         private static Farmer who;
 
+        //Static Accessor Methods. Ensure that variables are initialized.
         public static Data GetData()
         {
-          if(Animations.t == null)
-          {
-            Animations.t = Regression.t;
-          }
-          return t;
+            t ??= Regression.t;
+            return t;
         }
         public static Texture2D GetSprites()
         {
-            if (Animations.sprites == null)
-            {
-                //Image img = Image.FromFile(Path.Combine(Regression.help.DirectoryPath, "Assets", "sprites.png"));
-                //Bitmap bmp = new Bitmap(img);
-
-                // MemoryStream memoryStream = new MemoryStream();
-                // bmp.Save((Stream)memoryStream, ImageFormat.Png);
-                //   memoryStream.Seek(0L, SeekOrigin.Begin);
-                //   Texture2D tex = Texture2D.FromStream(((GraphicsDeviceManager)Game1.graphics).GraphicsDevice, (Stream)memoryStream);
-                Texture2D tex = Regression.help.Content.Load<Texture2D>("Assets/sprites.png", StardewModdingAPI.ContentSource.ModFolder);
-            Animations.sprites = tex;
-            }
+            sprites ??= Regression.help.Content.Load<Texture2D>(SPRITES, StardewModdingAPI.ContentSource.ModFolder);
             return sprites;
         }
 
         public static Farmer GetWho()
         {
-            if (Animations.who == null)
-            {
-                Animations.who = Game1.player;
-            }
+            Animations.who ??= Game1.player;
             return who;
         }
 
-
         public static void AnimateDrinking(bool waterSource = false)
         {
-            if (Animations.GetWho().getFacingDirection() != 2)
-                Animations.GetWho().faceDirection(2);
+            //If we aren't facing downward, turn
+            if (Animations.GetWho().getFacingDirection() != (int)FaceDirection.Down)
+                Animations.GetWho().faceDirection((int)FaceDirection.Down);
+
+            //Stop doing anything that would prevent us from moving
+            //Essentially take control of the variable
             Animations.GetWho().forceCanMove();
+
+            //Stop any form of animation
             Animations.GetWho().completelyStopAnimatingOrDoingAction();
+
             // ISSUE: method pointer
-            Animations.GetWho().FarmerSprite.animateOnce(294, 80f, 8, new AnimatedSprite.endOfAnimationBehavior(EndDrinking));
-            Animations.GetWho().freezePause = 20000;
+            //Start Drinking animation. While drinking pause time and don't allow movement.
+            Animations.GetWho().FarmerSprite.animateOnce(StardewValley.FarmerSprite.drink, DRINK_ANIMATION_INTERVAL, DRINK_ANIMATION_FRAMES, new AnimatedSprite.endOfAnimationBehavior(EndDrinking));
+            Animations.GetWho().freezePause = PAUSE_TIME;
             Animations.GetWho().canMove = false;
+
+            //If we drink from the watering can, don't say anything
             if (!waterSource)
                 return;
+
+            //Otherwise say something about it
             Say(Animations.GetData().Drink_Water_Source, null);
         }
 
+        //Not really an animation. Just say the bedding's current state.
         public static void AnimateDryingBedding(Body b)
         {
             Write(Animations.GetData().Bedding_Still_Wet, b);
         }
 
+        //<TODO> Figure out what's happening
         public static void AnimateMessingEnd()
         {
             Game1.playSound("coin");

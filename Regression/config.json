@@ -2,7 +2,7 @@
 //Thanks to alpha testers: u/zombiekarasu, u/dr_daddy, u/errycupid, u/rosebush413, u/mrnogee, u/crinklycuddles, u/vulpix77
 {
 	"Wetting": true,
-	"Messing": false,
+	"Messing": true,
 	"Easymode": false,
 	"NoFriendshipPenalty": false,
 	"NoHungerAndThirst": false,
