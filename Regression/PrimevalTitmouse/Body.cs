@@ -637,5 +637,12 @@ namespace PrimevalTitmouse
             this.bladder = 0.0f;
             this.EndWetting();
         }
+
+
+        //Are we available to Wet/Mess
+        public bool IsOccupied()
+        {
+            return isWetting || isMessing || IsFishing();
+        }
     }
 }

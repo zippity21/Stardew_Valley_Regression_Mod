@@ -18,10 +18,12 @@ namespace PrimevalTitmouse
 
         public static void CheckMail(Body b)
         {
+            //Give an extra letter in the begining to give some starting supplies
             if (!b.lettersReceived.Contains("jodi"))
             {
                 nextLetterId = "jodi";
                 nextLetterText = "Dear $FARMERNAME$,^Welcome to town! Here are some veggies from the garden to tide you over while you move in! Also, I feel it's important to note that there's an... odd effect around here. You'll see what I mean soon enough, probably, but I've still enclosed some supplies. Visit Pierre if you run out.^      <, Jodi";
+                //If we're in Easy mode, just give pull-up. Otherwise add in some diapers (you might need them :p)
                 if (Regression.config.Easymode)
                 {
                     List<Item> objList = new List<Item>();
@@ -40,6 +42,8 @@ namespace PrimevalTitmouse
             }
             else
                 nextLetterId = (string)null;
+
+
             if (nextLetterId != null && !(Game1.mailbox.Contains("robinWell")))
                 Game1.mailbox.Insert(0, "robinWell");
             if ((Game1.mailbox.Count > 0))
