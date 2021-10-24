@@ -4,7 +4,7 @@ Ported version of abandoned Mod for Stardew Valley that added a system for hunge
 ## Authorship and Attributions
 I am unable to locate the original author of this code, who posted it back in 2017. However, there is a list of contributors and playtesters inside one of the files, identified by their reddit.com usernames.
 
-## Thank you to the identified previous maintainers
+### Thank you to the identified previous maintainers
 - Fox Tale Times User: oniryuuko
 - Fox Tale Times User: SabrinaM
 - Fox Tale Times User: Jon
