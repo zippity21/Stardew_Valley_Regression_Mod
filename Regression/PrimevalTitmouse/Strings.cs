@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace PrimevalTitmouse
 {
+    //Lots of Regex functions to handle variability in our strings. 
   public static class Strings
   {
     private static Data t = Regression.t;

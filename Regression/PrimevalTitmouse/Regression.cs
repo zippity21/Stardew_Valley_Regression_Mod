@@ -8,13 +8,11 @@ using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace PrimevalTitmouse
 {
     public class Regression : Mod
     {
-        public static string foodToHandle = null;
         public static int lastTimeOfDay = 0;
         public static bool morningHandled = true;
         public static Random rnd = new Random();
@@ -27,6 +25,8 @@ namespace PrimevalTitmouse
         public static Data t;
         public static Farmer who;
 
+        public static readonly List<string> beverages = new() { "Cola", "Espresso", "Coffee", "Wine", "Beer", "Milk", "Tea", "Juice" };
+
         public override void Entry(IModHelper h)
         {
             help = h;
@@ -38,7 +38,6 @@ namespace PrimevalTitmouse
             h.Events.GameLoop.UpdateTicked += new EventHandler<UpdateTickedEventArgs>(ReceiveEighthUpdateTick);
             h.Events.GameLoop.TimeChanged += new EventHandler<TimeChangedEventArgs>(ReceiveTimeOfDayChanged);
             h.Events.Input.ButtonPressed += new EventHandler<ButtonPressedEventArgs>(ReceiveKeyPress);
-            h.Events.Input.ButtonReleased += new EventHandler<ButtonReleasedEventArgs>(ReceiveKeyReleased);
             h.Events.Input.ButtonPressed += new EventHandler<ButtonPressedEventArgs>(ReceiveMouseChanged);
             h.Events.Display.MenuChanged += new EventHandler<MenuChangedEventArgs>(ReceiveMenuChanged);
             h.Events.Display.RenderingHud += new EventHandler<RenderingHudEventArgs>(ReceivePreRenderHudEvent);
@@ -98,6 +97,7 @@ namespace PrimevalTitmouse
             Animations.AnimateNight(body);
         }
 
+        //Save Mod related variables in separate JSON. Also trigger night handling if not on the very first day.
         private void BeforeSave(object Sender, SavingEventArgs e)
         {
             body.bedtime = lastTimeOfDay;
@@ -113,94 +113,99 @@ namespace PrimevalTitmouse
 
         private void ReceiveEighthUpdateTick(object sender, UpdateTickedEventArgs e)
         {
+            //Only act on every eigth tick (should this take multiplayer into account?)
             if (e.IsMultipleOf(8))
             {
+                //Ignore everything until we've started the day
                 if (!started)
                     return;
+
+                //If we haven't performed our morning actions, do so.
                 if (!morningHandled && !Game1.fadeToBlack && who.canMove)
                 {
                     body.HandleMorning();
-                    morningHandled = true;
+                    morningHandled = true; //Make sure we do his only once per day
                 }
-                if ((Game1.game1.IsActive || Game1.options.pauseWhenOutOfFocus == false) && (Game1.paused == false && Game1.dialogueUp == false) && (Game1.currentMinigame == null && Game1.eventUp == false && (Game1.activeClickableMenu == null && Game1.menuUp == false)) && Game1.fadeToBlack == false)
+
+                //If time is moving, update our body state (Hunger, thirst, etc.)
+                if (ShouldTimePass())
                     this.body.HandleTime(0.003100775f);
 
-                if (Game1.player.isEating && Game1.activeClickableMenu == null && foodToHandle == null)
-                    foodToHandle = who.itemToEat.Name.ToLower();
-                else if (foodToHandle != null && !Game1.player.isEating)
+                //Handle eating and drinking.
+                if (Game1.player.isEating && Game1.activeClickableMenu == null)
                 {
-                    if (new Regex("(beer|ale|wine|juice|mead|coffee|milk)").IsMatch(foodToHandle))
+                    if (beverages.Contains(who.itemToEat.Name))
                         body.DrinkBeverage();
                     else
                         body.Eat();
-                    foodToHandle = null;
                 }
             }
         }
 
+        //Determine if we need to handle time passing (not the same as Game time passing)
+        private static bool ShouldTimePass()
+        {
+            return ((Game1.game1.IsActive || Game1.options.pauseWhenOutOfFocus == false) && (Game1.paused == false && Game1.dialogueUp == false) && (Game1.currentMinigame == null && Game1.eventUp == false && (Game1.activeClickableMenu == null && Game1.menuUp == false)) && Game1.fadeToBlack == false);
+        }
+
+        //Interprete key-presses
         private void ReceiveKeyPress(object sender, ButtonPressedEventArgs e)
         {
-            if (e.Button == SButton.LeftShift)
+            //If we haven't started the day, ignore the key presses
+            if (!started)
+                return;
+
+            //Interpret buttons differently if holding Left Alt & Debug is enabled
+            if (e.IsDown(SButton.LeftAlt) && config.Debug)
             {
-                shiftHeld = true;
+                switch (e.Button)
+                {
+                    case SButton.F1: //
+                            body.DecreaseFoodAndWater();
+                            break;
+                    case SButton.F2: //
+                            body.IncreaseEverything();
+                            break;
+                    case SButton.F3://
+                            GiveUnderwear();
+                            break;
+                    case SButton.F5://Alt F4 is reserved to close
+                            TimeMagic.doMagic();
+                            break;
+                }
             }
             else
             {
-                if (!started)
-                    return;
                 switch (e.Button)
                 {
-                    case SButton.L:
-                        if (config.Debug && this.shiftHeld)
-                        {
-                            body.DecreaseFoodAndWater();
-                            break;
-                        }
-                        break;
-                    case SButton.S:
-                        if (config.Debug && shiftHeld)
-                        {
-                            body.IncreaseEverything();
-                            break;
-                        }
-                        break;
                     case SButton.F1:
-                        if (!body.isWetting && !body.isMessing && !body.IsFishing())
+                        if (!body.IsOccupied())
                         {
-                            body.StartWetting(true, !shiftHeld);
+                            body.StartWetting(true, !e.IsDown(SButton.LeftShift));
                             break;
                         }
                         break;
                     case SButton.F2:
-                        if (!body.isWetting && !body.isMessing && !body.IsFishing())
+                        if (!body.IsOccupied())
                         {
-                            body.StartMessing(true, !shiftHeld);
+                            body.StartMessing(true, !e.IsDown(SButton.LeftShift));
                             break;
                         }
                         break;
                     case SButton.F3:
-                        if (config.Debug)
-                        {
-                            GiveUnderwear();
-                            break;
-                        }
-                        break;
-                    case SButton.F5:
                         Animations.CheckUnderwear(body);
                         break;
-                    case SButton.F6:
+                    case SButton.F5: /*F4 is reserved for screenshot mode*/
                         Animations.CheckPants(body);
                         break;
+                    case SButton.F6:
+                        config.Wetting = !config.Wetting;
+                        break;
                     case SButton.F7:
-                        if (config.Debug)
-                        {
-                            TimeMagic.doMagic();
-                            break;
-                        }
+                        config.Messing = !config.Messing;
                         break;
                     case SButton.F8:
-                        config.Wetting = !config.Wetting;
-                        config.Messing = !config.Messing;
+                        config.Easymode = !config.Easymode;
                         break;
                     case SButton.F9:
                         config.Debug = !config.Debug;
@@ -209,151 +214,162 @@ namespace PrimevalTitmouse
             }
         }
 
-        private void ReceiveKeyReleased(object sender, ButtonReleasedEventArgs e)
-        {
-            if (e.Button != SButton.LeftShift)
-                return;
-            shiftHeld = false;
-        }
-
+        //A menu has been opened, figure out if we need to modify it
         private void ReceiveMenuChanged(object sender, MenuChangedEventArgs e)
         {
+            //Don't do anything if our day hasn't started
             if (!started)
                 return;
-            DialogueBox newMenu1;
-            if (Game1.currentLocation is FarmHouse && (newMenu1 = e.NewMenu as DialogueBox) != null && Game1.currentLocation.lastQuestionKey == "Sleep" && !config.Easymode)
+
+            DialogueBox attemptToSleepMenu;
+            ShopMenu currentShopMenu;
+
+            //If we try to sleep, check if the bed is done drying (only matters in Hard Mode)
+            if (Game1.currentLocation is FarmHouse && (attemptToSleepMenu = e.NewMenu as DialogueBox) != null && Game1.currentLocation.lastQuestionKey == "Sleep" && !config.Easymode)
             {
+                //If enough time has passed, the bed has dried
                 if (body.beddingDryTime > Game1.timeOfDay)
                 {
-                    List<Response> privateValue = newMenu1.responses;
-                    if (privateValue.Count == 2)
+                    List<Response> sleepAttemptResponses = attemptToSleepMenu.responses;
+                    if (sleepAttemptResponses.Count == 2)
                     {
-                        Response response = privateValue[1];
+                        Response response = sleepAttemptResponses[1];
                         Game1.currentLocation.answerDialogue(response);
                         Game1.currentLocation.lastQuestionKey = null;
-                        newMenu1.closeDialogue();
+                        attemptToSleepMenu.closeDialogue();
                         Animations.AnimateDryingBedding(body);
                     }
                 }
             }
-            else
+            //If we're in the mailbox, handle the initial letter from Jodi that contains protection
+            else if (e.NewMenu is LetterViewerMenu && Game1.currentLocation is Farm)
             {
-                ShopMenu newMenu2;
-                if (Game1.currentLocation is SeedShop && (newMenu2 = e.NewMenu as ShopMenu) != null)
+                LetterViewerMenu letterMenu = (LetterViewerMenu)e.NewMenu;
+                Mail.ShowLetter(letterMenu);
+            }
+            //If we're trying to shop, handle the underwear inventory
+            else if((currentShopMenu = e.NewMenu as ShopMenu) != null)
+            {
+                //Default to all underwear being available
+                List<string> allUnderwear = Strings.ValidUnderwearTypes();
+                List<string> availableUnderwear = allUnderwear;
+                bool underwearAvailableAtShop = false;
+                if(Game1.currentLocation is SeedShop)
                 {
-                    string fieldName1 = "forSale";
-                    List<ISalable> field1 = ((object)newMenu2).GetField<List<ISalable>>(fieldName1);
+                    //The seed shop does not sell the Joja diaper
+                    availableUnderwear.Remove("Joja diaper");
+                    underwearAvailableAtShop = true;
+                } else if(Game1.currentLocation is JojaMart)
+                {
+                    //Joja shop ONLY sels the Joja diaper and a cloth diaper
+                    availableUnderwear.Clear();
+                    availableUnderwear.Add("Joja diaper");
+                    availableUnderwear.Add("Cloth diaper");
+                    underwearAvailableAtShop = true;
+                }
 
-                    string fieldName2 = "itemPriceAndStock";
-
-                    Dictionary<ISalable, int[]> field2 = ((object)newMenu2).GetField<Dictionary<ISalable, int[]>>(fieldName2);
-                    List<string> stringList = Strings.ValidUnderwearTypes();
-                    stringList.Remove("Joja diaper");
-                    foreach (string type in stringList)
+                if(underwearAvailableAtShop)
+                {
+                    foreach(string type in availableUnderwear)
                     {
                         Underwear underwear = new Underwear(type, 0.0f, 0.0f, 1);
-                        field1.Add(underwear);
-                        int[] numArray = new int[2]
-                        {
-                            underwear.container.price,
-                            999
-                        };
-                        field2.Add(underwear, numArray);
+                        int[] priceAndQty = new int[2] {underwear.container.price, 999};
+                        currentShopMenu.forSale.Add(underwear);
+                        currentShopMenu.itemPriceAndStock.Add(underwear, priceAndQty);
                     }
-                }
-                else
-                {
-                    ShopMenu newMenu3;
-                    if (Game1.currentLocation is JojaMart && (newMenu3 = e.NewMenu as ShopMenu) != null)
-                    {
-                        string fieldName1 = "forSale";
-                        List<ISalable> field1 = ((object)newMenu3).GetField<List<ISalable>>(fieldName1);
-
-                        string fieldName2 = "itemPriceAndStock";
-
-                        Dictionary<ISalable, int[]> field2 = ((object)newMenu3).GetField<Dictionary<ISalable, int[]>>(fieldName2);
-                        string[] strArray = new string[2]
-                        {
-                            "Joja diaper",
-                            "cloth diaper"
-                        };
-                        foreach (string type in strArray)
-                        {
-                            Underwear underwear = new Underwear(type, 0.0f, 0.0f, 1);
-                            field1.Add((Item)underwear);
-                            int[] numArray = new int[2]
-                            {
-                                (int) ( underwear.container.price * 1.20000004768372),
-                                999
-                            };
-                            field2.Add(underwear, numArray);
-                        }
-                    }
-                    else if (Game1.currentLocation is Farm && (e.NewMenu is LetterViewerMenu && !Mail.showingLetter))
-                        Mail.ShowLetter(body, Helper);
                 }
             }
         }
 
+        //Check if we are at a natural water source
+        private static bool AtWaterSource()
+        {
+            GameLocation currentLocation = Game1.currentLocation;
+            Vector2 toolLocation = who.GetToolLocation(false);
+            int x = (int)toolLocation.X;
+            int y = (int)toolLocation.Y;
+            return currentLocation.doesTileHaveProperty(x / Game1.tileSize, y / Game1.tileSize, "Water", "Back") != null || currentLocation.doesTileHaveProperty(x / Game1.tileSize, y / Game1.tileSize, "WaterSource", "Back") != null;
+        }
+
+        //Check if we are at the Well (and its constructed)
+        private static bool AtWell()
+        {
+            GameLocation currentLocation = Game1.currentLocation;
+            Vector2 toolLocation = who.GetToolLocation(false);
+            int x = (int)toolLocation.X;
+            int y = (int)toolLocation.Y;
+            Vector2 vector2 = new Vector2((float)(x / Game1.tileSize), y / Game1.tileSize);
+            return currentLocation is BuildableGameLocation && (currentLocation as BuildableGameLocation).getBuildingAt(vector2) != null && ((currentLocation as BuildableGameLocation).getBuildingAt(vector2).buildingType.Value.Equals("Well") && (currentLocation as BuildableGameLocation).getBuildingAt(vector2).daysOfConstructionLeft.Value <= 0);
+
+        }
+
+        //Handle Mouse Clicks/Movement
         private void ReceiveMouseChanged(object sender, ButtonPressedEventArgs e)
         {
-            if (Game1.game1.IsActive && !Game1.paused && started)
+            //Ignore if we aren't started or otherwise paused
+            if (!(Game1.game1.IsActive && !Game1.paused && started))
             {
-                if (e.Button == SButton.MouseRight)
-                {
-                    if ((Game1.dialogueUp || Game1.currentMinigame != null || (Game1.eventUp || Game1.activeClickableMenu != null) || Game1.menuUp || Game1.fadeToBlack) || (who.isRidingHorse() || !who.canMove || (Game1.player.isEating || who.canOnlyWalk) || who.FarmerSprite.pauseForSingleAnimation))
-                        return;
-                    if (who.CurrentTool != null && who.CurrentTool is WateringCan)
-                    {
-                        this.body.DrinkWateringCan();
-                    }
-                    else
-                    {
-                        Underwear activeObject = who.ActiveObject as Underwear;
-                        if (activeObject != null)
-                        {
-                            if ((double)activeObject.container.wetness + (double)activeObject.container.messiness == 0.0 && !activeObject.container.drying)
-                            {
-                                who.reduceActiveItemByOne();
-                                Container container = body.ChangeUnderwear(activeObject);
-                                Underwear underwear = new Underwear(container.name, container.wetness, container.messiness, 1);
-                                if (!who.addItemToInventoryBool(underwear, false))
-                                {
-                                    List<Item> objList = new List<Item>();
-                                    objList.Add(underwear);
-                                    Game1.activeClickableMenu = new ItemGrabMenu(objList);
-                                }
-                            }
-                            else if (activeObject.container.washable)
-                            {
-                                GameLocation currentLocation = Game1.currentLocation;
-                                Vector2 toolLocation = who.GetToolLocation(false);
-                                int x = (int)toolLocation.X;
-                                int y = (int)toolLocation.Y;
-                                if (currentLocation.doesTileHaveProperty(x / Game1.tileSize, y / Game1.tileSize, "Water", "Back") != null || currentLocation.doesTileHaveProperty(x / Game1.tileSize, y / Game1.tileSize, "WaterSource", "Back") != null)
-                                {
-                                    Animations.AnimateWashingUnderwear(activeObject.container);
-                                    activeObject.container.wetness = 0.0f;
-                                    activeObject.container.messiness = 0.0f;
-                                    activeObject.container.drying = true;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            GameLocation currentLocation = Game1.currentLocation;
-                            Vector2 toolLocation = who.GetToolLocation(false);
-                            int x = (int)toolLocation.X;
-                            int y = (int)toolLocation.Y;
-                            Vector2 vector2 = new Vector2((float)(x / Game1.tileSize), y / Game1.tileSize);
-                            if (currentLocation.doesTileHaveProperty(x / Game1.tileSize, y / Game1.tileSize, "Water", "Back") != null || currentLocation.doesTileHaveProperty(x / Game1.tileSize, y / Game1.tileSize, "WaterSource", "Back") != null || currentLocation is BuildableGameLocation && (currentLocation as BuildableGameLocation).getBuildingAt(vector2) != null && ((currentLocation as BuildableGameLocation).getBuildingAt(vector2).buildingType.Value.Equals("Well") && (currentLocation as BuildableGameLocation).getBuildingAt(vector2).daysOfConstructionLeft.Value <= 0))
-                                this.body.DrinkWaterSource();
-                        }
-                    }
-                }
+                return;
             }
+
+            //Handle a Right Click
+            if (e.Button == SButton.MouseRight)
+            {
+                //If Right click is already being interpreted by another event (or we otherwise wouldn't process such an event. Ignore it.
+                if ((Game1.dialogueUp || Game1.currentMinigame != null || (Game1.eventUp || Game1.activeClickableMenu != null) || Game1.menuUp || Game1.fadeToBlack) || (who.isRidingHorse() || !who.canMove || (Game1.player.isEating || who.canOnlyWalk) || who.FarmerSprite.pauseForSingleAnimation))
+                    return;
+
+                ////If we're holding the watering can, attempt to drink from it.
+                /////This is the highest priority (apparently?)
+                if (who.CurrentTool != null && who.CurrentTool is WateringCan)
+                {
+                    this.body.DrinkWateringCan();
+                    return;
+                }
+
+                //Otherwise Check if we're holding underwear
+                Underwear activeObject = who.ActiveObject as Underwear;
+                if (activeObject != null)
+                {
+                    //If the Underwear we are holding isn't currently wet, messy, or drying; change into it.
+                    if ((double)activeObject.container.wetness + (double)activeObject.container.messiness == 0.0 && !activeObject.container.drying)
+                    {
+                        who.reduceActiveItemByOne(); //Take it out of inventory
+                        Container container = body.ChangeUnderwear(activeObject); //Put on the new underwear and return the old
+                        Underwear underwear = new Underwear(container.name, container.wetness, container.messiness, 1);
+
+                        //Try to put the old underwear into the inventory, but pull up the management window if it can't fit
+                        if (!who.addItemToInventoryBool(underwear, false))
+                        {
+                            List<Item> objList = new List<Item>();
+                            objList.Add(underwear);
+                            Game1.activeClickableMenu = new ItemGrabMenu(objList);
+                        }
+                    }
+                    //If it is wet, messy or drying, check if we can wash it
+                    else if (activeObject.container.washable)
+                    {
+                        //Are we at a water source? If so, wash the underwear.
+                        if (AtWaterSource())
+                        {
+                            Animations.AnimateWashingUnderwear(activeObject.container);
+                            activeObject.container.wetness = 0.0f;
+                            activeObject.container.messiness = 0.0f;
+                            activeObject.container.drying = true;
+                        }
+                    }
+                    return; //Done with underwear
+                }
+                    
+                    
+                //If we're at a water source, and not holding underwear, drink from it.
+                if (AtWaterSource()|| AtWell())
+                  this.body.DrinkWaterSource();
+            }
+                
         }
 
+        //If approppriate, draw bars for Hunger, thirst, bladder and bowels
         public void ReceivePreRenderHudEvent(object sender, RenderingHudEventArgs args)
         {
             if (!started || Game1.currentMinigame != null || Game1.eventUp || Game1.globalFade)
@@ -364,8 +380,12 @@ namespace PrimevalTitmouse
         private void ReceiveTimeOfDayChanged(object sender, TimeChangedEventArgs e)
         {
             lastTimeOfDay = Game1.timeOfDay;
+
+            //If its 6:10AM, handle delivering mail
             if (Game1.timeOfDay == 610)
-                Mail.CheckMail(this.body);
+                Mail.CheckMail();
+
+            //If its earlier than 6:30, we aren't wet/messy don't notice that we're still soiled (or don't notice with ~5% chance even if soiled)
             if (rnd.NextDouble() >= 0.0555555559694767 || body.underwear.wetness + (double)body.underwear.messiness <= 0.0 || Game1.timeOfDay < 630)
                 return;
             Animations.AnimateStillSoiled(this.body);

@@ -4,6 +4,7 @@ namespace PrimevalTitmouse
 {
     public class Data
     {
+        public string[] Jodi_Initial_Letter;
         public string[] Bedding_Still_Wet;
         public string[] Bladder_Continence_Min;
         public string[] Bladder_Continence_Orange;

@@ -10,11 +10,11 @@ namespace PrimevalTitmouse
 {
     public class Body
     {
-        public static float baseFoodDay = 75f;
-        public static float baseMaxBladder = 500f;
-        public static float baseMaxBowels = 150f;
-        public static float baseWaterDay = 1250f;
-        public static float glassOfWater = 240f;
+        public static readonly float baseFoodDay    = 75f;
+        public static readonly float baseMaxBladder = 500f;
+        public static readonly float baseMaxBowels  = 150f;
+        public static readonly float baseWaterDay   = 1250f;
+        public static readonly float glassOfWater   = 240f;
         public int beddingDryTime = 0;
         public int bedtime = 0;
         public float bladder = 0.0f;
@@ -27,7 +27,7 @@ namespace PrimevalTitmouse
         public float foodDay = baseFoodDay;
         public bool isMessing = false;
         public bool isWetting = false;
-        public List<string> lettersReceived = new List<string>();
+        public List<string> lettersReceived = new();
         public float maxBladder = baseMaxBladder;
         public float maxBowels = baseMaxBowels;
         public bool messingUnderwear = false;
@@ -44,93 +44,127 @@ namespace PrimevalTitmouse
         public bool wettingVoluntarily = false;
         public float lastStamina;
 
+        //Setup Thresholds and messages
+        public static readonly float[] WETTING_THRESHOLDS = { 0.1f, 0.3f, 0.5f };
+        public static readonly string[][] WETTING_MESSAGES = {Regression.t.Bladder_Red, Regression.t.Bladder_Orange, Regression.t.Bladder_Yellow};
+        public static readonly float[] MESSING_THRESHOLDS = { 0.1f, 0.3f, 0.5f };
+        public static readonly string[][] MESSING_MESSAGES = { Regression.t.Bowels_Red, Regression.t.Bowels_Orange, Regression.t.Bowels_Yellow };
+        public static readonly float[] BLADDER_CONTINENCE_THRESHOLDS = { 0.6f, 0.2f, 0.5f, 0.8f };
+        public static readonly string[][] BLADDER_CONTINENCE_MESSAGES = {Regression.t.Bladder_Continence_Min, Regression.t.Bladder_Continence_Red, Regression.t.Bladder_Continence_Orange, Regression.t.Bladder_Continence_Yellow };
+        public static readonly float[] BOWEL_CONTINENCE_THRESHOLDS = { 0.6f, 0.2f, 0.5f, 0.8f };
+        public static readonly string[][] BOWEL_CONTINENCE_MESSAGES = { Regression.t.Bowel_Continence_Min, Regression.t.Bowel_Continence_Red, Regression.t.Bowel_Continence_Orange, Regression.t.Bowel_Continence_Yellow };
+
+
+        const int HUNGER = 0;
+        const int THIRST = 1;
+        const float FOOD_MODIFIER = 0.5f; //Why do we need this?
+        public static readonly float[] HUNGER_THRESHOLDS = {0.0f, 0.25f};
+        public static readonly string[][] HUNGER_MESSAGES = {Regression.t.Food_None, Regression.t.Food_Low};
+
+        public static readonly float[] WATER_THRESHOLDS  = {0.0f, 0.25f};
+        public static readonly string[][] WATER_MESSAGES = {Regression.t.Water_None, Regression.t.Water_Low};
+
+        const int MESSY_DEBUFF = 222;
+        const int WET_DEBUFF = 111;
+
+        //Change current bladder value and handle warning messages
         public void AddBladder(float amount)
         {
+            //If Wetting is disabled, don't do anything
             if (!Regression.config.Wetting)
                 return;
+
+            //How much room is left in our bladder?
             float oldPercent = (maxBladder - bladder) / maxBladder;
+
+            //Incement the current amount
             this.bladder += amount;
+
+            //Only do something if we aren't already wetting
             if (!isWetting)
             {
+                //Did this put us over the edge?
                 if (bladder >= (double)maxBladder)
                 {
-                    if (!isWetting && !isMessing && !IsFishing())
+                    //If so, and we aren't already messing (or fishing), start wetting
+                    if (!isMessing && !IsFishing())
                         StartWetting(false, true);
                 }
+                //If not, handle warning messages
                 else
                 {
+                    //Avoid Overflow and determine how much room is left in our bladder after the increase
                     this.bladder = Math.Max(bladder, 0.0f);
                     float newPercent = (maxBladder - bladder) / maxBladder;
+
+                    //If we have no room left, or randomly based on our current continence level warn about how badly we need to pee
                     if ((newPercent <= 0.0 ? 1.0 : bladderContinence / (4f * newPercent)) > Regression.rnd.NextDouble())
                     {
-                        string[][] msgs = new string[3][]
-                        {
-                            Regression.t.Bladder_Red,
-                            Regression.t.Bladder_Orange,
-                            Regression.t.Bladder_Yellow
-                        };
-
-                        Warn(oldPercent, newPercent, 
-                            new float[3]
-                            {
-                                0.1f,
-                                0.3f,
-                                0.5f
-                            }, msgs, false);
+                        Warn(oldPercent, newPercent, WETTING_THRESHOLDS, WETTING_MESSAGES, false);
                     }
                 }
             }
         }
 
+        //Change current bowels value and handle warning messages
         public void AddBowel(float value)
         {
+            //If Messing is disabled, don't do anything
             if (!Regression.config.Messing)
                 return;
+
+            //How much room is left in our bowels?
             float oldPercent = (maxBowels - bowels) / maxBowels;
+
+            //Incement the current amount
             bowels += value;
+
+            //Only do something if we aren't already messing
             if (!isMessing)
             {
+                //Did this put us over the edge?
                 if ((double)bowels >= maxBowels)
                 {
-                    if (!isWetting && !isMessing && !IsFishing())
+                    //If so, and we aren't already wetting (or fishing), start messing
+                    if (!isWetting && !IsFishing())
                         StartMessing(false, true);
                 }
+                //If not, handle warning messages
                 else
                 {
+                    //Avoid Overflow and determine how much room is left in our bowels after the increase
                     bowels = Math.Max(bowels, 0.0f);
                     float newPercent = (maxBowels - bowels) / maxBowels;
+                    //If we have no room left, or randomly based on our current continence level warn about how badly we need to pee
                     if ((newPercent <= 0.0 ? 1.0 : bowelContinence / (4f * newPercent)) > Regression.rnd.NextDouble())
                     {
-                        string[][] msgs = new string[3][]
-                        {
-                            Regression.t.Bowels_Red,
-                            Regression.t.Bowels_Orange,
-                            Regression.t.Bowels_Yellow
-                        };
-
-                        Warn(oldPercent, newPercent, new float[3]
-                        {
-                            0.05f,
-                            0.1f,
-                            0.3f
-                        }, msgs, false);
+                        Warn(oldPercent, newPercent, MESSING_THRESHOLDS, MESSING_MESSAGES, false);
                     }
                 }
             }
         }
 
+        //Change current Food value and handle warning messages
+        //Notice that we do things here even if Hunger and Thirst are disabled
+        //This is due to Food and Water's effect on Wetting/Messing
         public void AddFood(float amount)
         {
+            //How full are we?
             float oldPercent = food / maxFood;
-            float num = 0.5f;
+
+            //If we are adding a negative amount, Add only half of it, or current contents to stomache?
+            //I don't think I fully understand the purpose of this
             if (amount < 0.0)
-                AddStomach(Math.Min(-amount, food) * num, 0.0f);
+                AddStomach(Math.Min(-amount, food) * FOOD_MODIFIER, 0.0f);
+
             food += amount;
             if (food < maxFood / 10.0 && Regression.config.NoHungerAndThirst)
                 food = maxFood;
+
+
             if (food > (double)maxFood)
             {
-                AddStomach((food - maxFood) * num, 0.0f);
+                AddStomach((food - maxFood) * FOOD_MODIFIER, 0.0f);
                 food = maxFood;
             }
             else if (food < 0.0)
@@ -141,19 +175,16 @@ namespace PrimevalTitmouse
             }
             if (amount >= 0.0 || Regression.config.NoHungerAndThirst)
                 return;
-            float[] thresholds = new float[2] { 0.0f, 0.25f };
-            string[][] msgs = new string[2][]
-            {
-                Regression.t.Food_None,
-                Regression.t.Food_Low
-            };
-            Warn(oldPercent, food / maxFood, thresholds, msgs, false);
+            float newPercent = food / maxFood;
+            Warn(oldPercent, newPercent, HUNGER_THRESHOLDS, HUNGER_MESSAGES, false);
         }
-
+        
+        //Handle changes in hunger and thirst
         public void AddStomach(float food, float water)
         {
-            stomach[0] = Math.Max(stomach[0] + food, 0.0f);
-            stomach[1] = Math.Max(stomach[1] + water, 0.0f);
+            //Make sure we don't underflow
+            stomach[HUNGER] = Math.Max(stomach[HUNGER] + food, 0.0f);
+            stomach[THIRST] = Math.Max(stomach[THIRST] + water, 0.0f);
         }
 
         public void AddWater(float amount, float conversionRatio = 0.65f)
@@ -176,73 +207,72 @@ namespace PrimevalTitmouse
             }
             if (amount >= 0.0 || Regression.config.NoHungerAndThirst)
                 return;
-            float[] thresholds = new float[2] { 0.0f, 0.25f };
-            string[][] msgs = new string[2][]
-            {
-                Regression.t.Water_None,
-                Regression.t.Water_Low
-            };
 
-            Warn(oldPercent, water / maxWater, thresholds, msgs, false);
+            float newPercent = water / maxWater;
+            Warn(oldPercent, newPercent, WATER_THRESHOLDS, WATER_MESSAGES, false);
         }
 
+        //Apply changes to the Maximum capacity of the bladder, and the rate at which it fills.
         public void ChangeBladderContinence(bool decrease = true, float percent = 0.01f)
         {
+            //Negate the value if we are decreasing
             if (decrease)
                 percent = -percent;
+
+            //Hold onto the original value
             float bladderContinence = this.bladderContinence;
+
+            //Modify the continence factor (inversly proportional to rate at which the bladder fills)
             this.bladderContinence += percent;
+
+            //Put a ceilling at 100%, and  a floor at 5%
             this.bladderContinence = Math.Max(Math.Min(this.bladderContinence, 1f), 0.05f);
+
+            //Decrease our maximum capacity (bladder shrinks as we become incontinent)
             this.maxBladder += percent * Body.baseMaxBladder;
+
+            //Ceilling at base value and floor at 25% base value
             this.maxBladder = Math.Max(Math.Min(this.maxBladder, Body.baseMaxBladder), Body.baseMaxBladder * 0.25f);
+
+            //If we're increasing, no need to warn. (maybe we should tell people that they're regaining?)
             if (!decrease)
                 return;
 
-            string[][] msgs = new string[4][]
-            {
-                Regression.t.Bladder_Continence_Min,
-                Regression.t.Bladder_Continence_Red,
-                Regression.t.Bladder_Continence_Orange,
-                Regression.t.Bladder_Continence_Yellow
-            };
-
-            Warn(bladderContinence, this.bladderContinence, 
-                new float[4]
-                {
-                    0.06f,
-                    0.2f,
-                    0.5f,
-                    0.8f
-                }, msgs, true);
+            //Warn that we may be losing control
+            Warn(bladderContinence, this.bladderContinence, BLADDER_CONTINENCE_THRESHOLDS, BLADDER_CONTINENCE_MESSAGES,true);
         }
 
+        //Apply changes to the Maximum capacity of the bowels, and the rate at which they fill.
         public void ChangeBowelContinence(bool decrease = true, float percent = 0.01f)
         {
+            //Negate the value if we are decreasing
             if (decrease)
                 percent = -percent;
+
+            //Hold onto the original value
             float bowelContinence = this.bowelContinence;
-            this.bowelContinence += 2f * percent;
+
+            //Modify the continence factor (inversly proportional to rate at which the bowels fill)
+            this.bowelContinence += 2f * percent; //Why double?
+
+            //Put a ceilling at 100%, and  a floor at 5%
             this.bowelContinence = Math.Max(Math.Min(this.bowelContinence, 1f), 0.05f);
+
+            //Decrease our maximum capacity (bladder shrinks as we become incontinent)
             this.maxBowels += percent * Body.baseMaxBowels;
+
+            //Ceilling at base value and floor at 25% base value
             this.maxBowels = Math.Max(Math.Min(this.maxBowels, Body.baseMaxBowels), Body.baseMaxBowels * 0.25f);
+
+            //If we're increasing, no need to warn. (maybe we should tell people that they're regaining?)
             if (!decrease)
                 return;
-            string[][] msgs = new string[4][]
-            {
-                Regression.t.Bowel_Continence_Min,
-                Regression.t.Bowel_Continence_Red,
-                Regression.t.Bowel_Continence_Orange,
-                Regression.t.Bowel_Continence_Yellow
-            };
-            this.Warn(bowelContinence, this.bowelContinence, new float[4]
-            {
-                0.06f,
-                0.2f,
-                0.5f,
-                0.8f
-            }, msgs, true);
+            
+            //Warn that we may be losing control
+            this.Warn(bowelContinence, this.bowelContinence, BOWEL_CONTINENCE_THRESHOLDS, BOWEL_CONTINENCE_MESSAGES, true);
         }
-
+        
+        //Put on underwear and clean pants
         private Container ChangeUnderwear(Container container)
         {
             Container underwear = this.underwear;
@@ -263,12 +293,14 @@ namespace PrimevalTitmouse
             return ChangeUnderwear(new Container(type, 0.0f, 0.0f));
         }
 
+        //If we put on our pants, remove wet/messy debuffs
         public void CleanPants()
         {
-            RemoveBuff(111);
-            RemoveBuff(222);
+            RemoveBuff(WET_DEBUFF);
+            RemoveBuff(MESSY_DEBUFF);
         }
 
+        //Debug Function, Add a bit of everything
         public void DecreaseFoodAndWater()
         {
             AddWater(maxWater / -20f, 0.65f);
@@ -402,9 +434,9 @@ namespace PrimevalTitmouse
             };
             buff.glow = pants.messiness != 0.0 ? Color.Brown : Color.Yellow;
             buff.sheetIndex = -1;
-            buff.which = 111;
-            if (Game1.buffsDisplay.hasBuff(111))
-                this.RemoveBuff(111);
+            buff.which = WET_DEBUFF;
+            if (Game1.buffsDisplay.hasBuff(WET_DEBUFF))
+                this.RemoveBuff(WET_DEBUFF);
             Game1.buffsDisplay.addOtherBuff(buff);
         }
 
@@ -419,10 +451,10 @@ namespace PrimevalTitmouse
                 millisecondsDuration = 1080000,
                 glow = Color.Brown,
                 sheetIndex = -1,
-                which = 222
+                which = MESSY_DEBUFF
             };
-            if (Game1.buffsDisplay.hasBuff(222))
-                this.RemoveBuff(222);
+            if (Game1.buffsDisplay.hasBuff(MESSY_DEBUFF))
+                this.RemoveBuff(MESSY_DEBUFF);
             Game1.buffsDisplay.addOtherBuff(buff);
         }
 
@@ -443,8 +475,8 @@ namespace PrimevalTitmouse
         {
             float val2_1 = this.foodDay * hours;
             float val2_2 = Body.glassOfWater * 2f * hours;
-            float num = Math.Min(this.stomach[0], val2_1);
-            float amount = Math.Min(this.stomach[1], val2_2);
+            float num = Math.Min(this.stomach[HUNGER], val2_1);
+            float amount = Math.Min(this.stomach[THIRST], val2_2);
             this.AddBowel(num);
             this.AddBladder(amount);
             this.AddStomach(-num, -amount);
@@ -584,10 +616,16 @@ namespace PrimevalTitmouse
 
         public void Wet(float hours)
         {
+            //How much are we wetting?
             float amount = (float)((double)this.maxBladder * (double)hours * 30.0);
+
+            //Drain Bladder
             this.bladder -= amount;
+
+            //If we're sleeping check if we have an accident or get up to use the potty
             if (this.sleeping)
             {
+                //Randomly decide if we get up. Less likely if we have lower continence
                 this.wettingVoluntarily = Regression.rnd.NextDouble() < (double)this.bladderContinence;
                 if (this.wettingVoluntarily)
                 {
@@ -595,17 +633,27 @@ namespace PrimevalTitmouse
                 }
                 else
                 {
-                    double num = this.pants.AddPee(this.underwear.AddPee(amount));
+                    //Any overage in the container, add to the pants. Ignore overage over that.
+                    //Maybe the overage here should be added to the bed?
+                    _ = this.pants.AddPee(this.underwear.AddPee(amount));
                 }
             }
             else if (this.wettingUnderwear)
             {
-                double num1 = this.pants.AddPee(this.underwear.AddPee(amount));
+                //Any overage in the container, add to the pants. Ignore overage over that.
+                _ = this.pants.AddPee(this.underwear.AddPee(amount));
             }
             if (bladder > 0.0)
                 return;
             this.bladder = 0.0f;
             this.EndWetting();
+        }
+
+
+        //Are we available to Wet/Mess
+        public bool IsOccupied()
+        {
+            return isWetting || isMessing || IsFishing();
         }
     }
 }

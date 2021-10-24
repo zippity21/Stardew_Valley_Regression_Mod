@@ -9,69 +9,65 @@ namespace PrimevalTitmouse
 {
     public static class Mail
     {
-        private static string currentLetter;
-        private static string nextLetterId;
-        private static List<Item> nextLetterItems;
-        private static string nextLetterText;
-        public static bool showingLetter;
+        private static bool letterShown = false;
         public static IModHelper helper;
+        private static readonly string initialRegressionLetterTitle = "jodi_initial_regression";
+        private static string letterContents = Regression.t.Jodi_Initial_Letter[0];
+        private static List<Item> initialSupplies = new();
 
-        public static void CheckMail(Body b)
+        public static void CheckMail()
         {
-            if (!b.lettersReceived.Contains("jodi"))
+            //Give an extra letter in the begining to give some starting supplies
+            if (!Game1.player.hasOrWillReceiveMail(initialRegressionLetterTitle))
             {
-                nextLetterId = "jodi";
-                nextLetterText = "Dear $FARMERNAME$,^Welcome to town! Here are some veggies from the garden to tide you over while you move in! Also, I feel it's important to note that there's an... odd effect around here. You'll see what I mean soon enough, probably, but I've still enclosed some supplies. Visit Pierre if you run out.^      <, Jodi";
-                if (Regression.config.Easymode)
+                initialSupplies = new();
+                //Always give turnips and diapers
+                initialSupplies.Add(new StardewValley.Object(399, 20, false, -1, 0));
+                initialSupplies.Add(new Underwear("pawprint diaper", 0.0f, 0.0f, 40));
+                //If we're in Hard mode, also give pull-up.
+                if (!Regression.config.Easymode)
                 {
-                    List<Item> objList = new List<Item>();
-                    objList.Add(new StardewValley.Object(399, 20, false, -1, 0));
-                    objList.Add(new Underwear("pawprint diaper", 0.0f, 0.0f, 40));
-                    nextLetterItems = objList;
+                    initialSupplies.Add(new Underwear("lavender pullup", 0.0f, 0.0f, 15));
                 }
-                else
-                {
-                    List<Item> objList = new List<Item>();
-                    objList.Add(new StardewValley.Object(399, 20, false, -1, 0));
-                    objList.Add(new Underwear("lavender pullup", 0.0f, 0.0f, 15));
-                    objList.Add(new Underwear("pawprint diaper", 0.0f, 0.0f, 3));
-                    nextLetterItems = objList;
-                }
+                letterContents += "[#]A Little... Protection.";
+                Game1.mailbox.Add(initialRegressionLetterTitle);
+                Dictionary<string, string> mails = Game1.content.Load<Dictionary<string, string>>("Data\\mail");
+                mails.Add(initialRegressionLetterTitle, letterContents);
+
+                //Just to test we haven't broken other letters;
+                //Game1.mailbox.Add("robinWell");
             }
-            else
-                nextLetterId = (string)null;
-            if (nextLetterId != null && !(Game1.mailbox.Contains("robinWell")))
-                Game1.mailbox.Insert(0, "robinWell");
-            if ((Game1.mailbox.Count > 0))
-                currentLetter = Game1.mailbox[0];
-            else
-                currentLetter = "none";
         }
 
-        private static void OnMenuClosed(object sender, MenuChangedEventArgs e)
+        //The typical, built-in "%item <id> <qty>%% doesn't work for 2 reasons
+        //1) It only supports 1 item, were we want to give multiple
+        //2) It only supports items with IDs, whereas our underwear is a non-ID'd object
+        public static void ShowLetter(LetterViewerMenu letterViewer)
         {
-            nextLetterId = null;
-            currentLetter = Game1.mailbox.Count <= 0 ? "none" : Game1.mailbox[0];
-            helper.Events.Display.MenuChanged -= new EventHandler<MenuChangedEventArgs>(OnMenuClosed);
-            Game1.activeClickableMenu = new ItemGrabMenu(nextLetterItems);
-            showingLetter = false;
-        }
-
-        public static void ShowLetter(Body b, IModHelper h)
-        {
-            helper = h;
-            if (nextLetterId != null && currentLetter == "robinWell")
+            string mail = letterViewer.mailTitle;
+            if (mail == initialRegressionLetterTitle && !letterShown)
             {
-                showingLetter = true;
-                if (nextLetterId == "jodi")
-                    b.lettersReceived.Add("jodi");
-                Game1.activeClickableMenu = new LetterViewerMenu(Strings.InsertVariables(nextLetterText, b, null), nextLetterId);
-                helper.Events.Display.MenuChanged += new EventHandler<MenuChangedEventArgs>(OnMenuClosed);
+                letterShown = true;
+
+                //Find expected total width of all item boxes
+                const int boxHeight = 96;
+                const int boxWidth = 96;
+                const int boxSpacing = 32;
+                const int elementWidth = boxWidth + boxSpacing;
+                int totalWidth = (elementWidth)*initialSupplies.Count;
+                int amountOfLeftoverSpace = letterViewer.width - totalWidth;
+                int margin = amountOfLeftoverSpace / 2;
+
+                int itemIndex = 0;
+                //Only handle 1 Row of items. If it becomes necessary, we can extend this logic to multiple rows
+                foreach (StardewValley.Object item in initialSupplies)
+                {
+                    int itemBoxX = letterViewer.xPositionOnScreen + margin + ((elementWidth)*itemIndex);
+                    int itemBoxY = letterViewer.yPositionOnScreen + letterViewer.height - boxSpacing - boxHeight;
+                    letterViewer.itemsToGrab.Add(new ClickableComponent(new Microsoft.Xna.Framework.Rectangle(itemBoxX, itemBoxY, boxWidth, boxHeight), item));
+                    itemIndex++;
+                }
             }
-            else if (Game1.mailbox.Count > 0)
-                currentLetter = Game1.mailbox[0];
-            else
-                currentLetter = "none";
         }
     }
 }
