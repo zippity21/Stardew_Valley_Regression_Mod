@@ -12,9 +12,12 @@ using System.IO;
 using System.Linq;
 
 namespace PrimevalTitmouse
-{
+{ 
+
     internal static class Animations
     {
+        private static readonly List<string> NPC_LIST = new List<string> { "Linus", "Krobus", "Dwarf" };
+
         //Magic Constants
         public const string SPRITES = "Assets/sprites.png";
         public const int PAUSE_TIME = 20000;
@@ -273,106 +276,129 @@ namespace PrimevalTitmouse
 
         public static void HandlePasserby()
         {
-            List<string> stringList = new List<string>()
-              {
-                "Linus",
-                "Krobus",
-                "Dwarf"
-              };
-            NPC npc;
-            if ((npc = Utility.isThereAFarmerOrCharacterWithinDistance(Animations.GetWho().getTileLocation(), 3, (GameLocation)Game1.currentLocation) as NPC) == null || stringList.Contains(npc.Name))
+            if (Utility.isThereAFarmerOrCharacterWithinDistance(Animations.GetWho().getTileLocation(), 3, (GameLocation)Game1.currentLocation) is not NPC npc || NPC_LIST.Contains(npc.Name))
                 return;
             npc.CurrentDialogue.Push(new Dialogue("Oh wow, your diaper is all wet!", npc));
         }
 
         public static bool HandleVillager(Body b, bool mess, bool inUnderwear, bool overflow, bool attempt = false, int baseFriendshipLoss = 20, int radius = 3)
         {
-            List<string> stringList1 = new List<string>()
-              {
-                "Linus",
-                "Krobus",
-                "Dwarf"
-              };
-            NPC npc;
-            if ((npc = Utility.isThereAFarmerOrCharacterWithinDistance(((Character)Animations.GetWho()).getTileLocation(), radius, (GameLocation)Game1.currentLocation) as NPC) == null || stringList1.Contains(npc.Name))
-                return false;
-            string str1 = "";
-            int num1 = -(baseFriendshipLoss / 20);
+            int actualLoss = -(baseFriendshipLoss / 20);
+
+            //If we are messing, increase the radius of noticability (stinky)
+            //Double how much friendship we lose (mess is gross)
             if (mess)
             {
                 radius *= 2;
-                num1 *= 2;
+                actualLoss *= 2;
             }
+
+            //If we pulled down our pants, quadrupal the radius (not contained and visible!)
+            //Double loss since you're just going infront of people (how uncouth)
             if (!inUnderwear)
             {
                 radius *= 4;
-                num1 *= 2;
+                actualLoss *= 2;
             }
+
+            //Did we try, but not actually succeed? (not full enough)
             if (attempt)
-                num1 /= 2;
+                actualLoss /= 2;
+
+            //Double noticability is we had a blow-out/leak (people can see)
             if (overflow)
                 radius *= 2;
+
+            //Get NPC in radius
+            if (Utility.isThereAFarmerOrCharacterWithinDistance(((Character)Animations.GetWho()).getTileLocation(), radius, (GameLocation)Game1.currentLocation) is not NPC npc || NPC_LIST.Contains(npc.Name))
+                return false;
+
+            //Reduce the loss if the person likes you (more forgiving)
             int heartLevelForNpc = Animations.GetWho().getFriendshipHeartLevelForNPC(npc.getName());
-            int num2 = num1 + (heartLevelForNpc - 2) / 2 * baseFriendshipLoss;
-            List<string> stringList2 = new List<string>();
+
+            //Does this leave the possiblity of friendship gain if we have enough hearts already? Maybe because they find the vulnerability endearing?
+            int friendshipLoss = actualLoss + (heartLevelForNpc - 2) / 2 * baseFriendshipLoss;
+
+            //Make a list based on who saw us.
+            List<string> npcType = new List<string>();
+            string npcName = "";
             if (npc is Horse || npc is Cat || npc is Dog)
             {
-                stringList2.Add("animal");
-                str1 += string.Format("{0}: ", npc.Name);
+                npcType.Add("animal");
+                npcName += string.Format("{0}: ", npc.Name);
             }
             else
             {
                 switch (npc.Age)
                 {
                     case 0:
-                        stringList2.Add("adult");
+                        npcType.Add("adult");
                         break;
                     case 1:
-                        stringList2.Add("teen");
+                        npcType.Add("teen");
                         break;
                     case 2:
-                        stringList2.Add("kid");
+                        npcType.Add("kid");
                         break;
                 }
-                stringList2.Add(npc.getName().ToLower());
+                npcType.Add(npc.getName().ToLower());
             }
-            string key1;
+
+            //What did we do? Use to figure out the response.
+            string responseKey = "";
             if (!inUnderwear)
             {
-                key1 = attempt ? "ground_attempt" : "ground";
+                //If we weren't wearing underwear, we tried on the ground.
+                //But did we succeed or just try to go?
+                responseKey = attempt ? "ground_attempt" : "ground";
             }
             else
             {
-                string str2 = "soiled";
-                if (stringList2.Contains("animal"))
+                //Otherwise, we are soiling ourselves
+                responseKey += "soiled";
+
+                //Animals only have a "nice" reponse
+                if (npcType.Contains("animal"))
                 {
-                    key1 = str2 + "_nice";
-                    num2 = 0;
+                    responseKey += "_nice";
+                    friendshipLoss = 0;
                 }
+                //If we have a really high relationship with the NPC, they're very nice about our accident
                 else if (heartLevelForNpc >= 8)
                 {
-                    key1 = str2 + "_verynice";
-                    num2 = 0;
+                    responseKey += "_verynice";
+                    friendshipLoss = 0;
                 }
                 else
-                    key1 = num2 < 0 ? str2 + "_mean" : str2 + "_nice";
+                    //Otherwise they'll be mean or nice depending on how much friendship we're losing
+                    responseKey = friendshipLoss < 0 ? responseKey + "_mean" : responseKey + "_nice";
+
+                //Why are Abigail and Jodi special?
                 if (npc.getName() == "Abigail" || npc.getName() == "Jodi")
-                    num2 = 0;
+                    friendshipLoss = 0;
             }
+
+            //If we're in debug mode, notify how the relationship was effected
             if (Regression.config.Debug)
-                Animations.Say(string.Format("{0} ({1}) changed friendship from {2} by {3}.", npc.Name, npc.Age, heartLevelForNpc, num2), (Body)null);
-            if (num2 < 0 && !Regression.config.NoFriendshipPenalty)
-                Animations.GetWho().changeFriendship(num2, npc);
+                Animations.Say(string.Format("{0} ({1}) changed friendship from {2} by {3}.", npc.Name, npc.Age, heartLevelForNpc, friendshipLoss), (Body)null);
+
+            //If we didn't lose any friendship, or we disabled friendship penalties, then don't adjust the value
+            if (friendshipLoss < 0 && !Regression.config.NoFriendshipPenalty)
+                Animations.GetWho().changeFriendship(friendshipLoss, npc);
+
+
             List<string> stringList3 = new List<string>();
-            foreach (string key2 in stringList2)
+            foreach (string key2 in npcType)
             {
                 Dictionary<string, string[]> dictionary;
                 string[] strArray;
-                if (Animations.GetData().Villager_Reactions.TryGetValue(key2, out dictionary) && dictionary.TryGetValue(key1, out strArray))
+                if (Animations.GetData().Villager_Reactions.TryGetValue(key2, out dictionary) && dictionary.TryGetValue(responseKey, out strArray))
                     stringList3.AddRange((IEnumerable<string>)strArray);
             }
-            string str3 = str1 + Strings.InsertVariables(Strings.ReplaceAndOr(Strings.RandString(stringList3.ToArray()), !mess, mess, "&"), b, (Container)null);
-            npc.setNewDialogue(str3, true, true);
+
+            //Construct and say Statement
+            string npcStatement = npcName + Strings.InsertVariables(Strings.ReplaceAndOr(Strings.RandString(stringList3.ToArray()), !mess, mess, "&"), b, (Container)null);
+            npc.setNewDialogue(npcStatement, true, true);
             Game1.drawDialogue(npc);
             return true;
         }

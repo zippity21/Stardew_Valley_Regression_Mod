@@ -8,13 +8,11 @@ using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace PrimevalTitmouse
 {
     public class Regression : Mod
     {
-        public static string foodToHandle = null;
         public static int lastTimeOfDay = 0;
         public static bool morningHandled = true;
         public static Random rnd = new Random();
@@ -27,7 +25,7 @@ namespace PrimevalTitmouse
         public static Data t;
         public static Farmer who;
 
-        public static readonly List<string> beverages = new List<string>{ "Cola", "Espresso", "Coffee", "Wine", "Beer", "Milk", "Tea", "Juice" };
+        public static readonly List<string> beverages = new() { "Cola", "Espresso", "Coffee", "Wine", "Beer", "Milk", "Tea", "Juice" };
 
         public override void Entry(IModHelper h)
         {
@@ -99,6 +97,7 @@ namespace PrimevalTitmouse
             Animations.AnimateNight(body);
         }
 
+        //Save Mod related variables in separate JSON. Also trigger night handling if not on the very first day.
         private void BeforeSave(object Sender, SavingEventArgs e)
         {
             body.bedtime = lastTimeOfDay;
@@ -129,7 +128,7 @@ namespace PrimevalTitmouse
                 }
 
                 //If time is moving, update our body state (Hunger, thirst, etc.)
-                if (Game1.shouldTimePass())
+                if (ShouldTimePass())
                     this.body.HandleTime(0.003100775f);
 
                 //Handle eating and drinking.
@@ -143,6 +142,11 @@ namespace PrimevalTitmouse
             }
         }
 
+        //Determine if we need to handle time passing (not the same as Game time passing)
+        private static bool ShouldTimePass()
+        {
+            return ((Game1.game1.IsActive || Game1.options.pauseWhenOutOfFocus == false) && (Game1.paused == false && Game1.dialogueUp == false) && (Game1.currentMinigame == null && Game1.eventUp == false && (Game1.activeClickableMenu == null && Game1.menuUp == false)) && Game1.fadeToBlack == false);
+        }
 
         //Interprete key-presses
         private void ReceiveKeyPress(object sender, ButtonPressedEventArgs e)
@@ -165,7 +169,7 @@ namespace PrimevalTitmouse
                     case SButton.F3://
                             GiveUnderwear();
                             break;
-                    case SButton.F4://
+                    case SButton.F5://Alt F4 is reserved to close
                             TimeMagic.doMagic();
                             break;
                 }
@@ -177,33 +181,33 @@ namespace PrimevalTitmouse
                     case SButton.F1:
                         if (!body.IsOccupied())
                         {
-                            body.StartWetting(true, e.IsDown(SButton.LeftShift));
+                            body.StartWetting(true, !e.IsDown(SButton.LeftShift));
                             break;
                         }
                         break;
                     case SButton.F2:
                         if (!body.IsOccupied())
                         {
-                            body.StartMessing(true, e.IsDown(SButton.LeftShift));
+                            body.StartMessing(true, !e.IsDown(SButton.LeftShift));
                             break;
                         }
                         break;
                     case SButton.F3:
                         Animations.CheckUnderwear(body);
                         break;
-                    case SButton.F4:
+                    case SButton.F5: /*F4 is reserved for screenshot mode*/
                         Animations.CheckPants(body);
                         break;
-                    case SButton.F5:
+                    case SButton.F6:
                         config.Wetting = !config.Wetting;
                         break;
-                    case SButton.F6:
+                    case SButton.F7:
                         config.Messing = !config.Messing;
                         break;
-                    case SButton.F7:
+                    case SButton.F8:
                         config.Easymode = !config.Easymode;
                         break;
-                    case SButton.F8:
+                    case SButton.F9:
                         config.Debug = !config.Debug;
                         break;
                 }
@@ -217,8 +221,10 @@ namespace PrimevalTitmouse
             if (!started)
                 return;
 
-            //If we try to sleep, check if the bed is done drying (only matters in Hard Mode)
             DialogueBox attemptToSleepMenu;
+            ShopMenu currentShopMenu;
+
+            //If we try to sleep, check if the bed is done drying (only matters in Hard Mode)
             if (Game1.currentLocation is FarmHouse && (attemptToSleepMenu = e.NewMenu as DialogueBox) != null && Game1.currentLocation.lastQuestionKey == "Sleep" && !config.Easymode)
             {
                 //If enough time has passed, the bed has dried
@@ -235,26 +241,34 @@ namespace PrimevalTitmouse
                     }
                 }
             }
-            //Otherwise, handle Shop menus
-            else
+            //If we're in the mailbox, handle the initial letter from Jodi that contains protection
+            else if (e.NewMenu is LetterViewerMenu && Game1.currentLocation is Farm)
             {
+                LetterViewerMenu letterMenu = (LetterViewerMenu)e.NewMenu;
+                Mail.ShowLetter(letterMenu);
+            }
+            //If we're trying to shop, handle the underwear inventory
+            else if((currentShopMenu = e.NewMenu as ShopMenu) != null)
+            {
+                //Default to all underwear being available
                 List<string> allUnderwear = Strings.ValidUnderwearTypes();
                 List<string> availableUnderwear = allUnderwear;
-                ShopMenu currentShopMenu;
                 bool underwearAvailableAtShop = false;
                 if(Game1.currentLocation is SeedShop)
                 {
+                    //The seed shop does not sell the Joja diaper
                     availableUnderwear.Remove("Joja diaper");
                     underwearAvailableAtShop = true;
                 } else if(Game1.currentLocation is JojaMart)
                 {
+                    //Joja shop ONLY sels the Joja diaper and a cloth diaper
                     availableUnderwear.Clear();
                     availableUnderwear.Add("Joja diaper");
                     availableUnderwear.Add("Cloth diaper");
                     underwearAvailableAtShop = true;
                 }
 
-                if(((currentShopMenu = e.NewMenu as ShopMenu) != null) && underwearAvailableAtShop)
+                if(underwearAvailableAtShop)
                 {
                     foreach(string type in availableUnderwear)
                     {
@@ -268,7 +282,7 @@ namespace PrimevalTitmouse
         }
 
         //Check if we are at a natural water source
-        private bool AtWaterSource()
+        private static bool AtWaterSource()
         {
             GameLocation currentLocation = Game1.currentLocation;
             Vector2 toolLocation = who.GetToolLocation(false);
@@ -278,7 +292,7 @@ namespace PrimevalTitmouse
         }
 
         //Check if we are at the Well (and its constructed)
-        private bool AtWell()
+        private static bool AtWell()
         {
             GameLocation currentLocation = Game1.currentLocation;
             Vector2 toolLocation = who.GetToolLocation(false);
@@ -349,13 +363,13 @@ namespace PrimevalTitmouse
                     
                     
                 //If we're at a water source, and not holding underwear, drink from it.
-                if (AtWaterSource()||AtWell())
+                if (AtWaterSource()|| AtWell())
                   this.body.DrinkWaterSource();
-                    
             }
                 
         }
 
+        //If approppriate, draw bars for Hunger, thirst, bladder and bowels
         public void ReceivePreRenderHudEvent(object sender, RenderingHudEventArgs args)
         {
             if (!started || Game1.currentMinigame != null || Game1.eventUp || Game1.globalFade)
@@ -367,9 +381,9 @@ namespace PrimevalTitmouse
         {
             lastTimeOfDay = Game1.timeOfDay;
 
-            //If its 6:10AM, handle mail
+            //If its 6:10AM, handle delivering mail
             if (Game1.timeOfDay == 610)
-                Mail.CheckMail(this.body);
+                Mail.CheckMail();
 
             //If its earlier than 6:30, we aren't wet/messy don't notice that we're still soiled (or don't notice with ~5% chance even if soiled)
             if (rnd.NextDouble() >= 0.0555555559694767 || body.underwear.wetness + (double)body.underwear.messiness <= 0.0 || Game1.timeOfDay < 630)

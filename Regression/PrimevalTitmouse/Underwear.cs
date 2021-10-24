@@ -136,6 +136,8 @@ namespace PrimevalTitmouse
         {
             get
             {
+                if (container.messiness > 0.0 && container.wetness > 0.0)
+                    return "wet and messy ";
                 if (container.messiness > 0.0)
                     return "messy ";
                 if (container.wetness > 0.0)

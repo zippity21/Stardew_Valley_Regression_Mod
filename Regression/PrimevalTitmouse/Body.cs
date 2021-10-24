@@ -10,11 +10,11 @@ namespace PrimevalTitmouse
 {
     public class Body
     {
-        public static float baseFoodDay = 75f;
-        public static float baseMaxBladder = 500f;
-        public static float baseMaxBowels = 150f;
-        public static float baseWaterDay = 1250f;
-        public static float glassOfWater = 240f;
+        public static readonly float baseFoodDay    = 75f;
+        public static readonly float baseMaxBladder = 500f;
+        public static readonly float baseMaxBowels  = 150f;
+        public static readonly float baseWaterDay   = 1250f;
+        public static readonly float glassOfWater   = 240f;
         public int beddingDryTime = 0;
         public int bedtime = 0;
         public float bladder = 0.0f;
@@ -27,7 +27,7 @@ namespace PrimevalTitmouse
         public float foodDay = baseFoodDay;
         public bool isMessing = false;
         public bool isWetting = false;
-        public List<string> lettersReceived = new List<string>();
+        public List<string> lettersReceived = new();
         public float maxBladder = baseMaxBladder;
         public float maxBowels = baseMaxBowels;
         public bool messingUnderwear = false;
@@ -271,7 +271,8 @@ namespace PrimevalTitmouse
             //Warn that we may be losing control
             this.Warn(bowelContinence, this.bowelContinence, BOWEL_CONTINENCE_THRESHOLDS, BOWEL_CONTINENCE_MESSAGES, true);
         }
-
+        
+        //Put on underwear and clean pants
         private Container ChangeUnderwear(Container container)
         {
             Container underwear = this.underwear;
@@ -299,6 +300,7 @@ namespace PrimevalTitmouse
             RemoveBuff(MESSY_DEBUFF);
         }
 
+        //Debug Function, Add a bit of everything
         public void DecreaseFoodAndWater()
         {
             AddWater(maxWater / -20f, 0.65f);
@@ -614,10 +616,16 @@ namespace PrimevalTitmouse
 
         public void Wet(float hours)
         {
+            //How much are we wetting?
             float amount = (float)((double)this.maxBladder * (double)hours * 30.0);
+
+            //Drain Bladder
             this.bladder -= amount;
+
+            //If we're sleeping check if we have an accident or get up to use the potty
             if (this.sleeping)
             {
+                //Randomly decide if we get up. Less likely if we have lower continence
                 this.wettingVoluntarily = Regression.rnd.NextDouble() < (double)this.bladderContinence;
                 if (this.wettingVoluntarily)
                 {
@@ -625,12 +633,15 @@ namespace PrimevalTitmouse
                 }
                 else
                 {
-                    double num = this.pants.AddPee(this.underwear.AddPee(amount));
+                    //Any overage in the container, add to the pants. Ignore overage over that.
+                    //Maybe the overage here should be added to the bed?
+                    _ = this.pants.AddPee(this.underwear.AddPee(amount));
                 }
             }
             else if (this.wettingUnderwear)
             {
-                double num1 = this.pants.AddPee(this.underwear.AddPee(amount));
+                //Any overage in the container, add to the pants. Ignore overage over that.
+                _ = this.pants.AddPee(this.underwear.AddPee(amount));
             }
             if (bladder > 0.0)
                 return;

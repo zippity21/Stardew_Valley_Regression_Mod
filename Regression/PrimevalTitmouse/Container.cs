@@ -18,6 +18,8 @@ namespace PrimevalTitmouse
         public bool washable;
         public float wetness;
 
+        //This class describes anything that we could wet/mess in. Usually underwear, but it could also be something like the bed.
+        //These functions are pretty self-explainatory
         public Container()
         {
             wetness = 0.0f;
