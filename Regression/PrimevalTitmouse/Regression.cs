@@ -172,6 +172,15 @@ namespace PrimevalTitmouse
                     case SButton.F5://Alt F4 is reserved to close
                             TimeMagic.doMagic();
                             break;
+                    case SButton.F6:
+                        config.Wetting = !config.Wetting;
+                        break;
+                    case SButton.F7:
+                        config.Messing = !config.Messing;
+                        break;
+                    case SButton.F8:
+                        config.Easymode = !config.Easymode;
+                        break;
                 }
             }
             else
@@ -192,20 +201,11 @@ namespace PrimevalTitmouse
                             break;
                         }
                         break;
-                    case SButton.F3:
+                    case SButton.F5:
                         Animations.CheckUnderwear(body);
                         break;
-                    case SButton.F5: /*F4 is reserved for screenshot mode*/
+                    case SButton.F6: /*F4 is reserved for screenshot mode*/
                         Animations.CheckPants(body);
-                        break;
-                    case SButton.F6:
-                        config.Wetting = !config.Wetting;
-                        break;
-                    case SButton.F7:
-                        config.Messing = !config.Messing;
-                        break;
-                    case SButton.F8:
-                        config.Easymode = !config.Easymode;
                         break;
                     case SButton.F9:
                         config.Debug = !config.Debug;
