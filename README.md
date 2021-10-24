@@ -29,25 +29,25 @@ I am unable to locate the original author of this code, who posted it back in 20
 
 ## Controls (Changed compared to original mod)
 ### Typical
-F1: Attempt to Pee in Pants
-F2: Attempt to Poop Pants
-F4: (Reserved by Game for Screenshot Mode)
-F5: Check State of Underwear
-F6: Check State of Pants
-F9: Toggle Debug Mode
-(Use Left shift to pull down pants. If in your house, it'll be considered making it to the toilet. Elsewhere, its on the ground.)
-Left Shift + F1: Pull down pants and attempt to pee.
-Left Shift + F2: Pull down pants and attempt to poop.
+- F1: Attempt to Pee in Pants
+- F2: Attempt to Poop Pants
+- F4: (Reserved by Game for Screenshot Mode)
+- F5: Check State of Underwear
+- F6: Check State of Pants
+- F9: Toggle Debug Mode
+- (Use Left shift to pull down pants. If in your house, it'll be considered making it to the toilet. Elsewhere, its on the ground.)
+- Left Shift + F1: Pull down pants and attempt to pee.
+- Left Shift + F2: Pull down pants and attempt to poop.
 
 ### In Debug
-Left Alt + F1: Make more thirsty and hungry
-Left Alt + F2: Make less thirsy and hungry. Make Bladder and Bowels fuller.
-Left Alt + F3: Open a menu with all valid underwear types. ( + some wine ;) )
-Left Alt + F4: (Reserved by Windows to force quit)
-Left Alt + F5: Fast forward time a bit (do not hold down. Wait for fast forward to finish before pressing again.)
-Left Alt + F6: Toggle Wetting Option
-Left Alt + F7: Toggle Messing Option
-Left Alt + F8: Toggle Easy Mode Option
+- Left Alt + F1: Make more thirsty and hungry
+- Left Alt + F2: Make less thirsy and hungry. Make Bladder and Bowels fuller.
+- Left Alt + F3: Open a menu with all valid underwear types. ( + some wine ;) )
+- Left Alt + F4: (Reserved by Windows to force quit)
+- Left Alt + F5: Fast forward time a bit (do not hold down. Wait for fast forward to finish before pressing again.)
+- Left Alt + F6: Toggle Wetting Option
+- Left Alt + F7: Toggle Messing Option
+- Left Alt + F8: Toggle Easy Mode Option
 
 ## Basic Mechanics
 You now get hungry and thristy over time, and from doing work. Getting too hungry/thirsty gives you de-buffs. You can become less hungry by eating food, and less thirst by drinking beverages (including water from a water source, your watering can, or things like wine, coffee, etc.).
