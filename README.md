@@ -30,7 +30,8 @@ I am unable to locate the original author of this code, who posted it back in 20
 - PyTk (version 1.22.8)
 
 ## Installation
-1) Unzip contents of the release into the Mods directory created during SMAPI installation.
+1) Download the latest release. Be careful that you don't download the source code. The release is the one that contains Regression.dll. (https://github.com/zippity21/Stardew_Valley_Regression_Mod/releases)
+2) Unzip contents of the release into the Mods directory created during SMAPI installation. The directory  with the DLL should looks like <Stardew Valley Installation Directory>\Mods\Regression\Regression.dll
 
 ## Controls (Changed compared to original mod)
 ### Typical
