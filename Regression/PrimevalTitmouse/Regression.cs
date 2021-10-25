@@ -24,9 +24,9 @@ namespace PrimevalTitmouse
         public bool shiftHeld;
         public static Data t;
         public static Farmer who;
-
         public static readonly List<string> beverages = new() { "Cola", "Espresso", "Coffee", "Wine", "Beer", "Milk", "Tea", "Juice" };
 
+        const float timeInTick = 0.003100775f;
         public override void Entry(IModHelper h)
         {
             help = h;
@@ -129,7 +129,7 @@ namespace PrimevalTitmouse
 
                 //If time is moving, update our body state (Hunger, thirst, etc.)
                 if (ShouldTimePass())
-                    this.body.HandleTime(0.003100775f);
+                    this.body.HandleTime(timeInTick);
 
                 //Handle eating and drinking.
                 if (Game1.player.isEating && Game1.activeClickableMenu == null)
