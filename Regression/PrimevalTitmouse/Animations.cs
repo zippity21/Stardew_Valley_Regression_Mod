@@ -86,23 +86,15 @@ namespace PrimevalTitmouse
             Write(Animations.GetData().Bedding_Still_Wet, b);
         }
 
-        //<TODO> Figure out what's happening
-        public static void AnimateMessingEnd()
-        {
-            Game1.playSound("coin");
-            Game1.currentLocation.temporarySprites.Add(new TemporaryAnimatedSprite("TileSheets\\animations", new Microsoft.Xna.Framework.Rectangle(192, 1152, Game1.tileSize, Game1.tileSize), 50f, 4, 0, Animations.GetWho().position - new Vector2(Animations.GetWho().facingDirection == 1 ? 0.0f : -Game1.tileSize, Game1.tileSize * 2), false, Animations.GetWho().facingDirection == 1, Animations.GetWho().getStandingY() / 10000f, 0.01f, Microsoft.Xna.Framework.Color.White, 1f, 0.0f, 0.0f, 0.0f, false));
-            Animations.GetWho().completelyStopAnimatingOrDoingAction();
-            Animations.GetWho().forceCanMove();
-        }
 
-        public static void AnimateMessingStart(Body b, bool voluntary, bool inUnderwear, bool inToilet)
+        public static void AnimateMessingStart(Body b, bool voluntary, bool inUnderwear)
         {
             Game1.playSound("slosh");
-            if (b.sleeping || !voluntary && !Regression.config.AlwaysNoticeAccidents && (double)b.bowelContinence + 0.449999988079071 <= Regression.rnd.NextDouble())
+            if (b.isSleeping || !voluntary && !Regression.config.AlwaysNoticeAccidents && (double)b.bowelContinence + 0.449999988079071 <= Regression.rnd.NextDouble())
                 return;
             if (!inUnderwear)
             {
-                if (inToilet)
+                if (b.inToilet(inUnderwear))
                     Say(Animations.GetData().Poop_Toilet, b);
                 else
                     Say(Animations.GetData().Poop_Voluntary, b);
@@ -111,6 +103,7 @@ namespace PrimevalTitmouse
                 Say(Animations.GetData().Mess_Voluntary, b);
             else
                 Say(Animations.GetData().Mess_Accident, b);
+
             Animations.GetWho().forceCanMove();
             Animations.GetWho().completelyStopAnimatingOrDoingAction();
             Animations.GetWho().jitterStrength = 1.0f;
@@ -118,6 +111,60 @@ namespace PrimevalTitmouse
             Animations.GetWho().doEmote(12, false);
             Animations.GetWho().freezePause = 20000;
             Animations.GetWho().canMove = false;
+        }
+        public static void AnimateMessingEnd()
+        {
+            Game1.playSound("coin");
+            Game1.currentLocation.temporarySprites.Add(new TemporaryAnimatedSprite("TileSheets\\animations", new Microsoft.Xna.Framework.Rectangle(192, 1152, Game1.tileSize, Game1.tileSize), 50f, 4, 0, Animations.GetWho().position - new Vector2(Animations.GetWho().facingDirection == 1 ? 0.0f : -Game1.tileSize, Game1.tileSize * 2), false, Animations.GetWho().facingDirection == 1, Animations.GetWho().getStandingY() / 10000f, 0.01f, Microsoft.Xna.Framework.Color.White, 1f, 0.0f, 0.0f, 0.0f, false));
+            Animations.GetWho().completelyStopAnimatingOrDoingAction();
+            Animations.GetWho().forceCanMove();
+        }
+
+        public static void AnimateWettingStart(Body b, bool voluntary, bool inUnderwear, bool inToilet)
+        {
+            Game1.playSound("wateringCan");
+            if (b.isSleeping || !voluntary && !Regression.config.AlwaysNoticeAccidents && (double)b.bladderContinence + 0.200000002980232 <= Regression.rnd.NextDouble())
+                return;
+            if (!inUnderwear)
+            {
+                if (b.inToilet(inUnderwear))
+                    Animations.Say(Animations.GetData().Pee_Toilet, b);
+                else
+                    Animations.Say(Animations.GetData().Pee_Voluntary, b);
+            }
+            else if (voluntary)
+                Animations.Say(Animations.GetData().Wet_Voluntary, b);
+            else
+                Animations.Say(Animations.GetData().Wet_Accident, b);
+
+            Animations.GetWho().forceCanMove();
+            Animations.GetWho().completelyStopAnimatingOrDoingAction();
+            Animations.GetWho().jitterStrength = 0.5f;
+            ((Character)Animations.GetWho()).doEmote(28, false);
+
+            if (!inUnderwear)
+            {
+                ((List<TemporaryAnimatedSprite>)((GameLocation)Animations.GetWho().currentLocation).temporarySprites).Add(new TemporaryAnimatedSprite(13, (Vector2)((Character)Game1.player).position, Microsoft.Xna.Framework.Color.White, 10, ((Random)Game1.random).NextDouble() < 0.5, 70f, 0, (int)Game1.tileSize, 0.05f, -1, 0));
+                HoeDirt terrainFeature;
+                if (Animations.GetWho().currentLocation.terrainFeatures.ContainsKey(((Character)Animations.GetWho()).getTileLocation()) && (terrainFeature = Animations.GetWho().currentLocation.terrainFeatures[((Character)Animations.GetWho()).getTileLocation()] as HoeDirt) != null)
+                    terrainFeature.state.Value = 1;
+            }
+
+            Animations.GetWho().freezePause = 20000;
+            Animations.GetWho().canMove = false;
+        }
+
+        public static void AnimateWettingEnd(Body b)
+        {
+            if ((double)b.pants.wetness > (double)b.pants.absorbency)
+            {
+                ((List<TemporaryAnimatedSprite>)((GameLocation)Animations.GetWho().currentLocation).temporarySprites).Add(new TemporaryAnimatedSprite(13, (Vector2)((Character)Game1.player).position, Microsoft.Xna.Framework.Color.White, 10, ((Random)Game1.random).NextDouble() < 0.5, 70f, 0, (int)Game1.tileSize, 0.05f, -1, 0));
+                HoeDirt terrainFeature;
+                if (Animations.GetWho().currentLocation.terrainFeatures.ContainsKey(((Character)Animations.GetWho()).getTileLocation()) && (terrainFeature = Animations.GetWho().currentLocation.terrainFeatures[((Character)Animations.GetWho()).getTileLocation()] as HoeDirt) != null)
+                    terrainFeature.state.Value = 1;
+            }
+            Animations.GetWho().completelyStopAnimatingOrDoingAction();
+            Animations.GetWho().forceCanMove();
         }
 
         public static void AnimateMorning(Body b)
@@ -159,11 +206,11 @@ namespace PrimevalTitmouse
                 Say(Animations.GetData().Pee_Attempt, b);
         }
 
-        public static void AnimatePoopAttempt(Body b, bool inUnderwear, bool inToilet)
+        public static void AnimatePoopAttempt(Body b, bool inUnderwear)
         {
             if (inUnderwear)
                 Animations.Say(Animations.GetData().Mess_Attempt, b);
-            else if (inToilet)
+            else if (b.inToilet(inUnderwear))
                 Animations.Say(Animations.GetData().Poop_Toilet_Attempt, b);
             else
                 Animations.Say(Animations.GetData().Poop_Attempt, b);
@@ -179,49 +226,6 @@ namespace PrimevalTitmouse
             Animations.Write(Strings.InsertVariables(Strings.RandString(Animations.GetData().Washing_Underwear), (Body)null, c), (Body)null);
         }
 
-        public static void AnimateWettingEnd(Body b)
-        {
-            if (b.wettingUnderwear && (double)b.pants.wetness > (double)b.pants.absorbency)
-            {
-                ((List<TemporaryAnimatedSprite>)((GameLocation)Animations.GetWho().currentLocation).temporarySprites).Add(new TemporaryAnimatedSprite(13, (Vector2)((Character)Game1.player).position, Microsoft.Xna.Framework.Color.White, 10, ((Random)Game1.random).NextDouble() < 0.5, 70f, 0, (int)Game1.tileSize, 0.05f, -1, 0));
-                HoeDirt terrainFeature;
-                if (Animations.GetWho().currentLocation.terrainFeatures.ContainsKey(((Character)Animations.GetWho()).getTileLocation()) && (terrainFeature = Animations.GetWho().currentLocation.terrainFeatures[((Character)Animations.GetWho()).getTileLocation()] as HoeDirt) != null)
-                    terrainFeature.state.Value = 1;
-            }
-            Animations.GetWho().completelyStopAnimatingOrDoingAction();
-            Animations.GetWho().forceCanMove();
-        }
-
-        public static void AnimateWettingStart(Body b, bool voluntary, bool inUnderwear, bool inToilet)
-        {
-            Game1.playSound("wateringCan");
-            if (b.sleeping || !voluntary && !Regression.config.AlwaysNoticeAccidents && (double)b.bladderContinence + 0.200000002980232 <= Regression.rnd.NextDouble())
-                return;
-            if (!inUnderwear)
-            {
-                if (inToilet)
-                    Animations.Say(Animations.GetData().Pee_Toilet, b);
-                else
-                    Animations.Say(Animations.GetData().Pee_Voluntary, b);
-            }
-            else if (voluntary)
-                Animations.Say(Animations.GetData().Wet_Voluntary, b);
-            else
-                Animations.Say(Animations.GetData().Wet_Accident, b);
-            Animations.GetWho().forceCanMove();
-            Animations.GetWho().completelyStopAnimatingOrDoingAction();
-            Animations.GetWho().jitterStrength = 0.5f;
-            ((Character)Animations.GetWho()).doEmote(28, false);
-            if (!inUnderwear)
-            {
-                ((List<TemporaryAnimatedSprite>)((GameLocation)Animations.GetWho().currentLocation).temporarySprites).Add(new TemporaryAnimatedSprite(13, (Vector2)((Character)Game1.player).position, Microsoft.Xna.Framework.Color.White, 10, ((Random)Game1.random).NextDouble() < 0.5, 70f, 0, (int)Game1.tileSize, 0.05f, -1, 0));
-                HoeDirt terrainFeature;
-                if (Animations.GetWho().currentLocation.terrainFeatures.ContainsKey(((Character)Animations.GetWho()).getTileLocation()) && (terrainFeature = Animations.GetWho().currentLocation.terrainFeatures[((Character)Animations.GetWho()).getTileLocation()] as HoeDirt) != null)
-                    terrainFeature.state.Value = 1;
-            }
-            Animations.GetWho().freezePause = 20000;
-            Animations.GetWho().canMove = false;
-        }
 
         public static Texture2D Bitmap2Texture(Bitmap bmp)
         {
