@@ -1,4 +1,5 @@
 ﻿using System;
+using StardewValley;
 
 namespace PrimevalTitmouse
 {
@@ -8,7 +9,6 @@ namespace PrimevalTitmouse
         public float absorbency;
         public float containment;
         public string description;
-        public bool drying;
         public float messiness;
         public string name;
         public bool plural;
@@ -17,6 +17,17 @@ namespace PrimevalTitmouse
         public int spriteIndex;
         public bool washable;
         public float wetness;
+        public int dryingTime;
+
+        public struct Date
+        {
+            public int time;
+            public int day;
+            public int season;
+            public int year;
+        }
+        public Date timeWhenDoneDrying;
+        private bool drying = false;
 
         //This class describes anything that we could wet/mess in. Usually underwear, but it could also be something like the bed.
         //These functions are pretty self-explainatory
@@ -35,11 +46,63 @@ namespace PrimevalTitmouse
             Initialize(type, wetness, messiness);
         }
 
+        public void Wash()
+        {
+            if (washable)
+            {
+                drying = true;
+                timeWhenDoneDrying.time = Game1.timeOfDay + dryingTime;
+                timeWhenDoneDrying.day = Game1.dayOfMonth;
+                timeWhenDoneDrying.season = Utility.getSeasonNumber(Game1.currentSeason);
+                timeWhenDoneDrying.year = Game1.year;
+
+                if(timeWhenDoneDrying.time >= 2400)
+                {
+                    timeWhenDoneDrying.time -= 2400;
+                    timeWhenDoneDrying.day += 1;
+                }
+                if(timeWhenDoneDrying.day > 28)
+                {
+                    timeWhenDoneDrying.day -= 28;
+                    timeWhenDoneDrying.season += 1;
+                }
+                if(timeWhenDoneDrying.season > 4)
+                {
+                    timeWhenDoneDrying.season -= 4;
+                    timeWhenDoneDrying.year += 1;
+                }
+            }
+        }
+
+        public bool IsDrying()
+        {
+            if (!drying) return false;
+            Date currentDate;
+            currentDate.time = Game1.timeOfDay + dryingTime;
+            currentDate.day = Game1.dayOfMonth;
+            currentDate.season = Utility.getSeasonNumber(Game1.currentSeason);
+            currentDate.year = Game1.year;
+
+            bool yearEq   = currentDate.year == timeWhenDoneDrying.year;
+            bool seasonEq = currentDate.season == timeWhenDoneDrying.season;
+            bool dayEq    = currentDate.day == timeWhenDoneDrying.day;
+            bool timeEq   = currentDate.time == timeWhenDoneDrying.time;
+            bool yearGt   = currentDate.year > timeWhenDoneDrying.year;
+            bool seasonGt = currentDate.season > timeWhenDoneDrying.season;
+            bool dayGt    = currentDate.day > timeWhenDoneDrying.day;
+            bool timeGt   = currentDate.time > timeWhenDoneDrying.time;
+            if ((yearGt) || (yearEq && seasonGt) || (yearEq && seasonEq && dayGt) || (yearEq && seasonEq && dayEq && (timeGt || timeEq)))
+            {
+                drying = false;
+            }
+            return drying;
+        }
+
         public float AddPee(float amount)
         {
             wetness += amount;
             if (wetness > (double)absorbency)
-                return Math.Max(amount, wetness - absorbency);
+                return (wetness - absorbency);
             return 0.0f;
         }
 
@@ -47,7 +110,7 @@ namespace PrimevalTitmouse
         {
             this.messiness += amount;
             if (messiness > (double)containment)
-                return Math.Max(amount, messiness - containment);
+                return (messiness - containment);
             return 0.0f;
         }
 

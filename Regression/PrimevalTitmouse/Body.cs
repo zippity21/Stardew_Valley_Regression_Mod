@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 namespace PrimevalTitmouse
 {
+    //<TODO> Alot of bladder and bowel stuff is processed similarly. Consider refactor with arrays and Function pointers.
     public class Body
     {
         //Lets think of Food in Calories, and water in mL
@@ -18,7 +19,7 @@ namespace PrimevalTitmouse
         private static readonly float maxWaterInCan = 4000f; //How much water does the wattering can hold? Max is 40, so *100
 
         //Average # of Pees per day is ~6.
-        private static readonly float maxBladderCapacity = requiredWaterPerDay / 6f;
+        public static readonly float maxBladderCapacity = requiredWaterPerDay / 6f;
         private static readonly float minBladderCapacity = maxBladderCapacity * 0.20f;
         private static readonly float bladderAttemptThreshold = maxBladderCapacity * 0.1f;
         private static readonly float bladderTrainingThreshold = maxBladderCapacity * 0.5f;
@@ -44,8 +45,10 @@ namespace PrimevalTitmouse
         private static readonly string[][] THIRST_MESSAGES = { Regression.t.Water_None, Regression.t.Water_Low };
         private static readonly int MESSY_DEBUFF = 222;
         private static readonly int WET_DEBUFF = 111;
+        private static readonly int wakeUpPenalty = 4;
 
         //Things that describe an individual
+        public int bedtime = 0;
         public float bladderCapacity = maxBladderCapacity;
         public float bladderContinence = 1f;
         public float bladderFullness = 0f;
@@ -55,9 +58,32 @@ namespace PrimevalTitmouse
         public float hunger = 0f;
         public float thirst = 0f;
         public bool isSleeping = false;
+        public Container bed = new("bed", 0.0f, 0.0f);
         public Container pants = new("blue jeans", 0.0f, 0.0f);
         public Container underwear = new("dinosaur undies", 0.0f, 0.0f);
 
+        public int numPottyPooAtNight = 0;
+        public int numPottyPeeAtNight = 0;
+
+        public float GetHungerPercent()
+        {
+            return (requiredCaloriesPerDay - hunger) / requiredCaloriesPerDay;
+        }
+
+        public float GetThirstPercent()
+        {
+            return (requiredWaterPerDay - thirst) / requiredWaterPerDay;
+        }
+
+        public float GetBowelPercent()
+        {
+            return bowelFullness / bowelCapacity;
+        }
+
+        public float GetBladderPercent()
+        {
+            return bladderFullness / bladderCapacity;
+        }
 
         //Change current bladder value and handle warning messages
         public void AddBladder(float amount)
@@ -164,7 +190,7 @@ namespace PrimevalTitmouse
             //Also if we go over full, add additional to Bladder at half rate
             if (thirst < 0)
             {
-                AddBladder((thirst * -1f * conversionRatio);
+                AddBladder((thirst * -1f * conversionRatio));
                 thirst = 0f;
             }
 
@@ -314,28 +340,63 @@ namespace PrimevalTitmouse
 
         public void Mess(bool voluntary = false, bool inUnderwear = true)
         {
-            float amount = (float)((double)this.maxBowels * (double)hours * 20.0);
-            this.bowels -= amount;
-            if (this.sleeping)
+            numPottyPooAtNight = 0;
+            //If we're sleeping check if we have an accident or get up to use the potty
+            if (isSleeping)
             {
-                this.messingVoluntarily = Regression.rnd.NextDouble() < (double)this.bowelContinence;
-                if (this.messingVoluntarily)
+                //When we're sleeping, our bowel fullness can exceed our capacity since we calculate for the whole night at once
+                //Hehehe, this may be evil, but with a smaller bladder, you'll have to pee multiple times a night
+                //So roll the dice each time >:)
+                //<TODO>: Give stamina penalty every time you get up to go potty. Since you disrupted sleep.
+                int numMesses = (int)((bowelFullness - bowelAttemptThreshold) / bowelCapacity);
+                float additionalAmount = bowelFullness - (numMesses * bowelCapacity);
+                int numAccidents = 0;
+                int numPotty = 0;
+
+                if (additionalAmount > 0)
+                    numMesses++;
+
+                for (int i = 0; i < numMesses; i++)
                 {
-                    ++this.poopedToiletLastNight;
+                    //Randomly decide if we get up. Less likely if we have lower continence
+                    bool lclVoluntary = voluntary || Regression.rnd.NextDouble() < (double)this.bowelContinence;
+                    StartWetting(lclVoluntary, true); //Always in underwear in bed
+                    if (!lclVoluntary)
+                    {
+                        numAccidents++;
+                        //Any overage in the container, add to the pants. Ignore overage over that.
+                        //When sleeping, the pants are actually the bed
+                        if (i != numMesses - 1)
+                        {
+                            _ = this.pants.AddPoop(this.underwear.AddPoop(bowelCapacity));
+                            bowelFullness -= bowelCapacity;
+                        }
+                        else
+                        {
+                            _ = this.pants.AddPoop(this.underwear.AddPoop(additionalAmount));
+                            bowelFullness -= additionalAmount;
+                        }
+
+                    }
+                    else
+                    {
+                        numPotty++;
+                    }
                 }
-                else
-                {
-                    double num = (double)this.pants.AddPoop(this.underwear.AddPoop(amount));
-                }
+                numPottyPooAtNight = numPotty;
             }
-            else if (this.messingUnderwear)
+            else if (inUnderwear)
             {
-                double num1 = (double)this.pants.AddPoop(this.underwear.AddPoop(amount));
+                StartMessing(voluntary, true); //Always in underwear in bed
+                //Any overage in the container, add to the pants. Ignore overage over that.
+                _ = this.pants.AddPoop(this.underwear.AddPoop(bowelFullness));
+                this.bowelFullness = 0.0f;
             }
-            if ((double)this.bowels > 0.0)
-                return;
-            this.bowels = 0.0f;
-            this.EndMessing();
+            else
+            {
+                StartMessing(voluntary, false);
+                this.bowelFullness = 0.0f;
+            }
         }
 
         public void StartMessing(bool voluntary = false, bool inUnderwear = true)
@@ -356,170 +417,25 @@ namespace PrimevalTitmouse
 
                 Animations.AnimateMessingStart(this, voluntary, inUnderwear);
             }
-        }
 
-        public void EndMessing()
-        {
-            Animations.AnimateMessingEnd();
-            if (isSleeping || (Animations.HandleVillager(this, true, messingUnderwear, pants.messiness > 0.0, false, 20, 3) || pants.messiness <= 0.0 || !messingUnderwear))
+            Animations.AnimateMessingEnd(this);
+            _ = Animations.HandleVillager(this, true, inUnderwear, pants.messiness > 0.0, false, 20, 3);
+            if (pants.messiness <= 0.0 || !inUnderwear)
                 return;
             HandlePoopOverflow(pants);
         }
 
-        public void StartWetting(bool voluntary = false, bool inUnderwear = true)
-        {
-            if (!Regression.config.Wetting)
-                return;
-
-
-            if ((double)bladderFullness < bladderAttemptThreshold)
-            {
-                Animations.AnimatePeeAttempt(this, inUnderwear, Game1.currentLocation is FarmHouse);
-            }
-            else
-            {
-                if (!voluntary || bladderFullness < bladderTrainingThreshold)
-                    this.ChangeBladderContinence(-0.01f);
-                else
-                    this.ChangeBladderContinence(0.01f);
-                Animations.AnimateWettingStart(this, voluntary, inUnderwear);
-            }
-        }
-
-        public void Wet(bool voluntary = false, bool inUnderwear = true)
-        {
-            //If we're sleeping check if we have an accident or get up to use the potty
-            if (isSleeping)
-            {
-                //When we're sleeping, our bladder fullness can exceed our capacity since we calculate for the whole night at once
-                //Hehehe, this may be evil, but with a smaller bladder, you'll have to pee multiple times a night
-                //So roll the dice each time >:)
-                int numWettings = (int)(bladderFullness / bladderCapacity);
-                float additionalAmount = bladderFullness - (numWettings * bladderCapacity);
-                bool noWettings = true;
-
-                if (additionalAmount > 0)
-                    numWettings++;
-
-                for(int i = 0; i < numWettings; i++)
-                {
-                    //Randomly decide if we get up. Less likely if we have lower continence
-                    bool lclVoluntary = voluntary || Regression.rnd.NextDouble() < (double)this.bladderContinence;
-                    if (!lclVoluntary)
-                    {
-                        noWettings = false;
-                        //Any overage in the container, add to the pants. Ignore overage over that.
-                        //When sleeping, the pants are actually the bed
-                        if(i != numWettings-1)
-                          _ = this.pants.AddPee(this.underwear.AddPee(bladderCapacity));
-                        else
-                          _ = this.pants.AddPee(this.underwear.AddPee(additionalAmount));
-
-                    }
-                }
-            }
-            else if (inUnderwear)
-            {
-                //Any overage in the container, add to the pants. Ignore overage over that.
-                _ = this.pants.AddPee(this.underwear.AddPee(bladderCapacity));
-            }
-            if (bladder > 0.0)
-                return;
-            this.bladder = 0.0f;
-            this.EndWetting();
-        }
-        public void EndWetting()
-        {
-            this.isWetting = false;
-            Animations.AnimateWettingEnd(this);
-            if (sleeping || (Animations.HandleVillager(this, false, wettingUnderwear, pants.wetness > 0.0, false, 20, 3) || pants.wetness <= 0.0 || !wettingUnderwear))
-                return;
-            HandlePeeOverflow(pants);
-        }
-
-        public void HandleMorning()
-        {
-            if (Regression.config.Easymode)
-            {
-                food = maxFood;
-                water = maxWater;
-            }
-            if (!Regression.config.Wetting && !Regression.config.Messing)
-            {
-                peedToiletLastNight = 0;
-                poopedToiletLastNight = 0;
-                sleeping = false;
-                pants = new Container("blue jeans", 0.0f, 0.0f);
-            }
-            else
-            {
-                if (!Regression.config.Easymode)
-                {
-                    int num = new Random().Next(1, 13);
-                    if (num <= 2 && (pants.messiness > 0.0 || pants.wetness > (double)glassOfWater))
-                    {
-                        beddingDryTime = Game1.timeOfDay + 1000;
-                        Farmer player = Game1.player;
-                        player.stamina = (player.stamina - 20f);
-                    }
-                    else if (num <= 5 && pants.wetness > 0.0)
-                    {
-                        beddingDryTime = Game1.timeOfDay + 600;
-                        Farmer player = Game1.player;
-                        player.stamina = (player.stamina - 10f);
-                    }
-                    else
-                        beddingDryTime = 0;
-                }
-                Animations.AnimateMorning(this);
-                peedToiletLastNight = 0;
-                poopedToiletLastNight = 0;
-                sleeping = false;
-                pants = new Container("blue jeans", 0.0f, 0.0f);
-            }
-        }
-
-        public void HandleNight()
-        {
-            lastStamina = Game1.player.stamina;
-            pants = new Container("bed", 0.0f, 0.0f);
-            sleeping = true;
-            if (bedtime <= 0)
-                return;
-
-            //How long are we sleeping? (Minimum of 4 hours)
-            const int timeInDay = 2400;
-            const int wakeUpTime = timeInDay + 600;
-            const float sleepRate = 3.0f; //Let's say body functins change @ 1/3 speed while sleeping. Arbitrary.
-            int timeSlept = wakeUpTime - bedtime; //Bedtime will never exceed passout-time of 2:00AM (2600) 
-            HandleTime(timeSlept / 100.0f / sleepRate);
-        }
-
-        public void HandlePeeOverflow(Container pants)
-        {
-            Animations.Write(Regression.t.Pee_Overflow, this);
-            int num = -Math.Max(Math.Min((int)(pants.wetness / pants.absorbency * 10.0), 10), 1);
-            Buff buff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, num, 0, 15, "", "")
-            {
-                description = string.Format("{0} {1} Defense.", Strings.RandString(Regression.t.Debuff_Wet_Pants), num),
-                millisecondsDuration = 1080000
-            };
-            buff.glow = pants.messiness != 0.0 ? Color.Brown : Color.Yellow;
-            buff.sheetIndex = -1;
-            buff.which = WET_DEBUFF;
-            if (Game1.buffsDisplay.hasBuff(WET_DEBUFF))
-                this.RemoveBuff(WET_DEBUFF);
-            Game1.buffsDisplay.addOtherBuff(buff);
-        }
-
         public void HandlePoopOverflow(Container pants)
         {
+            if (isSleeping)
+                return;
+
             Animations.Write(Regression.t.Poop_Overflow, this);
-            float num1 = pants.messiness / pants.containment;
-            int num2 = num1 >= 0.5 ? (num1 > 1.0 ? -3 : -2) : -1;
-            Buff buff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, num2, 0, 0, 15, "", "")
+            float howMessy = pants.messiness / pants.containment;
+            int speedReduction = howMessy >= 0.5 ? (howMessy > 1.0 ? -3 : -2) : -1;
+            Buff buff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, speedReduction, 0, 0, 15, "", "")
             {
-                description = string.Format("{0} {1} Speed.", Strings.RandString(Regression.t.Debuff_Messy_Pants), (object)num2),
+                description = string.Format("{0} {1} Speed.", Strings.RandString(Regression.t.Debuff_Messy_Pants), (object)speedReduction),
                 millisecondsDuration = 1080000,
                 glow = Color.Brown,
                 sheetIndex = -1,
@@ -530,6 +446,163 @@ namespace PrimevalTitmouse
             Game1.buffsDisplay.addOtherBuff(buff);
         }
 
+        public void StartWetting(bool voluntary = false, bool inUnderwear = true)
+        {
+            if (!Regression.config.Wetting)
+                return;
+
+
+            if ((double)bladderFullness < bladderAttemptThreshold)
+            {
+                Animations.AnimatePeeAttempt(this, inUnderwear);
+            }
+            else
+            {
+                if (!voluntary || bladderFullness > bladderTrainingThreshold)
+                    this.ChangeBladderContinence(-0.01f);
+                else
+                    this.ChangeBladderContinence(0.01f);
+                Animations.AnimateWettingStart(this, voluntary, inUnderwear);
+            }
+
+            Animations.AnimateWettingEnd(this);
+            _ = Animations.HandleVillager(this, false, inUnderwear, pants.wetness > 0.0, false, 20, 3);
+            if ((pants.wetness <= 0.0 || !inUnderwear))
+                return;
+            HandlePeeOverflow(pants);
+        }
+        public void HandlePeeOverflow(Container pants)
+        {
+            if (isSleeping)
+                return;
+
+            Animations.Write(Regression.t.Pee_Overflow, this);
+
+            int defenseReduction = -Math.Max(Math.Min((int)(pants.wetness / pants.absorbency * 10.0), 10), 1);
+            Buff buff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, defenseReduction, 0, 15, "", "")
+            {
+                description = string.Format("{0} {1} Defense.", Strings.RandString(Regression.t.Debuff_Wet_Pants), defenseReduction),
+                millisecondsDuration = 1080000
+            };
+            buff.glow = pants.messiness != 0.0 ? Color.Brown : Color.Yellow;
+            buff.sheetIndex = -1;
+            buff.which = WET_DEBUFF;
+            if (Game1.buffsDisplay.hasBuff(WET_DEBUFF))
+                this.RemoveBuff(WET_DEBUFF);
+            Game1.buffsDisplay.addOtherBuff(buff);
+        }
+
+        public void Wet(bool voluntary = false, bool inUnderwear = true)
+        {
+            numPottyPeeAtNight = 0;
+            //If we're sleeping check if we have an accident or get up to use the potty
+            if (isSleeping)
+            {
+                //When we're sleeping, our bladder fullness can exceed our capacity since we calculate for the whole night at once
+                //Hehehe, this may be evil, but with a smaller bladder, you'll have to pee multiple times a night
+                //So roll the dice each time >:)
+                //<TODO>: Give stamina penalty every time you get up to go potty. Since you disrupted sleep.
+                int numWettings = (int)((bladderFullness - bladderAttemptThreshold)/ bladderCapacity);
+                float additionalAmount = bladderFullness - (numWettings * bladderCapacity);
+                int numAccidents = 0;
+                int numPotty = 0;
+
+                if (additionalAmount > 0)
+                    numWettings++;
+
+                for(int i = 0; i < numWettings; i++)
+                {
+                    //Randomly decide if we get up. Less likely if we have lower continence
+                    bool lclVoluntary = voluntary || Regression.rnd.NextDouble() < (double)this.bladderContinence;
+                    StartWetting(lclVoluntary, true); //Always in underwear in bed
+                    if (!lclVoluntary)
+                    {
+                        numAccidents++;
+                        //Any overage in the container, add to the pants. Ignore overage over that.
+                        //When sleeping, the pants are actually the bed
+                        if (i != numWettings - 1)
+                        {
+                            _ = this.pants.AddPee(this.underwear.AddPee(bladderCapacity));
+                            bladderFullness -= bladderCapacity;
+                        }
+                        else
+                        {
+                            _ = this.pants.AddPee(this.underwear.AddPee(additionalAmount));
+                            bladderFullness -= additionalAmount;
+                        }
+
+                    }
+                    else
+                    {
+                        numPotty++;
+                    }
+                }
+                numPottyPeeAtNight = numPotty;
+            }
+            else if (inUnderwear)
+            {
+                StartWetting(voluntary, true); //Always in underwear in bed
+                //Any overage in the container, add to the pants. Ignore overage over that.
+                _ = this.pants.AddPee(this.underwear.AddPee(bladderFullness));
+                this.bladderFullness = 0.0f;
+            } else
+            {
+                StartWetting(voluntary, false);
+                this.bladderFullness = 0.0f;
+            }
+        }
+
+        public void HandleMorning()
+        {
+            isSleeping = false;
+            if (Regression.config.Easymode)
+            {
+                hunger = 0;
+                thirst = 0;
+                bed.dryingTime = 0;
+            }
+            else
+            {
+
+                Farmer player = Game1.player;
+                int num = new Random().Next(1, 13);
+                if (num <= 2 && (pants.messiness > 0.0 || pants.wetness > minBladderCapacity))
+                {
+                    bed.dryingTime = 1000;
+                    player.stamina -= 20f;
+                }
+                else if (num <= 5 && pants.wetness > 0.0)
+                {
+                    bed.dryingTime = 600;
+                    player.stamina -= 10f;
+                }
+                else
+                    bed.dryingTime = 0;
+
+                int timesUpAtNight = Math.Max(numPottyPeeAtNight, numPottyPooAtNight);
+                player.stamina -= (timesUpAtNight * wakeUpPenalty);
+
+            }
+
+            Animations.AnimateMorning(this);
+            pants = new Container("blue jeans", 0.0f, 0.0f);
+        }
+
+        public void HandleNight()
+        {
+            pants = bed;
+            isSleeping = true;
+            if (bedtime <= 0)
+                return;
+
+            //How long are we sleeping? (Minimum of 4 hours)
+            const int timeInDay = 2400;
+            const int wakeUpTime = timeInDay + 600;
+            const float sleepRate = 3.0f; //Let's say body functions change @ 1/3 speed while sleeping. Arbitrary.
+            int timeSlept = wakeUpTime - bedtime; //Bedtime will never exceed passout-time of 2:00AM (2600) 
+            HandleTime(timeSlept / 100.0f / sleepRate);
+        }
+
         public void HandleStamina()
         {
             float num = (float)((Game1.player.stamina - (double)this.lastStamina) / 4.0);
@@ -537,36 +610,18 @@ namespace PrimevalTitmouse
                 return;
             if (num < 0.0)
             {
-                this.AddFood(num / 300f * this.maxFood);
-                this.AddWater(num / 100f * this.maxWater, 0.05f);
+                this.AddFood(num / 300f * requiredCaloriesPerDay);
+                this.AddWater(num / 100f * requiredWaterPerDay, 0.05f);
             }
             this.lastStamina = Game1.player.stamina;
         }
 
-        public void HandleStomach(float hours)
-        {
-            float lostHunger = this.foodDay * hours;
-            float lostHydration = Body.glassOfWater * 2f * hours;
-            float actualLostHunger = Math.Min(this.stomach[HUNGER], lostHunger);
-            float actualLostHydration = Math.Min(this.stomach[THIRST], lostHydration);
-
-            //Convert body functions to waste products
-            this.AddBowel(actualLostHunger); //Hunger decrease = bowel increase
-            this.AddBladder(actualLostHydration); //Hydration decrease = Bladder increase
-            this.AddStomach(-actualLostHunger, -actualLostHydration);
-        }
 
         public void HandleTime(float hours)
         {
             this.HandleStamina();
             this.AddWater((float)(requiredWaterPerDay * (double)hours / -24.0));
             this.AddFood((float)(requiredCaloriesPerDay * (double)hours / -24.0));
-            this.HandleStomach(hours);
-            if (this.isWetting)
-                this.Wet(hours);
-            if (!this.isMessing)
-                return;
-            this.Mess(hours);
         }
 
         public bool IsFishing()
@@ -607,13 +662,6 @@ namespace PrimevalTitmouse
                     break;
                 }
             }
-        }
-
-
-        //Are we available to Wet/Mess
-        public bool IsOccupied()
-        {
-            return isWetting || isMessing || IsFishing();
         }
     }
 }

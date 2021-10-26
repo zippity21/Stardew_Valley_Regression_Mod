@@ -351,7 +351,8 @@
 			"spriteIndex": -1,
 			"price": 0,
 			"washable": true,
-			"plural": false
+			"plural": false,
+			"dryingTime" :  2400
 		},
 		"blue jeans": {
 			"name": "blue jeans",
@@ -362,7 +363,8 @@
 			"spriteIndex": -1,
 			"price": 2000,
 			"washable": true,
-			"plural": true
+			"plural": true,
+			"dryingTime": 600
 		},
 		"black thong": {
 			"name": "black thong",
@@ -373,7 +375,8 @@
 			"spriteIndex": 0,
 			"price": 10,
 			"washable": true,
-			"plural": false
+			"plural": false,
+			"dryingTime": 300
 		},
 		"polka dot panties": {
 			"name": "polka dot panties",
@@ -384,7 +387,8 @@
 			"spriteIndex": 1,
 			"price": 10,
 			"washable": true,
-			"plural": true
+			"plural": true,
+			"dryingTime": 400
 		},
 		"big kid undies": {
 			"name": "big kid undies",
@@ -395,7 +399,8 @@
 			"spriteIndex": 2,
 			"price": 10,
 			"washable": true,
-			"plural": true
+			"plural": true,
+			"dryingTime": 400
 		},
 		"dinosaur undies": {
 			"name": "dinosaur undies",
@@ -406,7 +411,8 @@
 			"spriteIndex": 3,
 			"price": 10,
 			"washable": true,
-			"plural": true
+			"plural": true,
+			"dryingTime": 400
 		},
 		"lavender pullup": {
 			"name": "lavender pullup",
@@ -417,7 +423,8 @@
 			"spriteIndex": 4,
 			"price": 25,
 			"washable": false,
-			"plural": false
+			"plural": false,
+			"dryingTime": 0
 		},
 		"training pants": {
 			"name": "training pants",
@@ -428,7 +435,8 @@
 			"spriteIndex": 5,
 			"price": 25,
 			"washable": false,
-			"plural": true
+			"plural": true,
+			"dryingTime": 600
 		},
 		"Joja diaper": {
 			"name": "Joja diaper",
@@ -439,7 +447,8 @@
 			"spriteIndex": 6,
 			"price": 25,
 			"washable": false,
-			"plural": false
+			"plural": false,
+			"dryingTime": 0
 		},
 		"baby print diaper": {
 			"name": "baby print diaper",
@@ -450,7 +459,8 @@
 			"spriteIndex": 7,
 			"price": 25,
 			"washable": false,
-			"plural": false
+			"plural": false,
+			"dryingTime": 0
 		},
 		"cloth diaper": {
 			"name": "cloth diaper",
@@ -461,7 +471,8 @@
 			"spriteIndex": 8,
 			"price": 1000,
 			"washable": true,
-			"plural": false
+			"plural": false,
+			"dryingTime": 800
 		},
 		"space diaper": {
 			"name": "space diaper",
@@ -472,7 +483,8 @@
 			"spriteIndex": 9,
 			"price": 100,
 			"washable": false,
-			"plural": false
+			"plural": false,
+			"dryingTime": 0
 		},
 		"pawprint diaper": {
 			"name": "pawprint diaper",
@@ -483,7 +495,8 @@
 			"spriteIndex": 10,
 			"price": 100,
 			"washable": false,
-			"plural": false
+			"plural": false,
+			"dryingTime": 0
 		}
 	}
 }

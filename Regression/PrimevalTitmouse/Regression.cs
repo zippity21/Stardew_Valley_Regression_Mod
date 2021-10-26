@@ -51,10 +51,10 @@ namespace PrimevalTitmouse
                 x1 -= 58;
             if (!config.NoHungerAndThirst || PrimevalTitmouse.Regression.config.Debug)
             {
-                float percentage1 = this.body.food / body.maxFood;
+                float percentage1 = body.GetHungerPercent();
                 StatusBars.DrawStatusBar(x1, y1, percentage1, new Color(115, byte.MaxValue, 56));
                 int x2 = x1 - (10 + StatusBars.barWidth);
-                float percentage2 = body.water / body.maxWater;
+                float percentage2 = body.GetThirstPercent();
                 StatusBars.DrawStatusBar(x2, y1, percentage2, new Color(117, 225, byte.MaxValue));
                 x1 = x2 - (10 + StatusBars.barWidth);
             }
@@ -62,13 +62,13 @@ namespace PrimevalTitmouse
             {
                 if (config.Messing)
                 {
-                    float percentage = body.bowels / body.maxBowels;
+                    float percentage = body.GetBowelPercent();
                     StatusBars.DrawStatusBar(x1, y1, percentage, new Color(146, 111, 91));
                     x1 -= 10 + StatusBars.barWidth;
                 }
                 if (config.Wetting)
                 {
-                    float percentage = body.bladder / body.maxBladder;
+                    float percentage = body.GetBladderPercent();
                     StatusBars.DrawStatusBar(x1, y1, percentage, new Color(byte.MaxValue, 225, 56));
                 }
             }
@@ -161,7 +161,7 @@ namespace PrimevalTitmouse
                 switch (e.Button)
                 {
                     case SButton.F1: //
-                            body.DecreaseFoodAndWater();
+                            body.DecreaseEverything();
                             break;
                     case SButton.F2: //
                             body.IncreaseEverything();
@@ -188,19 +188,11 @@ namespace PrimevalTitmouse
                 switch (e.Button)
                 {
                     case SButton.F1:
-                        if (!body.IsOccupied())
-                        {
                             body.StartWetting(true, !e.IsDown(SButton.LeftShift));
                             break;
-                        }
-                        break;
                     case SButton.F2:
-                        if (!body.IsOccupied())
-                        {
                             body.StartMessing(true, !e.IsDown(SButton.LeftShift));
                             break;
-                        }
-                        break;
                     case SButton.F5:
                         Animations.CheckUnderwear(body);
                         break;
@@ -228,7 +220,7 @@ namespace PrimevalTitmouse
             if (Game1.currentLocation is FarmHouse && (attemptToSleepMenu = e.NewMenu as DialogueBox) != null && Game1.currentLocation.lastQuestionKey == "Sleep" && !config.Easymode)
             {
                 //If enough time has passed, the bed has dried
-                if (body.beddingDryTime > Game1.timeOfDay)
+                if (!body.bed.IsDrying())
                 {
                     List<Response> sleepAttemptResponses = attemptToSleepMenu.responses;
                     if (sleepAttemptResponses.Count == 2)
@@ -332,7 +324,7 @@ namespace PrimevalTitmouse
                 if (activeObject != null)
                 {
                     //If the Underwear we are holding isn't currently wet, messy, or drying; change into it.
-                    if ((double)activeObject.container.wetness + (double)activeObject.container.messiness == 0.0 && !activeObject.container.drying)
+                    if ((double)activeObject.container.wetness + (double)activeObject.container.messiness == 0.0 && !activeObject.container.IsDrying())
                     {
                         who.reduceActiveItemByOne(); //Take it out of inventory
                         Container container = body.ChangeUnderwear(activeObject); //Put on the new underwear and return the old
@@ -353,9 +345,7 @@ namespace PrimevalTitmouse
                         if (AtWaterSource())
                         {
                             Animations.AnimateWashingUnderwear(activeObject.container);
-                            activeObject.container.wetness = 0.0f;
-                            activeObject.container.messiness = 0.0f;
-                            activeObject.container.drying = true;
+                            activeObject.container.Wash();
                         }
                     }
                     return; //Done with underwear
