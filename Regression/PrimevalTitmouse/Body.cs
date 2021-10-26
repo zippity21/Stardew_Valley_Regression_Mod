@@ -78,6 +78,8 @@ namespace PrimevalTitmouse
             float oldPercent = (maxBladder - bladder) / maxBladder;
 
             //Incement the current amount
+            //We allow bladder to go over-full, to simulate the possibility of multiple night wettings
+            //This is determined by the amount of water you have in your system when you go to bed
             this.bladder += amount;
 
             //Only do something if we aren't already wetting
@@ -420,7 +422,13 @@ namespace PrimevalTitmouse
             sleeping = true;
             if (bedtime <= 0)
                 return;
-            HandleTime(Math.Max(4, (Game1.timeOfDay + 2400 - bedtime) / 100) / 3f);
+
+            //How long are we sleeping? (Minimum of 4 hours)
+            const int timeInDay = 2400;
+            const int wakeUpTime = timeInDay + 600;
+            const float sleepRate = 3.0f; //Let's say body functins change @ 1/3 speed while sleeping. Arbitrary.
+            int timeSlept = wakeUpTime - bedtime; //Bedtime will never exceed passout-time of 2:00AM (2600) 
+            HandleTime(timeSlept / 100.0f / sleepRate);
         }
 
         public void HandlePeeOverflow(Container pants)
@@ -473,13 +481,15 @@ namespace PrimevalTitmouse
 
         public void HandleStomach(float hours)
         {
-            float val2_1 = this.foodDay * hours;
-            float val2_2 = Body.glassOfWater * 2f * hours;
-            float num = Math.Min(this.stomach[HUNGER], val2_1);
-            float amount = Math.Min(this.stomach[THIRST], val2_2);
-            this.AddBowel(num);
-            this.AddBladder(amount);
-            this.AddStomach(-num, -amount);
+            float lostHunger = this.foodDay * hours;
+            float lostHydration = Body.glassOfWater * 2f * hours;
+            float actualLostHunger = Math.Min(this.stomach[HUNGER], lostHunger);
+            float actualLostHydration = Math.Min(this.stomach[THIRST], lostHydration);
+
+            //Convert body functions to waste products
+            this.AddBowel(actualLostHunger); //Hunger decrease = bowel increase
+            this.AddBladder(actualLostHydration); //Hydration decrease = Bladder increase
+            this.AddStomach(-actualLostHunger, -actualLostHydration);
         }
 
         public void HandleTime(float hours)
@@ -634,7 +644,7 @@ namespace PrimevalTitmouse
                 else
                 {
                     //Any overage in the container, add to the pants. Ignore overage over that.
-                    //Maybe the overage here should be added to the bed?
+                    //When sleeping, the pants are actually the bed
                     _ = this.pants.AddPee(this.underwear.AddPee(amount));
                 }
             }
