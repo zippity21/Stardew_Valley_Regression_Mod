@@ -93,6 +93,7 @@ namespace PrimevalTitmouse
             started = true;
             who = Game1.player;
             Animations.AnimateNight(body);
+            HandleMorning(sender, e);
         }
 
         private void HandleMorning(object Sender, DayStartedEventArgs e)
@@ -152,17 +153,17 @@ namespace PrimevalTitmouse
                 switch (e.Button)
                 {
                     case SButton.F1: //
-                            body.DecreaseEverything();
-                            break;
+                        body.DecreaseEverything();
+                        break;
                     case SButton.F2: //
-                            body.IncreaseEverything();
-                            break;
+                        body.IncreaseEverything();
+                        break;
                     case SButton.F3://
-                            GiveUnderwear();
-                            break;
+                        GiveUnderwear();
+                        break;
                     case SButton.F5://Alt F4 is reserved to close
-                            TimeMagic.doMagic();
-                            break;
+                        TimeMagic.doMagic();
+                        break;
                     case SButton.F6:
                         config.Wetting = !config.Wetting;
                         break;
@@ -171,6 +172,26 @@ namespace PrimevalTitmouse
                         break;
                     case SButton.F8:
                         config.Easymode = !config.Easymode;
+                        break;
+                    case SButton.S:
+                        if (e.IsDown(SButton.LeftShift))
+                        {
+                            body.ChangeBowelContinence(0.1f);
+                        }
+                        else
+                        {
+                            body.ChangeBladderContinence(0.1f);
+                        }
+                        break;
+                    case SButton.W:
+                        if (e.IsDown(SButton.LeftShift))
+                        {
+                            body.ChangeBowelContinence(-0.1f);
+                        }
+                        else
+                        {
+                            body.ChangeBladderContinence(-0.1f);
+                        }
                         break;
                 }
             }
@@ -211,7 +232,7 @@ namespace PrimevalTitmouse
             if (Game1.currentLocation is FarmHouse && (attemptToSleepMenu = e.NewMenu as DialogueBox) != null && Game1.currentLocation.lastQuestionKey == "Sleep" && !config.Easymode)
             {
                 //If enough time has passed, the bed has dried
-                if (!body.bed.IsDrying())
+                if (body.bed.IsDrying())
                 {
                     List<Response> sleepAttemptResponses = attemptToSleepMenu.responses;
                     if (sleepAttemptResponses.Count == 2)
