@@ -24,9 +24,8 @@ namespace PrimevalTitmouse
         public bool shiftHeld;
         public static Data t;
         public static Farmer who;
-        public static readonly List<string> beverages = new() { "Cola", "Espresso", "Coffee", "Wine", "Beer", "Milk", "Tea", "Juice" };
 
-        const float timeInTick = 0.003100775f;
+        const float timeInTick = (1f/43f); //One second realtime ~= 1/43 hours in game
         public override void Entry(IModHelper h)
         {
             help = h;
@@ -35,7 +34,7 @@ namespace PrimevalTitmouse
             t = Helper.Data.ReadJsonFile<Data>(string.Format("{0}.json", (object)config.Lang)) ?? Helper.Data.ReadJsonFile<Data>("en.json");
             h.Events.GameLoop.Saving += new EventHandler<SavingEventArgs>(this.BeforeSave);
             h.Events.GameLoop.DayStarted += new EventHandler<DayStartedEventArgs>(ReceiveAfterDayStarted);
-            h.Events.GameLoop.UpdateTicked += new EventHandler<UpdateTickedEventArgs>(ReceiveEighthUpdateTick);
+            h.Events.GameLoop.OneSecondUpdateTicking += new EventHandler<OneSecondUpdateTickingEventArgs>(ReceiveUpdateTick);
             h.Events.GameLoop.TimeChanged += new EventHandler<TimeChangedEventArgs>(ReceiveTimeOfDayChanged);
             h.Events.Input.ButtonPressed += new EventHandler<ButtonPressedEventArgs>(ReceiveKeyPress);
             h.Events.Input.ButtonPressed += new EventHandler<ButtonPressedEventArgs>(ReceiveMouseChanged);
@@ -93,8 +92,12 @@ namespace PrimevalTitmouse
             body = Helper.Data.ReadJsonFile<Body>(string.Format("{0}/RegressionSave.json", Constants.SaveFolderName)) ?? new Body();
             started = true;
             who = Game1.player;
-            morningHandled = false;
             Animations.AnimateNight(body);
+        }
+
+        private void HandleMorning(object Sender, DayStartedEventArgs e)
+        {
+            body.HandleMorning();
         }
 
         //Save Mod related variables in separate JSON. Also trigger night handling if not on the very first day.
@@ -111,21 +114,13 @@ namespace PrimevalTitmouse
 
 
 
-        private void ReceiveEighthUpdateTick(object sender, UpdateTickedEventArgs e)
+        private void ReceiveUpdateTick(object sender, OneSecondUpdateTickingEventArgs e)
         {
-            //Only act on every eigth tick (should this take multiplayer into account?)
-            if (e.IsMultipleOf(8))
-            {
+
                 //Ignore everything until we've started the day
                 if (!started)
                     return;
 
-                //If we haven't performed our morning actions, do so.
-                if (!morningHandled && !Game1.fadeToBlack && who.canMove)
-                {
-                    body.HandleMorning();
-                    morningHandled = true; //Make sure we do his only once per day
-                }
 
                 //If time is moving, update our body state (Hunger, thirst, etc.)
                 if (ShouldTimePass())
@@ -134,12 +129,8 @@ namespace PrimevalTitmouse
                 //Handle eating and drinking.
                 if (Game1.player.isEating && Game1.activeClickableMenu == null)
                 {
-                    if (beverages.Contains(who.itemToEat.Name))
-                        body.DrinkBeverage();
-                    else
-                        body.Eat();
+                    body.Consume(who.itemToEat.Name);
                 }
-            }
         }
 
         //Determine if we need to handle time passing (not the same as Game time passing)
@@ -188,10 +179,10 @@ namespace PrimevalTitmouse
                 switch (e.Button)
                 {
                     case SButton.F1:
-                            body.StartWetting(true, !e.IsDown(SButton.LeftShift));
+                            body.Wet(true, !e.IsDown(SButton.LeftShift));
                             break;
                     case SButton.F2:
-                            body.StartMessing(true, !e.IsDown(SButton.LeftShift));
+                            body.Mess(true, !e.IsDown(SButton.LeftShift));
                             break;
                     case SButton.F5:
                         Animations.CheckUnderwear(body);

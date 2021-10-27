@@ -341,6 +341,48 @@
 		"$UNDERWEAR_DESC$ filled with poop",
 		"$UNDERWEAR_DESC$ with poop squishing out"
 	],
+	"Consumables": {
+		"Cola": {
+			"name": "Cola",
+			"waterContent": 100,
+			"calorieContent": 10
+		},
+		"Espresso": {
+			"name": "Espresso",
+			"waterContent": 100,
+			"calorieContent": 10
+		},
+		"Coffee": {
+			"name": "Coffee",
+			"waterContent": 100,
+			"calorieContent": 10
+		},
+		"Wine": {
+			"name": "Wine",
+			"waterContent": 100,
+			"calorieContent": 10
+		},
+		"Beer": {
+			"name": "Beer",
+			"waterContent": 100,
+			"calorieContent": 10
+		},
+		"Milk": {
+			"name": "Milk",
+			"waterContent": 100,
+			"calorieContent": 10
+		},
+		"Tea": {
+			"name": "Tea",
+			"waterContent": 100,
+			"calorieContent": 10
+		},
+		"Juice": {
+			"name": "Juice",
+			"waterContent": 100,
+			"calorieContent": 10
+		}
+	},
 	"Underwear_Options": {
 		"bed": {
 			"name": "bed",

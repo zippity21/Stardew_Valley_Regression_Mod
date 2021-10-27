@@ -24,8 +24,8 @@ namespace PrimevalTitmouse
         private static readonly float bladderAttemptThreshold = maxBladderCapacity * 0.1f;
         private static readonly float bladderTrainingThreshold = maxBladderCapacity * 0.5f;
 
-        //Average # of poops per day varies wildly. Let's say once per day.
-        private static readonly float maxBowelCapacity = requiredCaloriesPerDay / 1f;
+        //Average # of poops per day varies wildly. Let's say rwice per day.
+        private static readonly float maxBowelCapacity = requiredCaloriesPerDay / 2f;
         private static readonly float minBowelCapacity = maxBowelCapacity * 0.20f;
         private static readonly float bowelAttemptThreshold = maxBowelCapacity * 0.1f;
         private static readonly float bowelTrainingThreshold = maxBowelCapacity * 0.5f;
@@ -61,9 +61,9 @@ namespace PrimevalTitmouse
         public Container bed = new("bed", 0.0f, 0.0f);
         public Container pants = new("blue jeans", 0.0f, 0.0f);
         public Container underwear = new("dinosaur undies", 0.0f, 0.0f);
-
         public int numPottyPooAtNight = 0;
         public int numPottyPeeAtNight = 0;
+        private float lastStamina = 0;
 
         public float GetHungerPercent()
         {
@@ -146,7 +146,7 @@ namespace PrimevalTitmouse
         //Change current Food value and handle warning messages
         //Notice that we do things here even if Hunger and Thirst are disabled
         //This is due to Food and Water's effect on Wetting/Messing
-        public void AddFood(float amount, float conversionRatio = 0.5f)
+        public void AddFood(float amount, float conversionRatio = 1f)
         {
             //How full are we?
             float oldPercent = (requiredCaloriesPerDay - hunger) / requiredCaloriesPerDay;
@@ -154,12 +154,13 @@ namespace PrimevalTitmouse
             float newPercent = (requiredCaloriesPerDay - hunger) / requiredCaloriesPerDay;
 
             //Convert food lost into poo at half rate
-            AddBowel(amount * conversionRatio);
+            if(amount < 0)
+              AddBowel(amount * -1f * conversionRatio);
 
             //If we go over full, add additional to bowels at half rate
             if (hunger < 0)
             {
-                AddBowel(hunger * -1f * conversionRatio);
+                AddBowel(hunger * -0.5f * conversionRatio);
                 hunger = 0f;
             }
 
@@ -177,7 +178,7 @@ namespace PrimevalTitmouse
             Warn(oldPercent, newPercent, HUNGER_THRESHOLDS, HUNGER_MESSAGES, false);
         }
 
-        public void AddWater(float amount, float conversionRatio = 0.5f)
+        public void AddWater(float amount, float conversionRatio = 1f)
         {
             //How full are we?
             float oldPercent = (requiredWaterPerDay - thirst) / requiredWaterPerDay;
@@ -185,12 +186,13 @@ namespace PrimevalTitmouse
             float newPercent = (requiredWaterPerDay - thirst) / requiredWaterPerDay;
 
             //Convert water lost into pee at half rate
-            AddBladder(amount * conversionRatio);
+            if (amount < 0)
+                AddBladder(amount * -1f * conversionRatio);
 
             //Also if we go over full, add additional to Bladder at half rate
             if (thirst < 0)
             {
-                AddBladder((thirst * -1f * conversionRatio));
+                AddBladder((thirst * -0.5f * conversionRatio));
                 thirst = 0f;
             }
 
@@ -387,15 +389,21 @@ namespace PrimevalTitmouse
             }
             else if (inUnderwear)
             {
-                StartMessing(voluntary, true); //Always in underwear in bed
-                //Any overage in the container, add to the pants. Ignore overage over that.
-                _ = this.pants.AddPoop(this.underwear.AddPoop(bowelFullness));
-                this.bowelFullness = 0.0f;
+                if (bowelFullness >= bowelAttemptThreshold)
+                {
+                    StartMessing(voluntary, true); //Always in underwear in bed
+                                                   //Any overage in the container, add to the pants. Ignore overage over that.
+                    _ = this.pants.AddPoop(this.underwear.AddPoop(bowelFullness));
+                    this.bowelFullness = 0.0f;
+                }
             }
             else
             {
                 StartMessing(voluntary, false);
-                this.bowelFullness = 0.0f;
+                if (bowelFullness >= bowelAttemptThreshold)
+                {
+                    this.bowelFullness = 0.0f;
+                }
             }
         }
 
@@ -543,12 +551,18 @@ namespace PrimevalTitmouse
             {
                 StartWetting(voluntary, true); //Always in underwear in bed
                 //Any overage in the container, add to the pants. Ignore overage over that.
-                _ = this.pants.AddPee(this.underwear.AddPee(bladderFullness));
-                this.bladderFullness = 0.0f;
+                if (bladderFullness >= bladderAttemptThreshold)
+                {
+                    _ = this.pants.AddPee(this.underwear.AddPee(bladderFullness));
+                    this.bladderFullness = 0.0f;
+                }
             } else
             {
                 StartWetting(voluntary, false);
-                this.bladderFullness = 0.0f;
+                if (bladderFullness >= bladderAttemptThreshold)
+                {
+                    this.bladderFullness = 0.0f;
+                }
             }
         }
 
@@ -603,15 +617,16 @@ namespace PrimevalTitmouse
             HandleTime(timeSlept / 100.0f / sleepRate);
         }
 
+        //If Stamina has decreased, Use up Food and water along with it
         public void HandleStamina()
         {
-            float num = (float)((Game1.player.stamina - (double)this.lastStamina) / 4.0);
-            if ((double)num == 0.0)
+            float staminaDifference = (float)(Game1.player.stamina - this.lastStamina) / Game1.player.maxStamina.Value;
+            if ((double)staminaDifference == 0.0)
                 return;
-            if (num < 0.0)
+            if (staminaDifference < 0.0)
             {
-                this.AddFood(num / 300f * requiredCaloriesPerDay);
-                this.AddWater(num / 100f * requiredWaterPerDay, 0.05f);
+                this.AddFood( staminaDifference * requiredCaloriesPerDay * 0.25f);
+                this.AddWater(staminaDifference * requiredWaterPerDay    * 0.10f);
             }
             this.lastStamina = Game1.player.stamina;
         }
@@ -629,7 +644,6 @@ namespace PrimevalTitmouse
             FishingRod currentTool;
             return (currentTool = Game1.player.CurrentTool as FishingRod) != null && (currentTool.isCasting || currentTool.isTimingCast || (currentTool.isNibbling || currentTool.isReeling) || currentTool.castedButBobberStillInAir || currentTool.pullingOutOfWater);
         }
-
 
         public void RemoveBuff(int which)
         {
@@ -661,6 +675,21 @@ namespace PrimevalTitmouse
                     Animations.Warn(msgs[index], this);
                     break;
                 }
+            }
+        }
+
+        //<TODO> Expand Consumables to add food. But we'd need a lot more info. For now, treat all food the same.
+        public void Consume(string itemName)
+        {
+            Consumable item;
+            if(Animations.GetData().Consumables.TryGetValue(itemName, out item))
+            {
+                this.AddFood(item.calorieContent);
+                this.AddWater(item.waterContent);
+            } else
+            {
+                this.AddFood(200);
+                this.AddWater(10);
             }
         }
     }

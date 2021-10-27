@@ -60,5 +60,6 @@ namespace PrimevalTitmouse
         public string[] Wet_Attempt;
         public string[] Wet_Bed;
         public string[] Wet_Voluntary;
+        public Dictionary<string, Consumable> Consumables;
     }
 }
