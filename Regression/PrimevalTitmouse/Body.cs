@@ -109,7 +109,7 @@ namespace PrimevalTitmouse
                 //If we have no room left, or randomly based on our current continence level warn about how badly we need to pee
                 if ((newFullness <= 0.0 ? 1.0 : bladderContinence / (4f * newFullness)) > Regression.rnd.NextDouble())
                 {
-                    Warn(oldFullness, newFullness, WETTING_THRESHOLDS, WETTING_MESSAGES, false);
+                    Warn(1-oldFullness, 1-newFullness, WETTING_THRESHOLDS, WETTING_MESSAGES, false);
                 }
             }
         }
@@ -138,7 +138,7 @@ namespace PrimevalTitmouse
                 //If we have no room left, or randomly based on our current continence level warn about how badly we need to pee
                 if ((newFullness <= 0.0 ? 1.0 : bowelContinence / (4f * newFullness)) > Regression.rnd.NextDouble())
                 {
-                    Warn(oldFullness, newFullness, MESSING_THRESHOLDS, MESSING_MESSAGES, false);
+                    Warn(1-oldFullness, 1-newFullness, MESSING_THRESHOLDS, MESSING_MESSAGES, false);
                 }
             }
         }
@@ -154,8 +154,8 @@ namespace PrimevalTitmouse
             float newPercent = (requiredCaloriesPerDay - hunger) / requiredCaloriesPerDay;
 
             //Convert food lost into poo at half rate
-            if(amount < 0)
-              AddBowel(amount * -1f * conversionRatio);
+            if (amount < 0 && hunger < requiredCaloriesPerDay)
+                AddBowel(amount * -1f * conversionRatio);
 
             //If we go over full, add additional to bowels at half rate
             if (hunger < 0)
@@ -186,7 +186,7 @@ namespace PrimevalTitmouse
             float newPercent = (requiredWaterPerDay - thirst) / requiredWaterPerDay;
 
             //Convert water lost into pee at half rate
-            if (amount < 0)
+            if (amount < 0 && thirst < requiredWaterPerDay)
                 AddBladder(amount * -1f * conversionRatio);
 
             //Also if we go over full, add additional to Bladder at half rate
