@@ -459,7 +459,7 @@ namespace PrimevalTitmouse
             if (isSleeping)
                 return;
 
-            Animations.Write(Regression.t.Poop_Overflow, this);
+            Animations.Write(Regression.t.Poop_Overflow, this, Animations.poopAnimationTime);
             float howMessy = pants.messiness / pants.containment;
             int speedReduction = howMessy >= 0.5 ? (howMessy > 1.0 ? -3 : -2) : -1;
             Buff buff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, speedReduction, 0, 0, 15, "", "")
@@ -502,7 +502,7 @@ namespace PrimevalTitmouse
             if (isSleeping)
                 return;
 
-            Animations.Write(Regression.t.Pee_Overflow, this);
+            Animations.Write(Regression.t.Pee_Overflow, this, Animations.peeAnimationTime);
 
             int defenseReduction = -Math.Max(Math.Min((int)(pants.wetness / pants.absorbency * 10.0), 10), 1);
             Buff buff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, defenseReduction, 0, 15, "", "")

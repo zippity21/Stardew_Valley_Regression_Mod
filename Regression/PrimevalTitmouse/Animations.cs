@@ -17,7 +17,8 @@ namespace PrimevalTitmouse
     internal static class Animations
     {
         private static readonly List<string> NPC_LIST = new List<string> { "Linus", "Krobus", "Dwarf" };
-
+        public static readonly int poopAnimationTime = 2000; //ms
+        public static readonly int peeAnimationTime = 2000; //ms
         //Magic Constants
         public const string SPRITES = "Assets/sprites.png";
         public const int PAUSE_TIME = 20000;
@@ -111,7 +112,7 @@ namespace PrimevalTitmouse
             Animations.GetWho().jitterStrength = 1.0f;
             Game1.currentLocation.temporarySprites.Add(new TemporaryAnimatedSprite("TileSheets\\animations", new Microsoft.Xna.Framework.Rectangle(192, 1152, Game1.tileSize, Game1.tileSize), 50f, 4, 0, Animations.GetWho().position - new Vector2(((Character)Animations.GetWho()).facingDirection == 1 ? 0.0f : (float)-Game1.tileSize, (float)(Game1.tileSize * 2)), false, ((Character)Animations.GetWho()).facingDirection == 1, (float)((Character)Animations.GetWho()).getStandingY() / 10000f, 0.01f, Microsoft.Xna.Framework.Color.White, 1f, 0.0f, 0.0f, 0.0f, false));
          
-            Animations.GetWho().freezePause = 2000;
+            Animations.GetWho().freezePause = poopAnimationTime;
             Animations.GetWho().canMove = false;
             Animations.GetWho().doEmote(12, false);
         }
@@ -151,7 +152,7 @@ namespace PrimevalTitmouse
             //Animations.GetWho().forceCanMove();
             //Animations.GetWho().completelyStopAnimatingOrDoingAction();
             Animations.GetWho().jitterStrength = 0.5f;
-            Animations.GetWho().freezePause = 2000; //milliseconds
+            Animations.GetWho().freezePause = peeAnimationTime; //milliseconds
             Animations.GetWho().canMove = false;
             ((Character)Animations.GetWho()).doEmote(28, false);
         }
@@ -447,14 +448,14 @@ namespace PrimevalTitmouse
             Animations.Warn(Strings.RandString(msgs), b);
         }
 
-        public static void Write(string msg, Body b = null)
+        public static void Write(string msg, Body b = null, int delay = 0)
         {
-            Game1.drawObjectDialogue(Strings.InsertVariables(msg, b, (Container)null));
+            DelayedAction.showDialogueAfterDelay(Strings.InsertVariables(msg, b, (Container)null), delay);
         }
 
-        public static void Write(string[] msgs, Body b = null)
+        public static void Write(string[] msgs, Body b = null, int delay = 0)
         {
-            Animations.Write(Strings.RandString(msgs), b);
+            Animations.Write(Strings.RandString(msgs), b, delay);
         }
     }
 }
