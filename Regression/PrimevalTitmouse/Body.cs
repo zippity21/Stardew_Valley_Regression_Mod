@@ -477,9 +477,6 @@ namespace PrimevalTitmouse
 
         public void StartWetting(bool voluntary = false, bool inUnderwear = true)
         {
-            if (!Regression.config.Wetting)
-                return;
-
 
             if ((double)bladderFullness < GetBladderAttemptThreshold())
             {
@@ -523,6 +520,9 @@ namespace PrimevalTitmouse
 
         public void Wet(bool voluntary = false, bool inUnderwear = true)
         {
+            if (!Regression.config.Wetting)
+                return;
+
             numPottyPeeAtNight = 0;
             //If we're sleeping check if we have an accident or get up to use the potty
             if (isSleeping)

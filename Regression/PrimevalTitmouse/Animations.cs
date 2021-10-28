@@ -106,13 +106,14 @@ namespace PrimevalTitmouse
             else
                 Say(Animations.GetData().Mess_Accident, b);
 
-            Animations.GetWho().forceCanMove();
-            Animations.GetWho().completelyStopAnimatingOrDoingAction();
+            //Animations.GetWho().forceCanMove();
+            //Animations.GetWho().completelyStopAnimatingOrDoingAction();
             Animations.GetWho().jitterStrength = 1.0f;
             Game1.currentLocation.temporarySprites.Add(new TemporaryAnimatedSprite("TileSheets\\animations", new Microsoft.Xna.Framework.Rectangle(192, 1152, Game1.tileSize, Game1.tileSize), 50f, 4, 0, Animations.GetWho().position - new Vector2(((Character)Animations.GetWho()).facingDirection == 1 ? 0.0f : (float)-Game1.tileSize, (float)(Game1.tileSize * 2)), false, ((Character)Animations.GetWho()).facingDirection == 1, (float)((Character)Animations.GetWho()).getStandingY() / 10000f, 0.01f, Microsoft.Xna.Framework.Color.White, 1f, 0.0f, 0.0f, 0.0f, false));
-            Animations.GetWho().doEmote(12, false);
-            Animations.GetWho().freezePause = 20000;
+         
+            Animations.GetWho().freezePause = 2000;
             Animations.GetWho().canMove = false;
+            Animations.GetWho().doEmote(12, false);
         }
         public static void AnimateMessingEnd(Body b)
         {
@@ -120,43 +121,39 @@ namespace PrimevalTitmouse
             if (b.IsFishing()) return;
             Game1.playSound("coin");
             Game1.currentLocation.temporarySprites.Add(new TemporaryAnimatedSprite("TileSheets\\animations", new Microsoft.Xna.Framework.Rectangle(192, 1152, Game1.tileSize, Game1.tileSize), 50f, 4, 0, Animations.GetWho().position - new Vector2(Animations.GetWho().facingDirection == 1 ? 0.0f : -Game1.tileSize, Game1.tileSize * 2), false, Animations.GetWho().facingDirection == 1, Animations.GetWho().getStandingY() / 10000f, 0.01f, Microsoft.Xna.Framework.Color.White, 1f, 0.0f, 0.0f, 0.0f, false));
-            Animations.GetWho().completelyStopAnimatingOrDoingAction();
-            Animations.GetWho().forceCanMove();
         }
 
         public static void AnimateWettingStart(Body b, bool voluntary, bool inUnderwear)
         {
             if (b.IsFishing()) return;
+
             Game1.playSound("wateringCan");
             if (b.isSleeping || !voluntary && !Regression.config.AlwaysNoticeAccidents && (double)b.bladderContinence + 0.200000002980232 <= Regression.rnd.NextDouble())
                 return;
+
             if (!inUnderwear)
             {
                 if (b.InToilet(inUnderwear))
                     Animations.Say(Animations.GetData().Pee_Toilet, b);
                 else
                     Animations.Say(Animations.GetData().Pee_Voluntary, b);
+
+                ((List<TemporaryAnimatedSprite>)((GameLocation)Animations.GetWho().currentLocation).temporarySprites).Add(new TemporaryAnimatedSprite(13, (Vector2)((Character)Game1.player).position, Microsoft.Xna.Framework.Color.White, 10, ((Random)Game1.random).NextDouble() < 0.5, 70f, 0, (int)Game1.tileSize, 0.05f, -1, 0));
+                HoeDirt terrainFeature;
+                if (Animations.GetWho().currentLocation.terrainFeatures.ContainsKey(((Character)Animations.GetWho()).getTileLocation()) && (terrainFeature = Animations.GetWho().currentLocation.terrainFeatures[((Character)Animations.GetWho()).getTileLocation()] as HoeDirt) != null)
+                    terrainFeature.state.Value = 1;
             }
             else if (voluntary)
                 Animations.Say(Animations.GetData().Wet_Voluntary, b);
             else
                 Animations.Say(Animations.GetData().Wet_Accident, b);
 
-            Animations.GetWho().forceCanMove();
-            Animations.GetWho().completelyStopAnimatingOrDoingAction();
+            //Animations.GetWho().forceCanMove();
+            //Animations.GetWho().completelyStopAnimatingOrDoingAction();
             Animations.GetWho().jitterStrength = 0.5f;
-            ((Character)Animations.GetWho()).doEmote(28, false);
-
-            if (!inUnderwear)
-            {
-                ((List<TemporaryAnimatedSprite>)((GameLocation)Animations.GetWho().currentLocation).temporarySprites).Add(new TemporaryAnimatedSprite(13, (Vector2)((Character)Game1.player).position, Microsoft.Xna.Framework.Color.White, 10, ((Random)Game1.random).NextDouble() < 0.5, 70f, 0, (int)Game1.tileSize, 0.05f, -1, 0));
-                HoeDirt terrainFeature;
-                if (Animations.GetWho().currentLocation.terrainFeatures.ContainsKey(((Character)Animations.GetWho()).getTileLocation()) && (terrainFeature = Animations.GetWho().currentLocation.terrainFeatures[((Character)Animations.GetWho()).getTileLocation()] as HoeDirt) != null)
-                    terrainFeature.state.Value = 1;
-            }
-
-            Animations.GetWho().freezePause = 20000;
+            Animations.GetWho().freezePause = 2000; //milliseconds
             Animations.GetWho().canMove = false;
+            ((Character)Animations.GetWho()).doEmote(28, false);
         }
 
         public static void AnimateWettingEnd(Body b)
@@ -169,8 +166,6 @@ namespace PrimevalTitmouse
                 if (Animations.GetWho().currentLocation.terrainFeatures.ContainsKey(((Character)Animations.GetWho()).getTileLocation()) && (terrainFeature = Animations.GetWho().currentLocation.terrainFeatures[((Character)Animations.GetWho()).getTileLocation()] as HoeDirt) != null)
                     terrainFeature.state.Value = 1;
             }
-            Animations.GetWho().completelyStopAnimatingOrDoingAction();
-            Animations.GetWho().forceCanMove();
         }
 
         public static void AnimateMorning(Body b)
