@@ -190,8 +190,8 @@
 		"You can't help yourself and mess your $UNDERWEAR_NAME$!"
 	],
 	"Toilet_Night": [
-		"You had to <pee&poop> last night, but you woke up and made it to the toilet.",
-		"You woke up to <pee&poop> in the potty like a big <boy/girl> last night."
+		"You had to <pee&poop> last night, and made it to the toilet$HOW_MANY_TIMES",
+		"You woke up to <pee&poop> in the potty like a big <boy/girl> last night$HOW_MANY_TIMES"
 	],
 	"Wake_Up_Underwear_State": [
 		"You wake up in $INSPECT_UNDERWEAR_NAME$."

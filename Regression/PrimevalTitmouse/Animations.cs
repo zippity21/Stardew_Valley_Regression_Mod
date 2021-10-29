@@ -191,11 +191,26 @@ namespace PrimevalTitmouse
 
         public static void AnimateNight(Body b)
         {
-            bool first =b.numPottyPeeAtNight > 0;
+            bool first = b.numPottyPeeAtNight > 0;
             bool second = b.numPottyPooAtNight > 0;
             if (!(first | second) || !Regression.config.Wetting && !Regression.config.Messing)
-                return;
-            Write(Strings.ReplaceAndOr(Strings.RandString(Animations.GetData().Toilet_Night), first, second, "&"), b);
+              return;
+            string toiletMsg = Strings.ReplaceAndOr(Strings.RandString(Animations.GetData().Toilet_Night), first, second, "&");
+
+            if (b.numAccidentPooAtNight == 0 && b.numAccidentPeeAtNight == 0)
+                toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", ".");
+            else
+            {
+                toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", ". But you still woke up$HOW_MANY_TIMES");
+                if (b.numAccidentPeeAtNight > 0)
+                    toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", " wet$HOW_MANY_TIMES");
+                if (b.numAccidentPooAtNight > 0)
+                    toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", " and messy$HOW_MANY_TIMES");
+                if (b.numAccidentPooAtNight > 0 || b.numAccidentPeeAtNight > 0)
+                    toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", "! Looks like someone really does need to be in diapers at night$HOW_MANY_TIMES");
+            }
+            toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", ".");
+            Write(toiletMsg, b);
         }
 
         public static void AnimatePeeAttempt(Body b, bool inUnderwear)

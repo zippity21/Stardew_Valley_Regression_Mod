@@ -64,6 +64,13 @@ namespace PrimevalTitmouse
       return Strings.ReplaceOr(str, Strings.who.IsMale, "/").Replace("$FARMERNAME$", Strings.who.Name);
     }
 
+    public static string InsertVariable(string inputString, string variableName, string variableValue)
+    {
+        string outputString = inputString;
+            outputString = outputString.Replace(variableName, variableValue);
+        return outputString;
+    }
+
     public static string RandString(string[] msgs = null)
     {
       return msgs[Regression.rnd.Next(msgs.Length)];

@@ -58,9 +58,12 @@ namespace PrimevalTitmouse
         public bool isSleeping = false;
         public Container bed = new("bed", 0.0f, 0.0f);
         public Container pants = new("blue jeans", 0.0f, 0.0f);
+        private Container oldPants = new("blue jeans", 0.0f, 0.0f);
         public Container underwear = new("dinosaur undies", 0.0f, 0.0f);
         public int numPottyPooAtNight = 0;
         public int numPottyPeeAtNight = 0;
+        public int numAccidentPooAtNight = 0;
+        public int numAccidentPeeAtNight = 0;
         private float lastStamina = 0;
 
         public float GetBladderTrainingThreshold()
@@ -369,6 +372,7 @@ namespace PrimevalTitmouse
         public void Mess(bool voluntary = false, bool inUnderwear = true)
         {
             numPottyPooAtNight = 0;
+            numAccidentPooAtNight = 0;
             //If we're sleeping check if we have an accident or get up to use the potty
             if (isSleeping)
             {
@@ -395,7 +399,7 @@ namespace PrimevalTitmouse
                         numAccidents++;
                         //Any overage in the container, add to the pants. Ignore overage over that.
                         //When sleeping, the pants are actually the bed
-                        _ = this.pants.AddPoop(this.underwear.AddPoop(amountToLose));
+                        _ = this.bed.AddPoop(this.pants.AddPoop(this.underwear.AddPoop(amountToLose)));
                         bowelFullness -= amountToLose;
 
                     }
@@ -406,6 +410,7 @@ namespace PrimevalTitmouse
                     }
                 }
                 numPottyPooAtNight = numPotty;
+                numAccidentPooAtNight = numAccidents;
             }
             else if (inUnderwear)
             {
@@ -451,10 +456,10 @@ namespace PrimevalTitmouse
             _ = Animations.HandleVillager(this, true, inUnderwear, pants.messiness > 0.0, false, 20, 3);
             if (pants.messiness <= 0.0 || !inUnderwear)
                 return;
-            HandlePoopOverflow(pants);
+            HandlePoopOverflow();
         }
 
-        public void HandlePoopOverflow(Container pants)
+        private void HandlePoopOverflow()
         {
             if (isSleeping)
                 return;
@@ -495,9 +500,9 @@ namespace PrimevalTitmouse
             _ = Animations.HandleVillager(this, false, inUnderwear, pants.wetness > 0.0, false, 20, 3);
             if ((pants.wetness <= 0.0 || !inUnderwear))
                 return;
-            HandlePeeOverflow(pants);
+            HandlePeeOverflow();
         }
-        public void HandlePeeOverflow(Container pants)
+        private void HandlePeeOverflow()
         {
             if (isSleeping)
                 return;
@@ -524,6 +529,7 @@ namespace PrimevalTitmouse
                 return;
 
             numPottyPeeAtNight = 0;
+            numAccidentPeeAtNight = 0;
             //If we're sleeping check if we have an accident or get up to use the potty
             if (isSleeping)
             {
@@ -550,7 +556,7 @@ namespace PrimevalTitmouse
                         numAccidents++;
                         //Any overage in the container, add to the pants. Ignore overage over that.
                         //When sleeping, the pants are actually the bed
-                            _ = this.pants.AddPee(this.underwear.AddPee(amountToLose));
+                            _ = this.bed.AddPee(this.pants.AddPee(this.underwear.AddPee(amountToLose)));
                             bladderFullness -= amountToLose;
 
                     }
@@ -561,6 +567,7 @@ namespace PrimevalTitmouse
                     }
                 }
                 numPottyPeeAtNight = numPotty;
+                numAccidentPeeAtNight = numAccidents;
             }
             else if (inUnderwear)
             {
@@ -595,13 +602,12 @@ namespace PrimevalTitmouse
             {
 
                 Farmer player = Game1.player;
-                int num = new Random().Next(1, 13);
-                if (num <= 2 && (pants.messiness > 0.0 || pants.wetness > minBladderCapacity))
+                if (bed.messiness > 0.0 || bed.wetness > 0.0)
                 {
                     bed.dryingTime = 1000;
                     player.stamina -= 20f;
                 }
-                else if (num <= 5 && pants.wetness > 0.0)
+                else if (bed.wetness > 0.0)
                 {
                     bed.dryingTime = 600;
                     player.stamina -= 10f;
@@ -615,12 +621,11 @@ namespace PrimevalTitmouse
             }
 
             Animations.AnimateMorning(this);
-            pants = new Container("blue jeans", 0.0f, 0.0f);
+            bed.Wash();
         }
 
         public void HandleNight()
         {
-            pants = bed;
             isSleeping = true;
             if (bedtime <= 0)
                 return;

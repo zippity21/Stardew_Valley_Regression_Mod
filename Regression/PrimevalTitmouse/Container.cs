@@ -38,6 +38,12 @@ namespace PrimevalTitmouse
             drying = false;
         }
 
+        public Container(Container c)
+        {
+            Initialize(c, c.wetness, c.messiness);
+        }
+    
+
         public Container(string type, float wetness = 0.0f, float messiness = 0.0f)
         {
             this.wetness = 0.0f;
@@ -78,7 +84,7 @@ namespace PrimevalTitmouse
         {
             if (!drying) return false;
             Date currentDate;
-            currentDate.time = Game1.timeOfDay + dryingTime;
+            currentDate.time = Game1.timeOfDay;
             currentDate.day = Game1.dayOfMonth;
             currentDate.season = Utility.getSeasonNumber(Game1.currentSeason);
             currentDate.year = Game1.year;
@@ -94,6 +100,8 @@ namespace PrimevalTitmouse
             if ((yearGt) || (yearEq && seasonGt) || (yearEq && seasonEq && dayGt) || (yearEq && seasonEq && dayEq && (timeGt || timeEq)))
             {
                 drying = false;
+                wetness = 0;
+                messiness = 0;
             }
             return drying;
         }
@@ -101,16 +109,24 @@ namespace PrimevalTitmouse
         public float AddPee(float amount)
         {
             wetness += amount;
-            if (wetness > (double)absorbency)
-                return (wetness - absorbency);
+            float difference = wetness - absorbency;
+            if (difference > 0)
+            {
+                wetness = absorbency;
+                return difference;
+            }
             return 0.0f;
         }
 
         public float AddPoop(float amount)
         {
-            this.messiness += amount;
-            if (messiness > (double)containment)
-                return (messiness - containment);
+            messiness += amount;
+            float difference = messiness - containment;
+            if (difference > 0)
+            {
+                messiness = containment;
+                return difference;
+            }
             return 0.0f;
         }
 
@@ -125,6 +141,9 @@ namespace PrimevalTitmouse
             price = c.price;
             washable = c.washable;
             plural = c.plural;
+            dryingTime = c.dryingTime;
+            drying = c.drying;
+            timeWhenDoneDrying = c.timeWhenDoneDrying;
             this.wetness = wetness;
             this.messiness = messiness;
         }
