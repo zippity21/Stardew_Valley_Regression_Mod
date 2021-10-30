@@ -201,13 +201,20 @@ namespace PrimevalTitmouse
                 toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", ".");
             else
             {
-                toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", ". But you still woke up$HOW_MANY_TIMES");
+                if (!b.underwear.removable)
+                {
+                    toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", ", but couldn't get your $UNDERWEAR_NAME$ off!$HOW_MANY_TIMES");
+                    toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", " So you still woke up$HOW_MANY_TIMES");
+                } else
+                {
+                    toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", ", but you still woke up$HOW_MANY_TIMES");
+                }
                 if (b.numAccidentPeeAtNight > 0)
                     toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", " wet$HOW_MANY_TIMES");
                 if (b.numAccidentPooAtNight > 0)
                     toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", " and messy$HOW_MANY_TIMES");
                 if (b.numAccidentPooAtNight > 0 || b.numAccidentPeeAtNight > 0)
-                    toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", "! Looks like someone really does need to be in diapers at night$HOW_MANY_TIMES");
+                    toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", "! Looks like someone really does need to be in their diapers at night$HOW_MANY_TIMES");
             }
             toiletMsg = Strings.InsertVariable(toiletMsg, "$HOW_MANY_TIMES", ".");
             Write(toiletMsg, b);

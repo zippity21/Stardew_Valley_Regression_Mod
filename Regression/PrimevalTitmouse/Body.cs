@@ -392,7 +392,7 @@ namespace PrimevalTitmouse
                 {
                     //Randomly decide if we get up. Less likely if we have lower continence
                     bool lclVoluntary = voluntary || Regression.rnd.NextDouble() < (double)this.bowelContinence;
-                    StartWetting(lclVoluntary, true); //Always in underwear in bed
+                    StartWetting(lclVoluntary && underwear.removable, true); //Always in underwear in bed
                     float amountToLose = (i != numMesses - 1) ? bowelCapacity : additionalAmount;
                     if (!lclVoluntary)
                     {
@@ -407,6 +407,11 @@ namespace PrimevalTitmouse
                     {
                         numPotty++;
                         bowelFullness -= amountToLose;
+                        if (!underwear.removable) //Certian underwear can't be taken off to use the toilet (ie diapers)
+                        {
+                            _ = this.bed.AddPoop(this.pants.AddPoop(this.underwear.AddPoop(amountToLose)));
+                            numAccidents++;
+                        }
                     }
                 }
                 numPottyPooAtNight = numPotty;
@@ -549,7 +554,7 @@ namespace PrimevalTitmouse
                 {
                     //Randomly decide if we get up. Less likely if we have lower continence
                     bool lclVoluntary = voluntary || Regression.rnd.NextDouble() < (double)this.bladderContinence;
-                    StartWetting(lclVoluntary, true); //Always in underwear in bed
+                    StartWetting(lclVoluntary && underwear.removable, true); //Always in underwear in bed
                     float amountToLose = (i != numWettings - 1) ? bladderCapacity: additionalAmount;
                     if (!lclVoluntary)
                     {
@@ -564,6 +569,11 @@ namespace PrimevalTitmouse
                     {
                         numPotty++;
                         bladderFullness -= amountToLose;
+                        if (!underwear.removable) //Certian underwear can't be taken off to use the toilet (ie diapers)
+                        {
+                            _ = this.bed.AddPee(this.pants.AddPee(this.underwear.AddPee(amountToLose)));
+                            numAccidents++;
+                        }
                     }
                 }
                 numPottyPeeAtNight = numPotty;
@@ -571,7 +581,7 @@ namespace PrimevalTitmouse
             }
             else if (inUnderwear)
             {
-                StartWetting(voluntary, true); //Always in underwear in bed
+                StartWetting(voluntary, true);
                 //Any overage in the container, add to the pants. Ignore overage over that.
                 if (bladderFullness >= GetBladderAttemptThreshold())
                 {

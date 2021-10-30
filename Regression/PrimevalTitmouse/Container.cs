@@ -18,6 +18,7 @@ namespace PrimevalTitmouse
         public bool washable;
         public float wetness;
         public int dryingTime;
+        public bool removable;
 
         public struct Date
         {
@@ -144,6 +145,7 @@ namespace PrimevalTitmouse
             dryingTime = c.dryingTime;
             drying = c.drying;
             timeWhenDoneDrying = c.timeWhenDoneDrying;
+            removable = c.removable;
             this.wetness = wetness;
             this.messiness = messiness;
         }
