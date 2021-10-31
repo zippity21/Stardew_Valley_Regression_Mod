@@ -225,6 +225,7 @@
 	"Bedding_Still_Wet": [
 		"Your bedding won't be dry until $BEDDING_DRYTIME$!"
 	],
+	"Cant_Remove": [ "You try to pull down your $UNDERWEAR_NAME$, but you can't get it off without ruining it. Maybe you should change into something else? Or you could just use it..." ],
 	"Pee_Overflow": [
 		"Your $UNDERWEAR_NAME$ leaked! Your pants are all wet!",
 		"You start crying as you feel pee dribbling down your legs!",
@@ -309,7 +310,7 @@
 			"soiled_mean": [
 				"$uDiapers are NOT in fashion, and neither is <peeing&pooping> your pants like a baby!",
 				"$uLike, eww. Why is everyone in this town so gross?!",
-				"$uI was gonna tell you to change your clothes because of how unstylish they are, but it looks like you need your diaper changed more you big baby!"
+				"$uI was gonna tell you to change your clothes because of how unstylish they are, but it looks like you need your diaper changed more, you big baby!"
 			]
 		}
 	},
@@ -317,6 +318,9 @@
 	"Change": [
 		"You change into $PANTS_PREFIX$ clean $PANTS_NAME$ and $INSPECT_UNDERWEAR_NAME$."
 		//***"You take off your soiled <OLD_UNDERWEAR_DESC> and put on $UNDERWEAR_PREFIX$ clean $UNDERWEAR_NAME$."
+	],
+	"Change_Destroyed": [
+		"You ruined your $UNDERWEAR_NAME$ when taking <it#them> off. So you throw <it#them> away."
 	],
 	"PeekWaistband": [
 		"You peek inside your waistband and see"
@@ -344,43 +348,43 @@
 	"Consumables": {
 		"Cola": {
 			"name": "Cola",
-			"waterContent": 100,
-			"calorieContent": 10
+			"waterContent": 240,
+			"calorieContent": 100
 		},
 		"Espresso": {
 			"name": "Espresso",
-			"waterContent": 100,
-			"calorieContent": 10
+			"waterContent": 44,
+			"calorieContent": 3
 		},
 		"Coffee": {
 			"name": "Coffee",
-			"waterContent": 100,
-			"calorieContent": 10
+			"waterContent": 240,
+			"calorieContent": 1
 		},
 		"Wine": {
 			"name": "Wine",
-			"waterContent": 100,
-			"calorieContent": 10
+			"waterContent": 148,
+			"calorieContent": 123
 		},
 		"Beer": {
 			"name": "Beer",
-			"waterContent": 100,
-			"calorieContent": 10
+			"waterContent": 355,
+			"calorieContent": 154
 		},
 		"Milk": {
 			"name": "Milk",
-			"waterContent": 100,
-			"calorieContent": 10
+			"waterContent": 240,
+			"calorieContent": 148
 		},
 		"Tea": {
 			"name": "Tea",
-			"waterContent": 100,
-			"calorieContent": 10
+			"waterContent": 240,
+			"calorieContent": 2
 		},
 		"Juice": {
 			"name": "Juice",
-			"waterContent": 100,
-			"calorieContent": 10
+			"waterContent": 240,
+			"calorieContent": 114
 		}
 	},
 	"Underwear_Options": {
@@ -389,20 +393,20 @@
 			"prefix": "a",
 			"description": "cozy bed",
 			"absorbency": 2500.0,
-			"containment": 5250.0,
+			"containment": 1000.0,
 			"spriteIndex": -1,
 			"price": 0,
 			"washable": true,
 			"plural": false,
 			"dryingTime": 2400,
-			"removable" : false
+			"removable": false
 		},
 		"blue jeans": {
 			"name": "blue jeans",
 			"prefix": "a pair of",
 			"description": "sturdy blue jeans",
-			"absorbency": 500.0,
-			"containment": 450.0,
+			"absorbency": 300.0,
+			"containment": 60.0,
 			"spriteIndex": -1,
 			"price": 2000,
 			"washable": true,
@@ -414,8 +418,8 @@
 			"name": "black thong",
 			"prefix": "a",
 			"description": "lacy black thong",
-			"absorbency": 20.0,
-			"containment": 150.0,
+			"absorbency": 75.0,
+			"containment": 60.0,
 			"spriteIndex": 0,
 			"price": 10,
 			"washable": true,
@@ -427,8 +431,8 @@
 			"name": "polka dot panties",
 			"prefix": "a pair of",
 			"description": "simple white panties with pink polka dots",
-			"absorbency": 20.0,
-			"containment": 300.0,
+			"absorbency": 150.0,
+			"containment": 100.0,
 			"spriteIndex": 1,
 			"price": 10,
 			"washable": true,
@@ -440,8 +444,8 @@
 			"name": "big kid undies",
 			"prefix": "a pair of",
 			"description": "cotton undies for big kids only",
-			"absorbency": 20.0,
-			"containment": 300.0,
+			"absorbency": 150.0,
+			"containment": 115.0,
 			"spriteIndex": 2,
 			"price": 10,
 			"washable": true,
@@ -453,8 +457,8 @@
 			"name": "dinosaur undies",
 			"prefix": "a pair of",
 			"description": "green undies covered in adorable dinosaurs",
-			"absorbency": 20.0,
-			"containment": 400.0,
+			"absorbency": 150.0,
+			"containment": 115.0,
 			"spriteIndex": 3,
 			"price": 10,
 			"washable": true,
@@ -467,7 +471,7 @@
 			"prefix": "a",
 			"description": "soft and snug flowery lavender pullup",
 			"absorbency": 600.0,
-			"containment": 850.0,
+			"containment": 170.0,
 			"spriteIndex": 4,
 			"price": 25,
 			"washable": false,
@@ -480,7 +484,7 @@
 			"prefix": "a pair of",
 			"description": "thin potty training pants that look like big kid undies",
 			"absorbency": 600.0,
-			"containment": 850.0,
+			"containment": 120.0,
 			"spriteIndex": 5,
 			"price": 25,
 			"washable": false,
@@ -492,8 +496,8 @@
 			"name": "Joja diaper",
 			"prefix": "a",
 			"description": "thin white plastic diaper from JojaMart",
-			"absorbency": 399.0,
-			"containment": 700.0,
+			"absorbency": 1200.0,
+			"containment": 300.0,
 			"spriteIndex": 6,
 			"price": 25,
 			"washable": false,
@@ -504,9 +508,9 @@
 		"baby print diaper": {
 			"name": "baby print diaper",
 			"prefix": "a",
-			"description": "little soft and crinkly fresh-scented baby print diaper",
-			"absorbency": 600.0,
-			"containment": 1400.0,
+			"description": "little soft and crinkly fresh-scented baby print diaper. Its a bit small, but you can fit",
+			"absorbency": 1500.0,
+			"containment": 450.0,
 			"spriteIndex": 7,
 			"price": 25,
 			"washable": false,
@@ -518,8 +522,8 @@
 			"name": "cloth diaper",
 			"prefix": "a",
 			"description": "thick and soft white cloth diaper",
-			"absorbency": 1700.0,
-			"containment": 2700.0,
+			"absorbency": 2000.0,
+			"containment": 900.0,
 			"spriteIndex": 8,
 			"price": 1000,
 			"washable": true,
@@ -531,8 +535,8 @@
 			"name": "space diaper",
 			"prefix": "a",
 			"description": "very thick and soft blue plastic diaper with spaceship designs",
-			"absorbency": 2500.0,
-			"containment": 2700.0,
+			"absorbency": 2700.0,
+			"containment": 900.0,
 			"spriteIndex": 9,
 			"price": 100,
 			"washable": false,
@@ -544,8 +548,8 @@
 			"name": "pawprint diaper",
 			"prefix": "a",
 			"description": "puffy plastic diaper with cute animal prints and fade-when-wet little paws",
-			"absorbency": 2500.0,
-			"containment": 2700.0,
+			"absorbency": 2700.0,
+			"containment": 900.0,
 			"spriteIndex": 10,
 			"price": 100,
 			"washable": false,

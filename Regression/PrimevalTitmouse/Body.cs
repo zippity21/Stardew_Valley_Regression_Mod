@@ -293,12 +293,14 @@ namespace PrimevalTitmouse
         //Put on underwear and clean pants
         private Container ChangeUnderwear(Container container)
         {
-            Container underwear = this.underwear;
+            Container oldUnderwear = this.underwear;
+            if (!oldUnderwear.removable)
+                Animations.Warn(Regression.t.Change_Destroyed, this);
             this.underwear = container;
             pants = new Container("blue jeans", 0.0f, 0.0f);
             CleanPants();
             Animations.Say(Regression.t.Change, this);
-            return underwear;
+            return oldUnderwear;
         }
 
         public Container ChangeUnderwear(Underwear uw)
@@ -431,9 +433,12 @@ namespace PrimevalTitmouse
             else
             {
                 StartMessing(voluntary, false);
-                if (bowelFullness >= GetBowelAttemptThreshold())
+                if (underwear.removable)
                 {
-                    this.bowelFullness = 0.0f;
+                    if (bowelFullness >= GetBowelAttemptThreshold())
+                    {
+                        this.bowelFullness = 0.0f;
+                    }
                 }
             }
         }
@@ -541,8 +546,7 @@ namespace PrimevalTitmouse
                 //When we're sleeping, our bladder fullness can exceed our capacity since we calculate for the whole night at once
                 //Hehehe, this may be evil, but with a smaller bladder, you'll have to pee multiple times a night
                 //So roll the dice each time >:)
-                //<TODO>: Give stamina penalty every time you get up to go potty. Since you disrupted sleep.
-                int numWettings = (int)((bladderFullness - GetBladderAttemptThreshold())/ bladderCapacity);
+                int numWettings = (int)((bladderFullness - GetBladderAttemptThreshold()) / bladderCapacity);
                 float additionalAmount = bladderFullness - (numWettings * bladderCapacity);
                 int numAccidents = 0;
                 int numPotty = 0;
@@ -550,19 +554,19 @@ namespace PrimevalTitmouse
                 if (additionalAmount > 0)
                     numWettings++;
 
-                for(int i = 0; i < numWettings; i++)
+                for (int i = 0; i < numWettings; i++)
                 {
                     //Randomly decide if we get up. Less likely if we have lower continence
                     bool lclVoluntary = voluntary || Regression.rnd.NextDouble() < (double)this.bladderContinence;
                     StartWetting(lclVoluntary && underwear.removable, true); //Always in underwear in bed
-                    float amountToLose = (i != numWettings - 1) ? bladderCapacity: additionalAmount;
+                    float amountToLose = (i != numWettings - 1) ? bladderCapacity : additionalAmount;
                     if (!lclVoluntary)
                     {
                         numAccidents++;
                         //Any overage in the container, add to the pants. Ignore overage over that.
                         //When sleeping, the pants are actually the bed
-                            _ = this.bed.AddPee(this.pants.AddPee(this.underwear.AddPee(amountToLose)));
-                            bladderFullness -= amountToLose;
+                        _ = this.bed.AddPee(this.pants.AddPee(this.underwear.AddPee(amountToLose)));
+                        bladderFullness -= amountToLose;
 
                     }
                     else
@@ -591,9 +595,11 @@ namespace PrimevalTitmouse
             } else
             {
                 StartWetting(voluntary, false);
-                if (bladderFullness >= GetBladderAttemptThreshold())
-                {
+                if (underwear.removable) {
+                    if (bladderFullness >= GetBladderAttemptThreshold())
+                    {
                     this.bladderFullness = 0.0f;
+                    }
                 }
             }
             if (bladderFullness < 0) bladderFullness = 0;

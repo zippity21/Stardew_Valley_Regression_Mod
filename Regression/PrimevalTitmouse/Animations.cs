@@ -92,9 +92,19 @@ namespace PrimevalTitmouse
         {
 
             if (b.IsFishing()) return;
-            Game1.playSound("slosh");
+
+            if (b.underwear.removable || inUnderwear)
+                Game1.playSound("slosh");
+
             if (b.isSleeping || !voluntary && !Regression.config.AlwaysNoticeAccidents && (double)b.bowelContinence + 0.449999988079071 <= Regression.rnd.NextDouble())
                 return;
+
+            if (!(b.underwear.removable || inUnderwear))
+            {
+                Animations.Say(Animations.GetData().Cant_Remove, b);
+                return;
+            }
+
             if (!inUnderwear)
             {
                 if (b.InToilet(inUnderwear))
@@ -128,11 +138,19 @@ namespace PrimevalTitmouse
         {
             if (b.IsFishing()) return;
 
-            Game1.playSound("wateringCan");
+            if(b.underwear.removable || inUnderwear)
+              Game1.playSound("wateringCan");
+
             if (b.isSleeping || !voluntary && !Regression.config.AlwaysNoticeAccidents && (double)b.bladderContinence + 0.200000002980232 <= Regression.rnd.NextDouble())
                 return;
 
-            if (!inUnderwear)
+            if (!(b.underwear.removable || inUnderwear))
+            {
+                Animations.Say(Animations.GetData().Cant_Remove, b);
+                return;
+            }
+
+                if (!inUnderwear)
             {
                 if (b.InToilet(inUnderwear))
                     Animations.Say(Animations.GetData().Pee_Toilet, b);

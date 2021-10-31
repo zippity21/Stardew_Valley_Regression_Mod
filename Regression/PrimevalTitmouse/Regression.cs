@@ -342,8 +342,10 @@ namespace PrimevalTitmouse
                         Container container = body.ChangeUnderwear(activeObject); //Put on the new underwear and return the old
                         Underwear underwear = new Underwear(container.name, container.wetness, container.messiness, 1);
 
-                        //Try to put the old underwear into the inventory, but pull up the management window if it can't fit
-                        if (!who.addItemToInventoryBool(underwear, false))
+                        //If the underwear returned is not removable, destroy it
+                        if (!container.removable) { }
+                        //Otherwise put the old underwear into the inventory, but pull up the management window if it can't fit
+                        else if (!who.addItemToInventoryBool(underwear, false))
                         {
                             List<Item> objList = new List<Item>();
                             objList.Add(underwear);
