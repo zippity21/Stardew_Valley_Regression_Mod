@@ -55,6 +55,10 @@ I am unable to locate the original author of this code, who posted it back in 20
 - Left Alt + F6: Toggle Wetting Option
 - Left Alt + F7: Toggle Messing Option
 - Left Alt + F8: Toggle Easy Mode Option
+- Left Alt + W: Increase Bowel Continence
+- Left Alt + Left Shift + W: Increase Bladder Continence
+- Left Alt + W: Decrease Bowel Incontinence
+- Left Alt + Left Shift + W: Decrease Bladder Continence
 
 ## Basic Mechanics
 You now get hungry and thristy over time, and from doing work. Getting too hungry/thirsty gives you de-buffs. You can become less hungry by eating food, and less thirst by drinking beverages (including water from a water source, your watering can, or things like wine, coffee, etc.).
@@ -68,10 +72,8 @@ Of course, that food and water have to go somewhere :). You now also have to wor
 
 ## Known issues / Ideas (also check the Issues page in GitHub for anything that I didn't put here)
 ### Issues
-- Even when wearing protection, your pants get dirty when you go.
 - Only one NPC will notice if you pee/poo, even if there are multiple in the radius.
 
 ### Ideas
-- Perhaps, if you pull down a diaper to pee/poo (as opposed to underwear/pullups), it can't be put back on. (Otherwise, whats the incentive training pants?)
 - More meaningful debuffs for having accidents/incontinence. Let's face it, if there is no disincentive, I think this community will speedrun to diapers, and then all challenge is gone.
 - More villager interactions/dialouge. It'd be nice, but I definitely would need help with specific ideas and writing.
