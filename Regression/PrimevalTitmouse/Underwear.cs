@@ -82,7 +82,7 @@ namespace PrimevalTitmouse
 
         public override Item getOne()
         {
-            return new Underwear(container.name, 0.0f, 0.0f, 1);
+            return new Underwear(this.name, this.container.wetness, this.container.messiness, 1);
         }
 
         public object getReplacement()
