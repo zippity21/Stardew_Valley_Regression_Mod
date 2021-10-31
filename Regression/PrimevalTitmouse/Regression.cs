@@ -325,7 +325,7 @@ namespace PrimevalTitmouse
 
                 ////If we're holding the watering can, attempt to drink from it.
                 /////This is the highest priority (apparently?)
-                if (who.CurrentTool != null && who.CurrentTool is WateringCan)
+                if (who.CurrentTool != null && who.CurrentTool is WateringCan && e.IsDown(SButton.LeftShift))
                 {
                     this.body.DrinkWateringCan();
                     return;
@@ -367,7 +367,7 @@ namespace PrimevalTitmouse
                     
                     
                 //If we're at a water source, and not holding underwear, drink from it.
-                if (AtWaterSource()|| AtWell())
+                if ((AtWaterSource()|| AtWell()) && e.IsDown(SButton.LeftShift))
                   this.body.DrinkWaterSource();
             }
                 
