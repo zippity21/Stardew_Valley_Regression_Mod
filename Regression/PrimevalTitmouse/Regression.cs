@@ -24,9 +24,8 @@ namespace PrimevalTitmouse
         public bool shiftHeld;
         public static Data t;
         public static Farmer who;
-        public static readonly List<string> beverages = new() { "Cola", "Espresso", "Coffee", "Wine", "Beer", "Milk", "Tea", "Juice" };
 
-        const float timeInTick = 0.003100775f;
+        const float timeInTick = (1f/43f); //One second realtime ~= 1/43 hours in game
         public override void Entry(IModHelper h)
         {
             help = h;
@@ -35,7 +34,7 @@ namespace PrimevalTitmouse
             t = Helper.Data.ReadJsonFile<Data>(string.Format("{0}.json", (object)config.Lang)) ?? Helper.Data.ReadJsonFile<Data>("en.json");
             h.Events.GameLoop.Saving += new EventHandler<SavingEventArgs>(this.BeforeSave);
             h.Events.GameLoop.DayStarted += new EventHandler<DayStartedEventArgs>(ReceiveAfterDayStarted);
-            h.Events.GameLoop.UpdateTicked += new EventHandler<UpdateTickedEventArgs>(ReceiveEighthUpdateTick);
+            h.Events.GameLoop.OneSecondUpdateTicking += new EventHandler<OneSecondUpdateTickingEventArgs>(ReceiveUpdateTick);
             h.Events.GameLoop.TimeChanged += new EventHandler<TimeChangedEventArgs>(ReceiveTimeOfDayChanged);
             h.Events.Input.ButtonPressed += new EventHandler<ButtonPressedEventArgs>(ReceiveKeyPress);
             h.Events.Input.ButtonPressed += new EventHandler<ButtonPressedEventArgs>(ReceiveMouseChanged);
@@ -51,10 +50,10 @@ namespace PrimevalTitmouse
                 x1 -= 58;
             if (!config.NoHungerAndThirst || PrimevalTitmouse.Regression.config.Debug)
             {
-                float percentage1 = this.body.food / body.maxFood;
+                float percentage1 = body.GetHungerPercent();
                 StatusBars.DrawStatusBar(x1, y1, percentage1, new Color(115, byte.MaxValue, 56));
                 int x2 = x1 - (10 + StatusBars.barWidth);
-                float percentage2 = body.water / body.maxWater;
+                float percentage2 = body.GetThirstPercent();
                 StatusBars.DrawStatusBar(x2, y1, percentage2, new Color(117, 225, byte.MaxValue));
                 x1 = x2 - (10 + StatusBars.barWidth);
             }
@@ -62,13 +61,13 @@ namespace PrimevalTitmouse
             {
                 if (config.Messing)
                 {
-                    float percentage = body.bowels / body.maxBowels;
+                    float percentage = body.GetBowelPercent();
                     StatusBars.DrawStatusBar(x1, y1, percentage, new Color(146, 111, 91));
                     x1 -= 10 + StatusBars.barWidth;
                 }
                 if (config.Wetting)
                 {
-                    float percentage = body.bladder / body.maxBladder;
+                    float percentage = body.GetBladderPercent();
                     StatusBars.DrawStatusBar(x1, y1, percentage, new Color(byte.MaxValue, 225, 56));
                 }
             }
@@ -93,8 +92,13 @@ namespace PrimevalTitmouse
             body = Helper.Data.ReadJsonFile<Body>(string.Format("{0}/RegressionSave.json", Constants.SaveFolderName)) ?? new Body();
             started = true;
             who = Game1.player;
-            morningHandled = false;
             Animations.AnimateNight(body);
+            HandleMorning(sender, e);
+        }
+
+        private void HandleMorning(object Sender, DayStartedEventArgs e)
+        {
+            body.HandleMorning();
         }
 
         //Save Mod related variables in separate JSON. Also trigger night handling if not on the very first day.
@@ -111,21 +115,13 @@ namespace PrimevalTitmouse
 
 
 
-        private void ReceiveEighthUpdateTick(object sender, UpdateTickedEventArgs e)
+        private void ReceiveUpdateTick(object sender, OneSecondUpdateTickingEventArgs e)
         {
-            //Only act on every eigth tick (should this take multiplayer into account?)
-            if (e.IsMultipleOf(8))
-            {
+
                 //Ignore everything until we've started the day
                 if (!started)
                     return;
 
-                //If we haven't performed our morning actions, do so.
-                if (!morningHandled && !Game1.fadeToBlack && who.canMove)
-                {
-                    body.HandleMorning();
-                    morningHandled = true; //Make sure we do his only once per day
-                }
 
                 //If time is moving, update our body state (Hunger, thirst, etc.)
                 if (ShouldTimePass())
@@ -134,12 +130,8 @@ namespace PrimevalTitmouse
                 //Handle eating and drinking.
                 if (Game1.player.isEating && Game1.activeClickableMenu == null)
                 {
-                    if (beverages.Contains(who.itemToEat.Name))
-                        body.DrinkBeverage();
-                    else
-                        body.Eat();
+                    body.Consume(who.itemToEat.Name);
                 }
-            }
         }
 
         //Determine if we need to handle time passing (not the same as Game time passing)
@@ -161,17 +153,17 @@ namespace PrimevalTitmouse
                 switch (e.Button)
                 {
                     case SButton.F1: //
-                            body.DecreaseFoodAndWater();
-                            break;
+                        body.DecreaseEverything();
+                        break;
                     case SButton.F2: //
-                            body.IncreaseEverything();
-                            break;
+                        body.IncreaseEverything();
+                        break;
                     case SButton.F3://
-                            GiveUnderwear();
-                            break;
+                        GiveUnderwear();
+                        break;
                     case SButton.F5://Alt F4 is reserved to close
-                            TimeMagic.doMagic();
-                            break;
+                        TimeMagic.doMagic();
+                        break;
                     case SButton.F6:
                         config.Wetting = !config.Wetting;
                         break;
@@ -181,6 +173,26 @@ namespace PrimevalTitmouse
                     case SButton.F8:
                         config.Easymode = !config.Easymode;
                         break;
+                    case SButton.S:
+                        if (e.IsDown(SButton.LeftShift))
+                        {
+                            body.ChangeBowelContinence(0.1f);
+                        }
+                        else
+                        {
+                            body.ChangeBladderContinence(0.1f);
+                        }
+                        break;
+                    case SButton.W:
+                        if (e.IsDown(SButton.LeftShift))
+                        {
+                            body.ChangeBowelContinence(-0.1f);
+                        }
+                        else
+                        {
+                            body.ChangeBladderContinence(-0.1f);
+                        }
+                        break;
                 }
             }
             else
@@ -188,19 +200,11 @@ namespace PrimevalTitmouse
                 switch (e.Button)
                 {
                     case SButton.F1:
-                        if (!body.IsOccupied())
-                        {
-                            body.StartWetting(true, !e.IsDown(SButton.LeftShift));
+                            body.Wet(true, !e.IsDown(SButton.LeftShift));
                             break;
-                        }
-                        break;
                     case SButton.F2:
-                        if (!body.IsOccupied())
-                        {
-                            body.StartMessing(true, !e.IsDown(SButton.LeftShift));
+                            body.Mess(true, !e.IsDown(SButton.LeftShift));
                             break;
-                        }
-                        break;
                     case SButton.F5:
                         Animations.CheckUnderwear(body);
                         break;
@@ -228,7 +232,7 @@ namespace PrimevalTitmouse
             if (Game1.currentLocation is FarmHouse && (attemptToSleepMenu = e.NewMenu as DialogueBox) != null && Game1.currentLocation.lastQuestionKey == "Sleep" && !config.Easymode)
             {
                 //If enough time has passed, the bed has dried
-                if (body.beddingDryTime > Game1.timeOfDay)
+                if (body.bed.IsDrying())
                 {
                     List<Response> sleepAttemptResponses = attemptToSleepMenu.responses;
                     if (sleepAttemptResponses.Count == 2)
@@ -332,14 +336,16 @@ namespace PrimevalTitmouse
                 if (activeObject != null)
                 {
                     //If the Underwear we are holding isn't currently wet, messy, or drying; change into it.
-                    if ((double)activeObject.container.wetness + (double)activeObject.container.messiness == 0.0 && !activeObject.container.drying)
+                    if ((double)activeObject.container.wetness + (double)activeObject.container.messiness == 0.0 && !activeObject.container.IsDrying())
                     {
                         who.reduceActiveItemByOne(); //Take it out of inventory
                         Container container = body.ChangeUnderwear(activeObject); //Put on the new underwear and return the old
                         Underwear underwear = new Underwear(container.name, container.wetness, container.messiness, 1);
 
-                        //Try to put the old underwear into the inventory, but pull up the management window if it can't fit
-                        if (!who.addItemToInventoryBool(underwear, false))
+                        //If the underwear returned is not removable, destroy it
+                        if (!container.removable) { }
+                        //Otherwise put the old underwear into the inventory, but pull up the management window if it can't fit
+                        else if (!who.addItemToInventoryBool(underwear, false))
                         {
                             List<Item> objList = new List<Item>();
                             objList.Add(underwear);
@@ -353,9 +359,7 @@ namespace PrimevalTitmouse
                         if (AtWaterSource())
                         {
                             Animations.AnimateWashingUnderwear(activeObject.container);
-                            activeObject.container.wetness = 0.0f;
-                            activeObject.container.messiness = 0.0f;
-                            activeObject.container.drying = true;
+                            activeObject.container.Wash();
                         }
                     }
                     return; //Done with underwear

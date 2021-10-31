@@ -20,7 +20,9 @@ namespace PrimevalTitmouse
         public string[] Bowels_Orange;
         public string[] Bowels_Red;
         public string[] Bowels_Yellow;
+        public string[] Cant_Remove;
         public string[] Change;
+        public string[] Change_Destroyed;
         public string[] Debuff_Messy_Pants;
         public string[] Debuff_Wet_Pants;
         public string[] Drink_Water_Source;
@@ -60,5 +62,6 @@ namespace PrimevalTitmouse
         public string[] Wet_Attempt;
         public string[] Wet_Bed;
         public string[] Wet_Voluntary;
+        public Dictionary<string, Consumable> Consumables;
     }
 }

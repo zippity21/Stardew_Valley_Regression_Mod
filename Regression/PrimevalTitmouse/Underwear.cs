@@ -102,7 +102,7 @@ namespace PrimevalTitmouse
 
         public override int maximumStackSize()
         {
-            if (container.messiness > 0.0 || container.wetness > 0.0 || container.drying)
+            if (container.messiness > 0.0 || container.wetness > 0.0 || container.IsDrying())
                 return 1;
             return base.maximumStackSize();
         }
@@ -142,7 +142,7 @@ namespace PrimevalTitmouse
                     return "messy ";
                 if (container.wetness > 0.0)
                     return "wet ";
-                return container.drying ? "drying " : "";
+                return container.IsDrying() ? "drying " : "";
             }
         }
     }

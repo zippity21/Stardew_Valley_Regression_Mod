@@ -21,6 +21,7 @@ namespace PrimevalTitmouse
             if (!Game1.player.hasOrWillReceiveMail(initialRegressionLetterTitle))
             {
                 initialSupplies = new();
+                letterShown = false;
                 //Always give turnips and diapers
                 initialSupplies.Add(new StardewValley.Object(399, 20, false, -1, 0));
                 initialSupplies.Add(new Underwear("pawprint diaper", 0.0f, 0.0f, 40));
@@ -32,7 +33,8 @@ namespace PrimevalTitmouse
                 letterContents += "[#]A Little... Protection.";
                 Game1.mailbox.Add(initialRegressionLetterTitle);
                 Dictionary<string, string> mails = Game1.content.Load<Dictionary<string, string>>("Data\\mail");
-                mails.Add(initialRegressionLetterTitle, letterContents);
+                if(!mails.ContainsKey(initialRegressionLetterTitle))
+                  mails.Add(initialRegressionLetterTitle, letterContents);
 
                 //Just to test we haven't broken other letters;
                 //Game1.mailbox.Add("robinWell");
