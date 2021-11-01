@@ -57,8 +57,8 @@ I am unable to locate the original author of this code, who posted it back in 20
 - Left Alt + F8: Toggle Easy Mode Option
 - Left Alt + W: Increase Bowel Continence
 - Left Alt + Left Shift + W: Increase Bladder Continence
-- Left Alt + W: Decrease Bowel Incontinence
-- Left Alt + Left Shift + W: Decrease Bladder Continence
+- Left Alt + S: Decrease Bowel Incontinence
+- Left Alt + Left Shift + S: Decrease Bladder Continence
 
 ## Basic Mechanics
 You now get hungry and thristy over time, and from doing work. Getting too hungry/thirsty gives you de-buffs. You can become less hungry by eating food, and less thirst by drinking beverages (including water from a water source, your watering can, or things like wine, coffee, etc.).
