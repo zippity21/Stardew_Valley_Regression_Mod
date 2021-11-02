@@ -556,6 +556,19 @@
 			"plural": false,
 			"dryingTime": 0,
 			"removable": false
+		},
+		"heart diaper": {
+			"name": "heart diaper",
+			"prefix": "a",
+			"description": "very thick and soft pink plastic diaper with a large fade-when-wet heart on the front",
+			"absorbency": 3000.0,
+			"containment": 900.0,
+			"spriteIndex": 11,
+			"price": 120,
+			"washable": false,
+			"plural": false,
+			"dryingTime": 0,
+			"removable": false
+		}
 		}
 	}
-}
