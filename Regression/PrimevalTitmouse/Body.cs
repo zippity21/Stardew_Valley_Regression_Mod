@@ -672,8 +672,10 @@ namespace PrimevalTitmouse
         public void HandleTime(float hours)
         {
             this.HandleStamina();
-            this.AddWater((float)(requiredWaterPerDay * (double)hours / -24.0));
-            this.AddFood((float)(requiredCaloriesPerDay * (double)hours / -24.0));
+            //normally divide 24hr/day, but this only happens while awake,
+            //We have night set to go at 1/3 rate. Assume 8hr sleep. So we need to adjust by 8*(2/3)
+            this.AddWater((float)(requiredWaterPerDay * (double)hours / -18.67));
+            this.AddFood((float)(requiredCaloriesPerDay * (double)hours / -18.67));
         }
 
         public bool IsFishing()
