@@ -39,9 +39,10 @@ namespace PrimevalTitmouse
         public override void drawInMenu(SpriteBatch spriteBatch, Vector2 location, float scaleSize, float transparency, float layerDepth, StackDrawType drawStackNumber, Color color, bool drawShadow)
         {
             int ratio = Animations.LARGE_SPRITE_DIM / Animations.SMALL_SPRITE_DIM;
-            Vector2 offset = new(0, 0);
+            Vector2 offset = new(Game1.tileSize/2, Game1.tileSize); //Center of tile
+            Vector2 origin = new(Animations.LARGE_SPRITE_DIM/2, Animations.LARGE_SPRITE_DIM); //Center of Sprrite
             Rectangle source = Animations.UnderwearRectangle(container, null, Animations.LARGE_SPRITE_DIM);
-            spriteBatch.Draw(Animations.sprites, location + offset, new Rectangle?(source), Color.White * transparency, 0.0f, new Vector2(0,0), Game1.pixelZoom * scaleSize/ratio, SpriteEffects.None, layerDepth);
+            spriteBatch.Draw(Animations.sprites, location + offset, new Rectangle?(source), Color.White * transparency, 0.0f, origin, Game1.pixelZoom * scaleSize/ratio, SpriteEffects.None, layerDepth);
             if (drawStackNumber.Equals(StackDrawType.Hide) || maximumStackSize() <= 1 || (scaleSize <= 0.3 || Stack == int.MaxValue) || Stack <= 1)
                 return;
             Utility.drawTinyDigits(Stack, spriteBatch, location + new Vector2(Game1.tileSize - Utility.getWidthOfTinyDigitString(Stack, 3f * scaleSize) + 3f * scaleSize, (float)(Game1.tileSize - 18.0 * scaleSize + 2.0)), 3f * scaleSize, 1f, Color.White);
