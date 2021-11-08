@@ -56,6 +56,7 @@ namespace PrimevalTitmouse
         public string[] Wake_Up_Underwear_State;
         public string[] Washing_Bedding;
         public string[] Washing_Underwear;
+        public string[] Overwashed_Underwear;
         public string[] Water_Low;
         public string[] Water_None;
         public string[] Wet_Accident;

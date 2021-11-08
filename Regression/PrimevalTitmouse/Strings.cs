@@ -49,18 +49,19 @@ namespace PrimevalTitmouse
           }
         }
       }
-      return u.prefix + " " + newValue;
-    }
+      return u.GetPrefix() + " " + newValue;
+        }
+       
 
-    public static string InsertVariables(string msg, Body b, Container c = null)
+        public static string InsertVariables(string msg, Body b, Container c = null)
     {
       string str = msg;
       if (b != null)
         c = b.underwear;
       if (c != null)
-        str = Strings.ReplaceOr(str.Replace("$UNDERWEAR_NAME$", c.name).Replace("$UNDERWEAR_PREFIX$", c.prefix).Replace("$UNDERWEAR_DESC$", c.description).Replace("$INSPECT_UNDERWEAR_NAME$", Strings.DescribeUnderwear(c, c.name)).Replace("$INSPECT_UNDERWEAR_DESC$", Strings.DescribeUnderwear(c, c.description)), !c.plural, "#");
+        str = Strings.ReplaceOr(str.Replace("$UNDERWEAR_NAME$", c.name).Replace("$UNDERWEAR_PREFIX$", c.GetPrefix()).Replace("$UNDERWEAR_DESC$", c.description).Replace("$INSPECT_UNDERWEAR_NAME$", Strings.DescribeUnderwear(c, c.name)).Replace("$INSPECT_UNDERWEAR_DESC$", Strings.DescribeUnderwear(c, c.description)), !c.plural, "#");
       if (b != null)
-        str = str.Replace("$PANTS_NAME$", b.pants.name).Replace("$PANTS_PREFIX$", b.pants.prefix).Replace("$PANTS_DESC$", b.pants.description).Replace("$BEDDING_DRYTIME$", Game1.getTimeOfDayString(b.bed.timeWhenDoneDrying.time));
+        str = str.Replace("$PANTS_NAME$", b.pants.name).Replace("$PANTS_PREFIX$", b.pants.GetPrefix()).Replace("$PANTS_DESC$", b.pants.description).Replace("$BEDDING_DRYTIME$", Game1.getTimeOfDayString(b.bed.timeWhenDoneDrying.time));
       return Strings.ReplaceOr(str, Strings.who.IsMale, "/").Replace("$FARMERNAME$", Strings.who.Name);
     }
 

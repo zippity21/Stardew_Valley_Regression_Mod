@@ -1,5 +1,4 @@
-﻿using PyTK.CustomElementHandler;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using System;
@@ -95,12 +94,14 @@ namespace PrimevalTitmouse
 
         public void Initialize(string type, float wetness, float messiness, int count = 1)
         {
-            this.container = new Container(type, wetness, messiness);
+            this.container = new Container(type);
+            this.container.wetness = wetness;
+            this.container.messiness = messiness;
             if (count > 1)
                 Stack = count;
             id = type;
             name = container.name;
-            Price = 2;
+            Price = this.container.price;
         }
 
         public override int maximumStackSize()
@@ -147,6 +148,33 @@ namespace PrimevalTitmouse
                     return "wet ";
                 return container.IsDrying() ? "drying " : "";
             }
+        }
+
+        public static bool getPantsPlural(int itemNum)
+        {
+            //This was built based on the game's ClothingInformation.json file
+            switch(itemNum)
+            {
+                case  -1: { return true; }
+                case   0: { return true; }
+                case   2: { return false; }
+                case   3: { return false; }
+                case   4: { return false; }
+                case   5: { return true; }
+                case   6: { return false; }
+                case   7: { return false; }
+                case   8: { return true; }
+                case   9: { return true; }
+                case  10: { return true; }
+                case  11: { return false; }
+                case  12: { return true; }
+                case  13: { return true; }
+                case  14: { return true; }
+                case  15: { return true; }
+                case 998: { return true; }
+                case 999: { return true; }
+            }
+            return false;
         }
     }
 }

@@ -358,8 +358,8 @@ namespace PrimevalTitmouse
                         //Are we at a water source? If so, wash the underwear.
                         if (AtWaterSource())
                         {
-                            Animations.AnimateWashingUnderwear(activeObject.container);
                             activeObject.container.Wash();
+                            Animations.AnimateWashingUnderwear(activeObject.container);
                         }
                     }
                     return; //Done with underwear

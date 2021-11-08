@@ -12,13 +12,13 @@ namespace PrimevalTitmouse
         public float messiness;
         public string name;
         public bool plural;
-        public string prefix;
         public int price;
         public int spriteIndex;
         public bool washable;
         public float wetness;
         public int dryingTime;
         public bool removable;
+        public int durability;
 
         public struct Date
         {
@@ -38,25 +38,44 @@ namespace PrimevalTitmouse
             messiness = 0.0f;
             drying = false;
         }
+        public Container(string type)
+        {
+            Container c;
+
+            if (!Regression.t.Underwear_Options.TryGetValue(type, out c))
+                throw new Exception(string.Format("Invalid underwear choice: {0}", type));
+
+            Initialize(c, c.wetness, c.messiness, c.durability);
+        }
 
         public Container(Container c)
         {
-            Initialize(c, c.wetness, c.messiness);
+            Initialize(c, c.wetness, c.messiness, c.durability);
         }
     
 
-        public Container(string type, float wetness = 0.0f, float messiness = 0.0f)
+        public Container(string type, float wetness, float messiness, int durability)
         {
             this.wetness = 0.0f;
             this.messiness = 0.0f;
             drying = false;
-            Initialize(type, wetness, messiness);
+            Initialize(type, wetness, messiness, durability);
+        }
+
+        public string GetPrefix()
+        {
+            if (plural) return "a pair of";
+            return "a";
         }
 
         public void Wash()
         {
             if (washable)
             {
+                if(durability != -1 && durability != 0) //infinite durability if -1
+                {
+                    durability--;
+                }
                 drying = true;
                 timeWhenDoneDrying.time = Game1.timeOfDay + dryingTime;
                 timeWhenDoneDrying.day = Game1.dayOfMonth;
@@ -79,6 +98,11 @@ namespace PrimevalTitmouse
                     timeWhenDoneDrying.year += 1;
                 }
             }
+        }
+
+        public bool MarkedForDestroy()
+        {
+            return (durability == 0)&&washable;
         }
 
         public bool IsDrying()
@@ -131,10 +155,9 @@ namespace PrimevalTitmouse
             return 0.0f;
         }
 
-        private void Initialize(Container c, float wetness = 0.0f, float messiness = 0.0f)
+        private void Initialize(Container c, float wetness, float messiness, int durability)
         {
             name = c.name;
-            prefix = c.prefix;
             description = c.description;
             absorbency = c.absorbency;
             containment = c.containment;
@@ -148,16 +171,17 @@ namespace PrimevalTitmouse
             removable = c.removable;
             this.wetness = wetness;
             this.messiness = messiness;
+            this.durability = durability;
         }
 
-        public void Initialize(string type, float wetness = 0.0f, float messiness = 0.0f)
+        public void Initialize(string type, float wetness, float messiness, int durability)
         {
             Container c;
 
             if (!Regression.t.Underwear_Options.TryGetValue(type, out c))
                 throw new Exception(string.Format("Invalid underwear choice: {0}", type));
 
-            Initialize(c, wetness, messiness);
+            Initialize(c, wetness, messiness, durability);
         }
     }
 }
