@@ -222,6 +222,9 @@
 	"Washing_Underwear": [
 		"You wash your $UNDERWEAR_NAME$ in the water. <It#They> will be dry tomorrow."
 	],
+	"Overwashed_Underwear": [
+		"You wash your $UNDERWEAR_NAME$ in the water. <It#They> <was#were> too worn out and fell apart!"
+	],
 	"Bedding_Still_Wet": [
 		"Your bedding won't be dry until $BEDDING_DRYTIME$!"
 	],
@@ -390,7 +393,6 @@
 	"Underwear_Options": {
 		"bed": {
 			"name": "bed",
-			"prefix": "a",
 			"description": "cozy bed",
 			"absorbency": 2500.0,
 			"containment": 1000.0,
@@ -399,11 +401,11 @@
 			"washable": true,
 			"plural": false,
 			"dryingTime": 2400,
-			"removable": false
+			"removable": false,
+			"durability": -1
 		},
 		"blue jeans": {
 			"name": "blue jeans",
-			"prefix": "a pair of",
 			"description": "sturdy blue jeans",
 			"absorbency": 300.0,
 			"containment": 60.0,
@@ -412,11 +414,11 @@
 			"washable": true,
 			"plural": true,
 			"dryingTime": 600,
-			"removable": true
+			"removable": true,
+			"durability": -1
 		},
 		"black thong": {
 			"name": "black thong",
-			"prefix": "a",
 			"description": "lacy black thong",
 			"absorbency": 75.0,
 			"containment": 60.0,
@@ -425,11 +427,11 @@
 			"washable": true,
 			"plural": false,
 			"dryingTime": 300,
-			"removable": true
+			"removable": true,
+			"durability": 4
 		},
 		"polka dot panties": {
 			"name": "polka dot panties",
-			"prefix": "a pair of",
 			"description": "simple white panties with pink polka dots",
 			"absorbency": 150.0,
 			"containment": 100.0,
@@ -438,11 +440,11 @@
 			"washable": true,
 			"plural": true,
 			"dryingTime": 400,
-			"removable": true
+			"removable": true,
+			"durability": 4
 		},
 		"big kid undies": {
 			"name": "big kid undies",
-			"prefix": "a pair of",
 			"description": "cotton undies for big kids only",
 			"absorbency": 150.0,
 			"containment": 115.0,
@@ -451,11 +453,11 @@
 			"washable": true,
 			"plural": true,
 			"dryingTime": 400,
-			"removable": true
+			"removable": true,
+			"durability": 4
 		},
 		"dinosaur undies": {
 			"name": "dinosaur undies",
-			"prefix": "a pair of",
 			"description": "green undies covered in adorable dinosaurs",
 			"absorbency": 150.0,
 			"containment": 115.0,
@@ -464,11 +466,11 @@
 			"washable": true,
 			"plural": true,
 			"dryingTime": 400,
-			"removable": true
+			"removable": true,
+			"durability": 4
 		},
 		"lavender pullup": {
 			"name": "lavender pullup",
-			"prefix": "a",
 			"description": "soft and snug flowery lavender pullup",
 			"absorbency": 600.0,
 			"containment": 170.0,
@@ -477,63 +479,63 @@
 			"washable": false,
 			"plural": false,
 			"dryingTime": 0,
-			"removable": true
+			"removable": true,
+			"durability": 0
 		},
 		"training pants": {
 			"name": "training pants",
-			"prefix": "a pair of",
-			"description": "thin potty training pants that look like big kid undies",
+			"description": "thin cloth potty training pants that look like big kid undies",
 			"absorbency": 600.0,
 			"containment": 120.0,
 			"spriteIndex": 5,
 			"price": 25,
-			"washable": false,
+			"washable": true,
 			"plural": true,
 			"dryingTime": 600,
-			"removable": true
+			"removable": true,
+			"durability": 5
 		},
 		"Joja diaper": {
 			"name": "Joja diaper",
-			"prefix": "a",
 			"description": "thin white plastic diaper from JojaMart",
 			"absorbency": 1200.0,
 			"containment": 300.0,
 			"spriteIndex": 6,
-			"price": 25,
+			"price": 50,
 			"washable": false,
 			"plural": false,
 			"dryingTime": 0,
-			"removable": false
+			"removable": false,
+			"durability": 0
 		},
 		"baby print diaper": {
 			"name": "baby print diaper",
-			"prefix": "a",
 			"description": "little soft and crinkly fresh-scented baby print diaper. Its a bit small, but you can fit",
 			"absorbency": 1500.0,
 			"containment": 450.0,
 			"spriteIndex": 7,
-			"price": 25,
+			"price": 75,
 			"washable": false,
 			"plural": false,
 			"dryingTime": 0,
-			"removable": false
+			"removable": false,
+			"durability": 0
 		},
 		"cloth diaper": {
 			"name": "cloth diaper",
-			"prefix": "a",
 			"description": "thick and soft white cloth diaper",
 			"absorbency": 2000.0,
 			"containment": 900.0,
 			"spriteIndex": 8,
-			"price": 1000,
+			"price": 500,
 			"washable": true,
 			"plural": false,
 			"dryingTime": 800,
-			"removable": true
+			"removable": true,
+			"durability": 8
 		},
 		"space diaper": {
 			"name": "space diaper",
-			"prefix": "a",
 			"description": "very thick and soft blue plastic diaper with spaceship designs",
 			"absorbency": 2700.0,
 			"containment": 900.0,
@@ -542,11 +544,11 @@
 			"washable": false,
 			"plural": false,
 			"dryingTime": 0,
-			"removable": false
+			"removable": false,
+			"durability": 0
 		},
 		"pawprint diaper": {
 			"name": "pawprint diaper",
-			"prefix": "a",
 			"description": "puffy plastic diaper with cute animal prints and fade-when-wet little paws",
 			"absorbency": 2700.0,
 			"containment": 900.0,
@@ -555,11 +557,11 @@
 			"washable": false,
 			"plural": false,
 			"dryingTime": 0,
-			"removable": false
+			"removable": false,
+			"durability": 0
 		},
 		"heart diaper": {
 			"name": "heart diaper",
-			"prefix": "a",
 			"description": "very thick and soft pink plastic diaper with a large fade-when-wet heart on the front",
 			"absorbency": 3000.0,
 			"containment": 900.0,
@@ -568,7 +570,8 @@
 			"washable": false,
 			"plural": false,
 			"dryingTime": 0,
-			"removable": false
-		}
+			"removable": false,
+			"durability": 0
 		}
 	}
+}

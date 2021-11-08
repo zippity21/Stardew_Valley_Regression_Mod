@@ -16,7 +16,7 @@ namespace PrimevalTitmouse
         //Of course this is dependant on amount of work, but let's go one step at a time
         private static readonly float requiredCaloriesPerDay = 3500f;
         private static readonly float requiredWaterPerDay = 8000f; //8oz glasses: every 20min for 8 hours + every 40 min for 8 hour
-        private static readonly float maxWaterInCan = 4000f; //How much water does the wattering can hold? Max is 40, so *100
+        //private static readonly float maxWaterInCan = 4000f; //How much water does the wattering can hold? Max is 40, so *100
 
         //Average # of Pees per day is ~6.
         public static readonly float maxBladderCapacity = 600; //about 600mL
@@ -56,15 +56,21 @@ namespace PrimevalTitmouse
         public float hunger = 0f;
         public float thirst = 0f;
         public bool isSleeping = false;
-        public Container bed = new("bed", 0.0f, 0.0f);
-        public Container pants = new("blue jeans", 0.0f, 0.0f);
-        private Container oldPants = new("blue jeans", 0.0f, 0.0f);
-        public Container underwear = new("dinosaur undies", 0.0f, 0.0f);
+        public Container bed;
+        public Container pants;
+        public Container underwear;
         public int numPottyPooAtNight = 0;
         public int numPottyPeeAtNight = 0;
         public int numAccidentPooAtNight = 0;
         public int numAccidentPeeAtNight = 0;
         private float lastStamina = 0;
+
+        public Body()
+        {
+            bed = new("bed");
+            pants = new("blue jeans");
+            underwear = new("dinosaur undies");
+    }
 
         public float GetBladderTrainingThreshold()
         {
@@ -294,10 +300,12 @@ namespace PrimevalTitmouse
         private Container ChangeUnderwear(Container container)
         {
             Container oldUnderwear = this.underwear;
+            Container newPants;
             if (!oldUnderwear.removable)
                 Animations.Warn(Regression.t.Change_Destroyed, this);
             this.underwear = container;
-            pants = new Container("blue jeans", 0.0f, 0.0f);
+            Regression.t.Underwear_Options.TryGetValue("blue jeans", out newPants);
+            pants = new Container(newPants);
             CleanPants();
             Animations.Say(Regression.t.Change, this);
             return oldUnderwear;
@@ -305,12 +313,17 @@ namespace PrimevalTitmouse
 
         public Container ChangeUnderwear(Underwear uw)
         {
-            return ChangeUnderwear(new Container(uw.container.name, uw.container.wetness, uw.container.messiness));
+            return ChangeUnderwear(new Container(uw.container.name, uw.container.wetness, uw.container.messiness, uw.container.durability));
         }
 
         public Container ChangeUnderwear(string type)
         {
-            return ChangeUnderwear(new Container(type, 0.0f, 0.0f));
+            Container newPants, refPants;
+            Regression.t.Underwear_Options.TryGetValue("type", out refPants);
+            newPants = new Container(refPants);
+            newPants.messiness = 0;
+            newPants.wetness = 0;
+            return ChangeUnderwear(newPants);
         }
 
         //If we put on our pants, remove wet/messy debuffs

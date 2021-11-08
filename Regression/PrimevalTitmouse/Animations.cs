@@ -272,7 +272,15 @@ namespace PrimevalTitmouse
 
         public static void AnimateWashingUnderwear(Container c)
         {
-            Animations.Write(Strings.InsertVariables(Strings.RandString(Animations.GetData().Washing_Underwear), (Body)null, c), (Body)null);
+            if (c.MarkedForDestroy())
+            {
+                Animations.Write(Strings.InsertVariables(Animations.GetData().Overwashed_Underwear[0], (Body)null, c), (Body)null);
+                Game1.player.reduceActiveItemByOne();
+            }
+            else
+            {
+                Animations.Write(Strings.InsertVariables(Strings.RandString(Animations.GetData().Washing_Underwear), (Body)null, c), (Body)null);
+            }
         }
 
 
@@ -286,7 +294,11 @@ namespace PrimevalTitmouse
 
         public static void CheckPants(Body b)
         {
-            Animations.Say(Animations.GetData().LookPants[0] + " " + Strings.DescribeUnderwear(b.pants, (string)null) + ".", b);
+            StardewValley.Objects.Clothing pants = (StardewValley.Objects.Clothing)Animations.GetWho().pantsItem.Value;
+            b.pants.name = pants.displayName;
+            b.pants.description = pants.displayName;
+            b.pants.plural = true;
+            Animations.Say(Animations.GetData().LookPants[0] + " " + Strings.DescribeUnderwear(b.pants, null) + ".", b);
         }
 
         public static void CheckUnderwear(Body b)
