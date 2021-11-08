@@ -18,13 +18,13 @@ namespace PrimevalTitmouse
         private static readonly float requiredWaterPerDay = 8000f; //8oz glasses: every 20min for 8 hours + every 40 min for 8 hour
         //private static readonly float maxWaterInCan = 4000f; //How much water does the wattering can hold? Max is 40, so *100
 
-        //Average # of Pees per day is ~6.
+        //Average # of Pees per day is ~3
         public static readonly float maxBladderCapacity = 600; //about 600mL
         private static readonly float minBladderCapacity = maxBladderCapacity * 0.20f;
-        private static readonly float waterToBladderConversion = 0.33f;//Only 1/3 water becomes pee, rest is sweat etc.
+        private static readonly float waterToBladderConversion = 0.225f;//Only ~1/4 water becomes pee, rest is sweat etc.
 
-        //Average # of poops per day varies wildly. Let's say about twice per day.
-        private static readonly float foodToBowelConversion = 0.5f;
+        //Average # of poops per day varies wildly. Let's say about 1.5 per day.
+        private static readonly float foodToBowelConversion = 0.67f;
         private static readonly float maxBowelCapacity = (requiredCaloriesPerDay*foodToBowelConversion) / 2f;
         private static readonly float minBowelCapacity = maxBowelCapacity * 0.20f;
 
