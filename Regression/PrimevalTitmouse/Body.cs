@@ -25,7 +25,7 @@ namespace PrimevalTitmouse
 
         //Average # of poops per day varies wildly. Let's say about 1.5 per day.
         private static readonly float foodToBowelConversion = 0.67f;
-        private static readonly float maxBowelCapacity = (requiredCaloriesPerDay*foodToBowelConversion) / 2f;
+        private static readonly float maxBowelCapacity = 1600f;
         private static readonly float minBowelCapacity = maxBowelCapacity * 0.20f;
 
         //Setup Thresholds and messages
@@ -631,10 +631,15 @@ namespace PrimevalTitmouse
             {
 
                 Farmer player = Game1.player;
-                if (bed.messiness > 0.0 || bed.wetness > 0.0)
+                if (bed.messiness > 0.0 && bed.wetness > 0.0)
                 {
                     bed.dryingTime = 1000;
                     player.stamina -= 20f;
+                }
+                else if (bed.messiness > 0.0)
+                {
+                    bed.dryingTime = 600;
+                    player.stamina -= 10f;
                 }
                 else if (bed.wetness > 0.0)
                 {
@@ -675,8 +680,8 @@ namespace PrimevalTitmouse
                 return;
             if (staminaDifference < 0.0)
             {
-                this.AddFood( staminaDifference * requiredCaloriesPerDay * 0.25f);
-                this.AddWater(staminaDifference * requiredWaterPerDay    * 0.10f);
+                this.AddFood( staminaDifference * requiredCaloriesPerDay * 0.05f);
+                this.AddWater(staminaDifference * requiredWaterPerDay    * 0.01f);
             }
             this.lastStamina = Game1.player.stamina;
         }
