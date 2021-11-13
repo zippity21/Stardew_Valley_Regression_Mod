@@ -352,42 +352,42 @@
 		"Cola": {
 			"name": "Cola",
 			"waterContent": 240,
-			"calorieContent": 100
+			"calorieContent": 25
 		},
 		"Espresso": {
 			"name": "Espresso",
 			"waterContent": 44,
-			"calorieContent": 3
+			"calorieContent": 0
 		},
 		"Coffee": {
 			"name": "Coffee",
 			"waterContent": 240,
-			"calorieContent": 1
+			"calorieContent": 0
 		},
 		"Wine": {
 			"name": "Wine",
 			"waterContent": 148,
-			"calorieContent": 123
+			"calorieContent": 30
 		},
 		"Beer": {
 			"name": "Beer",
-			"waterContent": 355,
-			"calorieContent": 154
+			"waterContent": 300,
+			"calorieContent": 40
 		},
 		"Milk": {
 			"name": "Milk",
 			"waterContent": 240,
-			"calorieContent": 148
+			"calorieContent": 10
 		},
 		"Tea": {
 			"name": "Tea",
 			"waterContent": 240,
-			"calorieContent": 2
+			"calorieContent": 0
 		},
 		"Juice": {
 			"name": "Juice",
 			"waterContent": 240,
-			"calorieContent": 114
+			"calorieContent": 15
 		}
 	},
 	"Underwear_Options": {

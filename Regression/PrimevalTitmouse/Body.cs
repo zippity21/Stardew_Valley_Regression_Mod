@@ -33,9 +33,9 @@ namespace PrimevalTitmouse
         private static readonly string[][] WETTING_MESSAGES = { Regression.t.Bladder_Red, Regression.t.Bladder_Orange, Regression.t.Bladder_Yellow };
         private static readonly float[] MESSING_THRESHOLDS = { 0.15f, 0.4f, 0.6f };
         private static readonly string[][] MESSING_MESSAGES = { Regression.t.Bowels_Red, Regression.t.Bowels_Orange, Regression.t.Bowels_Yellow };
-        private static readonly float[] BLADDER_CONTINENCE_THRESHOLDS = { 0.6f, 0.2f, 0.5f, 0.8f };
+        private static readonly float[] BLADDER_CONTINENCE_THRESHOLDS = { 0.2f, 0.5f, 0.6f, 0.8f };
         private static readonly string[][] BLADDER_CONTINENCE_MESSAGES = { Regression.t.Bladder_Continence_Min, Regression.t.Bladder_Continence_Red, Regression.t.Bladder_Continence_Orange, Regression.t.Bladder_Continence_Yellow };
-        private static readonly float[] BOWEL_CONTINENCE_THRESHOLDS = { 0.6f, 0.2f, 0.5f, 0.8f };
+        private static readonly float[] BOWEL_CONTINENCE_THRESHOLDS = { 0.2f, 0.5f, 0.6f, 0.8f };
         private static readonly string[][] BOWEL_CONTINENCE_MESSAGES = { Regression.t.Bowel_Continence_Min, Regression.t.Bowel_Continence_Red, Regression.t.Bowel_Continence_Orange, Regression.t.Bowel_Continence_Yellow };
         private static readonly float[] HUNGER_THRESHOLDS = { 0.0f, 0.25f };
         private static readonly string[][] HUNGER_MESSAGES = { Regression.t.Food_None, Regression.t.Food_Low };
@@ -236,7 +236,7 @@ namespace PrimevalTitmouse
             if (thirst > requiredWaterPerDay && amount < 0)
             {
                 //Take percentage off health equal to precentage above max thirst
-                float lostHealth = newPercent * (float)Game1.player.maxHealth;
+                float lostHealth = (amount/requiredWaterPerDay) * (float)Game1.player.maxHealth;
                 Game1.player.health = Game1.player.health + (int)lostHealth;
                 thirst = requiredWaterPerDay;
                 newPercent = (requiredWaterPerDay - thirst) / requiredWaterPerDay;
@@ -680,8 +680,8 @@ namespace PrimevalTitmouse
                 return;
             if (staminaDifference < 0.0)
             {
-                this.AddFood( staminaDifference * requiredCaloriesPerDay * 0.05f);
-                this.AddWater(staminaDifference * requiredWaterPerDay    * 0.01f);
+                this.AddFood( staminaDifference * requiredCaloriesPerDay * 0.2f);
+                this.AddWater(staminaDifference * requiredWaterPerDay    * 0.1f);
             }
             this.lastStamina = Game1.player.stamina;
         }
@@ -745,8 +745,17 @@ namespace PrimevalTitmouse
                 this.AddWater(item.waterContent);
             } else
             {
-                this.AddFood(200);
-                this.AddWater(10);
+                //We don't want to make it too expensive to keep hunger full, but we also don't want
+                //to make it so that eating fills hunger too fast compared to stamina restoration...
+
+                //Starting Stamina is 270
+                //Absolute max is ~double
+                //Base on average ~400 per bar
+                //Say typical player uses 4xbars/day, so 1600 per day
+                //hunger depletes over time and stamina, so say we fill hunger once per 2 bars, so 800 stamina
+                //Energy content of various food is different, let's just assume +50, so 800/50 ~16 food items
+                this.AddFood(requiredCaloriesPerDay/16);
+                this.AddWater(requiredWaterPerDay/64); //Beverages handled above, so food adds less hydration
             }
         }
     }
