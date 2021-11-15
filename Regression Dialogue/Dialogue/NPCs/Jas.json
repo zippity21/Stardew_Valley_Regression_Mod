@@ -1,0 +1,23 @@
+{
+	"Changes":[
+		{
+			"LogName":"Jas",
+			"Action":"EditData",
+			"Target":"Characters/Dialogue/Jas",
+			"Entries":{	
+			
+			  "Introduction": "...$u#$b#Hi...$u
+  #$q 101/102 ABDLChild_fallback#%Would you be comfortable seeing ABDL dialogue from Vincent and Jas?
+  #$r 101 0 ABDLChild_Yes#Yes, I am comfortable with that.
+  #$r 102 0 ABDLChild_No#No, I would like to see the original dialogue.",
+  //-----------------
+  "ABDLChild_Yes":"%The more hearts you have with them the more ABDL dialogue there will be.",
+  "ABDLChild_No":"%Okay. All the original lines will be unchanged. They will still react to you using your pants though.#$b#%If you don't want them to have a positive reaction to that then don't earn hearts with them.",
+  "ABDLChild_fallback":"#$p 102#...$u|%The waistband of Jas's pull up faintly peeks out.",
+  //The question above happens durring the introduction of Vincent or Jas, whomever the player interacts with first. They'll get to choose whether or not they want ABDL dialogue for the two of them. 
+  //Unfortunately, this only works for new farms, not if a player installs the mod and loads an old save where they've already met both Vincent and Jas. Then it defaults to the ABDL text.			
+
+			},
+		},
+	]
+}

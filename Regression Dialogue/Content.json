@@ -1,0 +1,25 @@
+{
+    "Format": "1.19.0",
+    "Changes": [
+		{
+            "LogName": "Sebastian",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Sebastian.json"
+        },
+		{
+            "LogName": "Jodi",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Jodi.json"
+        },
+		{
+            "LogName": "Vincent",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Vincent.json"
+        },
+		{
+		    "LogName": "Jas",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Jas.json"
+		},	
+	]
+}

@@ -1,0 +1,11 @@
+{
+  "Name": "Regression Dialogue",
+  "Author": "Tikku",
+  "Version": "1.0.0",
+  "Description": "More dialoge for the regression mod",
+  "UniqueID": "Tikku.Regression_Dialogue",
+  "UpdateKeys": [],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  }
+}

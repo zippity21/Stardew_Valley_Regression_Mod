@@ -1,0 +1,18 @@
+{
+	"Changes":[
+		{
+			"LogName":"Sebastian",
+			"Action":"EditData",
+			"Target":"Characters/Dialogue/Sebastian",
+			"Entries":{
+
+
+				"Mon2":"#$q 305/306 diaperquestion_followup#This might be an awkward question...#$b#Do you actually NEED your diapers?#$r 305 -10 diaperquestion_yes#... Yeah, I do...#$r 305 10 diaperquestion_yes#Yeah, I need them for my accidents.#$r 306 10 diaperquestion_no#Nope, I just like them.",
+				"diaperquestion_yes":"Oh...#$b#Well I hope you're not too embarassed.#$b#I think it's kind of cute actually.$4",
+				"diaperquestion_no":"Really?#$b#I thought that might have been the case#$e#Wow$4",
+				"diaperquestion_followup":"#$p 306#Your diapers make you look like such a little boy.$1^Your diapers make you look like such a little girl.$1|I hope I didn't make you upset when I asked about your diapers.$2",
+				
+			}
+		},	
+	]
+}
