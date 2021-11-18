@@ -6,6 +6,9 @@
 			"Target":"Characters/Dialogue/Jodi",
 			"Entries":{
 //Jodi's repsonse Ids are 110-119
+  "Introduction": "Oh! You must be @! I'm Jodi. I hope the supplies I left you are enough to get you started.#$e#Oh don't look so embarassed! That old farm can be very exciting for little farmers!$1#$b#There's no shame in getting a little too distracted sometimes.",
+
+
   "spring_Mon":"There's the little farmer!#$e#How's the town treating you?",
   "spring_Mon6":"There's the little farmer!#$b#%Jodi pulls the back your waist band for a quick check.#$e#You should be okay for now.",
   "spring_Tue4":"#$c .5#Do you have any animals on your farm? Can you tell me what the cow says?#$e#That's right! Cow goes moo!$1|Do you have any animals on your farm? Can you tell me what the chicken says?#$e#That's right! Chicken goes cluck cluck!$1",
