@@ -1,0 +1,64 @@
+{
+	"Changes":[
+		{
+			"LogName":"Jodi",
+			"Action":"EditData",
+			"Target":"Characters/Dialogue/Jodi",
+			"Entries":{
+//Jodi's repsonse Ids are 110-119
+  "spring_Mon":"There's the little farmer!#$e#How's the town treating you?",
+  "spring_Mon6":"There's the little farmer!#$b#%Jodi pulls the back your waist band for a quick check.#$e#You should be okay for now.",
+  "spring_Tue4":"#$c .5#Do you have any animals on your farm? Can you tell me what the cow says?#$e#That's right! Cow goes moo!$1|Do you have any animals on your farm? Can you tell me what the chicken says?#$e#That's right! Chicken goes cluck cluck!$1",
+  "spring_Wed2":"Would you like to tell me all about your farm?#$e#%Jodi smiles at you while you gush about how pretty your farm is.#$e#What a clever little boy you are.$1^What a clever little girl you are.$1",
+  "spring_Wed8":"Would you like to tell me all about your farm?#$e#%Jodi smiles at you while you gush about how pretty your farm is. You barely even notice her hand check to see if your pants are still dry.#$e#What a clever little boy you are.$1^What a clever little girl you are.$1",
+  "spring_Thu2":"Sam still sleeps with his old teddy bear, though, he tries to hide it in the morning.#$e#I don't know what to say to make him feel less embarassed about it.$2",
+  "spring_Fri":"How are you doing @? Are you eating enough?#$e#...Do you have enough... supplies?",
+  "spring_Fri4":"How are you doing @? Are you eating enough?#$e#I bet you've already run out of the diapers I gave you by now.#$e#I sure hope your farm is making enough money to buy more!$1#$e#",
+  "spring_Sat4":"#$p 102#I'm so glad you're trying to improve that old farm.|Vincent fell asleep on my lap yesterday.#$e#It was so precious, I never wanted it to end!$1",
+  "spring_Sun6":"Being motherly makes me feel important.#$b#Even if the little ones aren't my own!$1#$e#%Jodi gives you a wink.",
+
+
+  "summer_Mon6":"%Jodi sees you standing nearby and holds out her hand. You grab onto her sleeve and smile up at her.#$e#Awwwww.",
+  "summer_Mon10":"%Jodi sees you standing nearby and holds out her hand. You grab onto her sleeve as your thumb finds its way into your mouth without you noticing.#$e#Awwwww. Well aren't you a precious little boy.^Well aren't you a precious little girl.$1",
+  "summer_Tue6":"#$p 102#Sam tries really hard to act like a big kid, but he still melts when I pet his hair just like when he was a little boy.|Sometimes I catch Sam watching me change Vincent.#$e#He almost looks jealous.$1",
+"summer_Wed8":"Oh hi there @!#$q 110/111 Show_Followup#Oh, do you want to show me something?
+#$r 110 0 Show_Nice#Show her the pretty flower you picked.
+#$r 110 0 Show_Nice#Show her the cool rock you found in the mines.
+#$r 110 0 Show_Nice#Show her your favorite plushie.
+#$r 111 0 Show_Diaper#Show her your diaper.",
+"Show_Nice": "%Jodi holds it delicately, looking at it like it's the most important thing in the world.#$b#This is wonderful! Thank you for showing me.$1#$b#%Jodi gives it back and pats your head affectionately.", 
+"Show_Diaper": "%Jodi grins at your proud display.#$b#Well isn't that something!$1#$b#Let's see if it's still clean.#$b#%Jodi presses her hand against your diaper, giving it a thorough check.",
+"Show_Followup":"Well don't you look excited!$1#$e#%Jodi pats your head fondly.",
+  "summer_Thu4":"That farm seems like a lot of work for such a little farmer! I guess you're only pretending to be so little.#$e#%Jodi winks at you.",
+  "summer_Fri8":"#$p 102#Maintaining a household is difficult work... but somebody has to do it.|Vincent doesn't show any signs of getting out of diapers any time soon.#$e#I guess he'll just be my little boy for a little bit longer.$1",
+  "summer_Sat":"%Jodi is humming a soft song to herself while she goes about her business. It's familiar somehow.",
+  "summer_Sat10":"%Jodi is humming a soft song to herself while she goes about her business. It's familiar somehow.#$e#%She notices you paying attention and smiles. Without stopping her hum, she pulls you into a hug, letting you feel the comforting hum in her chest.#$e#Looks like someone might need a nap.",
+  "summer_Sun6":"Oh no! @! Is that a boo boo on your finger? What happened?$2#$b#%You tell Jodi about hurting your finger on the farm with tears in your eyes while she puts on a bandaid for you. She gives it a kiss for good measure.#$e#There we go, all better. Have fun playing!",
+  "summer_Sun10":"Oh no! @! Is that a boo boo on your finger? What happened?$2#$b#%You tell Jodi about hurting your finger on the farm with tears in your eyes while she puts on a bandaid for you.#$b#She gives it a kiss for good measure before patting your bottom to send you away.#$e#There we go, all better. Have fun playing!",
+
+
+  "fall_Mon2":"#$p 102#There's the little farmer!|Sam doesn't think I notice that Vincent's diapers run out faster than they should.#$e#I guess I still have two little boys, don't I!$1",
+  "fall_Tue4":"#$c .5#Do you have any animals on your farm? Can you tell me what the dog says?#$e#That's right! Dog says bark!$1|Do you have any animals on your farm? Can you tell me what the cat says?#$e#That's right! Cat says meow!$1",
+  "fall_Wed8":"If you ever need help with one of your little accidents, don't be afraid to ask, okay?#$e#You're so cute when you're blushing!$1",
+  "fall_Thu2":"Are you hungry?#$b#%Jodi pulls out a granola bar for you and smiles warmly as you take it.#$e#That should hold you over for now.",
+  "fall_Fri2":"#$p 102#I bet you've already run out of the diapers I gave you by now.|I guess I'd have less work to do if Vincent was potty trained.#$e#At least boys are easy to clean.",
+  "fall_Sat":"There's the little farmer!#$e#How's the town treating you?",
+  "fall_Sat8":"There's the little farmer!#$b#%Jodi pulls the back your waist band for a quick check.#$e#You should be okay for now.",
+  "fall_Sun6":"Being motherly makes me feel important.#$b#Even if the little ones aren't my own!$1#$e#%Jodi gives you a wink.",
+
+
+  "winter_Mon10":"%Jodi is humming a soft song to herself while she goes about her business. It's familiar somehow.#$e#%She notices you paying attention and smiles. Without stopping her hum, she pulls you into a hug, letting you feel the comforting hum in her chest.#$e#Looks like someone might need a nap.",
+  "winter_Tue10":"%Jodi sees you standing nearby and holds out her hand. You grab onto her sleeve as your thumb finds its way into your mouth without you noticing.#$e#Awwwww. Well aren't you a precious little boy.^Well aren't you a precious little girl.$1",
+  "winter_Wed6":"Oh no! @! Is that a boo boo on your finger? What happened?$2#$b#%You tell Jodi about hurting your finger on the farm with tears in your eyes while she puts on a bandaid for you. She gives it a kiss for good measure.#$e#There we go, all better. Have fun playing!",
+  "winter_Wed10":"Oh no! @! Is that a boo boo on your finger? What happened?$2#$b#%You tell Jodi about hurting your finger on the farm with tears in your eyes while she puts on a bandaid for you.#$b#She gives it a kiss for good measure before patting your bottom to send you away.#$e#There we go, all better. Have fun playing!",  
+  "winter_Thu4":"Sam tries really hard to act like a big kid, but he still melts when I pet his hair just like when he was a little boy.#$e#It feels nice to know he trusts me enough to let his guard down.#$e#It makes me feel like a good mother.$1",
+  "winter_Fri2":"You're a good boy. You know that, right?^You're a good girl. You know that, right?",
+  "winter_Sat6":"Maybe I should push Vincent to use the potty more, but I don't want him to feel ashamed about himself.$2#$e#He just looks so carefree playing in his diapers too. I don't want to take that away from him.",
+  "winter_Sun6":"%Jodi sees you standing nearby and holds out her hand. You grab onto her sleeve and smile up at her.#$e#Awwwww.",
+  "winter_Sun10":"%Jodi sees you standing nearby and holds out her hand. You grab onto her sleeve as your thumb finds its way into your mouth without you noticing.#$e#Awwwww. Well aren't you a precious little boy.^Well aren't you a precious little girl.$1",
+
+  
+			}
+		}
+	]
+}
