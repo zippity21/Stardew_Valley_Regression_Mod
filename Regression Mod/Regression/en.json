@@ -1,0 +1,652 @@
+﻿{
+	"Jodi_Initial_Letter": [ "Dear @,^Welcome to town! Here are some veggies from the garden to tide you over while you move in. Your grandpa told me about your little problem, so I enclosed some supplies for you. Visit Pierre if you run out!^      <, Jodi" ],
+	"Food_Low": [
+		"You're hungry.",
+		"Your stomach rumbles.",
+		"You're thinking about eating food.",
+		"You think about finding food.",
+		"You need some food."
+	],
+	"Food_None": [
+		"You're starving!",
+		"All you can think about is food! Better eat!",
+		"You're so hungry you can't think straight!"
+	],
+	"Water_Low": [
+		"You're getting pretty thirsty.",
+		"You could really use some water.",
+		"You're thinking about getting a drink.",
+		"You need a drink."
+	],
+	"Water_None": [
+		"You're dehydrated!",
+		"You're super thirsty! Get a drink right now!",
+		"You're so thirsty you can't think straight!"
+	],
+	"Drink_Water_Source": [
+		"You scoop up some water in a cup and drain it down."
+	],
+	"Bladder_Yellow": [
+		"You need to pee.",
+		"You should find somewhere to pee soon.",
+		"You feel like you might pee soon.",
+		"Your bladder is getting full."
+	],
+	"Bladder_Orange": [
+		"You really need to pee!",
+		"You're not sure how much longer you can hold your pee!",
+		"If you don't pee soon, you'll have an accident!",
+		"You start crossing your legs trying not to pee yourself!"
+	],
+	"Bladder_Red": [
+		"You can’t hold it anymore! You're about to pee yourself!",
+		"You have to pee so badly you start hopping around!",
+		"You feel a few drops of pee leak out into your $UNDERWEAR_NAME$!"
+	],
+	"Bowels_Yellow": [
+		"You need to poop.",
+		"You should find somewhere to poop soon.",
+		"You feel a rumble in your bowels.",
+		"It might be time to poop."
+	],
+	"Bowels_Orange": [
+		"You really need to poop!",
+		"If you don't find a place to poop soon, you'll mess yourself!",
+		"You're not sure how much longer you can hold your poop!"
+	],
+	"Bowels_Red": [
+		"You can feel the poop starting to push out!",
+		"You can’t hold it anymore! You're about to mess yourself!"
+	],
+	"Bladder_Continence_Yellow": [ "You seem to be getting worse at holding your pee." ],
+	"Bladder_Continence_Orange": [ "You're getting pretty bad at holding your pee." ],
+	"Bladder_Continence_Red": [ "You're getting close to being unable to hold your pee." ],
+	"Bladder_Continence_Min": [ "You're almost totally unable to hold your pee." ],
+	"Bowel_Continence_Yellow": [ "You seem to be getting worse at holding your poop." ],
+	"Bowel_Continence_Orange": [ "You're getting pretty bad at holding your poop." ],
+	"Bowel_Continence_Red": [ "You're getting close to being unable to hold your poop." ],
+	"Bowel_Continence_Min": [ "You're almost totally unable to hold your poop." ],
+	"Pee_Voluntary": [
+		"You drop your $UNDERWEAR_NAME$ and pee on the ground.",
+		"Moving your $UNDERWEAR_NAME$, you take a deep breath and empty your bladder.",
+		"Looking around sheepishly, you pull your $UNDERWEAR_NAME$ down and go right where you are!",
+		"You slide your $PANTS_NAME$ to your knees</, squat,> and let your pee splatter all over the ground.",
+		"You pull down your $PANTS_NAME$ and sprinkle on the ground.",
+		"You pull your $PANTS_NAME$ down and go <pee pee/tinkle> on the ground.",
+		"You slide your $PANTS_NAME$ down, <spread your legs/squat down>, and empty your bladder."
+	],
+	"Poop_Voluntary": [
+		"You slide your $PANTS_NAME$ down, squat, and empty your bowels.",
+		"Looking around nervously, you pull your $PANTS_NAME$ down and go number two right on the ground!",
+		"Undressing, you squat and let your poop pile out onto the ground.",
+		"You pull down your $PANTS_NAME$ and poop on the ground.",
+		"You slide your $PANTS_NAME$ to your knees, squat down, and gently push all your poop out."
+	],
+	"Pee_Toilet": [
+		"Sprinkling into the toilet, you breathe a sigh of relief.",
+		"You pee in the potty like a big <boy/girl>.",
+		"You slide your $PANTS_NAME$ down, <stand in front of the toilet/sit on the toilet>, and pee like a big <boy/girl>.",
+		"You barely make it to the toilet. Any longer and you might have wet yourself!",
+		"You wee in the toilet. Good thing you were able to hold it until then!",
+		"You proudly pee in the toilet. Now you won't need a diaper!",
+		"You tinkle in the toilet. Your mommy would be proud!",
+		"You undress and go number one in the toilet like a good <boy/girl>."
+	],
+	"Poop_Toilet": [
+		"As your poop slides out into the toilet, you start to relax. Whew, that felt good!",
+		"You slide your $PANTS_NAME$ to your knees, sit on the toilet, and poop like a big <boy/girl>.",
+		"You poop in the potty like a big <boy/girl>.",
+		"You poop in the toilet. Maybe now you won't mess yourself today!",
+		"You slide your $PANTS_NAME$ to your knees and poop in the toilet.",
+		"You proudly poop in the toilet. Now you won't need a diaper!",
+		"You poop in the toilet. Your mommy would be proud!",
+		"You undress and go number two in the toilet like a good <boy/girl>."
+	],
+	"Pee_Toilet_Attempt": [
+		"You try to pee in the potty like a big <boy/girl>, but nothing comes out.",
+		"You slide your $PANTS_NAME$ down, <spread your legs/sit on the toilet>, and try to pee, but you can't."
+	],
+	"Poop_Toilet_Attempt": [
+		"You squirm a little as you try to poop in the toilet, but nothing comes out.",
+		"You try to poop in the potty like a big <boy/girl>, but you can't.",
+		"You slide your $PANTS_NAME$ to your knees, sit on the toilet, and strain to poop, but nothing comes out."
+	],
+	"Wet_Voluntary": [
+		"You relax your bladder and pee gushes into your $UNDERWEAR_NAME$.",
+		"Your bladder tingles as you let go and warmth spreads out into your $UNDERWEAR_NAME$.",
+		"You take a deep breath and release your pee into your $UNDERWEAR_NAME$.",
+		"You glance around a little sheepishly as you deliberately pee your $UNDERWEAR_NAME$ like a little <boy/girl>."
+	],
+	"Mess_Voluntary": [
+		"You squat a little and empty your bowels into your $UNDERWEAR_NAME$.",
+		"You concentrate and push a warm load of poop into your $UNDERWEAR_NAME$.",
+		"You hope nobody notices as you deliberately let a big poop squeeze out into your $UNDERWEAR_NAME$."
+	],
+	"Pee_Attempt": [
+		"You pull down your $PANTS_NAME$ and relax your bladder, but nothing comes out.",
+		"You slide your $PANTS_NAME$ down, <spread your legs/squat down>, and try to pee, but you can't."
+	],
+	"Poop_Attempt": [
+		"You pull down your $PANTS_NAME$ and try to poop, but you can't.",
+		"You slide your $PANTS_NAME$ to your knees, squat down, and strain to poop, but nothing comes out."
+	],
+	"Wet_Attempt": [
+		"You relax your bladder, but nothing comes out.",
+		"You try to pee in your $UNDERWEAR_NAME$, but you can't."
+	],
+	"Mess_Attempt": [
+		"You squat a little and strain, but nothing comes out.",
+		"You try to mess in your $UNDERWEAR_NAME$, but you can't."
+	],
+	"Still_Soiled": [
+		"You feel your <wet&messy> $UNDERWEAR_NAME$ and blush at the sensation.",
+		"You feel like a little <boy/girl> knowing that you're still in $UNDERWEAR_PREFIX$ <wet&messy> $UNDERWEAR_NAME$.",
+		"You blush and smile warmly realizing you're wearing $UNDERWEAR_PREFIX$ <wet&poopy> $UNDERWEAR_NAME$.",
+		"You smell something stinky and your heart flutters as you realize you're still wearing $UNDERWEAR_PREFIX$ <wet&messy> $UNDERWEAR_NAME$.",
+		"You feel your <wet&poopy> $UNDERWEAR_NAME$ squishing between your legs and smile to yourself.",
+		"You notice your sagging <wet&messy> $UNDERWEAR_NAME$ <is#are> snug and warm.",
+		"You notice you're waddling because your $UNDERWEAR_NAME$ <is#are> <wet&messy>.",
+		"You consider changing your <wet&messy> $UNDERWEAR_NAME$ soon, but not right now. It's still warm",
+		"You press your hand into your squishy $UNDERWEAR_NAME$. You feel like a little baby knowing you <wet&messed> <it#them>.",
+		"You feel your $UNDERWEAR_NAME$. <It's#They're> all <wet&messy>!"
+	],
+	"Wet_Accident": [
+		"You bite your lip and take a sharp breath through your nose as your bladder gives in and you flood your $UNDERWEAR_NAME$.",
+		"You're helpless as pee streams into your $UNDERWEAR_NAME$.",
+		"You hope no one notices the pee pouring into your $UNDERWEAR_NAME$.",
+		"Your thumb finds its way into your mouth as you suddenly feel warmth spreading into your $UNDERWEAR_NAME$!",
+		"You hope your $UNDERWEAR_NAME$ doesn't leak as you realize you're wetting yourself.",
+		"You stop in your tracks as you start to go <wee/tinkle> in your $UNDERWEAR_NAME$!",
+		"You give a sheepish smile as you realize the warmth spreading into your crotch is pee!",
+		"You <gasp/squeal> when you realize you're suddenly wetting yourself!",
+		"With a faint hiss, warmth floods into your $UNDERWEAR_NAME$!",
+		"You press your hands to your crotch, feeling the warmth as the sudden flood of pee comes rushing out.",
+		"You're wetting your $UNDERWEAR_NAME$ like a little <boy/girl>!",
+		"You give up trying to hold it any longer and your pee gushes out, flooding your $UNDERWEAR_NAME$.",
+		"You can't help but relax and let your pee spurt into your $UNDERWEAR_NAME$",
+		"Oopsies! You're wetting yourself!",
+		"You're wetting your $UNDERWEAR_NAME$! Oh well.",
+		"You notice a growing warmth befor glancing down and relaizing you're peeing in your $UNDERWEAR_NAME$!",
+		"Your $UNDERWEAR_NAME$ <sags#sag> as you wet yourself. Your cheeks flush as you realize you're just a little <boy/girl>."
+	],
+	"Mess_Accident": [
+		"Your knees bend and your body bushes on its own as you find yourself pushing a warm load into your $UNDERWEAR_NAME$.",
+		"You realize you're suddenly filling the back of your $UNDERWEAR_NAME$! You heft your seat with a slight blush as your warm, soft muck squishes against you.",
+		"You sigh with relief and grin bashfully as the distinctive smell of poop begins to waft from your $UNDERWEAR_NAME$.",
+		"You bashfully cover your face as you fill your $UNDERWEAR_NAME$ with warm poop. After you're done, you realize your thumb found it's way into your mouth",
+		"With a faint crackling sound, your poop squeezes out into your $UNDERWEAR_NAME$.",
+		"You start squirming and push a heavy load of poop into your $UNDERWEAR_NAME$.",
+		"You're almost startled as you notice it. You're pooping yourself!",
+		"You don't want to hold your poop any more and release it into your $UNDERWEAR_NAME$.",
+		"You finally give in, and a heavy load of warm poop pushes into your $UNDERWEAR_NAME$.",
+		"You freeze up and look around sheepishly as your poop squishes out into your $UNDERWEAR_NAME$.",
+		"You're pooping in your pants!",
+		"You feel a warm mass spreading into your $UNDERWEAR_NAME$ and feel like a little <boy/girl>.",
+		"You push on the back of your $UNDERWEAR_NAME$ as <it#they> <bulges#bulge>, giggling as it squishes around",
+		"Oopsies! Your $UNDERWEAR_NAME$ <is#are> all messy now!",
+		"You don't try and stop it any longer! You're messing yourself!",
+		"You mess your $UNDERWEAR_NAME$ like a little baby <boy/girl>!",
+		"Your $UNDERWEAR_NAME$ <bulges#bulge> as you openly mess yourself.",
+		"You give up trying to hold it and sigh in relief as you mess your $UNDERWEAR_NAME$!"
+	],
+	"Toilet_Night": [
+		"You had to <pee&poop> last night, and made it to the toilet$HOW_MANY_TIMES",
+		"You woke up to <pee&poop> in the potty like a big <boy/girl> last night$HOW_MANY_TIMES"
+	],
+	"Wake_Up_Underwear_State": [
+		"You wake up in $INSPECT_UNDERWEAR_NAME$."
+	],
+	"Wet_Bed": [
+		"You find that you leaked last night--your bed is all wet!",
+		"Your bed is cold and wet. You must have wet the bed last night!",
+		"You wet your bed like a little <boy/girl> last night!",
+		"You wake up uncomfortable, lying in a puddle of cold pee.",
+		"Your covers are all wet. You need a diaper like a little <boy/girl>!",
+		"Your pajamas are uncomfortable and wet. You realize you wet the bed last night!"
+	],
+	"Messed_Bed": [
+		"Starting to cry, you realize that you pooped< and peed> the bed like a baby!",
+		"Somebody needs a diaper! You <wet and >messed your bed last night!",
+		"Your cheeks burn when you discover that your bed is all <wet and >poopy!",
+		"You are humiliated to realize that you pooped< and peed> in your bed while you were sleeping!",
+		"Your <pee and >poop overflowed into your bed last night!",
+		"You realize you must have <wet and >messed your bed last night! Oh no!",
+		"You smell something stinky and realize you <wet and >messed the bed last night!"
+	],
+	"Spot_Washing_Bedding": [
+		"You take your <wet&poopy> bedding to the river and rinse the <wet&poopy> part, but it was tiring and your bedding probably won't be dry until $BEDDING_DRYTIME$."
+	],
+	"Washing_Bedding": [
+		"You take your <wet&poopy> bedding to the river and wash it, but it was exhausting and your bedding probably won't be dry until $BEDDING_DRYTIME$."
+	],
+	"Washing_Underwear": [
+		"You wash your $UNDERWEAR_NAME$ in the water. <It#They> will be dry tomorrow."
+	],
+	"Overwashed_Underwear": [
+		"You wash your $UNDERWEAR_NAME$ in the water. <It#They> <was#were> too worn out and fell apart!"
+	],
+	"Bedding_Still_Wet": [
+		"Your bedding won't be dry until $BEDDING_DRYTIME$!"
+	],
+	"Cant_Remove": [ "You try to pull down your $UNDERWEAR_NAME$, but you can't get it off without ruining it. Maybe you should change into something else? Or you could just use it..." ],
+	"Pee_Overflow": [
+		"Your $UNDERWEAR_NAME$ leaked! Your pants are all wet!",
+		"You start crying as you feel pee dribbling down your legs!",
+		"You turn red as you realize your pee is running down your legs!",
+		"You notice a wet spot on your $PANTS_NAME$ and realize your $UNDERWEAR_NAME$ leaked!",
+		"Your $UNDERWEAR_NAME$ couldn't hold the pee and it leaked out into your $PANTS_NAME$!",
+		"Your $UNDERWEAR_NAME$ <is#are> overflowing! You're leaking into your pants."
+	],
+	"Poop_Overflow": [
+		"Your $UNDERWEAR_NAME$ blew out! Your pants are all poopy!",
+		"Turning bright red, you realize your pants are all messy now!",
+		"Your cheeks burn with shame when you discover your poop overflowed out into your $PANTS_NAME$.",
+		"You smell something really stinky and realize your poop overflowed into your $PANTS_NAME$!",
+		"You start crying as you feel a big log of poop squish out past your $UNDERWEAR_NAME$ and smear down your legs!",
+		"Oh no! Your $UNDERWEAR_NAME$ couldn't hold the poop and it came out into your $PANTS_NAME$!"
+	],
+	"Debuff_Wet_Pants": [ "Your pants are wet!", "You wet your pants!", "You peed your pants!" ],
+	"Debuff_Messy_Pants": [ "Your pants are messy!", "Your pants are poopy!", "You messed your pants!" ],
+	"Villager_Reactions": {
+		"adult": {
+			"soiled_verynice": [ "Aww, do you need me to change you out of your <wet&messy> $UNDERWEAR_NAME$?", "I think little $FARMERNAME$ needs <his/her> diaper changed!", "I know a little farmer who needs <his/her> diaper changed!$1"],
+			"soiled_nice": [ "You poor thing! Did you just <wet&mess> yourself?", "Does someone need a diaper change?" ],
+			"soiled_mean": [ "You <&really >might want to go change your pants." ],
+			"ground": [ "$FARMERNAME$! Living in the country doesn't make us barbarians!$3", "That's not okay! Use a toilet!$3" ],
+			"ground_attempt": [ "$FARMERNAME$! What are you doing!$3" ]
+		},
+		"teen": {
+			"soiled_verynice": [ "Awww, you're so cute when you're embarrassed!$1", "Where's your mommy $FARMERNAME$? I think you need a change." ],
+			"soiled_nice": [ "Did you just <wet&mess> yourself $FARMERNAME$?", "Just letting you know $FARMERNAME$, you should probably change your diaper soon." ],
+			"soiled_mean": [ "Did you just <pee&poop> in your pants? Gross!$5", "Wow, you're such a baby $FARMERNAME$!" ],
+			"ground": [ "Eww. Is that normal in the city?$5", "What... Ugh!$5", "Did you just <pee&poop> on the ground? Gross!$5" ],
+			"ground_attempt": [ "What... Put your pants back on!$5" ]
+		},
+		"kid": {
+			"soiled_verynice": [ 
+				"#$p 102#%Did you hear something?|Go ask your mommy to check your diaper.", 
+				"#$p 102#%Did you hear something?|Don't cry, it's okay for little <boy/girl>s to have accidents sometimes." ],
+			"soiled_nice": [ 
+				"#$p 102#%Did you hear something?|I can see you waddling!", 
+				"#$p 102#%Did you hear something?|It smells like you need a diaper change!" ],
+			"soiled_mean": [ 
+				"#$p 102#%Did you hear something?|Hah! I just watched you <pee&poop> yourself!$1", 
+				"#$p 102#%Did you hear something?|You <peed&pooped> yourself!", 
+				"#$p 102#%Did you hear something?|$FARMERNAME$ just <peed&pooped> <himself/herself>!$1" ],
+			"ground": [ 
+				"#$p 102#%Did you hear something?|Ewww!$3", "Ewww! Don't <pee&poop> there!$3", 
+				"#$p 102#%Did you hear something?|Hey everyone! $FARMERNAME$ just <peed&pooped> on the ground!$1" ],
+			"ground_attempt": [ 
+				"#$p 102#%Did you hear something?|Eww! Why are you trying to <pee&poop> on on the ground?$3" ]
+		},
+		"animal": {
+			"soiled_nice": [ "...", "???" ],
+			"ground": [ "<...&!!!>" ],
+			"ground_attempt": [ "<...&???>" ]
+		},
+		"abigail": {
+			"soiled_verynice": [
+				"Want a change? #$b#I could change you, if you want!$h",
+				"Sometimes I just put on a diaper and sit around playing games all day. #$b#Maybe we could do that together sometime.$h",
+				"I think I'm pretty wet. #$b#Would you mind helping me change?",
+				"Let me help with that! Lay down for me.$h",
+				"Ewww, I think.... I think I pooped myself.$s #$b#...$s #$b#Could you... maybe change me?"
+			
+			],
+			"soiled_nice": [
+				"$lWas that me? ...Oh! Nothing! Haha!",
+				"So, do you have a medical condition or something?",
+				"You might wanna change. Just incase someone else says something.",
+				"$lI might be into trying that diaper thing sometime.",
+				"Is changing too much of a chore? Sorry, rude question!",
+				"$l*Checks self quickly* Oh! Were you watching?!"
+			],
+			"soiled_mean": [
+				"I'm just..nevermind.",
+				"This is pretty awkward.",
+				"...Wow. Walking away now.",
+				"*Feels own backside quickly* Eww! That's gross! You shouldn't do that in public!",
+				"I thought only babies <wet&messed> their pants! Grow up!",
+				"Did you just <pee&poop> your pants? You need diapers!"
+			]
+		},
+		"haley": {
+			"soiled_verynice": [
+				"$lI'm really glad you've gotten me into this whole diaper thing!",
+				"$hLooks like <that#those> $UNDERWEAR_NAME$ <is#are> a little <wet&messy> now! How about a changing?",
+				"$sI think my diaper's starting to sag. Can you give me a hand?"
+			],
+			"soiled_nice": [
+				"$l<That#Those> $UNDERWEAR_NAME$ <is#are> kind of cute. Where can I get <one#some>?",
+				"$hI think you might be leaking a little!"
+			],
+			"soiled_mean": [
+				"$uDiapers are NOT in fashion, and neither is <peeing&pooping> your pants like a baby!",
+				"$uLike, eww. Why is everyone in this town so gross?!",
+				"$uI was gonna tell you to change your clothes because of how unstylish they are, but it looks like you need your diaper changed more, you big baby!"
+			]
+		},
+		"jodi": {
+			"soiled_verynice": [
+				"%Jodi leans down to put a comforting hand on your back.#$b#You can tell me if you had a little accident $FARMERNAME$. It's nothing to be ashamed of.",
+				"You don't need to rush potty training if you're not ready yet.",
+				"It can be hard for little <boys/girls> to remember to go potty sometimes. It's okay.",
+				"Oh goodness!$1",
+				"Awww, you're so cute when you're embarrassed!$1",
+			],
+			"soiled_nice": [
+				"$FARMERNAME$, I  think you might need to go change.",
+				"You poor thing! Did you just <wet&mess> yourself?",
+			],
+			"soiled_mean": [
+				"You might need to tap into those supplies I left you$4",
+			]
+		},
+		"sam": {
+			"soiled_verynice": [
+				"#$p 102#Oh man, that was pretty hard to miss!$1|Man, you're just like Vincent.$1",
+				"Are you okay buddy?#$b#$y 'Do you want some help with that?_Yes please._Alright, go get a change and lie down for me. I'll clean you right up$3_Not yet!_Looks like the little <boy/girl> wants to stay <wet&messy> a bit longer!$1'",
+				"It's okay $FARMERNAME$. Accidents are nothing to be ashamed of.",
+				"Awwww, look at you go! That must have felt good.$4",
+				"Oh man, that was pretty hard to miss!$1",
+				"Good one!$1",
+				"Man, you're such a little baby sometimes.#$b#%Sam giggles a bit as he pats your squishy bottom.",
+				"Awww, did the little farmer have a little accident?",
+				"I bet I could get Mommy to go change you.$3#$b#I'm kidding I'm kidding!$1",
+				"Man, it looks like you really need diapers, don't you.",
+				"Oh wow, you really <wet&messed> yourself!#$b#$y 'Can I feel it?_Yes._%Sam blushes as he presses his hand into your squishy diaper._No thank you._Okay, I won't.'",
+			],
+			"soiled_nice": [
+				"You might wanna change. Just incase someone else says something.$7",
+				"A-are you okay?$8",
+				"%Sam just blushes a as you <wet&mess> yourself. You take note of how closely he watches the whole scene.",
+				"Oh man, I'm sorry. That can't feel good.",
+				
+			],
+			"soiled_mean": [
+				"I'm just..nevermind.$5",
+				"This is pretty awkward.$2",
+				"...Oh$2",
+				"#$p 102#You might want to take care of that...|Great, more potty issues to be witness to. Thanks.$5",
+			]
+		},
+		"vincent": {
+			"soiled_verynice": [
+				"#$p 102#%Vincent doesn't seem to notice what happened.|Mommy told me big kids are supposed to use the potty. #$b#I don't wanna be a big kid either!$1",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|%Vincent watches you <wet&mess> yourself and giggles.#$b#Good one!$1",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|%You notice Vincent watching as you <wet&mess> yourself.#$b#All better?",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|%Vincent watches the whole scene curiously and giggles when you look over. #$b# You <peed&pooped>!$1",				
+				"#$p 102#%Vincent doesn't seem to notice what happened.|If you want I could ask my mommy to change you.#$b#No?#$b#That's okay, I like being <wet&messy> too!$1",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|$FARMERNAME$'s <wet&messy> and I'm still dry!$1#$b#...#$b#Wait...$2",
+			
+			],
+			"soiled_nice": [
+				"#$p 102#%Vincent doesn't seem to notice what happened.|Don't cry, Mommy says it's okay to have accidents sometimes.",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|Don't worry $FARMERNAME$, I still do that too!",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|Feel all better?",
+			],
+			"soiled_mean": [
+				"#$p 102#%Vincent doesn't seem to notice what happened.|%Vincent saw what happened and snickers at you.",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|Was that an accident?",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|Ha! Gross!$1",
+			]
+		},
+	},
+
+	"Change": [
+		"You change into $PANTS_PREFIX$ clean $PANTS_NAME$ and $INSPECT_UNDERWEAR_NAME$."
+		//***"You take off your soiled <OLD_UNDERWEAR_DESC> and put on $UNDERWEAR_PREFIX$ clean $UNDERWEAR_NAME$."
+	],
+	"Change_Destroyed": [
+		"You ruined your $UNDERWEAR_NAME$ when taking <it#them> off. So you throw <it#them> away."
+	],
+	"PeekWaistband": [
+		"You peek inside your waistband and see"
+	],
+	"LookPants": [
+		"You look down and see"
+	],
+	"Underwear_Clean": "clean $UNDERWEAR_DESC$",
+	"Underwear_Drying": "drying $UNDERWEAR_DESC$",
+
+	"Underwear_Wet": [ //Chosen based on diaper wetness, applied after Underwear_Messy. Words in brackets only show if underwear is also messy.
+		"slightly damp $UNDERWEAR_DESC$",
+		"somewhat wet $UNDERWEAR_DESC$",
+		"very wet $UNDERWEAR_DESC$",
+		"drenched $UNDERWEAR_DESC$",
+		"dripping wet $UNDERWEAR_DESC$"
+	],
+	"Underwear_Messy": [ //Chosen based on diaper messiness, applied before Underwear_Wet. Words in brackets are only used if underwear is also wet.
+		"<and >slightly poopy $UNDERWEAR_DESC$",
+		"<and >somewhat poopy $UNDERWEAR_DESC$",
+		"<and >poopy $UNDERWEAR_DESC$",
+		"$UNDERWEAR_DESC$ filled with poop",
+		"$UNDERWEAR_DESC$ with poop squishing out"
+	],
+	"Consumables": {
+		"Cola": {
+			"name": "Cola",
+			"waterContent": 240,
+			"calorieContent": 100
+		},
+		"Espresso": {
+			"name": "Espresso",
+			"waterContent": 44,
+			"calorieContent": 3
+		},
+		"Coffee": {
+			"name": "Coffee",
+			"waterContent": 240,
+			"calorieContent": 1
+		},
+		"Wine": {
+			"name": "Wine",
+			"waterContent": 148,
+			"calorieContent": 123
+		},
+		"Beer": {
+			"name": "Beer",
+			"waterContent": 355,
+			"calorieContent": 154
+		},
+		"Milk": {
+			"name": "Milk",
+			"waterContent": 240,
+			"calorieContent": 148
+		},
+		"Tea": {
+			"name": "Tea",
+			"waterContent": 240,
+			"calorieContent": 2
+		},
+		"Juice": {
+			"name": "Juice",
+			"waterContent": 240,
+			"calorieContent": 114
+		}
+	},
+	"Underwear_Options": {
+		"bed": {
+			"name": "bed",
+			"description": "cozy bed",
+			"absorbency": 2500.0,
+			"containment": 1000.0,
+			"spriteIndex": -1,
+			"price": 0,
+			"washable": true,
+			"plural": false,
+			"dryingTime": 2400,
+			"removable": false,
+			"durability": -1
+		},
+		"blue jeans": {
+			"name": "blue jeans",
+			"description": "sturdy blue jeans",
+			"absorbency": 300.0,
+			"containment": 60.0,
+			"spriteIndex": -1,
+			"price": 2000,
+			"washable": true,
+			"plural": true,
+			"dryingTime": 600,
+			"removable": true,
+			"durability": -1
+		},
+		"black thong": {
+			"name": "black thong",
+			"description": "lacy black thong",
+			"absorbency": 75.0,
+			"containment": 60.0,
+			"spriteIndex": 0,
+			"price": 10,
+			"washable": true,
+			"plural": false,
+			"dryingTime": 300,
+			"removable": true,
+			"durability": 4
+		},
+		"polka dot panties": {
+			"name": "polka dot panties",
+			"description": "simple white panties with pink polka dots",
+			"absorbency": 150.0,
+			"containment": 100.0,
+			"spriteIndex": 1,
+			"price": 10,
+			"washable": true,
+			"plural": true,
+			"dryingTime": 400,
+			"removable": true,
+			"durability": 4
+		},
+		"big kid undies": {
+			"name": "big kid undies",
+			"description": "cotton undies for big kids only",
+			"absorbency": 150.0,
+			"containment": 115.0,
+			"spriteIndex": 2,
+			"price": 10,
+			"washable": true,
+			"plural": true,
+			"dryingTime": 400,
+			"removable": true,
+			"durability": 4
+		},
+		"dinosaur undies": {
+			"name": "dinosaur undies",
+			"description": "green undies covered in adorable dinosaurs",
+			"absorbency": 150.0,
+			"containment": 115.0,
+			"spriteIndex": 3,
+			"price": 10,
+			"washable": true,
+			"plural": true,
+			"dryingTime": 400,
+			"removable": true,
+			"durability": 4
+		},
+		"lavender pullup": {
+			"name": "lavender pullup",
+			"description": "soft and snug flowery lavender pullup",
+			"absorbency": 600.0,
+			"containment": 170.0,
+			"spriteIndex": 4,
+			"price": 25,
+			"washable": false,
+			"plural": false,
+			"dryingTime": 0,
+			"removable": true,
+			"durability": 0
+		},
+		"training pants": {
+			"name": "training pants",
+			"description": "thin cloth potty training pants that look like big kid undies",
+			"absorbency": 600.0,
+			"containment": 120.0,
+			"spriteIndex": 5,
+			"price": 25,
+			"washable": true,
+			"plural": true,
+			"dryingTime": 600,
+			"removable": true,
+			"durability": 5
+		},
+		"Joja diaper": {
+			"name": "Joja diaper",
+			"description": "thin white plastic diaper from JojaMart",
+			"absorbency": 1200.0,
+			"containment": 300.0,
+			"spriteIndex": 6,
+			"price": 50,
+			"washable": false,
+			"plural": false,
+			"dryingTime": 0,
+			"removable": false,
+			"durability": 0
+		},
+		"baby print diaper": {
+			"name": "baby print diaper",
+			"description": "little soft and crinkly fresh-scented baby print diaper. Its a bit small, but you can fit",
+			"absorbency": 1500.0,
+			"containment": 450.0,
+			"spriteIndex": 7,
+			"price": 75,
+			"washable": false,
+			"plural": false,
+			"dryingTime": 0,
+			"removable": false,
+			"durability": 0
+		},
+		"cloth diaper": {
+			"name": "cloth diaper",
+			"description": "thick and soft white cloth diaper",
+			"absorbency": 2000.0,
+			"containment": 900.0,
+			"spriteIndex": 8,
+			"price": 500,
+			"washable": true,
+			"plural": false,
+			"dryingTime": 800,
+			"removable": true,
+			"durability": 8
+		},
+		"space diaper": {
+			"name": "space diaper",
+			"description": "very thick and soft blue plastic diaper with spaceship designs",
+			"absorbency": 2700.0,
+			"containment": 900.0,
+			"spriteIndex": 9,
+			"price": 100,
+			"washable": false,
+			"plural": false,
+			"dryingTime": 0,
+			"removable": false,
+			"durability": 0
+		},
+		"pawprint diaper": {
+			"name": "pawprint diaper",
+			"description": "puffy plastic diaper with cute animal prints and fade-when-wet little paws",
+			"absorbency": 2700.0,
+			"containment": 900.0,
+			"spriteIndex": 10,
+			"price": 100,
+			"washable": false,
+			"plural": false,
+			"dryingTime": 0,
+			"removable": false,
+			"durability": 0
+		},
+		"heart diaper": {
+			"name": "heart diaper",
+			"description": "very thick and soft pink plastic diaper with a large fade-when-wet heart on the front",
+			"absorbency": 3000.0,
+			"containment": 900.0,
+			"spriteIndex": 11,
+			"price": 120,
+			"washable": false,
+			"plural": false,
+			"dryingTime": 0,
+			"removable": false,
+			"durability": 0
+		}
+	}
+}
