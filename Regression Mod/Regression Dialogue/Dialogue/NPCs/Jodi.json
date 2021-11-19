@@ -6,7 +6,7 @@
 			"Target":"Characters/Dialogue/Jodi",
 			"Entries":{
 //Jodi's repsonse Ids are 110-119
-  "Introduction": "Oh! You must be @! I'm Jodi. I hope the supplies I left you are enough to get you started.#$e#Oh don't look so embarassed! That old farm can be very exciting for little farmers!$1#$b#There's no shame in getting a little too distracted sometimes.",
+  "Introduction": "Oh! Is this @? I'm Jodi.#$e#Did you get my little care package? I hope it's enough to get you started.#$e#Oh don't look so embarassed, that old farm is very exciting! I wouldn't want our new little farmer caught unprepared when he gets a little distracted.$1^Oh don't look so embarassed, a new farm is very exciting! I wouldn't want our new little farmer caught unprepared when she gets a little distracted.",
 
 
   "spring_Mon":"There's the little farmer!#$e#How's the town treating you?",
