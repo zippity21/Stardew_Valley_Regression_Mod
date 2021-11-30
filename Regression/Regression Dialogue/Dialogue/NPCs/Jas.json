@@ -17,6 +17,66 @@
   //The question above happens durring the introduction of Vincent or Jas, whomever the player interacts with first. They'll get to choose whether or not they want ABDL dialogue for the two of them. 
   //Unfortunately, this only works for new farms, not if a player installs the mod and loads an old save where they've already met both Vincent and Jas. Then it defaults to the ABDL text.			
 
+
+"spring_Mon":"#$p 102#Oh...Are you looking for Aunt Marnie?$u|%You notice Jas doing a potty dance before she catches you watching.#$b#%She freezes in place and blushes hard. You can hear a soft hiss.#$e#U-hmmm...$2",
+"spring_Mon8":"#$p 102#It's fun to live on a farm.$h|%You notice Jas doing a potty dance before she catches you watching. She stops to smile and wave at you.#$b#%Her eyes suddenly widen and a blush spreads across her cheeks as you hear a soft hiss, but she doesn't seem too concirned.#$e#Hi @!",
+"spring_Tue6":"#$p 102#You can play with my dolls if you want to. Just make sure to brush their hair when you're done.|Hi @. Can I show you something?#$b#%Jas holds up a well loved lamb plushie she was playing with.#$b#This is Bethany. She's my favorite!",
+"spring_Wed2":"#$p 102#...Hi.$u|Vincent doesn't try to use the potty like I do.$3#$b#He's gross.",
+"spring_Wed6":"#$p 102#Aunt Marnie won't let me go out after 6 o'clock. It's not fair!$s|Vincent told me he likes using his diapers.$3#$e#I do too, but I'm a big girl, so I'm trying to use the potty like I'm supposed to.",
+"spring_Wed10":"#$p 102#Aunt Marnie won't let me go out after 6 o'clock. It's not fair!$s|Vincent told me he likes using his diapers.#$e#I do too, but I'm a big girl, so I'm trying to use the potty like I'm supposed to.$3#$b#It's not very fun. I wish I wasn't supposed to...$2",
+"spring_Thu":"#$p 102#I'm not supposed to talk to strangers...$u|%Jas is quietly sucking her thumb until she notices you nearby. She quickly puts her hands at her side and blushes.#$e#…$2",
+"spring_Thu4":"#$p 102#Miss Penny is teaching me how to write in cursive.|%Jas is quietly sucking her thumb. She smiles when she notices you nearby and waves with her freehand.",
+"spring_Fri2":"#$p 102#|Do you like my bow? It would probably look cute on you too!",
+"spring_Sat8":"#$p 102#|I had an accident at the library yesterday...$3#$b#I told Miss Penny it was Vincent though, so I got away with it.$1#$e#I'm very clever.$4",
+"spring_Sun6":"#$p 102#|Shane's gone a lot, and Aunt Marnie is busy all the time... so I'm thankful for all my toys.$h#$e#Do you want to play with me? We could play house!",
+"spring_12_1": "The egg festival is tomorrow!$1#$e#I don't want to win the egg hunt, I only want to get some chocolate.",
+"spring_12_2": "The egg festival is tomorrow!$1#$e#I don't want to win the egg hunt, I only want to get some chocolate.",
+
+
+"summer_Mon8":"#$p 102#It's fun to live on a farm.$h|I'm a big girl, see!$1#$b#%Jas lifts her skirt up high to show off her pull ups. She seems very proud.#$e#Told you.$4",
+"summer_Wed4":"#$p 102#Aunt Marnie won't let me go out after 6 o'clock. It's not fair!$s|Aunt Marnie says I'm a big girl even if I have accidents sometimes.",
+"summer_Wed8":"#$p 102#Aunt Marnie won't let me go out after 6 o'clock. It's not fair!$s|I'm a big girl and big girls use the potty when they have to go.#$b#It's really hard though, and I still have accidents...$2#$e#Vincent doesn't have to worry about the potty...$3",
+"summer_Thu6":"#$p 102#Miss Penny is teaching me how to write in cursive.|Yesterday, Miss Penny walked away to talk to Mr. Gunther and then Vincent pooped his diaper on purpose!#$b#He told me I should do it too, but I didn't because I'm a big girl and I only get poopy on accident now.$4",
+"summer_Fri2":"#$p 102#|Uhm... @? Do you know where Aunt Marn...!$3#$b#%Jas blushes while suddenly holding very still.#$e#Uhm... N-never mind...$2",
+"summer_Fri6":"#$p 102#|@? Do you know where Aunt Marn...!$3#$b#%Jas blushes while suddenly holding very still. After a bit she sighs and smiles up at you.#$e#Never mind, I don't have to go anymore.",
+"summer_Fri10":"#$p 102#|@? Do you know where Aunt Marn...!$3#$b#%Jas blushes as her knees seem to bend on their own. After a bit she sighs and smiles up at you.#$e#Never mind, I don't have to go anymore.#$e#%Jas doesn't seem to mind the smell coming from her pull ups.", 
+"summer_Sat4":"#$p 102#|I didn't make it to the potty yesterday and Aunt Marnie said that pull ups are only for girls who are trying to use the potty.$3#$e#I'm going try real hard today because I am a big girl!",
+"summer_Sun6":"#$p 102#|Can you keep a secret? Sometimes I go potty in my pull up on purpose when I'm playing.#$b#It's more fun than having to stop playing!$1",
+"summer_Sun10":"#$p 102#|Can you keep a secret?#$b#%Jas glances around before grunting softly, pushing a mess into her pull ups. She looks up at you with a relieved smile and a deep blush.#$b#Oops!$1",
+"summer_3_1":"It's my birthday tomorrow! Aunt Marnie always gets me pink cake. It's my favorite!$1",
+"summer_3_2":"It's my birthday tomorrow! Aunt Marnie always gets me pink cake. It's my favorite!$1",
+
+
+"fall_Mon":"#$p 102#Oh...Are you looking for Aunt Marnie?$u|%You notice Jas doing a potty dance before she catches you watching.#$b#%She freezes in place and blushes hard. You can hear a soft hiss.#$e#U-hmmm...$2",
+"fall_Mon8":"#$p 102#It's fun to live on a farm.$h|%You notice Jas doing a potty dance before she catches you watching. She stops to smile and wave at you.#$b#%Her eyes suddenly widen and a blush spreads across her cheeks as you hear a soft hiss, but she doesn't seem too concirned.#$e#Hi @!",
+"fall_Tue6":"#$p 102#You can play with my dolls if you want to. Just make sure to brush their hair when you're done.|Hi @. Can I show you something?#$b#%Jas holds up a well loved lamb plushie she was playing with.#$b#This is Bethany. She's my favorite!",
+"fall_Wed2":"#$p 102#...Hi.$u|Vincent doesn't try to use the potty like I do.$3#$b#He's gross.",
+"fall_Wed6":"#$p 102#Aunt Marnie won't let me go out after 6 o'clock. It's not fair!$s|Vincent told me he likes using his diapers.$3#$e#I do too, but I'm a big girl, so I'm trying to use the potty like I'm supposed to.",
+"fall_Wed10":"#$p 102#Aunt Marnie won't let me go out after 6 o'clock. It's not fair!$s|Vincent told me he likes using his diapers.#$e#I do too, but I'm a big girl, so I'm trying to use the potty like I'm supposed to.$3#$b#It's not very fun. I wish I wasn't supposed to...$2",
+"fall_Thu":"#$p 102#I'm not supposed to talk to strangers...$u|%Jas is quietly sucking her thumb until she notices you nearby. She quickly puts her hands at her side and blushes.#$e#…$2",
+"fall_Thu4":"#$p 102#Miss Penny is teaching me how to write in cursive.|%Jas is quietly sucking her thumb. She smiles when she notices you nearby and waves with her freehand.",
+"fall_Fri2":"#$p 102#|Do you like my bow? It would probably look cute on you too!",
+"fall_Sat8":"#$p 102#|I had an accident at the library yesterday...$3#$b#I told Miss Penny it was Vincent though, so I got away with it.$1#$e#I'm very clever.$4",
+"fall_Sun6":"#$p 102#|Shane's gone a lot, and Aunt Marnie is busy all the time... so I'm thankful for all my toys.$h#$e#Do you want to play with me? We could play house!",
+"fall_15_1":"I'm excited for the fair tomorrow. Last year Shane won me a whole bunch of toys!",
+"fall_15_2":"I'm excited for the fair tomorrow. Last year Shane won me a whole bunch of toys!",
+"fall_26_1":"I'm going to do the whole maze tomorrow and I'm going going to be scared once!",
+"fall_26_2":"I'm going to do the whole maze tomorrow and I'm going going to be scared once!",
+
+
+"winter_Mon8":"#$p 102#It's fun to live on a farm.$h|I'm a big girl, see!$1#$b#%Jas lifts her skirt up high to show off her pull ups. She seems very proud.#$e#Told you.$4",
+"winter_Wed4":"#$p 102#Aunt Marnie won't let me go out after 6 o'clock. It's not fair!$s|Aunt Marnie says I'm a big girl even if I have accidents sometimes.",
+"winter_Wed8":"#$p 102#Aunt Marnie won't let me go out after 6 o'clock. It's not fair!$s|I'm a big girl and big girls use the potty when they have to go.#$b#It's really hard though, and I still have accidents...$2#$e#Vincent doesn't have to worry about the potty...$3",
+"winter_Thu6":"#$p 102#Miss Penny is teaching me how to write in cursive.|Yesterday, Miss Penny walked away to talk to Mr. Gunther and then Vincent pooped his diaper on purpose!#$b#He told me I should do it too, but I didn't because I'm a big girl and I only get poopy on accident now.$4",
+"winter_Fri2":"#$p 102#|Uhm... @? Do you know where Aunt Marn...!$3#$b#%Jas blushes while suddenly holding very still.#$e#Uhm... N-never mind...$2",
+"winter_Fri6":"#$p 102#|@? Do you know where Aunt Marn...!$3#$b#%Jas blushes while suddenly holding very still. After a bit she sighs and smiles up at you.#$e#Never mind, I don't have to go anymore.",
+"winter_Fri10":"#$p 102#|@? Do you know where Aunt Marn...!$3#$b#%Jas blushes as her knees seem to bend on their own. After a bit she sighs and smiles up at you.#$e#Never mind, I don't have to go anymore.#$e#%Jas doesn't seem to mind the smell coming from her pull ups.", 
+"winter_Sat4":"#$p 102#|I didn't make it to the potty yesterday and Aunt Marnie said that pull ups are only for girls who are trying to use the potty.$3#$e#I'm going try real hard today because I am a big girl!",
+"winter_Sun6":"#$p 102#|Can you keep a secret? Sometimes I go potty in my pull up on purpose when I'm playing.#$b#It's more fun than having to stop playing!$1",
+"winter_Sun10":"#$p 102#|Can you keep a secret?#$b#%Jas glances around before grunting softly, pushing a mess into her pull ups. She looks up at you with a relieved smile and a deep blush.#$b#Oops!$1",
+"winter_22_1":"I finally got the perfect gift for my secret friend. I want to tell them what I got so bad!$1#$b#But then it wouldn't be a secret.$4",
+"winter_22_2":"I finally got the perfect gift for my secret friend. I want to tell them what I got so bad!$1#$b#But then it wouldn't be a secret.$4",
+
 			},
 		},
 	]
