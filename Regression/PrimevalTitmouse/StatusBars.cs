@@ -65,18 +65,24 @@ namespace PrimevalTitmouse
       StatusBars.barForeground.SetData<Color>(data2);
     }
 
-    public static void DrawStatusBar(int x, int y, float percentage, Color color)
-    {
-      SpriteBatch spriteBatch = (SpriteBatch) Game1.spriteBatch;
-      if (StatusBars.barBackground == null || StatusBars.barForeground == null)
-        StatusBars.CreateTextures();
-      percentage = Math.Min(percentage, 1f);
-      Rectangle destinationRectangle = new Rectangle(x, y, StatusBars.barWidth, StatusBars.barHeight);
-      spriteBatch.Draw(StatusBars.barBackground, destinationRectangle, new Rectangle?(new Rectangle(0, 0, StatusBars.barWidth, StatusBars.barHeight)), Color.White);
-      int height = (int) ((double) (destinationRectangle.Height - StatusBars.barBorderWidth * 2) * (double) percentage);
-      destinationRectangle.Y = destinationRectangle.Y + destinationRectangle.Height - height - StatusBars.barBorderWidth;
-      destinationRectangle.Height = height;
-      spriteBatch.Draw(StatusBars.barForeground, destinationRectangle, new Rectangle?(new Rectangle(0, 0, StatusBars.barWidth, height)), color);
-    }
+        public static void DrawStatusBar(int x, int y, float percentage, Color color)
+        {
+            SpriteBatch spriteBatch = (SpriteBatch)Game1.spriteBatch;
+            if (StatusBars.barBackground == null || StatusBars.barForeground == null)
+                StatusBars.CreateTextures();
+
+            if (Game1.eventUp || Game1.farmEvent != null)
+            {
+                return;
+            }
+
+            percentage = Math.Min(percentage, 1f);
+            Rectangle destinationRectangle = new Rectangle(x, y, StatusBars.barWidth, StatusBars.barHeight);
+            spriteBatch.Draw(StatusBars.barBackground, destinationRectangle, new Rectangle?(new Rectangle(0, 0, StatusBars.barWidth, StatusBars.barHeight)), Color.White);
+            int height = (int)((double)(destinationRectangle.Height - StatusBars.barBorderWidth * 2) * (double)percentage);
+            destinationRectangle.Y = destinationRectangle.Y + destinationRectangle.Height - height - StatusBars.barBorderWidth;
+            destinationRectangle.Height = height;
+            spriteBatch.Draw(StatusBars.barForeground, destinationRectangle, new Rectangle?(new Rectangle(0, 0, StatusBars.barWidth, height)), color);
+        }
   }
 }

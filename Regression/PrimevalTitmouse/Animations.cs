@@ -57,6 +57,11 @@ namespace PrimevalTitmouse
             return who;
         }
 
+        public static float ZoomScale()
+        {
+            return Game1.options.zoomLevel / Game1.options.uiScale;
+        }
+
         public static void AnimateDrinking(bool waterSource = false)
         {
             //If we aren't facing downward, turn
