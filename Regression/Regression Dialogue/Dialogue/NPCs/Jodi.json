@@ -31,7 +31,7 @@
 #$r 111 0 Show_Diaper#Show her your diaper.",
 "Show_Nice": "%Jodi holds it delicately, looking at it like it's the most important thing in the world.#$b#This is wonderful! Thank you for showing me.$1#$b#%Jodi gives it back and pats your head affectionately.", 
 "Show_Diaper": "%Jodi grins at your proud display.#$b#Well isn't that something!$1#$b#Let's see if it's still clean.#$b#%Jodi presses her hand against your diaper, giving it a thorough check.",
-"Show_Followup":"Well don't you look excited!$1#$e#%Jodi pats your head fondly.",
+"Show_Followup":"#$p 110#Well don't you look excited! Did you find even more things to show me?$1|Well don't you look excited! Are you going to show off for me again?$1#$b#%You shamlessly show Jodi your diaper again and she pats it fondly.",
   "summer_Thu4":"That farm seems like a lot of work for such a little farmer! I guess you're only pretending to be so little.#$e#%Jodi winks at you.",
   "summer_Fri8":"#$p 102#Maintaining a household is difficult work... but somebody has to do it.|Vincent doesn't show any signs of getting out of diapers any time soon.#$e#I guess he'll just be my little boy for a little bit longer.$1",
   "summer_Sat":"%Jodi is humming a soft song to herself while she goes about her business. It's familiar somehow.",

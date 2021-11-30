@@ -17,7 +17,8 @@
   //Unfortunately, this only works for new farms, not if a player installs the mod and loads an old save where they've already met both Vincent and Jas. Then it defaults to the ABDL text.
 
   
-  "spring_12": "The egg hunt is tomorrow! I'm gonna find so many!$1#$e#I'm a good finder.",
+  "spring_12_1": "The egg hunt is tomorrow! I'm gonna find so many!$1#$e#I'm a good finder.",
+  "spring_12_2": "The egg hunt is tomorrow! I'm gonna find so many!$1#$e#I'm a good finder.",
   "spring_Mon10":"#$p 102#I wanna be just like my big brother when I grow up!|I think I need my diaper changed, but I'm gonna wait until Mommy checks me.#$e#I don't mind being messy a bit longer!$1",
   "spring_Tue":"#$p 102#*sigh*... Mommy won't let me have any more gummies today.$s|I like it better when Miss Penny reads to us.",
   "spring_Tue10":"#$p 102#Don't tell Mommy... but you're my favorite grown-up.$h|I found a frog and put it in my diaper.#$b#It's a surprise for mommy!$1#$e#%Vincent looks like he's being tickled.",
