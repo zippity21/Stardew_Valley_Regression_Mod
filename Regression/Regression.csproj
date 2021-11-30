@@ -56,7 +56,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="powershell mkdir '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell mkdir '$(TargetDir)\Regression Mod\Regression'&#xD;&#xA;powershell cp -Recurse '$(TargetDir)\*' '$(TargetDir)\Regression Mod\Regression' -Exclude 'Regression Mod','Regression Dialogue'&#xD;&#xA;powershell cp -Recurse '$(TargetDir)\Regression Dialogue' '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell Compress-Archive '$(TargetDir)\Regression Mod' '$(TargetDir)\Regression Mod.zip' -Force" />
+    <Exec Command="powershell rm -Recurse -Force  '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell mkdir '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell mkdir '$(TargetDir)\Regression Mod\Regression'&#xD;&#xA;powershell cp -Recurse -Force '$(TargetDir)\*' '$(TargetDir)\Regression Mod\Regression' -Exclude 'Regression Mod','Regression Dialogue'&#xD;&#xA;powershell cp -Recurse -Force '$(TargetDir)\Regression Dialogue' '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell Compress-Archive '$(TargetDir)\Regression Mod' '$(TargetDir)\Regression Mod.zip' -Force" />
   </Target>
 
 </Project>

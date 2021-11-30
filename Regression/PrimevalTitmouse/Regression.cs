@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Regression;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
@@ -44,10 +45,13 @@ namespace PrimevalTitmouse
 
         public void DrawStatusBars()
         {
-            int x1 = Game1.viewport.Width - (65 + StatusBars.barWidth);
-            int y1 = Game1.viewport.Height - (25 + StatusBars.barHeight);
-            if (Game1.currentLocation is MineShaft || Game1.currentLocation is Woods || Game1.currentLocation is SlimeHutch || who.health < who.maxHealth)
+
+            int x1 = Game1.graphics.GraphicsDevice.Viewport.GetTitleSafeArea().Right - (65 + (int)((StatusBars.barWidth)));
+            int y1 = Game1.graphics.GraphicsDevice.Viewport.GetTitleSafeArea().Bottom - (25 + (int)((StatusBars.barHeight)));
+
+            if (Game1.currentLocation is MineShaft || Game1.currentLocation is Woods || Game1.currentLocation is SlimeHutch || Game1.currentLocation is VolcanoDungeon || who.health < who.maxHealth)
                 x1 -= 58;
+
             if (!config.NoHungerAndThirst || PrimevalTitmouse.Regression.config.Debug)
             {
                 float percentage1 = body.GetHungerPercent();
@@ -74,7 +78,7 @@ namespace PrimevalTitmouse
             if (!config.Wetting && !config.Messing)
                 return;
             int y2 = (Game1.player.questLog).Count == 0 ? 250 : 310;
-            Animations.DrawUnderwearIcon(body.underwear, Game1.viewport.Width - 94, y2);
+            Animations.DrawUnderwearIcon(body.underwear, Game1.graphics.GraphicsDevice.Viewport.GetTitleSafeArea().Right - 94, y2);
         }
 
         private void GiveUnderwear()
