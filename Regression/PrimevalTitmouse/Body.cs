@@ -196,7 +196,10 @@ namespace PrimevalTitmouse
             }
 
             if (Regression.config.NoHungerAndThirst)
+            {
+                hunger = 0; //Reset if disabled
                 return;
+            }
 
             //If we're starving and not eating, take a stamina hit
             if (hunger > requiredCaloriesPerDay && amount < 0)
@@ -230,7 +233,10 @@ namespace PrimevalTitmouse
             }
 
             if (Regression.config.NoHungerAndThirst)
+            {
+                thirst = 0; //Reset if disabled
                 return;
+            }
 
             //If we're starving and not eating, take a stamina hit
             if (thirst > requiredWaterPerDay && amount < 0)
