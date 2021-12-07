@@ -35,10 +35,16 @@
     <None Update="Regression Dialogue\Content.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Regression Dialogue\Dialogue\NPCs\Gus.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Regression Dialogue\Dialogue\NPCs\Jas.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Regression Dialogue\Dialogue\NPCs\Jodi.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Regression Dialogue\Dialogue\NPCs\Penny.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Regression Dialogue\Dialogue\NPCs\Sam.json">
@@ -56,7 +62,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="powershell rm -Recurse -Force  '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell mkdir '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell mkdir '$(TargetDir)\Regression Mod\Regression'&#xD;&#xA;powershell cp -Recurse -Force '$(TargetDir)\*' '$(TargetDir)\Regression Mod\Regression' -Exclude 'Regression Mod','Regression Dialogue'&#xD;&#xA;powershell cp -Recurse -Force '$(TargetDir)\Regression Dialogue' '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell Compress-Archive '$(TargetDir)\Regression Mod' '$(TargetDir)\Regression Mod.zip' -Force" />
+    <Exec Command="powershell rm -Recurse -Force  '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell New-Item -Path '$(TargetDir)' -Name &quot;Regression Mod.zip&quot; -ItemType &quot;file&quot; -Value &quot;DUMMY&quot; -Force&#xD;&#xA;powershell rm -Force   '$(TargetDir)\Regression Mod.zip'&#xD;&#xA;powershell mkdir '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell mkdir '$(TargetDir)\Regression Mod\Regression'&#xD;&#xA;powershell cp -Recurse -Force '$(TargetDir)\*' '$(TargetDir)\Regression Mod\Regression' -Exclude 'Regression Mod','Regression Dialogue'&#xD;&#xA;powershell cp -Recurse -Force '$(TargetDir)\Regression Dialogue' '$(TargetDir)\Regression Mod'&#xD;&#xA;powershell Compress-Archive '$(TargetDir)\Regression Mod' '$(TargetDir)\Regression Mod.zip' -Force" />
   </Target>
 
 </Project>

@@ -33,9 +33,9 @@ namespace PrimevalTitmouse
         private static readonly string[][] WETTING_MESSAGES = { Regression.t.Bladder_Red, Regression.t.Bladder_Orange, Regression.t.Bladder_Yellow };
         private static readonly float[] MESSING_THRESHOLDS = { 0.15f, 0.4f, 0.6f };
         private static readonly string[][] MESSING_MESSAGES = { Regression.t.Bowels_Red, Regression.t.Bowels_Orange, Regression.t.Bowels_Yellow };
-        private static readonly float[] BLADDER_CONTINENCE_THRESHOLDS = { 0.6f, 0.2f, 0.5f, 0.8f };
+        private static readonly float[] BLADDER_CONTINENCE_THRESHOLDS = { 0.2f, 0.5f, 0.6f, 0.8f };
         private static readonly string[][] BLADDER_CONTINENCE_MESSAGES = { Regression.t.Bladder_Continence_Min, Regression.t.Bladder_Continence_Red, Regression.t.Bladder_Continence_Orange, Regression.t.Bladder_Continence_Yellow };
-        private static readonly float[] BOWEL_CONTINENCE_THRESHOLDS = { 0.6f, 0.2f, 0.5f, 0.8f };
+        private static readonly float[] BOWEL_CONTINENCE_THRESHOLDS = { 0.2f, 0.5f, 0.6f, 0.8f };
         private static readonly string[][] BOWEL_CONTINENCE_MESSAGES = { Regression.t.Bowel_Continence_Min, Regression.t.Bowel_Continence_Red, Regression.t.Bowel_Continence_Orange, Regression.t.Bowel_Continence_Yellow };
         private static readonly float[] HUNGER_THRESHOLDS = { 0.0f, 0.25f };
         private static readonly string[][] HUNGER_MESSAGES = { Regression.t.Food_None, Regression.t.Food_Low };
@@ -746,7 +746,7 @@ namespace PrimevalTitmouse
                 this.AddWater(item.waterContent);
             } else
             {
-                this.AddFood(200);
+                this.AddFood(400);
                 this.AddWater(10);
             }
         }
