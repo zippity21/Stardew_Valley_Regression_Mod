@@ -16,7 +16,8 @@ namespace PrimevalTitmouse
 
     internal static class Animations
     {
-        private static readonly List<string> NPC_LIST = new List<string> { "Linus", "Krobus", "Dwarf" };
+        //<FIXME> Adding Leo here as a quick fix to a softlock issue due to not having ABDL dialogue written
+        private static readonly List<string> NPC_LIST = new List<string> { "Linus", "Krobus", "Dwarf", "Leo" };
         public static readonly int poopAnimationTime = 2000; //ms
         public static readonly int peeAnimationTime = 2000; //ms
         //Magic Constants
