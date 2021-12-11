@@ -69,11 +69,5 @@ Of course, that food and water have to go somewhere :). You now also have to wor
 - Go in your pants! Of course, if you want to do that, you may want to consider some protection. (Available at the seed shop.)
  - If you do this too much, you may just find that it becomes a little harder to stop yourself. If you even notice, that is.
 
-
-## Known issues / Ideas (also check the Issues page in GitHub for anything that I didn't put here)
-### Issues
-- Only one NPC will notice if you pee/poo, even if there are multiple in the radius.
-
-### Ideas
-- More meaningful debuffs for having accidents/incontinence. Let's face it, if there is no disincentive, I think this community will speedrun to diapers, and then all challenge is gone.
-- More villager interactions/dialouge. It'd be nice, but I definitely would need help with specific ideas and writing.
+## Issues and Ideas
+Please feel free to ask questions, report bugs, and request features on the GitHub page.
