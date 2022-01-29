@@ -25,8 +25,8 @@ I am unable to locate the original author of this code, who posted it back in 20
 
 ## Installation Instructions
 ### Prerequisites
-- Stardew Valley (version 1.5.5-beta)
-- SMAPI (version 3.13.0-beta.20211018)
+- Stardew Valley (version 1.5.6)
+- SMAPI (version 3.13.4)
 - PyTk (version 1.22.8)
 
 ## Installation
