@@ -35,6 +35,11 @@ Follow instructions provided by the individual prerequisite mods and programs.
 1) Download the [latest release](https://github.com/zippity21/Stardew_Valley_Regression_Mod/releases). Be careful that you don't download the source code. The release is the one that contains Regression.dll.
 2) Unzip contents of the release into the Mods directory created during SMAPI installation.
 > This should produce a folder "Regression Mod" which should contain two other folders (among other things), "Regression" and "Regression Dialogue".
+- Stardew Valley
+  - Mods
+    - Regression Mod
+      - Regression
+      - Regression Dialogue  
 
 ## Controls (Changed compared to original mod)
 ### Typical
@@ -74,3 +79,29 @@ Of course, that food and water have to go somewhere :). You now also have to wor
 
 ## Issues and Ideas
 Please feel free to ask questions, report bugs, and request features on the GitHub page.
+
+### Issue Report Guidance
+Please include the following in the issue report:
+
+#### Issue Description
+Try to be as specific as possible. 
+- What were you trying to do?
+- What did you expect to happen versus what actually happened?
+- Where were you and when?
+
+#### SMAPI Log
+##### Enable Content Patcher's verbose logging
+1. Open SMAPI's smapi-internal/StardewModdingAPI.config.json in a text editor
+2. Change `"VerboseLogging": false` to `"VerboseLogging": true`
+3. Save the file.
+
+##### Obtain the log
+1. Run the game until you encounter the issue.
+2. Exit the game.
+3. Press the Windows and R buttons at the same time.
+4. In the 'run' box that appears, enter this exact text:
+5. %appdata%\StardewValley\ErrorLogs
+6. The log file is SMAPI-crash.txt if it exists, otherwise SMAPI-latest.txt.
+
+#### Save file
+If you can provide the save file, it would help in debugging since your situation can be more easily be reproduced.
