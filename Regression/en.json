@@ -534,6 +534,715 @@
 		"$UNDERWEAR_DESC$ with poop squishing out"
 	],
 	"Consumables": {
+	//
+	//Working on creating entries for every consumable. Initial calorieContent is being set to 20x HP additive, with some exceptions: Flowers, except Dandelion, are 100 across the board; Drink products are 10x HP additive; items that probably shouldn't be consumed in their current form are 10x HP additive.
+	//Water values are arbitrary, but should be accurate to each other relatively. Poisons mean vomitting, indigestion, and other issues, therefore poisonous items cause a loss to calories and water.
+		//
+		//Crops
+		//With a lot of these, I figured the high calorie count can be considered as oversized vegetables because of that magic meteor soil? Eating is tedious if these are set too low, after all.
+			//
+			//Veggies
+			//
+		"Amaranth": {
+			"name": "Amaranth",
+			"waterContent": 000,
+			"calorieContent": 220
+		},
+		"Artichoke": {
+			"name": "Artichoke",
+			"waterContent": 400,
+			"calorieContent": 260
+		},
+		"Beet": {
+			"name": "Beet",
+			"waterContent": 50,
+			"calorieContent": 260
+		},
+		"Bok Choy": {
+			"name": "Bok Choy",
+			"waterContent": 50,
+			"calorieContent": 220
+		},
+		"Corn": {
+			"name": "Corn",
+			"waterContent": 50,
+			"calorieContent": 220
+		},
+		"Eggplant": {
+			"name": "Eggplant",
+			"waterContent": 100,
+			"calorieContent": 180
+		},
+		"Fiddlehead Fern": {
+			"name": "Fiddlehead Fern",
+			"waterContent": 000,
+			"calorieContent": 220
+		},
+		"Garlic": {
+			"name": "Garlic",
+			"waterContent": 000,
+			"calorieContent": 180
+		},
+		"Green Bean": {
+			"name": "Green Bean",
+			"waterContent": 000,
+			"calorieContent": 220
+		},
+		"Hops": {
+			"name": "Hops",
+			"waterContent": 000,
+			"calorieContent": 200
+		},
+		"Kale": {
+			"name": "Kale",
+			"waterContent": 50,
+			"calorieContent": 440
+		},
+		"Parsnip": {
+			"name": "Parsnip",
+			"waterContent": 50,
+			"calorieContent": 220
+		},
+		"Potato": {
+			"name": "Potato",
+			"waterContent": 000,
+			"calorieContent": 220
+		},
+		"Radish": {
+			"name": "Radish",
+			"waterContent": 50,
+			"calorieContent": 400
+		},
+		"Red Cabbage": {
+			"name": "Red Cabbage",
+			"waterContent": 50,
+			"calorieContent": 660
+		},
+		"Taro Root": {
+			"name": "Taro Root",
+			"waterContent": 000,
+			"calorieContent": 170
+		},
+		"Tomato": {
+			"name": "Tomato",
+			"waterContent": 250,
+			"calorieContent": 180
+		},
+		"Unmill Rice": {
+			"name": "Unmill Rice",
+			"waterContent": 000,
+			"calorieContent": 20
+		},
+		"Yam": {
+			"name": "Yam",
+			"waterContent": 000,
+			"calorieContent": 400
+		},
+			//
+			//Fruit
+			//
+		"Apple": {
+			"name": "Apple",
+			"waterContent": 200,
+			"calorieContent": 340
+		},
+		"Apricot": {
+			"name": "Apricot",
+			"waterContent": 200,
+			"calorieContent": 340
+		},
+		"Banana": {
+			"name": "Banana",
+			"waterContent": 100,
+			"calorieContent": 660
+		},
+		"Blackberry": {
+			"name": "Blackberry",
+			"waterContent": 100,
+			"calorieContent": 220
+		},
+		"Blueberry": {
+			"name": "Blueberry",
+			"waterContent": 100,
+			"calorieContent": 220
+		},
+		"Cactus Fruit": {
+			"name": "Cactus Fruit",
+			"waterContent": 100,
+			"calorieContent": 660
+		},
+		"Cherry": {
+			"name": "Cherry",
+			"waterContent": 50,
+			"calorieContent": 340
+		},
+		"Cranberries": {
+			"name": "Cranberries",
+			"waterContent": 50,
+			"calorieContent": 340
+		},
+		"Crystal Fruit": {
+			"name": "Crystal Fruit",
+			"waterContent": 150,
+			"calorieContent": 560
+		},
+		"Grape": {
+			"name": "Grape",
+			"waterContent": 200,
+			"calorieContent": 340
+		},
+		"Hot Pepper": {
+			"name": "Hot Pepper",
+			"waterContent": -50,
+			"calorieContent": 100
+		},
+		"Mango": {
+			"name": "Mango",
+			"waterContent": 200,
+			"calorieContent": 900
+		},
+		"Melon": {
+			"name": "Melon",
+			"waterContent": 300,
+			"calorieContent": 1000
+		},
+		"Orange": {
+			"name": "Orange",
+			"waterContent": 150,
+			"calorieContent": 340
+		},
+		"Peach": {
+			"name": "Peach",
+			"waterContent": 250,
+			"calorieContent": 340
+		},
+		"Pineapple": {
+			"name": "Pineapple",
+			"waterContent": 350,
+			"calorieContent": 1240
+		},
+		"Pomegranate": {
+			"name": "Pomegranate",
+			"waterContent": 100,
+			"calorieContent": 340
+		},
+		"Qi Fruit": {
+			"name": "Qi Fruit",
+			"waterContent": 10,
+			"calorieContent": 20
+		},
+		"Salmonberry": {
+			"name": "Salmonberry",
+			"waterContent": 50,
+			"calorieContent": 220
+		},
+		"Spice Berry": {
+			"name": "Spice Berry",
+			"waterContent": 100,
+			"calorieContent": 220
+		},
+		"Starfruit": {
+			"name": "Starfruit",
+			"waterContent": 250,
+			"calorieContent": 1120
+		},
+		"Strawberry": {
+			"name": "Strawberry",
+			"waterContent": 100,
+			"calorieContent": 440
+		},
+		"Wild Plum": {
+			"name": "Wild Plum",
+			"waterContent": 100,
+			"calorieContent": 220
+		},
+			//
+			//Flower
+			//
+		"Blue Jazz": {
+			"name": "Blue Jazz",
+			"waterContent": 000,
+			"calorieContent": 150
+		},
+		"Crocus": {
+			"name": "Crocus",
+			"waterContent": 000,
+			"calorieContent": 150
+		},
+		"Fairy Rose": {
+			"name": "Fairy Rose",
+			"waterContent": 000,
+			"calorieContent": 150
+		},
+		"Poppy": {
+			"name": "Poppy",
+			"waterContent": 000,
+			"calorieContent": 150
+		},
+		"Summer Spangle": {
+			"name": "Summer Spangle",
+			"waterContent": 000,
+			"calorieContent": 150
+		},
+		"Sunflower": {
+			"name": "Sunflower",
+			"waterContent": 000,
+			"calorieContent": 150
+		},
+		"Sweet Pea": {
+			"name": "Sweet Pea",
+			"waterContent": 000,
+			"calorieContent": 150
+		},
+		"Tulip": {
+			"name": "Tulip",
+			"waterContent": 000,
+			"calorieContent": 150
+		},
+			//
+			//Forage
+			//
+		"Cave Carrot": {
+			"name": "Cave Carrot",
+			"waterContent": 000,
+			"calorieContent": 260
+		},
+		"Chanterelle": {
+			"name": "Chanterelle",
+			"waterContent": 000,
+			"calorieContent": 660
+		},
+		"Common Mushroom": {
+			"name": "Common Mushroom",
+			"waterContent": 000,
+			"calorieContent": 340
+		},
+		"Daffodil": {
+			"name": "Daffodil",
+			"waterContent": 000,
+			"calorieContent": 10
+		},
+		"Dandelion": {
+			"name": "Dandelion",
+			"waterContent": 000,
+			"calorieContent": 220
+		},
+		"Ginger": {
+			"name": "Ginger",
+			"waterContent": -50,
+			"calorieContent": 110
+		},
+		"Hazelnut": {
+			"name": "Hazelnut",
+			"waterContent": 000,
+			"calorieContent": 260
+		},
+		"Holly": {
+			"name": "Holly",
+			"waterContent": -500,
+			"calorieContent": -740
+		},
+		"Leek": {
+			"name": "Leek",
+			"waterContent": 50,
+			"calorieContent": 360
+		},
+		"Magma Cap": {
+			"name": "Magma Cap",
+			"waterContent": -500,
+			"calorieContent": 1560
+		},
+		"Morel": {
+			"name": "Morel",
+			"waterContent": 000,
+			"calorieContent": 180
+		},
+		"Purple Mushroom": {
+			"name": "Purple Mushroom",
+			"waterContent": 000,
+			"calorieContent": 1120
+		},
+		"Red Mushroom": {
+			"name": "Red Mushroom",
+			"waterContent": -500,
+			"calorieContent": -1000
+		},
+		"Sap": {
+			"name": "Sap",
+			"waterContent": -20,
+			"calorieContent": -40
+		},
+		"Snow Yam": {
+			"name": "Snow Yam",
+			"waterContent": 000,
+			"calorieContent": 260
+		},
+		"Spring Onion": {
+			"name": "Spring Onion",
+			"waterContent": 000,
+			"calorieContent": 100
+		},
+		"Wild Horseradish": {
+			"name": "Wild Horseradish",
+			"waterContent": -50,
+			"calorieContent": 100
+		},
+		"Winter Root": {
+			"name": "Winter Root",
+			"waterContent": 000,
+			"calorieContent": 220
+		},
+		//
+		//Animal Drops
+		//
+		"Duck Egg": {
+			"name": "Duck Egg",
+			"waterContent": 000,
+			"calorieContent": 340
+		},
+		"Egg": {
+			"name": "Egg",
+			"waterContent": 000,
+			"calorieContent": 220
+		},
+		"Goat Milk": {
+			"name": "Goat Milk",
+			"waterContent": 000,
+			"calorieContent": 280
+		},
+		"Golden Egg": {
+			"name": "Golden Egg",
+			"waterContent": 000,
+			"calorieContent": 220
+		},
+		"L. Goat Milk": {
+			"name": "L. Goat Milk",
+			"waterContent": 000,
+			"calorieContent": 390
+		},
+		"Large Egg": {
+			"name": "Large Egg",
+			"waterContent": 000,
+			"calorieContent": 340
+		},
+		"Large Milk": {
+			"name": "Large Milk",
+			"waterContent": 000,
+			"calorieContent": 220
+		},
+		"Milk": {
+			"name": "Milk",
+			"waterContent": 000,
+			"calorieContent": 170
+		},
+		"Ostrich Egg": {
+			"name": "Ostrich Egg",
+			"waterContent": 000,
+			"calorieContent": 340
+		},
+		"Truffle": {
+			"name": "Truffle",
+			"waterContent": 000,
+			"calorieContent": 100
+		},
+		"Void Egg": {
+			"name": "Void Egg",
+			"waterContent": 000,
+			"calorieContent": 340
+		},
+		//
+		//Cooking
+		//
+		"Algae Soup": {
+			"name": "Algae Soup",
+			"waterContent": 660,
+			"calorieContent": 660
+		},
+		"Artichoke Dip": {
+			"name": "Artichoke Dip",
+			"waterContent": 000,
+			"calorieContent": 900
+		},
+		"Autumn's Bounty": {
+			"name": "Autumn's Bounty",
+			"waterContent": 000,
+			"calorieContent": 1980
+		},
+		"Baked Fish": {
+			"name": "Baked Fish",
+			"waterContent": 000,
+			"calorieContent": 660
+		},
+		"Banana Pudding": {
+			"name": "Banana Pudding",
+			"waterContent": 000,
+			"calorieContent": 1120
+		},
+		"Bean Hotpot": {
+			"name": "Bean Hotpot",
+			"waterContent": 000,
+			"calorieContent": 1120
+		},
+		"Blackberry Cobbler": {
+			"name": "Blackberry Cobbler",
+			"waterContent": 000,
+			"calorieContent": 1560
+		},
+		"Blueberry Tart": {
+			"name": "Blueberry Tart",
+			"waterContent": 000,
+			"calorieContent": 1120
+		},
+		"Bread": {
+			"name": "Bread",
+			"waterContent": 000,
+			"calorieContent": 440
+		},
+		"Bruschetta": {
+			"name": "Bruschetta",
+			"waterContent": 000,
+			"calorieContent": 1000
+		},
+		"Cheese Cauliflower": {
+			"name": "Cheese Cauliflower",
+			"waterContent": 000,
+			"calorieContent": 1240
+		},
+		"Chocolate Cake": {
+			"name": "Chocolate Cake",
+			"waterContent": 000,
+			"calorieContent": 13400 //200x HP restore because that sprite is a goddamned three tier cake. Have fun filling your pamps.
+		},
+		"Chowder": {
+			"name": "Chowder",
+			"waterContent": 150,
+			"calorieContent": 2020 //Pretty big bowl of Chowder, lol
+		},
+		"Coleslaw": {
+			"name": "Coleslaw",
+			"waterContent": 000,
+			"calorieContent": 1900 //How large are these portions? Are we making a gallon at a time and eating it in one sitting?
+		},
+		"Complete Breakfast": {
+			"name": "Complete Breakfast",
+			"waterContent": 000,
+			"calorieContent": 180
+		},
+		"Cookie": {
+			"name": "Cookie",
+			"waterContent": 000,
+			"calorieContent": 800
+		},
+		"Crab Cakes": {
+			"name": "Crab Cakes",
+			"waterContent": 000,
+			"calorieContent": 2020
+		},
+		"Cranberry Candy": {
+			"name": "Cranberry Candy",
+			"waterContent": 000,
+			"calorieContent": 1120
+		},
+		"Cranberry Sauce": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 1120
+		},
+		"Crispy Bass": {
+			"name": "Crispy Bass", //A delicious, crispy musical instrument.
+			"waterContent": 000,
+			"calorieContent": 800
+		},
+		"Dish O' The Sea": {
+			"name": "Dish O' The Sea",
+			"waterContent": 000,
+			"calorieContent": 1340
+		},
+		"Eggplant Parmesan": {
+			"name": "Eggplant Parmesan",
+			"waterContent": 000,
+			"calorieContent": 1560
+		},
+		"Escargot": {
+			"name": "Escargot",
+			"waterContent": 000,
+			"calorieContent": 2020
+		},
+		"Farmer's Lunch": {
+			"name": "Farmer's Lunch",
+			"waterContent": 000,
+			"calorieContent": 1800
+		},
+		"Fiddlehead Risotto": {
+			"name": "Fiddlehead Risotto",
+			"waterContent": 000,
+			"calorieContent": 2020
+		},
+		"Fish Stew": {
+			"name": "Fish Stew",
+			"waterContent": 000,
+			"calorieContent": 2020
+		},
+		"Fish Taco": {
+			"name": "Fish Taco",
+			"waterContent": 000,
+			"calorieContent": 148
+		},
+		"Fried Calamari": {
+			"name": "Fried Calamari",
+			"waterContent": 000,
+			"calorieContent": 720
+		},
+		"Fried Eel": {
+			"name": "Fried Eel",
+			"waterContent": 000,
+			"calorieContent": 660
+		},
+		"Fried Egg": {
+			"name": "Fried Egg",
+			"waterContent": 000,
+			"calorieContent": 440
+		},
+		"Fried Mushroom": {
+			"name": "Fried Mushroom",
+			"waterContent": 000,
+			"calorieContent": 1200
+		},
+		"Fruit Salad": {
+			"name": "Fruit Salad",
+			"waterContent": 100,
+			"calorieContent": 2360
+		},
+		"Ginger Ale": {
+			"name": "Ginger Ale",
+			"waterContent": 150,
+			"calorieContent": 560
+		},
+		"Glazed Yams": {
+			"name": "Glazed Yams",
+			"waterContent": 000,
+			"calorieContent": 1800
+		},
+		"Hashbrowns": {
+			"name": "Hashbrowns",
+			"waterContent": 000,
+			"calorieContent": 800
+		},
+		"Ice Cream": {
+			"name": "Ice Cream",
+			"waterContent": 000,
+			"calorieContent": 900
+		},
+		"Life Elixir": {
+			"name": "Life Elixir", //"Restores health to full." ....Then why do some foods restore more health than this?
+			"waterContent": 500,
+			"calorieContent": 1800
+		},
+		"Lobster Bisque": {
+			"name": "Lobster Bisque",
+			"waterContent": 000,
+			"calorieContent": 2020
+		},
+		"Lucky Lunch": {
+			"name": "Lucky Lunch",
+			"waterContent": 000,
+			"calorieContent": 900
+		},
+		"Magic Rock Candy": {
+			"name": "Magic Rock Candy",
+			"waterContent": 000,
+			"calorieContent": 4500
+		},
+		"Maki Roll": {
+			"name": "Maki Roll",
+			"waterContent": 000,
+			"calorieContent": 900
+		},
+		"Mango Sticky Rice": {
+			"name": "Mango Sticky Rice",
+			"waterContent": 000,
+			"calorieContent": 1000
+		},
+		"Maple Bar": {
+			"name": "Maple Bar", //Weird name for a maple donut, but okay.
+			"waterContent": 000,
+			"calorieContent": 2020
+		},
+		"Miner's Treat": {
+			"name": "Miner's Treat",
+			"waterContent": 000,
+			"calorieContent": 1120
+		},
+		"Oil": {
+			"name": "Oil",
+			"waterContent": 000,
+			"calorieContent": 100
+		},
+		"Oil of Garlic": {
+			"name": "Oil of Garlic",
+			"waterContent": 000,
+			"calorieContent": 1800
+		},
+		"Omelet": {
+			"name": "Omelet",
+			"waterContent": 000,
+			"calorieContent": 900
+		},
+		"Pale Broth": {
+			"name": "Pale Broth",
+			"waterContent": 400,
+			"calorieContent": 1120
+		},
+		"Pancakes": {
+			"name": "Pancakes",
+			"waterContent": 000,
+			"calorieContent": 800
+		},
+		"Parsnip Soup": {
+			"name": "Parsnip Soup",
+			"waterContent": 500,
+			"calorieContent": 760
+		},
+		"Pepper Poppers": {
+			"name": "Pepper Poppers",
+			"waterContent": 000,
+			"calorieContent": 1160
+		},
+		"Piña Colada": {
+			"name": "Piña Colada",
+			"waterContent": 400,
+			"calorieContent": 660
+		},
+		"Pink Cake": {
+			"name": "Pink Cake",
+			"waterContent": 000,
+			"calorieContent": 11200 //x100 because single layer entire goddamned cake.
+		},
+		"Pizza": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 1340
+		},
+		"Plum Pudding": {
+			"name": "Plum Pudding",
+			"waterContent": 000,
+			"calorieContent": 1560 //Getting bored at this point, I'll pick it up again after some playtesting.
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
 		"Cola": {
 			"name": "Cola",
 			"waterContent": 240,
