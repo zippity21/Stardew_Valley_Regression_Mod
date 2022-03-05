@@ -137,7 +137,7 @@ namespace PrimevalTitmouse
                     {
                         tickCD2 += 1; //This should trigger multiple times during the eating animation.
                     }
-                    if (tickCD2 >= 4) //I've never had more than three ticks while eating, so 4 ticks gives an extra tick of safety. Due to 2-3 tick duration of eating animation, this should be safe enough to not lose food while eating rapidly. If this occurs, lower to 3.
+                    if (tickCD2 >= 2) //Setting this to 2 should be able to balance preventing double triggers and ensuring no loss in intentional triggers.
                     {
                         tickCD1 = 0;
                         tickCD2 = 0;
