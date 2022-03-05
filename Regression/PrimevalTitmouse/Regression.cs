@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Regression;
 using StardewModdingAPI;
@@ -25,6 +25,8 @@ namespace PrimevalTitmouse
         public bool shiftHeld;
         public static Data t;
         public static Farmer who;
+        private float tickCD1 = 0;
+        private float tickCD2 = 0;
 
         const float timeInTick = (1f/43f); //One second realtime ~= 1/43 hours in game
         public override void Entry(IModHelper h)
@@ -129,12 +131,25 @@ namespace PrimevalTitmouse
 
                 //If time is moving, update our body state (Hunger, thirst, etc.)
                 if (ShouldTimePass())
+                {
                     this.body.HandleTime(timeInTick);
+                    if (tickCD1 != 0) //Former Bug: When consuming items, they would give 2-3 goes at the "Handle eating and drinking." if statement below. Cause: This function would trigger multiple times while the if statement below was still true, causing it to fire multiple times.
+                    {
+                        tickCD2 += 1; //This should trigger multiple times during the eating animation.
+                    }
+                    if (tickCD2 >= 4) //I've never had more than three ticks while eating, so 4 ticks gives an extra tick of safety. Due to 2-3 tick duration of eating animation, this should be safe enough to not lose food while eating rapidly. If this occurs, lower to 3.
+                    {
+                        tickCD1 = 0;
+                        tickCD2 = 0;
+                    }
+                    
+                }
 
                 //Handle eating and drinking.
-                if (Game1.player.isEating && Game1.activeClickableMenu == null)
+                if (Game1.player.isEating && Game1.activeClickableMenu == null && tickCD1 == 0)
                 {
                     body.Consume(who.itemToEat.Name);
+                    tickCD1 += 1;
                 }
         }
 
