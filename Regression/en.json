@@ -550,92 +550,92 @@
 		},
 		"Artichoke": {
 			"name": "Artichoke",
-			"waterContent": 400,
+			"waterContent": 200,
 			"calorieContent": 150 //Two large artichokes, raw
 		},
 		"Beet": {
 			"name": "Beet",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 140 //Four beets, raw
 		},
 		"Bok Choy": {
 			"name": "Bok Choy",
-			"waterContent": 150,
+			"waterContent": 75,
 			"calorieContent": 110 //One head of bok choy, raw
 		},
 		"Corn": {
 			"name": "Corn",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 190 //One large ear of sweet corn, simply cooked
 		},
 		"Eggplant": {
 			"name": "Eggplant",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 150 //One large Eggplant, simply cooked
 		},
 		"Fiddlehead Fern": {
 			"name": "Fiddlehead Fern",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 140 //Four fiddleheads, raw
 		},
 		"Garlic": {
 			"name": "Garlic",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 50 //One large head of garlic, raw
 		},
 		"Green Bean": {
 			"name": "Green Bean",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 160 //Four large greenbeans, raw or simply cooked
 		},
 		"Hops": {
 			"name": "Hops",
-			"waterContent": 100,
+			"waterContent": 25,
 			"calorieContent": 350 //Half cup of hops, can't find a calorie count since people don't actually eat hops, so just using Amaranth's
 		},
 		"Kale": {
 			"name": "Kale",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 100 //Enough kale leaves to match a head of lettuce, raw
 		},
 		"Parsnip": {
 			"name": "Parsnip",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 150 //Two parsnips, raw
 		},
 		"Potato": {
 			"name": "Potato",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 180 //One large potato, 'baked'
 		},
 		"Radish": {
 			"name": "Radish",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 100 //20 radishes at 5calories each, raw. According to every source I can find, a one inch wide radish only contains 1.9 calories. This doesn't seem right, so I bumped it up.
 		},
 		"Red Cabbage": {
 			"name": "Red Cabbage",
-			"waterContent": 150,
+			"waterContent": 75,
 			"calorieContent": 350 //One large head of red cabbage, raw
 		},
 		"Taro Root": {
 			"name": "Taro Root",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 500 //One small taro root (1pound), cooked simply. IRL, Normal taro root, harvested after 8-10 months, is 2-4 pounds. 
 		},
 		"Tomato": {
 			"name": "Tomato",
-			"waterContent": 250,
+			"waterContent": 100,
 			"calorieContent": 140 //Four large tomatoes, raw
 		},
 		"Unmill Rice": {
 			"name": "Unmill Rice",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 350 //Half cup, cooked simply
 		},
 		"Yam": {
 			"name": "Yam",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 180 //One Large yam, cooked simply
 		},
 			//
@@ -643,27 +643,27 @@
 			//
 		"Apple": {
 			"name": "Apple",
-			"waterContent": 200,
+			"waterContent": 100,
 			"calorieContent": 120 //One large apple, raw
 		},
 		"Apricot": {
 			"name": "Apricot",
-			"waterContent": 200,
+			"waterContent": 100,
 			"calorieContent": 100 //Four apricots, raw
 		},
 		"Banana": {
 			"name": "Banana",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 130 //One large banana, raw
 		},
 		"Blackberry": {
 			"name": "Blackberry",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 140 //Two cups of blackberries, raw
 		},
 		"Blueberry": {
 			"name": "Blueberry",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 170 //Two cups of blueberries, raw
 		},
 		"Cactus Fruit": {
@@ -688,7 +688,7 @@
 		},
 		"Grape": {
 			"name": "Grape",
-			"waterContent": 200,
+			"waterContent": 100,
 			"calorieContent": 220 //Two cups of grapes, raw
 		},
 		"Hot Pepper": {
@@ -698,32 +698,32 @@
 		},
 		"Mango": {
 			"name": "Mango",
-			"waterContent": 200,
+			"waterContent": 100,
 			"calorieContent": 135 //One Mango, raw
 		},
 		"Melon": {
 			"name": "Melon",
-			"waterContent": 300,
+			"waterContent": 125,
 			"calorieContent": 500 //One large honeydew melon as reference for the stardew melon, raw
 		},
 		"Orange": {
 			"name": "Orange",
-			"waterContent": 150,
+			"waterContent": 100,
 			"calorieContent": 100 //One large orange, raw
 		},
 		"Peach": {
 			"name": "Peach",
-			"waterContent": 250,
+			"waterContent": 100,
 			"calorieContent": 130 //Two peaches, raw
 		},
 		"Pineapple": {
 			"name": "Pineapple",
-			"waterContent": 350,
+			"waterContent": 125,
 			"calorieContent": 300 //One large pineapple, raw. Your mouth is gonna tingle after eating this.
 		},
 		"Pomegranate": {
 			"name": "Pomegranate",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 130 //One large pomegranate, raw
 		},
 		"Qi Fruit": {
@@ -733,27 +733,27 @@
 		},
 		"Salmonberry": {
 			"name": "Salmonberry",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 150 //Two cups of salmonberries, raw
 		},
 		"Spice Berry": {
 			"name": "Spice Berry",
-			"waterContent": -50,
+			"waterContent": -25,
 			"calorieContent": 180 //Two cups of spice berries, raw
 		},
 		"Starfruit": {
 			"name": "Starfruit",
-			"waterContent": 250,
+			"waterContent": 125,
 			"calorieContent": 400 //RL starfruits are about 40 calories each; this fruit seems to be quite different from those, though
 		},
 		"Strawberry": {
 			"name": "Strawberry",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 100 //Two cups of strawberries, raw
 		},
 		"Wild Plum": {
 			"name": "Wild Plum",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 120 //Four plums, raw
 		},
 			//
@@ -761,42 +761,42 @@
 			//
 		"Blue Jazz": {
 			"name": "Blue Jazz",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 50
 		},
 		"Crocus": {
 			"name": "Crocus",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 50
 		},
 		"Fairy Rose": {
 			"name": "Fairy Rose",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 50
 		},
 		"Poppy": {
 			"name": "Poppy",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 50
 		},
 		"Summer Spangle": {
 			"name": "Summer Spangle",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 50
 		},
 		"Sunflower": {
 			"name": "Sunflower",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 200 //Sunflower seeds are boosting this over other flowers
 		},
 		"Sweet Pea": {
 			"name": "Sweet Pea",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 50
 		},
 		"Tulip": {
 			"name": "Tulip",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 50
 		},
 			//
@@ -804,27 +804,27 @@
 			//
 		"Cave Carrot": {
 			"name": "Cave Carrot",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 120 //Four large carrots, raw
 		},
 		"Chanterelle": {
 			"name": "Chanterelle",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 50 //Two cups of chanterelle. These things are worse than kale for calories...
 		},
 		"Common Mushroom": {
 			"name": "Common Mushroom",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 100 //Two cups of Shiitake, raw
 		},
 		"Daffodil": {
 			"name": "Daffodil",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 50
 		},
 		"Dandelion": {
 			"name": "Dandelion",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 60
 		},
 		"Ginger": {
@@ -844,7 +844,7 @@
 		},
 		"Leek": {
 			"name": "Leek", //Must... Not... Spin...
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 110 //Two leeks, raw
 		},
 		"Magma Cap": {
@@ -854,12 +854,12 @@
 		},
 		"Morel": {
 			"name": "Morel",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 40 //Two cups of morels. And I thought the chanterelles were bad...
 		},
 		"Purple Mushroom": {
 			"name": "Purple Mushroom",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 750 //Half of magmacap
 		},
 		"Red Mushroom": {
@@ -874,12 +874,12 @@
 		},
 		"Snow Yam": {
 			"name": "Snow Yam",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 180 //One Large yam, cooked simply
 		},
 		"Spring Onion": {
 			"name": "Spring Onion",
-			"waterContent": 000,
+			"waterContent": 25,
 			"calorieContent": 800 //One hundred large scallions, only because this is the "starter" food
 		},
 		"Wild Horseradish": {
@@ -889,7 +889,7 @@
 		},
 		"Winter Root": {
 			"name": "Winter Root",
-			"waterContent": 100,
+			"waterContent": 25,
 			"calorieContent": 300 //Since Winter Root is a tuber, I just picked a random one. Winged bean tuber it is! Half cup sized tubers.
 		},
 		//
@@ -897,12 +897,12 @@
 		//
 		"Duck Egg": {
 			"name": "Duck Egg",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 80 //One 'USDA medium' egg
 		},
 		"Egg": {
 			"name": "Egg",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 80 //One 'USDA medium' egg
 		},
 		"Goat Milk": {
@@ -912,8 +912,8 @@
 		},
 		"Golden Egg": {
 			"name": "Golden Egg",
-			"waterContent": 000,
-			"calorieContent": 220
+			"waterContent": 50,
+			"calorieContent": 360 //One 'USDA medium' gold flake lined egg
 		},
 		"L. Goat Milk": {
 			"name": "L. Goat Milk",
@@ -922,7 +922,7 @@
 		},
 		"Large Egg": {
 			"name": "Large Egg",
-			"waterContent": 000,
+			"waterContent": 75,
 			"calorieContent": 130 //One 'USDA extra-large' egg
 		},
 		"Large Milk": {
@@ -937,36 +937,36 @@
 		},
 		"Ostrich Egg": {
 			"name": "Ostrich Egg",
-			"waterContent": 100,
+			"waterContent": 200,
 			"calorieContent": 2000
 		},
 		"Truffle": {
 			"name": "Truffle",
-			"waterContent": 50,
+			"waterContent": 25,
 			"calorieContent": 70 //One whole, raw truffle. I feel sorry for the poor soul eating this...
 		},
 		"Void Egg": {
 			"name": "Void Egg",
-			"waterContent": 100,
+			"waterContent": 50,
 			"calorieContent": 360 // One 'USDA jumbo' void egg
 		},
 		//
 		//Cooking
-		//
+		//Will try looking up calorie counts for similar items. The rest will be done by adding ingredient calories and see how it looks. 
 		"Algae Soup": {
 			"name": "Algae Soup",
 			"waterContent": 660,
-			"calorieContent": 660
+			"calorieContent": 760 
 		},
 		"Artichoke Dip": {
 			"name": "Artichoke Dip",
-			"waterContent": 000,
-			"calorieContent": 900
+			"waterContent": 200, 
+			"calorieContent": 900 //2cups
 		},
 		"Autumn's Bounty": {
-			"name": "Autumn's Bounty",
+			"name": "Autumn's Bounty", //1 whole extra large pumpkin makes about 36cups of cooked pumpkin. 1 cup is about 100 calories. Assuming not oversized pumpkins, 24 cups of cooked pumpkin seems fine.
 			"waterContent": 000,
-			"calorieContent": 1980
+			"calorieContent": 2580
 		},
 		"Baked Fish": {
 			"name": "Baked Fish",
@@ -975,33 +975,33 @@
 		},
 		"Banana Pudding": {
 			"name": "Banana Pudding",
-			"waterContent": 000,
-			"calorieContent": 1120
+			"waterContent": 590,
+			"calorieContent": 1000 //2cups
 		},
 		"Bean Hotpot": {
 			"name": "Bean Hotpot",
 			"waterContent": 000,
-			"calorieContent": 1120
+			"calorieContent": 600 //4cups
 		},
 		"Blackberry Cobbler": {
 			"name": "Blackberry Cobbler",
 			"waterContent": 000,
-			"calorieContent": 1560
+			"calorieContent": 2500 //About 4cups filling and one cup crust
 		},
 		"Blueberry Tart": {
 			"name": "Blueberry Tart",
 			"waterContent": 000,
-			"calorieContent": 1120
+			"calorieContent": 520 //About 2cups in volume
 		},
 		"Bread": {
 			"name": "Bread",
 			"waterContent": 000,
-			"calorieContent": 440
+			"calorieContent": 900 //Calories in standard baguette
 		},
 		"Bruschetta": {
 			"name": "Bruschetta",
 			"waterContent": 000,
-			"calorieContent": 1000
+			"calorieContent": 1200 //Big piece, but it uses an entire loaf of bread, so...
 		},
 		"Cheese Cauliflower": {
 			"name": "Cheese Cauliflower",
@@ -1227,6 +1227,436 @@
 			"name": "Plum Pudding",
 			"waterContent": 000,
 			"calorieContent": 1560 //Getting bored at this point, I'll pick it up again after some playtesting.
+		},
+		"Poi": {
+			"name": "Poi",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Poppyseed Muffin": {
+			"name": "Poppyseed Muffin",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Pumpkin Pie": {
+			"name": "Pumpkin Pie",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Pumpkin Soup": {
+			"name": "Pumpkin Soup",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Radish Salad": {
+			"name": "Radish Salad",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Red Plate": {
+			"name": "Red Plate",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Rhubarb Pie": {
+			"name": "Rhubarb Pie",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Rice": {
+			"name": "Rice",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Rice Pudding": {
+			"name": "Rice Pudding",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Roasted Hazelnuts": {
+			"name": "Roasted Hazelnuts",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Roots Platter": {
+			"name": "Roots Platter",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Salad": {
+			"name": "Salad",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Salmon Dinner": {
+			"name": "Salmon Dinner",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Sashimi": {
+			"name": "Sashimi",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Seafoam Pudding": {
+			"name": "Seafoam Pudding",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Shrimp Cocktail": {
+			"name": "Shrimp Cocktail",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Spaghetti": {
+			"name": "Spaghetti",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Spicy Eel": {
+			"name": "Spicy Eel",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Squid Ink Ravioli": {
+			"name": "Squid Ink Ravioli",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Stir Fry": {
+			"name": "Stir Fry",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Strange Bun": {
+			"name": "Strange Bun",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Stuffing": {
+			"name": "Stuffing",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Sugar": {
+			"name": "Sugar", //Beets UOM is 4 beets per item to get calorie. 1 beet has about 6g sugar, 20 24g per 1 item. Therefore, 8g of sugar per 1 sugar item.
+			"waterContent": 000,
+			"calorieContent": 35
+		},
+		"Super Meal": {
+			"name": "Super Meal",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Survivor Burger": {
+			"name": "Survivor Burger",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Tom Kha Soup": {
+			"name": "Tom Kha Soup",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Tortilla": {
+			"name": "Tortilla",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Triple Shot Espresso": {
+			"name": "Triple Shot Espresso",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Tropical Curry": {
+			"name": "Tropical Curry",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Trout Soup": {
+			"name": "Trout Soup",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Vegetable Medley": {
+			"name": "Vegetable Medley",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Wheat Flour": {
+			"name": "Wheat Flour",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
+		},
+		"Namae": {
+			"name": "Namae",
+			"waterContent": 000,
+			"calorieContent": 000
 		},
 		"Namae": {
 			"name": "Namae",
