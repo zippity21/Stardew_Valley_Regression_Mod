@@ -1,11 +1,11 @@
 # Stardew Valley Regression Mod
-Ported version of abandoned Mod for Stardew Valley that added a system for hunger, thirst and incontinence.
+SDV Regression mod is a needs mod for Stardew Valley that adds a system for hunger, thirst and incontinence, along with ABDL themed NPC dialgoue and plans for more future content.
 
 ## Authorship and Attributions
-I am unable to locate the original author of this code, who posted it back in 2017. However, there is a list of contributors and playtesters inside one of the files, identified by their reddit.com usernames.
+The Original Author is u/Primeval_Titmouse, who has long since deleted his reddit account and has left no other identifying or contact details.
 
 ### Thank you to the identified previous maintainers
-- Fox Tale Times User: oniryuuko
+- Fox Tale Times User: oniryuuko (now contributing on github under the same name)
 - Fox Tale Times User: SabrinaM
 - Fox Tale Times User: Jon
 
@@ -69,13 +69,13 @@ Follow instructions provided by the individual prerequisite mods and programs.
 - Left Alt + Left Shift + S: Decrease Bowel Continence
 
 ## Basic Mechanics
-You now get hungry and thristy over time, and from doing work. Getting too hungry/thirsty gives you de-buffs. You can become less hungry by eating food, and less thirst by drinking beverages (including water from a water source, your watering can, or things like wine, coffee, etc.).
+You now get hungry and thristy over time and from doing work. Getting too hungry or thirsty gives you de-buffs. Of course, you can alleviate your hunger by eating food, and slake your thirst by drinking beverages (including water from a water source, your watering can, or things like wine, coffee, etc.).
 
-Of course, that food and water have to go somewhere :). You now also have to worry about having to go potty. Your bladder and bowels increase naturally over time, and will increase more/faster depending on what you eat/drink. Currently the only toilet is in your house, so if you're out and about, you have a few options:
+Just remember, what goes in will eventually come out. You now also have to worry about managing your more private needs. The fullness of your bladder and bowels increase naturally over time, given that you're neither starving nor dying of thirst. Be careful not to over eat or over drink though, it'll quickly pass through you! Currently the only toilet is in your house, so if you're out and about, you have a few options:
 - Try to hold it and run home to use the potty like a big boy/girl.
-- Pull down your pants and go right where you are. (watch out if anyone can see/smell you)
-- Go in your pants! Of course, if you want to do that, you may want to consider some protection. (Available at the seed shop.)
- - If you do this too much, you may just find that it becomes a little harder to stop yourself. If you even notice, that is.
+- Pull down your pants and go right where you are. But be warned! If anyone can see/smell you, they may not quite appreciate your 'performance'!
+- Go in your pants! Of course, if you want to do that, you may want to consider some protection, available at Pierre's Seed Shop, who is definitely not our sponsor!
+ - If you rely too much on your protection, though, you may just find that it becomes a little bit harder to stop yourself. If you even notice, that is.
 
 ## Issues and Ideas
 Please feel free to ask questions, report bugs, and request features on the GitHub page.
@@ -98,10 +98,10 @@ Try to be as specific as possible.
 ##### Obtain the log
 1. Run the game until you encounter the issue.
 2. Exit the game.
-3. Press the Windows and R buttons at the same time.
+3. Press the 'Windows' and 'R' buttons at the same time.
 4. In the 'run' box that appears, enter this exact text:
 5. %appdata%\StardewValley\ErrorLogs
 6. The log file is SMAPI-crash.txt if it exists, otherwise SMAPI-latest.txt.
 
 #### Save file
-If you can provide the save file, it would help in debugging since your situation can be more easily be reproduced.
+For most bugs, one of the biggest aids is the Save File, as it would help in debugging the reported issue by more easily recreating the prerequisite conditions.
