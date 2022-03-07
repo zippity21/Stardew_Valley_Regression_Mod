@@ -907,7 +907,7 @@
 		},
 		"Goat Milk": {
 			"name": "Goat Milk",
-			"waterContent": 490, //16oz ~ 490mL. Did rounding because the numbers don't have to be perfectly accurate.
+			"waterContent": 470, //16oz ~ 490mL. Did rounding because the numbers don't have to be perfectly accurate.
 			"calorieContent": 340 //16oz of goat milk
 		},
 		"Golden Egg": {
@@ -932,7 +932,7 @@
 		},
 		"Milk": {
 			"name": "Milk",
-			"waterContent": 490,
+			"waterContent": 470,
 			"calorieContent": 300
 		},
 		"Ostrich Egg": {
@@ -1006,127 +1006,127 @@
 		"Cheese Cauliflower": {
 			"name": "Cheese Cauliflower",
 			"waterContent": 000,
-			"calorieContent": 1240
+			"calorieContent": 540 //4 cups
 		},
 		"Chocolate Cake": {
 			"name": "Chocolate Cake",
-			"waterContent": 000,
-			"calorieContent": 13400 //200x HP restore because that sprite is a goddamned three tier cake. Have fun filling your pamps.
+			"waterContent": 250,
+			"calorieContent": 28800 //A three tier cake with icing would be about 18 pounds(288oz), according to a baker's website. Have fun filling your pamps.
 		},
 		"Chowder": {
 			"name": "Chowder",
 			"waterContent": 150,
-			"calorieContent": 2020 //Pretty big bowl of Chowder, lol
+			"calorieContent": 640 //4 cups
 		},
 		"Coleslaw": {
 			"name": "Coleslaw",
-			"waterContent": 000,
-			"calorieContent": 1900 //How large are these portions? Are we making a gallon at a time and eating it in one sitting?
+			"waterContent": 25,
+			"calorieContent": 1000 //4 cups
 		},
 		"Complete Breakfast": {
 			"name": "Complete Breakfast",
-			"waterContent": 000,
-			"calorieContent": 180
+			"waterContent": 25,
+			"calorieContent": 1700
 		},
 		"Cookie": {
 			"name": "Cookie",
-			"waterContent": 000,
-			"calorieContent": 800
+			"waterContent": 25,
+			"calorieContent": 850 //A dozen cookies, because they're so delicious.
 		},
 		"Crab Cakes": {
 			"name": "Crab Cakes",
-			"waterContent": 000,
-			"calorieContent": 2020
+			"waterContent": 25,
+			"calorieContent": 880 //8 2in wide 3/4inch tall crab cakes.
 		},
 		"Cranberry Candy": {
-			"name": "Cranberry Candy",
-			"waterContent": 000,
-			"calorieContent": 1120
+			"name": "Cranberry Candy", //This item's sprite looks like juice, and is made with apples, so just using cranberry apple juice as reference
+			"waterContent": 470,
+			"calorieContent": 320 //16oz
 		},
 		"Cranberry Sauce": {
-			"name": "Namae",
-			"waterContent": 000,
-			"calorieContent": 1120
+			"name": "Cranberry Sauce", 
+			"waterContent": 25,
+			"calorieContent": 880 //2 cups
 		},
 		"Crispy Bass": {
-			"name": "Crispy Bass", //A delicious, crispy musical instrument.
-			"waterContent": 000,
-			"calorieContent": 800
+			"name": "Crispy Bass", //An average bass weighs about five pounds. Roughly 1/3 of the weight of a large fish is good for typical fish meat. That's still a lot of meat to eat in one sitting.
+			"waterContent": 25,
+			"calorieContent": 1800 //six fillets on each side, about 150calories per bass fillet at that size
 		},
 		"Dish O' The Sea": {
-			"name": "Dish O' The Sea",
-			"waterContent": 000,
-			"calorieContent": 1340
+			"name": "Dish O' The Sea", //Canned or not, sardines are still super salty. Eating a pile of straight sardines sounds painful. At least the hashbrowns don't need any extra salt.
+			"waterContent": -750,
+			"calorieContent": 750
 		},
 		"Eggplant Parmesan": {
 			"name": "Eggplant Parmesan",
 			"waterContent": 000,
-			"calorieContent": 1560
+			"calorieContent": 1240 //4 cups
 		},
 		"Escargot": {
 			"name": "Escargot",
 			"waterContent": 000,
-			"calorieContent": 2020
+			"calorieContent": 520 //16 normal sized escargot snails; just pretending SDV snails are bigger because magic and meteors. lol.
 		},
 		"Farmer's Lunch": {
 			"name": "Farmer's Lunch",
 			"waterContent": 000,
-			"calorieContent": 1800
+			"calorieContent": 1500
 		},
 		"Fiddlehead Risotto": {
 			"name": "Fiddlehead Risotto",
 			"waterContent": 000,
-			"calorieContent": 2020
+			"calorieContent": 1360 //2 cups
 		},
 		"Fish Stew": {
-			"name": "Fish Stew",
+			"name": "Fish Stew", //Wait... Fish stew literally contains no fish, only only arthropods and mollusks o.o
 			"waterContent": 000,
-			"calorieContent": 2020
+			"calorieContent": 840 //4 cups
 		},
 		"Fish Taco": {
 			"name": "Fish Taco",
 			"waterContent": 000,
-			"calorieContent": 148
+			"calorieContent": 1600 //One face sized taco, just to make sure calorie count is greater than ingredient sum
 		},
 		"Fried Calamari": {
 			"name": "Fried Calamari",
 			"waterContent": 000,
-			"calorieContent": 720
+			"calorieContent": 800 //"4 cups", I assume not packed
 		},
 		"Fried Eel": {
 			"name": "Fried Eel",
 			"waterContent": 000,
-			"calorieContent": 660
+			"calorieContent": 1300 //4 cups
 		},
 		"Fried Egg": {
 			"name": "Fried Egg",
 			"waterContent": 000,
-			"calorieContent": 440
+			"calorieContent": 160 //Double eggs, because incetivizing processing
 		},
 		"Fried Mushroom": {
 			"name": "Fried Mushroom",
 			"waterContent": 000,
-			"calorieContent": 1200
+			"calorieContent": 500 //6cups
 		},
 		"Fruit Salad": {
 			"name": "Fruit Salad",
 			"waterContent": 100,
-			"calorieContent": 2360
+			"calorieContent": 880 //8 cups fruit salad; indgredient sum is 770
 		},
 		"Ginger Ale": {
 			"name": "Ginger Ale",
-			"waterContent": 150,
-			"calorieContent": 560
+			"waterContent": 470,
+			"calorieContent": 160 //16oz
 		},
 		"Glazed Yams": {
 			"name": "Glazed Yams",
 			"waterContent": 000,
-			"calorieContent": 1800
+			"calorieContent": 400 //4cups
 		},
 		"Hashbrowns": {
 			"name": "Hashbrowns",
 			"waterContent": 000,
-			"calorieContent": 800
+			"calorieContent": 350 //4cups
 		},
 		"Ice Cream": {
 			"name": "Ice Cream",
@@ -1219,7 +1219,7 @@
 			"calorieContent": 11200 //x100 because single layer entire goddamned cake.
 		},
 		"Pizza": {
-			"name": "Namae",
+			"name": "Pizza",
 			"waterContent": 000,
 			"calorieContent": 1340
 		},
