@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)pathoschild.stardew.modbuildconfig\4.0.0-beta.20210916\build\Pathoschild.Stardew.ModBuildConfig.targets" Condition="Exists('$(NuGetPackageRoot)pathoschild.stardew.modbuildconfig\4.0.0-beta.20210916\build\Pathoschild.Stardew.ModBuildConfig.targets')" />
+    <Import Project="$(NuGetPackageRoot)monogame.framework.desktopgl\3.8.0.1641\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('$(NuGetPackageRoot)monogame.framework.desktopgl\3.8.0.1641\build\MonoGame.Framework.DesktopGL.targets')" />
+  </ImportGroup>
+</Project>
