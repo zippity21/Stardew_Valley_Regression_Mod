@@ -8,5 +8,9 @@
 	"NoHungerAndThirst": false,
 	"AlwaysNoticeAccidents": true,
 	"Debug": false,
+	"BladderLossContinenceRate": 1, //in 1% increments. i.e. 5 = 5% loss per accident
+	"BowelLossContinenceRate": 1, //in 1% increments. i.e. 5 = 5% loss per accident
+	"BladderGainContinenceRate": 1, //in 1% increments. i.e. 5 = 5% gain per success
+	"BowelGainContinenceRate": 1, //in 1% increments. i.e. 5 = 5% gain per success
 	"Lang": "en"
 }
