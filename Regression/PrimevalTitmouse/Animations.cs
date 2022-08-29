@@ -558,7 +558,8 @@ namespace PrimevalTitmouse
                 {
                     num = LARGE_SPRITE_DIM * 4;
                 }                
-            }            
+            }
+            //int num = type != null ? (!(type == "drying") ? (!(type == "messy") ? (!(type == "wet") ? 0 : LARGE_SPRITE_DIM) : LARGE_SPRITE_DIM*2) : LARGE_SPRITE_DIM*3) : (!c.IsDrying() ? ((double)c.messiness <= 0.0 ? ((double)c.wetness <= 0.0 ? 0 : LARGE_SPRITE_DIM) : LARGE_SPRITE_DIM*2) : LARGE_SPRITE_DIM*3);
             return new Microsoft.Xna.Framework.Rectangle(c.spriteIndex * LARGE_SPRITE_DIM, num + (LARGE_SPRITE_DIM - height), LARGE_SPRITE_DIM, height);
         }
 
