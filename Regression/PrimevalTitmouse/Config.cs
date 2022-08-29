@@ -10,5 +10,9 @@
         public bool NoFriendshipPenalty;
         public bool NoHungerAndThirst;
         public bool Wetting;
+        public int BladderLossContinenceRate;
+        public int BowelLossContinenceRate;
+        public int BladderGainContinenceRate;
+        public int BowelGainContinenceRate;
     }
 }
