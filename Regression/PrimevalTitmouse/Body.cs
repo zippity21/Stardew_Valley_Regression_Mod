@@ -473,14 +473,10 @@ namespace PrimevalTitmouse
             }
             else
             {
-
-                //If we have an accident (not voluntary), decrease continence
-                //If we use the potty before we REALLY have to go (we go before we reach some threshold), increase continence
-                //Otherwise, if it is volinary but waited until we almost had an accident (fullness above some threshold) don't change anything
-                if (!voluntary)
-                    this.ChangeBowelContinence(0.01f * Regression.config.BowelLossContinenceRate);
-                else if (bowelFullness < GetBowelTrainingThreshold())
-                    this.ChangeBowelContinence(-0.01f * Regression.config.BowelGainContinenceRate);
+                if (!voluntary || bowelFullness > GetBowelTrainingThreshold())
+                    this.ChangeBowelContinence(-0.01f);
+                else
+                    this.ChangeBowelContinence(0.01f);
 
                 Animations.AnimateMessingStart(this, voluntary, inUnderwear);
             }
@@ -522,13 +518,10 @@ namespace PrimevalTitmouse
             }
             else
             {
-                //If we have an accident (not voluntary), decrease continence
-                //If we use the potty before we REALLY have to go (we go before we reach some threshold), increase continence
-                //Otherwise, if it is volinary but waited until we almost had an accident (fullness above some threshold) don't change anything
-                if (!voluntary)
-                    this.ChangeBladderContinence(0.01f * Regression.config.BladderLossContinenceRate);
-                else if(bladderFullness < GetBladderTrainingThreshold())
-                    this.ChangeBladderContinence(-0.01f * Regression.config.BladderGainContinenceRate);
+                if (!voluntary || bladderFullness > GetBladderTrainingThreshold())
+                    this.ChangeBladderContinence(-0.01f);
+                else
+                    this.ChangeBladderContinence(0.01f);
                 Animations.AnimateWettingStart(this, voluntary, inUnderwear);
             }
 
@@ -611,7 +604,7 @@ namespace PrimevalTitmouse
             }
             else if (inUnderwear)
             {
-                StartWetting(voluntary, true);
+                StartWetting();
                 //Any overage in the container, add to the pants. Ignore overage over that.
                 if (bladderFullness >= GetBladderAttemptThreshold())
                 {
