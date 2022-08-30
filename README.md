@@ -52,7 +52,7 @@ Follow instructions provided by the individual prerequisite mods and programs.
 - (Use Left shift to pull down pants. If in your house, it'll be considered making it to the toilet. Elsewhere, its on the ground.)
 - Left Shift + F1: Pull down pants and attempt to pee.
 - Left Shift + F2: Pull down pants and attempt to poop.
-- Left Shift + Right Click: Drink when near water source or holding watering can.
+- Left Shift + Left Click: Drink when near water source or holding watering can.
 
 ### In Debug
 - Left Alt + F1: Make more thirsty and hungry
