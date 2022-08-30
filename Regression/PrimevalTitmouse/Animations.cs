@@ -12,7 +12,17 @@ using System.IO;
 using System.Linq;
 
 namespace PrimevalTitmouse
-{ 
+{
+    //Added enum to indicate type instead of strings.
+    public enum FullnessType
+    {
+        None,
+        Clear,
+        Wet,
+        Messy,
+        WetMessy,
+        Drying
+    }
 
     internal static class Animations
     {
@@ -68,7 +78,7 @@ namespace PrimevalTitmouse
             //If we aren't facing downward, turn
             if (Animations.GetWho().getFacingDirection() != (int)FaceDirection.Down)
                 Animations.GetWho().faceDirection((int)FaceDirection.Down);
-
+            
             //Stop doing anything that would prevent us from moving
             //Essentially take control of the variable
             Animations.GetWho().forceCanMove();
@@ -313,54 +323,22 @@ namespace PrimevalTitmouse
         }
 
         public static void DrawUnderwearIcon(Container c, int x, int y)
-        {
-            if (c.IsDrying())
-            {
-                ((SpriteBatch)Game1.spriteBatch).Draw(Animations.GetSprites(), new Microsoft.Xna.Framework.Rectangle(x, y, DIAPER_HUD_DIM, DIAPER_HUD_DIM), new Microsoft.Xna.Framework.Rectangle?(Animations.UnderwearRectangle(c, "drying", LARGE_SPRITE_DIM)), Microsoft.Xna.Framework.Color.White);
-            }
-            else
-            {
-                Microsoft.Xna.Framework.Color defaultColor = Microsoft.Xna.Framework.Color.White;
-                double wetPercent = (double)c.wetness / (double)c.absorbency;
-                double messPercent =(double)c.messiness / (double)c.containment;
+        {   
+            Microsoft.Xna.Framework.Color defaultColor = Microsoft.Xna.Framework.Color.White;
 
-                Texture2D underwearSprites = Animations.GetSprites();
-                Microsoft.Xna.Framework.Rectangle srcBoxClean = Animations.UnderwearRectangle(c, "clean", LARGE_SPRITE_DIM);
-                Microsoft.Xna.Framework.Rectangle srcBoxWet   = Animations.UnderwearRectangle(c, "wet"  , (int)(wetPercent*LARGE_SPRITE_DIM));
-                Microsoft.Xna.Framework.Rectangle srcBoxMessy = Animations.UnderwearRectangle(c, "messy", (int)(messPercent*LARGE_SPRITE_DIM));
+            Texture2D underwearSprites = Animations.GetSprites();
+            Microsoft.Xna.Framework.Rectangle srcBoxCurrent = Animations.UnderwearRectangle(c, FullnessType.None, LARGE_SPRITE_DIM);
 
-                int messHUD = (int)(messPercent * DIAPER_HUD_DIM);
-                int wetHUD = (int)(wetPercent * DIAPER_HUD_DIM);
-                int yClean = 0;
-                int yMessy = DIAPER_HUD_DIM - messHUD;
-                int yWet   = DIAPER_HUD_DIM - wetHUD;
-                Microsoft.Xna.Framework.Rectangle destBoxClean = new Microsoft.Xna.Framework.Rectangle(x, y+yClean, DIAPER_HUD_DIM, DIAPER_HUD_DIM);
-                Microsoft.Xna.Framework.Rectangle destBoxMessy = new Microsoft.Xna.Framework.Rectangle(x, y+yMessy, DIAPER_HUD_DIM, messHUD);
-                Microsoft.Xna.Framework.Rectangle destBoxWet   = new Microsoft.Xna.Framework.Rectangle(x, y+yWet  , DIAPER_HUD_DIM, wetHUD);
+            Microsoft.Xna.Framework.Rectangle destBoxCurrent = new Microsoft.Xna.Framework.Rectangle(x, y, DIAPER_HUD_DIM, DIAPER_HUD_DIM);
 
-                //Texture, Destination, Source, Color
-                //Draw(Texture2D texture, Vector2 position, Rectangle ? sourceRectangle, Color color, float rotation, Vector2 origin, float scale, SpriteEffects effects, float layerDepth);
-                //((SpriteBatch)Game1.spriteBatch).Draw(underwearSprites, new Vector2(x, y+yClean), srcBoxClean, defaultColor, 0f, new Vector2(0,0), new Vector2(1,1), (SpriteEffects)0, 0f);
-
-                ((SpriteBatch)Game1.spriteBatch).Draw(underwearSprites, destBoxClean, srcBoxClean, defaultColor);
-                if(wetPercent >= messPercent)
-                {
-                    ((SpriteBatch)Game1.spriteBatch).Draw(underwearSprites, destBoxWet, srcBoxWet, defaultColor);
-                    ((SpriteBatch)Game1.spriteBatch).Draw(underwearSprites, destBoxMessy, srcBoxMessy, defaultColor);
-                } else
-                {
-                    ((SpriteBatch)Game1.spriteBatch).Draw(underwearSprites, destBoxMessy, srcBoxMessy, defaultColor);
-                    ((SpriteBatch)Game1.spriteBatch).Draw(underwearSprites, destBoxWet, srcBoxWet, defaultColor);
-                }
-
-                if (Game1.getMouseX() >= x && Game1.getMouseX() <= x + DIAPER_HUD_DIM && Game1.getMouseY() >= y && Game1.getMouseY() <= y + DIAPER_HUD_DIM)
+            ((SpriteBatch)Game1.spriteBatch).Draw(underwearSprites, destBoxCurrent, srcBoxCurrent, defaultColor);
+            if (Game1.getMouseX() >= x && Game1.getMouseX() <= x + DIAPER_HUD_DIM && Game1.getMouseY() >= y && Game1.getMouseY() <= y + DIAPER_HUD_DIM)
                 {
                     string source = Strings.DescribeUnderwear(c, (string)null);
                     string str = source.First<char>().ToString().ToUpper() + source.Substring(1);
                     int num = Game1.tileSize * 6 + Game1.tileSize / 6;
                     IClickableMenu.drawHoverText((SpriteBatch)Game1.spriteBatch, Game1.parseText(str, (SpriteFont)Game1.tinyFont, num), (SpriteFont)Game1.smallFont, 0, 0, -1, (string)null, -1, (string[])null, (Item)null, 0, -1, -1, -1, -1, 1f, (CraftingRecipe)null);
-                }
-            }
+                }            
         }
 
         private static void EndDrinking(Farmer who)
@@ -515,11 +493,72 @@ namespace PrimevalTitmouse
             Animations.Say(Strings.RandString(msgs), b);
         }
 
-        public static Microsoft.Xna.Framework.Rectangle UnderwearRectangle(Container c, string type = null, int height = LARGE_SPRITE_DIM)
+        public static Microsoft.Xna.Framework.Rectangle UnderwearRectangle(Container c, FullnessType type = FullnessType.None, int height = LARGE_SPRITE_DIM)
         {
             if (c.spriteIndex == -1)
                 throw new Exception("Invalid sprite index.");
-            int num = type != null ? (!(type == "drying") ? (!(type == "messy") ? (!(type == "wet") ? 0 : LARGE_SPRITE_DIM) : LARGE_SPRITE_DIM*2) : LARGE_SPRITE_DIM*3) : (!c.IsDrying() ? ((double)c.messiness <= 0.0 ? ((double)c.wetness <= 0.0 ? 0 : LARGE_SPRITE_DIM) : LARGE_SPRITE_DIM*2) : LARGE_SPRITE_DIM*3);
+            int num = 0;
+            //Using switch statement instead of ternary operator for better readability and to add another type.
+            if (type != FullnessType.None)
+            {
+                switch (type)
+                {
+                    case (FullnessType.Clear):
+                        {
+                            num = 0;
+                            break;
+                        }
+                    case (FullnessType.Messy):
+                        {
+                            num = LARGE_SPRITE_DIM;
+                            break;
+                        }
+                    case (FullnessType.Wet):
+                        {
+                            num = LARGE_SPRITE_DIM * 2;
+                            break;
+                        }
+                    case (FullnessType.WetMessy):
+                        {
+                            num = LARGE_SPRITE_DIM * 3;
+                            break;
+                        }
+                    case (FullnessType.Drying):
+                        {
+                            num = LARGE_SPRITE_DIM * 4;
+                            break;
+                        }
+                    default:
+                        {
+                            num = 0;
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                if (!c.IsDrying())
+                {
+                    if ((double)c.messiness <= .0f)
+                    {
+                        if ((double)c.wetness <= .0f)                        
+                            num = 0;                        
+                        else                        
+                            num = LARGE_SPRITE_DIM;                        
+                    }
+                    else
+                    {
+                        if ((double)c.wetness <= .0f)                        
+                            num = LARGE_SPRITE_DIM * 2;                        
+                        else                        
+                            num = LARGE_SPRITE_DIM * 3;                        
+                    }
+                }
+                else
+                {
+                    num = LARGE_SPRITE_DIM * 4;
+                }                
+            }            
             return new Microsoft.Xna.Framework.Rectangle(c.spriteIndex * LARGE_SPRITE_DIM, num + (LARGE_SPRITE_DIM - height), LARGE_SPRITE_DIM, height);
         }
 

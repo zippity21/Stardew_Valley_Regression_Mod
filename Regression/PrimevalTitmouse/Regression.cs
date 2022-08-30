@@ -320,10 +320,10 @@ namespace PrimevalTitmouse
                 return;
             }
 
-            //Handle a Right Click
-            if (e.Button == SButton.MouseRight)
+            //Handle a Left Click
+            if (e.Button == SButton.MouseLeft)
             {
-                //If Right click is already being interpreted by another event (or we otherwise wouldn't process such an event. Ignore it.
+                //If Left click is already being interpreted by another event (or we otherwise wouldn't process such an event. Ignore it.
                 if ((Game1.dialogueUp || Game1.currentMinigame != null || (Game1.eventUp || Game1.activeClickableMenu != null) || Game1.menuUp || Game1.fadeToBlack) || (who.isRidingHorse() || !who.canMove || (Game1.player.isEating || who.canOnlyWalk) || who.FarmerSprite.pauseForSingleAnimation))
                     return;
 
