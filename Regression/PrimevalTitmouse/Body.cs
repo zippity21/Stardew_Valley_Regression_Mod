@@ -387,7 +387,7 @@ namespace PrimevalTitmouse
 
         public bool InToilet(bool inUnderwear)
         {
-            return !inUnderwear && (Game1.currentLocation is FarmHouse);
+            return !inUnderwear && (Game1.currentLocation is FarmHouse || Game1.currentLocation is JojaMart || Game1.currentLocation is Club || Game1.currentLocation is MovieTheater || Game1.currentLocation is IslandFarmHouse || Game1.currentLocation.Name == "Saloon" || Game1.currentLocation.Name == "Hospital" || Game1.currentLocation.Name == "BathHouse_MensLocker" || Game1.currentLocation.Name == "BathHouse_WomensLocker");
         }
 
         public void Mess(bool voluntary = false, bool inUnderwear = true)
