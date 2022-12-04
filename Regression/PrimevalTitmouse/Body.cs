@@ -486,7 +486,8 @@ namespace PrimevalTitmouse
             }
 
             Animations.AnimateMessingEnd(this);
-            _ = Animations.HandleVillager(this, true, inUnderwear, pants.messiness > 0.0, false, 20, 3);
+            if (!this.InToilet(inUnderwear))
+                _ = Animations.HandleVillager(this, true, inUnderwear, pants.messiness > 0.0, false, 20, 3);
             if (pants.messiness <= 0.0 || !inUnderwear)
                 return;
             HandlePoopOverflow();
@@ -533,7 +534,8 @@ namespace PrimevalTitmouse
             }
 
             Animations.AnimateWettingEnd(this);
-            _ = Animations.HandleVillager(this, false, inUnderwear, pants.wetness > 0.0, false, 20, 3);
+            if (!this.InToilet(inUnderwear))
+                _ = Animations.HandleVillager(this, false, inUnderwear, pants.wetness > 0.0, false, 20, 3);
             if ((pants.wetness <= 0.0 || !inUnderwear))
                 return;
             HandlePeeOverflow();
