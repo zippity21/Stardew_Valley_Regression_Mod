@@ -6,7 +6,7 @@
 			"Target":"Characters/Dialogue/Jodi",
 			"Entries":{
 //Jodi's repsonse Ids are 110-119
-  "Introduction": "Oh! Is this @? I'm Jodi.#$e#Did you get my little care package? I hope it's enough to get you started.#$e#Oh don't look so embarassed, that old farm is very exciting! I wouldn't want our new little farmer caught unprepared when he gets a little distracted.$1^Oh don't look so embarassed, a new farm is very exciting! I wouldn't want our new little farmer caught unprepared when she gets a little distracted.",
+  "Introduction": "Oh! Is this @? I'm Jodi.#$e#Did you get my little care package? I hope it's enough to get you started.#$e#Oh don't look so embarrassed, that old farm is very exciting! I wouldn't want our new little farmer caught unprepared when he gets a little distracted.$1^Oh don't look so embarrassed, a new farm is very exciting! I wouldn't want our new little farmer caught unprepared when she gets a little distracted.",
 
 
   "spring_Mon":"There's the little farmer!#$e#How's the town treating you?",
@@ -14,7 +14,7 @@
   "spring_Tue4":"#$c .5#Do you have any animals on your farm? Can you tell me what the cow says?#$e#That's right! Cow goes moo!$1|Do you have any animals on your farm? Can you tell me what the chicken says?#$e#That's right! Chicken goes cluck cluck!$1",
   "spring_Wed2":"Would you like to tell me all about your farm?#$e#%Jodi smiles at you while you gush about how pretty your farm is.#$e#What a clever little boy you are.$1^What a clever little girl you are.$1",
   "spring_Wed8":"Would you like to tell me all about your farm?#$e#%Jodi smiles at you while you gush about how pretty your farm is. You barely even notice her hand check to see if your pants are still dry.#$e#What a clever little boy you are.$1^What a clever little girl you are.$1",
-  "spring_Thu2":"Sam still sleeps with his old teddy bear, though, he tries to hide it in the morning.#$e#I don't know what to say to make him feel less embarassed about it.$2",
+  "spring_Thu2":"Sam still sleeps with his old teddy bear, though, he tries to hide it in the morning.#$e#I don't know what to say to make him feel less embarrassed about it.$2",
   "spring_Fri":"How are you doing @? Are you eating enough?#$e#...Do you have enough... supplies?",
   "spring_Fri4":"How are you doing @? Are you eating enough?#$e#I bet you've already run out of the diapers I gave you by now.#$e#I sure hope your farm is making enough money to buy more!$1#$e#",
   "spring_Sat4":"#$p 102#I'm so glad you're trying to improve that old farm.|Vincent fell asleep on my lap yesterday.#$e#It was so precious, I never wanted it to end!$1",
@@ -31,7 +31,7 @@
 #$r 111 0 Show_Diaper#Show her your diaper.",
 "Show_Nice": "%Jodi holds it delicately, looking at it like it's the most important thing in the world.#$b#This is wonderful! Thank you for showing me.$1#$b#%Jodi gives it back and pats your head affectionately.", 
 "Show_Diaper": "%Jodi grins at your proud display.#$b#Well isn't that something!$1#$b#Let's see if it's still clean.#$b#%Jodi presses her hand against your diaper, giving it a thorough check.",
-"Show_Followup":"#$p 110#Well don't you look excited! Did you find even more things to show me?$1|Well don't you look excited! Are you going to show off for me again?$1#$b#%You shamlessly show Jodi your diaper again and she pats it fondly.",
+"Show_Followup":"#$p 110#Well don't you look excited! Did you find even more things to show me?$1|Well don't you look excited! Are you going to show off for me again?$1#$b#%You shamelessly show Jodi your diaper again and she pats it fondly.",
   "summer_Thu4":"That farm seems like a lot of work for such a little farmer! I guess you're only pretending to be so little.#$e#%Jodi winks at you.",
   "summer_Fri8":"#$p 102#Maintaining a household is difficult work... but somebody has to do it.|Vincent doesn't show any signs of getting out of diapers any time soon.#$e#I guess he'll just be my little boy for a little bit longer.$1",
   "summer_Sat":"%Jodi is humming a soft song to herself while she goes about her business. It's familiar somehow.",

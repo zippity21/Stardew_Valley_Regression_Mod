@@ -359,7 +359,7 @@ namespace PrimevalTitmouse
             bool someoneNoticed = true;
             int actualLoss = -(baseFriendshipLoss / 20);
 
-            //If we are messing, increase the radius of noticability (stinky)
+            //If we are messing, increase the radius of noticeability (stinky)
             //Double how much friendship we lose (mess is gross)
             if (mess)
             {
@@ -367,8 +367,8 @@ namespace PrimevalTitmouse
                 actualLoss *= 2;
             }
 
-            //If we pulled down our pants, quadrupal the radius (not contained and visible!)
-            //Double loss since you're just going infront of people (how uncouth)
+            //If we pulled down our pants, quadruple the radius (not contained and visible!)
+            //Double loss since you're just going in front of people (how uncouth)
             if (!inUnderwear)
             {
                 radius *= 4;
@@ -379,7 +379,7 @@ namespace PrimevalTitmouse
             if (attempt)
                 actualLoss /= 2;
 
-            //Double noticability is we had a blow-out/leak (people can see)
+            //Double noticeability is we had a blow-out/leak (people can see)
             if (overflow)
                 radius *= 2;
 
@@ -391,7 +391,7 @@ namespace PrimevalTitmouse
             //Reduce the loss if the person likes you (more forgiving)
             int heartLevelForNpc = Animations.GetWho().getFriendshipHeartLevelForNPC(npc.getName());
 
-            //Does this leave the possiblity of friendship gain if we have enough hearts already? Maybe because they find the vulnerability endearing?
+            //Does this leave the possibility of friendship gain if we have enough hearts already? Maybe because they find the vulnerability endearing?
             int friendshipLoss = actualLoss + (heartLevelForNpc - 2) / 2 * baseFriendshipLoss;
 
             //Make a list based on who saw us.
@@ -432,7 +432,7 @@ namespace PrimevalTitmouse
                 //Otherwise, we are soiling ourselves
                 responseKey += "soiled";
 
-                //Animals only have a "nice" reponse
+                //Animals only have a "nice" response
                 if (npcType.Contains("animal"))
                 {
                     responseKey += "_nice";

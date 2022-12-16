@@ -269,7 +269,7 @@ namespace PrimevalTitmouse
                     underwearAvailableAtShop = true;
                 } else if(Game1.currentLocation is JojaMart)
                 {
-                    //Joja shop ONLY sels the Joja diaper and a cloth diaper
+                    //Joja shop ONLY sells the Joja diaper and a cloth diaper
                     availableUnderwear.Clear();
                     availableUnderwear.Add("Joja diaper");
                     availableUnderwear.Add("Cloth diaper");
@@ -377,7 +377,7 @@ namespace PrimevalTitmouse
                 
         }
 
-        //If approppriate, draw bars for Hunger, thirst, bladder and bowels
+        //If appropriate, draw bars for Hunger, thirst, bladder and bowels
         public void ReceivePreRenderHudEvent(object sender, RenderingHudEventArgs args)
         {
             if (!started || Game1.currentMinigame != null || Game1.eventUp || Game1.globalFade)

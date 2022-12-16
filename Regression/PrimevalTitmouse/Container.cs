@@ -31,7 +31,7 @@ namespace PrimevalTitmouse
         private bool drying = false;
 
         //This class describes anything that we could wet/mess in. Usually underwear, but it could also be something like the bed.
-        //These functions are pretty self-explainatory
+        //These functions are pretty self-explanatory
         public Container()
         {
             wetness = 0.0f;

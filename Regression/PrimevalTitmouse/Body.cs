@@ -8,15 +8,15 @@ using System.Collections.Generic;
 
 namespace PrimevalTitmouse
 {
-    //<TODO> Alot of bladder and bowel stuff is processed similarly. Consider refactor with arrays and Function pointers.
+    //<TODO> A lot of bladder and bowel stuff is processed similarly. Consider refactor with arrays and Function pointers.
     public class Body
     {
         //Lets think of Food in Calories, and water in mL
         //For a day Laborer (like a farmer) that should be ~3500 Cal, and 14000 mL
-        //Of course this is dependant on amount of work, but let's go one step at a time
+        //Of course this is dependent on amount of work, but let's go one step at a time
         private static readonly float requiredCaloriesPerDay = 3500f;
         private static readonly float requiredWaterPerDay = 8000f; //8oz glasses: every 20min for 8 hours + every 40 min for 8 hour
-        //private static readonly float maxWaterInCan = 4000f; //How much water does the wattering can hold? Max is 40, so *100
+        //private static readonly float maxWaterInCan = 4000f; //How much water does the watering can hold? Max is 40, so *100
 
         //Average # of Pees per day is ~3
         public static readonly float maxBladderCapacity = 600; //about 600mL
@@ -204,7 +204,7 @@ namespace PrimevalTitmouse
             //If we're starving and not eating, take a stamina hit
             if (hunger > requiredCaloriesPerDay && amount < 0)
             {
-                //Take percentage off stamina equal to precentage above max hunger
+                //Take percentage off stamina equal to percentage above max hunger
                 Game1.player.stamina += newPercent * Game1.player.MaxStamina;
                 hunger = requiredCaloriesPerDay;
                 newPercent = 1;
@@ -241,7 +241,7 @@ namespace PrimevalTitmouse
             //If we're starving and not eating, take a stamina hit
             if (thirst > requiredWaterPerDay && amount < 0)
             {
-                //Take percentage off health equal to precentage above max thirst
+                //Take percentage off health equal to percentage above max thirst
                 float lostHealth = newPercent * (float)Game1.player.maxHealth;
                 Game1.player.health = Game1.player.health + (int)lostHealth;
                 thirst = requiredWaterPerDay;
@@ -257,16 +257,16 @@ namespace PrimevalTitmouse
         {
             float previousContinence = bladderContinence;
 
-            //Modify the continence factor (inversly proportional to rate at which the bladder fills)
+            //Modify the continence factor (inversely proportional to rate at which the bladder fills)
             bladderContinence -= percent;
 
-            //Put a ceilling at 100%, and  a floor at 5%
+            //Put a ceiling at 100%, and  a floor at 5%
             bladderContinence = Math.Max(Math.Min(bladderContinence, 1f), 0.05f);
 
             //Decrease our maximum capacity (bladder shrinks as we become incontinent)
             bladderCapacity = bladderContinence * maxBladderCapacity;
 
-            //Ceilling at base value and floor at 25% base value
+            //Ceiling at base value and floor at 25% base value
             bladderCapacity = Math.Max(bladderCapacity, minBladderCapacity);
 
             //If we're increasing, no need to warn. (maybe we should tell people that they're regaining?)
@@ -282,16 +282,16 @@ namespace PrimevalTitmouse
         {
             float previousContinence = bowelContinence;
 
-            //Modify the continence factor (inversly proportional to rate at which the bowels fills)
+            //Modify the continence factor (inversely proportional to rate at which the bowels fills)
             bowelContinence -= percent;
 
-            //Put a ceilling at 100%, and  a floor at 5%
+            //Put a ceiling at 100%, and  a floor at 5%
             bowelContinence = Math.Max(Math.Min(bowelContinence, 1f), 0.05f);
 
             //Decrease our maximum capacity (bowel shrinks as we become incontinent)
             bowelCapacity = bowelContinence * maxBowelCapacity;
 
-            //Ceilling at base value and floor at 25% base value
+            //Ceiling at base value and floor at 25% base value
             bowelCapacity = Math.Max(bowelCapacity, minBowelCapacity);
 
             //If we're increasing, no need to warn. (maybe we should tell people that they're regaining?)
@@ -428,7 +428,7 @@ namespace PrimevalTitmouse
                     {
                         numPotty++;
                         bowelFullness -= amountToLose;
-                        if (!underwear.removable) //Certian underwear can't be taken off to use the toilet (ie diapers)
+                        if (!underwear.removable) //Certain underwear can't be taken off to use the toilet (ie diapers)
                         {
                             _ = this.bed.AddPoop(this.pants.AddPoop(this.underwear.AddPoop(amountToLose)));
                             numAccidents++;
@@ -476,7 +476,7 @@ namespace PrimevalTitmouse
 
                 //If we have an accident (not voluntary), decrease continence
                 //If we use the potty before we REALLY have to go (we go before we reach some threshold), increase continence
-                //Otherwise, if it is volinary but waited until we almost had an accident (fullness above some threshold) don't change anything
+                //Otherwise, if it is voluntary but waited until we almost had an accident (fullness above some threshold) don't change anything
                 if (!voluntary)
                     this.ChangeBowelContinence(0.01f * Regression.config.BowelLossContinenceRate);
                 else if (bowelFullness < GetBowelTrainingThreshold())
@@ -524,7 +524,7 @@ namespace PrimevalTitmouse
             {
                 //If we have an accident (not voluntary), decrease continence
                 //If we use the potty before we REALLY have to go (we go before we reach some threshold), increase continence
-                //Otherwise, if it is volinary but waited until we almost had an accident (fullness above some threshold) don't change anything
+                //Otherwise, if it is voluntary but waited until we almost had an accident (fullness above some threshold) don't change anything
                 if (!voluntary)
                     this.ChangeBladderContinence(0.01f * Regression.config.BladderLossContinenceRate);
                 else if(bladderFullness < GetBladderTrainingThreshold())
@@ -599,7 +599,7 @@ namespace PrimevalTitmouse
                     {
                         numPotty++;
                         bladderFullness -= amountToLose;
-                        if (!underwear.removable) //Certian underwear can't be taken off to use the toilet (ie diapers)
+                        if (!underwear.removable) //Certain underwear can't be taken off to use the toilet (ie diapers)
                         {
                             _ = this.bed.AddPee(this.pants.AddPee(this.underwear.AddPee(amountToLose)));
                             numAccidents++;
