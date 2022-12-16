@@ -19,7 +19,7 @@
 
 
 "spring_Mon":"#$p 102#Oh...Are you looking for Aunt Marnie?$u|%You notice Jas doing a potty dance before she catches you watching.#$b#%She freezes in place and blushes hard. You can hear a soft hiss.#$e#U-hmmm...$2",
-"spring_Mon8":"#$p 102#It's fun to live on a farm.$h|%You notice Jas doing a potty dance before she catches you watching. She stops to smile and wave at you.#$b#%Her eyes suddenly widen and a blush spreads across her cheeks as you hear a soft hiss, but she doesn't seem too concirned.#$e#Hi @!",
+"spring_Mon8":"#$p 102#It's fun to live on a farm.$h|%You notice Jas doing a potty dance before she catches you watching. She stops to smile and wave at you.#$b#%Her eyes suddenly widen and a blush spreads across her cheeks as you hear a soft hiss, but she doesn't seem too concerned.#$e#Hi @!",
 "spring_Tue6":"#$p 102#You can play with my dolls if you want to. Just make sure to brush their hair when you're done.|Hi @. Can I show you something?#$b#%Jas holds up a well loved lamb plushie she was playing with.#$b#This is Bethany. She's my favorite!",
 "spring_Wed2":"#$p 102#...Hi.$u|Vincent doesn't try to use the potty like I do.$3#$b#He's gross.",
 "spring_Wed6":"#$p 102#Aunt Marnie won't let me go out after 6 o'clock. It's not fair!$s|Vincent told me he likes using his diapers.$3#$e#I do too, but I'm a big girl, so I'm trying to use the potty like I'm supposed to.",
@@ -48,7 +48,7 @@
 
 
 "fall_Mon":"#$p 102#Oh...Are you looking for Aunt Marnie?$u|%You notice Jas doing a potty dance before she catches you watching.#$b#%She freezes in place and blushes hard. You can hear a soft hiss.#$e#U-hmmm...$2",
-"fall_Mon8":"#$p 102#It's fun to live on a farm.$h|%You notice Jas doing a potty dance before she catches you watching. She stops to smile and wave at you.#$b#%Her eyes suddenly widen and a blush spreads across her cheeks as you hear a soft hiss, but she doesn't seem too concirned.#$e#Hi @!",
+"fall_Mon8":"#$p 102#It's fun to live on a farm.$h|%You notice Jas doing a potty dance before she catches you watching. She stops to smile and wave at you.#$b#%Her eyes suddenly widen and a blush spreads across her cheeks as you hear a soft hiss, but she doesn't seem too concerned.#$e#Hi @!",
 "fall_Tue6":"#$p 102#You can play with my dolls if you want to. Just make sure to brush their hair when you're done.|Hi @. Can I show you something?#$b#%Jas holds up a well loved lamb plushie she was playing with.#$b#This is Bethany. She's my favorite!",
 "fall_Wed2":"#$p 102#...Hi.$u|Vincent doesn't try to use the potty like I do.$3#$b#He's gross.",
 "fall_Wed6":"#$p 102#Aunt Marnie won't let me go out after 6 o'clock. It's not fair!$s|Vincent told me he likes using his diapers.$3#$e#I do too, but I'm a big girl, so I'm trying to use the potty like I'm supposed to.",
