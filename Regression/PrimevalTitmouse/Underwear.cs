@@ -13,7 +13,7 @@ namespace PrimevalTitmouse
         public static Color color;
         public Container container;
         public string id;
-        
+
         public Underwear()
         {
             //base.Actor();

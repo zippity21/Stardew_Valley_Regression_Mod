@@ -87,12 +87,12 @@ namespace PrimevalTitmouse
         {
             return bladderCapacity * 0.1f;
         }
-       
+
         public float GetBowelAttemptThreshold()
         {
                 return bowelCapacity * 0.1f;
         }
-       
+
         public float GetHungerPercent()
         {
             return (requiredCaloriesPerDay - hunger) / requiredCaloriesPerDay;
@@ -191,7 +191,7 @@ namespace PrimevalTitmouse
             if (hunger < 0)
             {
                 AddBowel(hunger * -0.5f * conversionRatio * foodToBowelConversion);
-                hunger = 0f; 
+                hunger = 0f;
                 newPercent =(requiredCaloriesPerDay - hunger) / requiredCaloriesPerDay;
             }
 
@@ -676,7 +676,7 @@ namespace PrimevalTitmouse
             const int timeInDay = 2400;
             const int wakeUpTime = timeInDay + 600;
             const float sleepRate = 3.0f; //Let's say body functions change @ 1/3 speed while sleeping. Arbitrary.
-            int timeSlept = wakeUpTime - bedtime; //Bedtime will never exceed passout-time of 2:00AM (2600) 
+            int timeSlept = wakeUpTime - bedtime; //Bedtime will never exceed passout-time of 2:00AM (2600)
             HandleTime(timeSlept / 100.0f / sleepRate);
         }
 

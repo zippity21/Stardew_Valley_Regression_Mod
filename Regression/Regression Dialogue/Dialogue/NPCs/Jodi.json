@@ -5,7 +5,7 @@
 			"Action":"EditData",
 			"Target":"Characters/Dialogue/Jodi",
 			"Entries":{
-//Jodi's repsonse Ids are 110-119
+//Jodi's response Ids are 110-119
   "Introduction": "Oh! Is this @? I'm Jodi.#$e#Did you get my little care package? I hope it's enough to get you started.#$e#Oh don't look so embarrassed, that old farm is very exciting! I wouldn't want our new little farmer caught unprepared when he gets a little distracted.$1^Oh don't look so embarrassed, a new farm is very exciting! I wouldn't want our new little farmer caught unprepared when she gets a little distracted.",
 
 
@@ -29,7 +29,7 @@
 #$r 110 0 Show_Nice#Show her the cool rock you found in the mines.
 #$r 110 0 Show_Nice#Show her your favorite plushie.
 #$r 111 0 Show_Diaper#Show her your diaper.",
-"Show_Nice": "%Jodi holds it delicately, looking at it like it's the most important thing in the world.#$b#This is wonderful! Thank you for showing me.$1#$b#%Jodi gives it back and pats your head affectionately.", 
+"Show_Nice": "%Jodi holds it delicately, looking at it like it's the most important thing in the world.#$b#This is wonderful! Thank you for showing me.$1#$b#%Jodi gives it back and pats your head affectionately.",
 "Show_Diaper": "%Jodi grins at your proud display.#$b#Well isn't that something!$1#$b#Let's see if it's still clean.#$b#%Jodi presses her hand against your diaper, giving it a thorough check.",
 "Show_Followup":"#$p 110#Well don't you look excited! Did you find even more things to show me?$1|Well don't you look excited! Are you going to show off for me again?$1#$b#%You shamelessly show Jodi your diaper again and she pats it fondly.",
   "summer_Thu4":"That farm seems like a lot of work for such a little farmer! I guess you're only pretending to be so little.#$e#%Jodi winks at you.",
@@ -53,14 +53,14 @@
   "winter_Mon10":"%Jodi is humming a soft song to herself while she goes about her business. It's familiar somehow.#$e#%She notices you paying attention and smiles. Without stopping her hum, she pulls you into a hug, letting you feel the comforting hum in her chest.#$e#Looks like someone might need a nap.",
   "winter_Tue10":"%Jodi sees you standing nearby and holds out her hand. You grab onto her sleeve as your thumb finds its way into your mouth without you noticing.#$e#Awwwww. Well aren't you a precious little boy.^Well aren't you a precious little girl.$1",
   "winter_Wed6":"Oh no! @! Is that a boo boo on your finger? What happened?$2#$b#%You tell Jodi about hurting your finger on the farm with tears in your eyes while she puts on a bandaid for you. She gives it a kiss for good measure.#$e#There we go, all better. Have fun playing!",
-  "winter_Wed10":"Oh no! @! Is that a boo boo on your finger? What happened?$2#$b#%You tell Jodi about hurting your finger on the farm with tears in your eyes while she puts on a bandaid for you.#$b#She gives it a kiss for good measure before patting your bottom to send you away.#$e#There we go, all better. Have fun playing!",  
+  "winter_Wed10":"Oh no! @! Is that a boo boo on your finger? What happened?$2#$b#%You tell Jodi about hurting your finger on the farm with tears in your eyes while she puts on a bandaid for you.#$b#She gives it a kiss for good measure before patting your bottom to send you away.#$e#There we go, all better. Have fun playing!",
   "winter_Thu4":"Sam tries really hard to act like a big kid, but he still melts when I pet his hair just like when he was a little boy.#$e#It feels nice to know he trusts me enough to let his guard down.#$e#It makes me feel like a good mother.$1",
   "winter_Fri2":"You're a good boy. You know that, right?^You're a good girl. You know that, right?",
   "winter_Sat6":"Maybe I should push Vincent to use the potty more, but I don't want him to feel ashamed about himself.$2#$e#He just looks so carefree playing in his diapers too. I don't want to take that away from him.",
   "winter_Sun6":"%Jodi sees you standing nearby and holds out her hand. You grab onto her sleeve and smile up at her.#$e#Awwwww.",
   "winter_Sun10":"%Jodi sees you standing nearby and holds out her hand. You grab onto her sleeve as your thumb finds its way into your mouth without you noticing.#$e#Awwwww. Well aren't you a precious little boy.^Well aren't you a precious little girl.$1",
 
-  
+
 			}
 		}
 	]
