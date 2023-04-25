@@ -25,6 +25,8 @@ namespace PrimevalTitmouse
         public bool shiftHeld;
         public static Data t;
         public static Farmer who;
+        private float tickCD1 = 0;
+        private float tickCD2 = 0;
 
         const float timeInTick = (1f/43f); //One second realtime ~= 1/43 hours in game
         public override void Entry(IModHelper h)
@@ -129,12 +131,25 @@ namespace PrimevalTitmouse
 
                 //If time is moving, update our body state (Hunger, thirst, etc.)
                 if (ShouldTimePass())
+                {
                     this.body.HandleTime(timeInTick);
+                    if (tickCD1 != 0) //Former Bug: When consuming items, they would give 2-3 goes at the "Handle eating and drinking." if statement below. Cause: This function would trigger multiple times while the if statement below was still true, causing it to fire multiple times.
+                    {
+                        tickCD2 += 1; //This should trigger multiple times during the eating animation.
+                    }
+                    if (tickCD2 >= 2) //Setting this to 2 should be able to balance preventing double triggers and ensuring no loss in intentional triggers.
+                    {
+                        tickCD1 = 0;
+                        tickCD2 = 0;
+                    }
+                    
+                }
 
                 //Handle eating and drinking.
-                if (Game1.player.isEating && Game1.activeClickableMenu == null)
+                if (Game1.player.isEating && Game1.activeClickableMenu == null && tickCD1 == 0)
                 {
                     body.Consume(who.itemToEat.Name);
+                    tickCD1 += 1;
                 }
         }
 
@@ -269,7 +284,7 @@ namespace PrimevalTitmouse
                     underwearAvailableAtShop = true;
                 } else if(Game1.currentLocation is JojaMart)
                 {
-                    //Joja shop ONLY sells the Joja diaper and a cloth diaper
+                    //Joja shop ONLY sels the Joja diaper and a cloth diaper
                     availableUnderwear.Clear();
                     availableUnderwear.Add("Joja diaper");
                     availableUnderwear.Add("Cloth diaper");
@@ -368,16 +383,16 @@ namespace PrimevalTitmouse
                     }
                     return; //Done with underwear
                 }
-
-
+                    
+                    
                 //If we're at a water source, and not holding underwear, drink from it.
                 if ((AtWaterSource()|| AtWell()) && e.IsDown(SButton.LeftShift))
                   this.body.DrinkWaterSource();
             }
-
+                
         }
 
-        //If appropriate, draw bars for Hunger, thirst, bladder and bowels
+        //If approppriate, draw bars for Hunger, thirst, bladder and bowels
         public void ReceivePreRenderHudEvent(object sender, RenderingHudEventArgs args)
         {
             if (!started || Game1.currentMinigame != null || Game1.eventUp || Game1.globalFade)
