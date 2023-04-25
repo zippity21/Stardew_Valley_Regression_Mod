@@ -52,7 +52,7 @@ namespace PrimevalTitmouse
         {
             Initialize(c, c.wetness, c.messiness, c.durability);
         }
-    
+
 
         public Container(string type, float wetness, float messiness, int durability)
         {

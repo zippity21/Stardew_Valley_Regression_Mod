@@ -78,7 +78,7 @@ namespace PrimevalTitmouse
             //If we aren't facing downward, turn
             if (Animations.GetWho().getFacingDirection() != (int)FaceDirection.Down)
                 Animations.GetWho().faceDirection((int)FaceDirection.Down);
-            
+
             //Stop doing anything that would prevent us from moving
             //Essentially take control of the variable
             Animations.GetWho().forceCanMove();
@@ -140,7 +140,7 @@ namespace PrimevalTitmouse
             //Animations.GetWho().completelyStopAnimatingOrDoingAction();
             Animations.GetWho().jitterStrength = 1.0f;
             Game1.currentLocation.temporarySprites.Add(new TemporaryAnimatedSprite("TileSheets\\animations", new Microsoft.Xna.Framework.Rectangle(192, 1152, Game1.tileSize, Game1.tileSize), 50f, 4, 0, Animations.GetWho().position - new Vector2(((Character)Animations.GetWho()).facingDirection == 1 ? 0.0f : (float)-Game1.tileSize, (float)(Game1.tileSize * 2)), false, ((Character)Animations.GetWho()).facingDirection == 1, (float)((Character)Animations.GetWho()).getStandingY() / 10000f, 0.01f, Microsoft.Xna.Framework.Color.White, 1f, 0.0f, 0.0f, 0.0f, false));
-         
+
             Animations.GetWho().freezePause = poopAnimationTime;
             Animations.GetWho().canMove = false;
             Animations.GetWho().doEmote(12, false);
@@ -323,7 +323,7 @@ namespace PrimevalTitmouse
         }
 
         public static void DrawUnderwearIcon(Container c, int x, int y)
-        {   
+        {
             Microsoft.Xna.Framework.Color defaultColor = Microsoft.Xna.Framework.Color.White;
 
             Texture2D underwearSprites = Animations.GetSprites();
@@ -338,7 +338,7 @@ namespace PrimevalTitmouse
                     string str = source.First<char>().ToString().ToUpper() + source.Substring(1);
                     int num = Game1.tileSize * 6 + Game1.tileSize / 6;
                     IClickableMenu.drawHoverText((SpriteBatch)Game1.spriteBatch, Game1.parseText(str, (SpriteFont)Game1.tinyFont, num), (SpriteFont)Game1.smallFont, 0, 0, -1, (string)null, -1, (string[])null, (Item)null, 0, -1, -1, -1, -1, 1f, (CraftingRecipe)null);
-                }            
+                }
         }
 
         private static void EndDrinking(Farmer who)
@@ -541,24 +541,24 @@ namespace PrimevalTitmouse
                 {
                     if ((double)c.messiness <= .0f)
                     {
-                        if ((double)c.wetness <= .0f)                        
-                            num = 0;                        
-                        else                        
-                            num = LARGE_SPRITE_DIM;                        
+                        if ((double)c.wetness <= .0f)
+                            num = 0;
+                        else
+                            num = LARGE_SPRITE_DIM;
                     }
                     else
                     {
-                        if ((double)c.wetness <= .0f)                        
-                            num = LARGE_SPRITE_DIM * 2;                        
-                        else                        
-                            num = LARGE_SPRITE_DIM * 3;                        
+                        if ((double)c.wetness <= .0f)
+                            num = LARGE_SPRITE_DIM * 2;
+                        else
+                            num = LARGE_SPRITE_DIM * 3;
                     }
                 }
                 else
                 {
                     num = LARGE_SPRITE_DIM * 4;
-                }                
-            }            
+                }
+            }
             return new Microsoft.Xna.Framework.Rectangle(c.spriteIndex * LARGE_SPRITE_DIM, num + (LARGE_SPRITE_DIM - height), LARGE_SPRITE_DIM, height);
         }
 

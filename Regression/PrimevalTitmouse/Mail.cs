@@ -17,7 +17,7 @@ namespace PrimevalTitmouse
 
         public static void CheckMail()
         {
-            //Give an extra letter in the begining to give some starting supplies
+            //Give an extra letter in the beginning to give some starting supplies
             if (!Game1.player.hasOrWillReceiveMail(initialRegressionLetterTitle))
             {
                 initialSupplies = new();

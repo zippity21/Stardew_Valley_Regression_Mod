@@ -4,8 +4,8 @@
 			"LogName":"Penny",
 			"Action":"EditData",
 			"Target":"Characters/Dialogue/Penny",
-			"Entries":{	
-//Penny's repsonse Ids are 130-139
+			"Entries":{
+//Penny's response Ids are 130-139
 
 
 "spring_Mon8":"Hello @! I'm really glad I've gotten to know you.#$b#I want to tell you something; it's a little embarrassing.$4
@@ -14,23 +14,23 @@
 #$r 134 0 Adult_Little#Good! Cause I don't wanna be one.
 #$r 135 0 Adult_Big#Not fair! I'm a big kid!
 ",
-"Adult_Little": "Well that's a relief! I was afraid I was reading too far into things.$1#$b#Though, your little potty problems are a dead give away, aren't they little one?$4", 
-"Adult_Big": "%Penny giggles sweetly at your comment and pats your head.#$b#Of course you are!$1", 
+"Adult_Little": "Well that's a relief! I was afraid I was reading too far into things.$1#$b#Though, your little potty problems are a dead give away, aren't they little one?$4",
+"Adult_Big": "%Penny giggles sweetly at your comment and pats your head.#$b#Of course you are!$1",
 "Adult_Followup":"#$p 135#I prefer thinking of you as a little kid rather than the big kid you say you are.$4|I'm glad you feel like a little kid!$1#$b#I think I prefer think of you as one.$4",
 
 "spring_Tue6":"I've always felt comfortable around little kids. I feel more confident.#$e#I feel that way around you too.#$b#I like that.$1",
 "spring_Wed4":"Hello there @. You look happy today.#$b#$y 'Have you been doing better with your potty issues?_Yup! It's easy!_Good! I'm glad to hear it.$1_Not really. I still have accidents..._Oh @. It's okay, that's nothing to be ashamed of. Keep trying your hardest, you'll get it!'",
 "spring_Thu4":"$p 102#We're very lucky to have a library in such a small town.|It doesn't seem like Vincent is going to get out of diapers any time soon...$3#$e#It's pretty clear he's not even trying.",
 
-"spring_Fri2":"Hello. Ummm... That old farm must be really distracting$3#$e#...$2 
+"spring_Fri2":"Hello. Ummm... That old farm must be really distracting$3#$e#...$2
 #$q 130/131 Potty_Followup#Are you having a hard time making it to the potty @?
 #$r 130 0 Potty_Trouble#Uh huh. It's too hard. I don't like it.
 #$r 130 5 Potty_Trouble#Y-yeah, but I'm trying my best, honest!
 #$r 131 -5 Potty_Easy#Ummm... No?
-#$r 131 -30 Potty_Easy#That's a really awkward question. 
+#$r 131 -30 Potty_Easy#That's a really awkward question.
 ",
-"Potty_Trouble": "I thought so. It's okay.#$e#I-if you want I could maybe help... I could check to see if you're doing okay...$4#$b#...$3#$b#If that's okay...$2", 
-"Potty_Easy": "Oh... I guess you don't need my help then...$2#$b#I'm sorry I brought it up...$2", 
+"Potty_Trouble": "I thought so. It's okay.#$e#I-if you want I could maybe help... I could check to see if you're doing okay...$4#$b#...$3#$b#If that's okay...$2",
+"Potty_Easy": "Oh... I guess you don't need my help then...$2#$b#I'm sorry I brought it up...$2",
 "Potty_Followup":"#$p 131#I'm sure you can handle it all on your own.|%Penny lowers her voice.#$b#Do you need to check in with your body and see if you need the potty @?$4",
 
 "spring_Sat6":"Oh hello @.#$q 132/133 Show_Followup#Oh, do you want to show me something?
@@ -62,20 +62,20 @@
 #$r 134 0 Adult_Little#Good! Cause I don't wanna be one.
 #$r 135 0 Adult_Big#Not fair! I'm a big kid!
 ",
-"Adult_Little": "Well that's a relief! I was afraid I was reading too far into things.$1#$b#Though, your little potty problems are a dead give away, aren't they little one?$4", 
-"Adult_Big": "%Penny giggles sweetly at your comment and pats your head.#$b#Of course you are!$1", 
+"Adult_Little": "Well that's a relief! I was afraid I was reading too far into things.$1#$b#Though, your little potty problems are a dead give away, aren't they little one?$4",
+"Adult_Big": "%Penny giggles sweetly at your comment and pats your head.#$b#Of course you are!$1",
 "Adult_Followup":"#$p 135#I prefer thinking of you as a little kid rather than the big kid you say you are.$4|I'm glad you feel like a little kid!$1#$b#I think I prefer think of you as one.$4",
 
 "summer_Sat4": "I wish I could treat my mom like the toddler she acts like all the time.$3#$e#It would probably be good for her...$2",
-"summer_Sun2":"Hello. Ummm... That old farm must be really distracting$3#$e#...$2 
+"summer_Sun2":"Hello. Ummm... That old farm must be really distracting$3#$e#...$2
 #$q 130/131 Potty_Followup#Are you having a hard time making it to the potty @?
 #$r 130 0 Potty_Trouble#Uh huh. It's too hard. I don't like it.
 #$r 130 5 Potty_Trouble#Y-yeah, but I'm trying my best, honest!
 #$r 131 -5 Potty_Easy#Ummm... No?
-#$r 131 -30 Potty_Easy#That's a really awkward question. 
+#$r 131 -30 Potty_Easy#That's a really awkward question.
 ",
-"Potty_Trouble": "I thought so. It's okay.#$e#I-if you want I could maybe help... I could check to see if you're doing okay...$4#$b#...$3#$b#If that's okay...$2", 
-"Potty_Easy": "Oh... I guess you don't need my help then...$2#$b#I'm sorry I brought it up...$2", 
+"Potty_Trouble": "I thought so. It's okay.#$e#I-if you want I could maybe help... I could check to see if you're doing okay...$4#$b#...$3#$b#If that's okay...$2",
+"Potty_Easy": "Oh... I guess you don't need my help then...$2#$b#I'm sorry I brought it up...$2",
 "Potty_Followup":"#$p 131#I'm sure you can handle it all on your own.|%Penny lowers her voice.#$b#Do you need to check in with your body and see if you need the potty @?$4",
 
 
@@ -91,26 +91,26 @@
 "Show_Nice": "Oh wow @, that is very lovely! Thank you for showing me.#$b#You look so pleased! You're just like a little kid at show and tell.$1",
 "Show_Diaper": "Oh goodness @. That doesn't look like you're trying very hard to make it to the potty.$3",
 "Show_Followup":"Well don't you look excited!$1#$e#%Penny pats your head fondly.",
-  
+
 "fall_Sun8":"Hello @! I'm really glad I've gotten to know you.#$b#I want to tell you something; it's a little embarrassing.$4
 #$q 134/135 Adult_Followup#I have a hard time thinking of you like you're an adult...
 #$r 134 0 Adult_Little#Honestly, I don't really feel like one.
 #$r 134 0 Adult_Little#Good! Cause I don't wanna be one.
 #$r 135 0 Adult_Big#Not fair! I'm a big kid!
 ",
-"Adult_Little": "Well that's a relief! I was afraid I was reading too far into things.$1#$b#Though, your little potty problems are a dead give away, aren't they little one?$4", 
-"Adult_Big": "%Penny giggles sweetly at your comment and pats your head.#$b#Of course you are!$1", 
+"Adult_Little": "Well that's a relief! I was afraid I was reading too far into things.$1#$b#Though, your little potty problems are a dead give away, aren't they little one?$4",
+"Adult_Big": "%Penny giggles sweetly at your comment and pats your head.#$b#Of course you are!$1",
 "Adult_Followup":"#$p 135#I prefer thinking of you as a little kid rather than the big kid you say you are.$4|I'm glad you feel like a little kid!$1#$b#I think I prefer think of you as one.$4",
 
-"fall_Sat2":"Hello. Ummm... That old farm must be really distracting$3#$e#...$2 
+"fall_Sat2":"Hello. Ummm... That old farm must be really distracting$3#$e#...$2
 #$q 130/131 Potty_Followup#Are you having a hard time making it to the potty @?
 #$r 130 0 Potty_Trouble#Uh huh. It's too hard. I don't like it.
 #$r 130 5 Potty_Trouble#Y-yeah, but I'm trying my best, honest!
 #$r 131 -5 Potty_Easy#Ummm... No?
-#$r 131 -30 Potty_Easy#That's a really awkward question. 
+#$r 131 -30 Potty_Easy#That's a really awkward question.
 ",
-"Potty_Trouble": "I thought so. It's okay.#$e#I-if you want I could maybe help... I could check to see if you're doing okay...$4#$b#...$3#$b#If that's okay...$2", 
-"Potty_Easy": "Oh... I guess you don't need my help then...$2#$b#I'm sorry I brought it up...$2", 
+"Potty_Trouble": "I thought so. It's okay.#$e#I-if you want I could maybe help... I could check to see if you're doing okay...$4#$b#...$3#$b#If that's okay...$2",
+"Potty_Easy": "Oh... I guess you don't need my help then...$2#$b#I'm sorry I brought it up...$2",
 "Potty_Followup":"#$p 131#I'm sure you can handle it all on your own.|%Penny lowers her voice.#$b#Do you need to check in with your body and see if you need the potty @?$4",
 
 
@@ -125,15 +125,15 @@
 "Show_Diaper": "Oh goodness @. That doesn't look like you're trying very hard to make it to the potty.$3",
 "Show_Followup":"Well don't you look excited!$1#$e#%Penny pats your head fondly.",
 
-"winter_Thu2":"Hello. Ummm... That old farm must be really distracting$3#$e#...$2 
+"winter_Thu2":"Hello. Ummm... That old farm must be really distracting$3#$e#...$2
 #$q 130/131 Potty_Followup#Are you having a hard time making it to the potty @?
 #$r 130 0 Potty_Trouble#Uh huh. It's too hard. I don't like it.
 #$r 130 5 Potty_Trouble#Y-yeah, but I'm trying my best, honest!
 #$r 131 -5 Potty_Easy#Ummm... No?
-#$r 131 -30 Potty_Easy#That's a really awkward question. 
+#$r 131 -30 Potty_Easy#That's a really awkward question.
 ",
-"Potty_Trouble": "I thought so. It's okay.#$e#I-if you want I could maybe help... I could check to see if you're doing okay...$4#$b#...$3#$b#If that's okay...$2", 
-"Potty_Easy": "Oh... I guess you don't need my help then...$2#$b#I'm sorry I brought it up...$2", 
+"Potty_Trouble": "I thought so. It's okay.#$e#I-if you want I could maybe help... I could check to see if you're doing okay...$4#$b#...$3#$b#If that's okay...$2",
+"Potty_Easy": "Oh... I guess you don't need my help then...$2#$b#I'm sorry I brought it up...$2",
 "Potty_Followup":"#$p 131#I'm sure you can handle it all on your own.|%Penny lowers her voice.#$b#Do you need to check in with your body and see if you need the potty @?$4",
 
 "winter_Fri2":"#$p 102#I'm tutoring Vincent and Jas today... They're a handful, but it's nice to make a difference in someone's life.|Jas is so proud of her pull ups. I'm really proud to have helped her get there.",
@@ -146,8 +146,8 @@
 #$r 134 0 Adult_Little#Good! Cause I don't wanna be one.
 #$r 135 0 Adult_Big#Not fair! I'm a big kid!
 ",
-"Adult_Little": "Well that's a relief! I was afraid I was reading too far into things.$1#$b#Though, your little potty problems are a dead give away, aren't they little one?$4", 
-"Adult_Big": "%Penny giggles sweetly at your comment and pats your head.#$b#Of course you are!$1", 
+"Adult_Little": "Well that's a relief! I was afraid I was reading too far into things.$1#$b#Though, your little potty problems are a dead give away, aren't they little one?$4",
+"Adult_Big": "%Penny giggles sweetly at your comment and pats your head.#$b#Of course you are!$1",
 "Adult_Followup":"#$p 135#I prefer thinking of you as a little kid rather than the big kid you say you are.$4|I'm glad you feel like a little kid!$1#$b#I think I prefer think of you as one.$4",
 
 			},
@@ -157,8 +157,8 @@
 			"LogName":"Penny Marriage",
 			"Action":"EditData",
 			"Target":"Characters/Dialogue/MarriageDialoguePenny",
-			"Entries":{		
-			
+			"Entries":{
+
 "Rainy_Day_0": "On rainy days my thoughts always drift toward cinnamon and cookies.#$b#Maybe they'd make for good motivation as a reward for making it to the potty on time.$1#$e#I think I'll go make some.",
 "Rainy_Day_1": "It's pretty damp outside.#$e#Maybe we don't have to try so hard to get to the potty today.#$b#Just for today, okay?$4",
 "Rainy_Day_2": "Hi, honey! I did some shopping this morning and got this for you.[186 180 770 535]#$e#I picked up some more supplies, just in case.$11",
@@ -237,8 +237,8 @@
 "winter_3": "If you're having lots of fun playing in the snow, I'd understand if you had a little accident.$4",
 "winter_10":"#$p 102#I'm excited to tutor Vincent and Jas today.|*Sigh* Vincent convinced Jas to use her pull up yesterday...$5#$e#It's hard to get him to take the potty seriously, but Jas has been trying really hard.$3#$b#Though, I don't think she would have made it this time anyway. She ended up making quite the mess.$2#$b#She seemed more relieved than embarrassed, so I guess it's okay.",
 "winter_24":"#$p 102#I wonder if Maru and Dr. Harvey will ever get together? I'm sure Harvey likes her...|Vincent used his diapers yesterday as usual.$3#$e#I know he can tell when he does it, but he never tells me when he's wet or messy.$5#$b#I swear that boy prefers to sit around in his used diapers.$1",
-						
+
 			}
-		}	
+		}
 	]
-}			
+}

@@ -4,7 +4,7 @@
 			"LogName":"Vincent",
 			"Action":"EditData",
 			"Target":"Characters/Dialogue/Vincent",
-			"Entries":{				
+			"Entries":{
   "Introduction": "Oh, a stranger! My name's Vincent.#$b#Mommy says not to talk to strangers... But you seem okay.
   #$q 101/102 ABDLChild_fallback#%Would you be comfortable seeing ABDL dialogue from Vincent and Jas?
   #$r 101 0 ABDLChild_Yes#Yes, I am comfortable with that.
@@ -13,15 +13,15 @@
   "ABDLChild_Yes":"%The more hearts you have with them the more ABDL dialogue there will be.",
   "ABDLChild_No":"%Okay. All the original lines will be unchanged, and they also won't notice you using your pants.",
   "ABDLChild_fallback":"#$p 102#What's your name?|%You hear a crinkle with each step Vincent takes.",
-  //The question above happens during the introduction of Vincent or Jas, whomever the player interacts with first. They'll get to choose whether or not they want ABDL dialogue for the two of them. 
+  //The question above happens during the introduction of Vincent or Jas, whomever the player interacts with first. They'll get to choose whether or not they want ABDL dialogue for the two of them.
   //Unfortunately, this only works for new farms, not if a player installs the mod and loads an old save where they've already met both Vincent and Jas. Then it defaults to the ABDL text.
 
-  
+
   "spring_12_1": "The egg hunt is tomorrow! I'm gonna find so many!$1#$e#I'm a good finder.",
   "spring_12_2": "The egg hunt is tomorrow! I'm gonna find so many!$1#$e#I'm a good finder.",
   "spring_Mon10":"#$p 102#I wanna be just like my big brother when I grow up!|I think I need my diaper changed, but I'm gonna wait until Mommy checks me.#$e#I don't mind being messy a bit longer!$1",
   "spring_Tue":"#$p 102#*sigh*... Mommy won't let me have any more gummies today.$s|I like it better when Miss Penny reads to us.",
-  "spring_Tue10":"#$p 102#Don't tell Mommy... but you're my favorite grown-up.$h|I found a frog and put it in my diaper.#$b#It's a surprise for mommy!$1#$e#%Vincent looks like he's being tickled.",
+  "spring_Tue10":"#$p 102#Don't tell Mommy... but you're my favorite grown-up.$h|I found a frog and put it in my diaper.#$b#It's a surprise for Mommy!$1#$e#%Vincent looks like he's being tickled.",
   "spring_Wed2":"#$p 102#I wanna look for bugs, but Mommy gets mad when I'm all dirty.$u|Mommy told me I can still be her little baby boy if I wasn't ready to grow up yet.#$e#I love my Mommy!$1",
   "spring_Thu":"#$p 102#I'm hungry... where's Mommy?$s|%You notice Vincent's diaper peeking out of his waistband.#$e#Hi @!$1",
   "spring_Thu6":"#$p 102#You're not as boring as most grown-ups!|%You notice Vincent's diaper peeking out of his waistband.#$b#%When he sees you he giggles and pats his crinkly bottom.",
@@ -39,12 +39,12 @@
   "summer_Thu6":"#$p 102#You're not as boring as most grown-ups!|Mommy wants me to try using the potty, but I don't wanna.$3#$b#It's scary, and I don't wanna be a big kid yet.$2",
   "summer_Fri2":"#$p 102#Ew, it's boiled beet night again...$s|%Vincent is sucking on his thumb and humming happily to himself.#$e#Hi @!$1",
   "summer_Fri10":"#$p 102#I wanna look for bugs, but Mommy gets mad when I'm all dirty.$u|%Vincent is sucking on his thumb and humming happily to himself.#$e#%You notice him pause for a minute, his free hand resting on his diaper, a faint blush on his cheeks, and a little grin behind his thumb.#$e#Ahhhh.",
-  "summer_Sat10":"#$p 102#Don't tell Mommy... but you're my favorite grown-up.$h|I found a frog and put it in my diaper.#$b#It's a surprise for mommy!$1#$e#%Vincent looks like he's being tickled.", 
+  "summer_Sat10":"#$p 102#Don't tell Mommy... but you're my favorite grown-up.$h|I found a frog and put it in my diaper.#$b#It's a surprise for Mommy!$1#$e#%Vincent looks like he's being tickled.",
   "summer_Sun2":"#$p 102#Miss Penny makes me read a new book every week.$s|Sometimes, when I'm bored, I like to play with my old baby toys.",
-  
+
   "fall_Mon4":"#$p 102#I wanna be just like my big brother when I grow up!|Jas keeps bragging about being in pull ups.#$e#I miss when we were in diapers together.$2",
   "fall_Tue10":"#$p 102#*sigh*... Mommy won't let me have any more gummies today.$s|Wanna know a secret?#$e#I don't wanna stop wearing diapers.$3#$e#Mommy says it's okay if I'm not ready yet!$1",
-  "fall_Wed":"#$p 102#I wanna look for bugs, but Mommy gets mad when I'm all dirty.$u|%You notice Vincent's diaper peeking out of his waistband.", 
+  "fall_Wed":"#$p 102#I wanna look for bugs, but Mommy gets mad when I'm all dirty.$u|%You notice Vincent's diaper peeking out of his waistband.",
   "fall_Wed6":"#$p 102#I wanna look for bugs, but Mommy gets mad when I'm all dirty.$u|%You notice Vincent's diaper peeking out of his waistband.#$b#%When he sees you he giggles and pats his crinkly bottom.",
   "fall_Wed10":"#$p 102#I wanna look for bugs, but Mommy gets mad when I'm all dirty.$u|%You notice Vincent's diaper peeking out of his waistband.#$b#%When he sees you he giggles and pats his crinkly bottom.#$e#%You just barely notice a squish.",
   "fall_Thu10":"#$p 102#You're not as boring as most grown-ups!|I think I need my diaper changed, but I'm gonna wait until Mommy checks me.#$e#I don't mind being messy a bit longer!$1",
@@ -54,7 +54,7 @@
   "fall_Sun_inlaw_Sam":"#$p 102#Hi there!|How's my brother doing?#$e#Can you tell him he can still borrow my stuffies if he wants?$3#$b#I don't want him to be scared.$2",
 
   "winter_Mon":"#$p 102#I wanna be just like my big brother when I grow up!|Jas only pretends to be a big girl.",
-  "winter_Mon8":"#$p 102#I wanna be just like my big brother when I grow up!|Jas only pretends to be a big girl.$3#$e#Pull ups are basically just diapers anyway.", 
+  "winter_Mon8":"#$p 102#I wanna be just like my big brother when I grow up!|Jas only pretends to be a big girl.$3#$e#Pull ups are basically just diapers anyway.",
   "winter_Tue10":"#$p 102#*sigh*... Mommy won't let me have any more gummies today.$s|%Vincent stares off for a moment and sighs in relief as a faint hiss reaches your ears.#$e#Just warmin' up!$1",
   "winter_Wed2":"#$p 102#I wanna look for bugs, but Mommy gets mad when I'm all dirty.$u|%Vincent is sucking on his thumb and humming happily to himself.#$e#Hi @!$1",
   "winter_Wed10":"#$p 102#I wanna look for bugs, but Mommy gets mad when I'm all dirty.$u|%Vincent is sucking on his thumb and humming happily to himself.#$e#%You notice him pause for a minute, his free hand resting on his diaper, a faint blush on his cheeks, and a little grin behind his thumb.#$e#Ahhhh",
@@ -64,7 +64,7 @@
   "winter_Sun":"#$p 102#Miss Penny makes me read a new book every week.$s|My teddy bear's name is Squishy.#$e#I like him a lot!$1",
   "winter_Sun_inlaw_Penny":"#$p 102#Miss Penny makes me read a new book every week.$s|Does Miss Penny change your diapers too?#$e#She says I gotta try and use the potty more, but if I do she won't change me anymore.$2",
 
-  
+
 			},
 		},
 	]

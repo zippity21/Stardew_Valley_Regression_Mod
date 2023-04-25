@@ -368,13 +368,13 @@ namespace PrimevalTitmouse
                     }
                     return; //Done with underwear
                 }
-                    
-                    
+
+
                 //If we're at a water source, and not holding underwear, drink from it.
                 if ((AtWaterSource()|| AtWell()) && e.IsDown(SButton.LeftShift))
                   this.body.DrinkWaterSource();
             }
-                
+
         }
 
         //If appropriate, draw bars for Hunger, thirst, bladder and bowels

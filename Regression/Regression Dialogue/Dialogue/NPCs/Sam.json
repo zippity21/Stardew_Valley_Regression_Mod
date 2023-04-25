@@ -4,8 +4,8 @@
 			"LogName":"Sam",
 			"Action":"EditData",
 			"Target":"Characters/Dialogue/Sam",
-			"Entries":{	
-//Sam's repsonse Ids are 120-129		
+			"Entries":{
+//Sam's response Ids are 120-129
 
 "Thu6_1": "I think my Daddy might be coming back in a year or so.#$e#I guess you might be able to meet him, then. If you're still living here.#$e#You wouldn't abandon the farm after putting so much effort into it!",
 "Fri4": "Daddy used to work as a garbage man in the city.#$e#You don't even want to know some of the things he found in people's trash.",
@@ -14,10 +14,10 @@
 "spring_Mon2":"I can't believe I have a job...$2
 #$q 120/121 Job_Followup#It almost feels like I'm not old enough yet.
 #$r 120 0 Job_Ready#You just need a little more time before you're ready.
-#$r 120 0 Job_Pretend#You could always just stop pretending to be a big boy. 
+#$r 120 0 Job_Pretend#You could always just stop pretending to be a big boy.
 ",
-"Job_Ready": "Yeah, I guess I do, but I'm supposed to be responsible for Mommy...$9#$b#I mean Mom...$8", 
-"Job_Pretend": "Man I wish. It'd be so much better to just play all day. Just like Vincent.$4#$b#He doesn't have to work.$5", 
+"Job_Ready": "Yeah, I guess I do, but I'm supposed to be responsible for Mommy...$9#$b#I mean Mom...$8",
+"Job_Pretend": "Man I wish. It'd be so much better to just play all day. Just like Vincent.$4#$b#He doesn't have to work.$5",
 "Job_Followup":"#$p 120#It felt good to admit I wasn't ready. Thank you.$3|I wonder if I should skip a day and just play in the woods all day!$1",
 
 "spring_Mon8":"#$p 102#@! Mommy got freezy pops for us! Score!$1|We watched a movie as a family last night.$7#$e#Vincent messed his diaper right at the beginning, but since he didn't seem bothered Mommy waited until the movie ended to change him.#$e#I wanted to be in his shoes.$4",
@@ -26,10 +26,10 @@
 "spring_Thu6":"Can I share a secret with you?$7
 #$q 122/123 Diapers_Followup#I've never told this to anybody, but I really want to go back to wearing diapers.
 #$r 122 0 Diapers_Nice#Awww, you're such a precious little boy.
-#$r 123 0 Diapers_Join#Really?! Me too! 
+#$r 123 0 Diapers_Join#Really?! Me too!
 ",
-"Diapers_Nice": "R-Really?!$10%Sam is so overwhelmed he starts to tear up a little. You hold him close and rub his back until he calms down.#$e#T-Thanks @.$4%Sam looks like a huge weight's been lifted off his shoulders.", 
-"Diapers_Join": "Really?! For real?! You'd look so cute in one @! We could be diaper buddies!$10#$e#Man it feels weird being able to say that out loud to somebody.$4", 
+"Diapers_Nice": "R-Really?!$10%Sam is so overwhelmed he starts to tear up a little. You hold him close and rub his back until he calms down.#$e#T-Thanks @.$4%Sam looks like a huge weight's been lifted off his shoulders.",
+"Diapers_Join": "Really?! For real?! You'd look so cute in one @! We could be diaper buddies!$10#$e#Man it feels weird being able to say that out loud to somebody.$4",
 "Diapers_Followup":"I used to wet the bed until I was a teenager.$9#$b#I was embarrassed about needing diapers at night for so long! But now I miss them.$4#$b#Isn't that funny?$10",
 
 "spring_Sun8":"It's been wonderful getting to know you @. I feel like I can be perfectly honest with you.
@@ -39,8 +39,8 @@
 #$r 124 0 Little_Excited#Yeah, being big is gross. We should play together!
 #$r 125 0 Little_Excited#I'll change your diapers if you change mine.
 ",
-"Little_Little": "Uh huh!$3#$b#%Sam squeals happily and hides his blushing face.", 
-"Little_Excited": "Yeah!$3#$b#%Sam squeals happily and hides his blushing face.", 
+"Little_Little": "Uh huh!$3#$b#%Sam squeals happily and hides his blushing face.",
+"Little_Excited": "Yeah!$3#$b#%Sam squeals happily and hides his blushing face.",
 "Little_Followup":"#$p 124#You always make me feel so little. It means so much to me, thank you.$4|I really want to go back to diapers full time.$4#$b#I just don't think I can while I'm still living with Mommy.$10",
 
 "summer_Mon6": "Have you been to the desert yet?#$e#You can find some interesting things there. Daddy took me a couple times when I was younger.",
@@ -48,19 +48,19 @@
 "summer_Mon2":"I can't believe I have a job...$2
 #$q 120/121 Job_Followup#It almost feels like I'm not old enough yet.
 #$r 120 0 Job_Ready#You just need a little more time before you're ready.
-#$r 120 0 Job_Pretend#You could always just stop pretending to be a big boy. 
+#$r 120 0 Job_Pretend#You could always just stop pretending to be a big boy.
 ",
-"Job_Ready": "Yeah, I guess I do, but I'm supposed to be responsible for Mommy...$9#$b#I mean Mom...$8", 
-"Job_Pretend": "Man I wish. It'd be so much better to just play all day. Just like Vincent.$4#$b#He doesn't have to work.$5", 
+"Job_Ready": "Yeah, I guess I do, but I'm supposed to be responsible for Mommy...$9#$b#I mean Mom...$8",
+"Job_Pretend": "Man I wish. It'd be so much better to just play all day. Just like Vincent.$4#$b#He doesn't have to work.$5",
 "Job_Followup":"#$p 120#You're right, I don't think I'm quite ready to be a grown up yet.$4|I wonder if I should skip a day and just play at the beach all day!$1",
 
 "summer_Thu6":"Can I share a secret with you?$7
 #$q 122/123 Diapers_Followup#I've never told this to anybody, but I really want to go back to wearing diapers.
 #$r 122 0 Diapers_Nice#Awww, you're such a precious little boy.
-#$r 123 0 Diapers_Join#Really?! Me too! 
+#$r 123 0 Diapers_Join#Really?! Me too!
 ",
-"Diapers_Nice": "R-Really?!$10%Sam is so overwhelmed he starts to tear up a little. You hold him close and rub his back until he calms down.#$e#T-Thanks @.$4%Sam looks like a huge weight's been lifted off his shoulders.", 
-"Diapers_Join": "Really?! For real?! You'd look so cute in one @! We could be diaper buddies!$10#$e#Man it feels weird being able to say that out loud to somebody.$4", 
+"Diapers_Nice": "R-Really?!$10%Sam is so overwhelmed he starts to tear up a little. You hold him close and rub his back until he calms down.#$e#T-Thanks @.$4%Sam looks like a huge weight's been lifted off his shoulders.",
+"Diapers_Join": "Really?! For real?! You'd look so cute in one @! We could be diaper buddies!$10#$e#Man it feels weird being able to say that out loud to somebody.$4",
 "Diapers_Followup":"I used to wet the bed until I was a teenager.$9#$b#I was embarrassed about needing diapers at night for so long! But now I miss them.$4#$b#Isn't that funny?$10",
 
 "summer_Sun8":"It's been wonderful getting to know you @. I feel like I can be perfectly honest with you.
@@ -70,8 +70,8 @@
 #$r 124 0 Little_Excited#Yeah, being big is gross. We should play together!
 #$r 125 0 Little_Excited#I'll change your diapers if you change mine.
 ",
-"Little_Little": "Uh huh!$3#$b#%Sam squeals happily and hides his blushing face.", 
-"Little_Excited": "Yeah!$3#$b#%Sam squeals happily and hides his blushing face.", 
+"Little_Little": "Uh huh!$3#$b#%Sam squeals happily and hides his blushing face.",
+"Little_Excited": "Yeah!$3#$b#%Sam squeals happily and hides his blushing face.",
 "Little_Followup":"#$p 124#You always make me feel so little. It means so much to me, thank you.$4|I really want to go back to diapers full time.$4#$b#I just don't think I can while I'm still living with Mommy.$10",
 
 "fall_Tue4": "Hi, @. Do you want to hang out or something?#$e#I could show you my favorite stuffy.$1#$b#He's a worm and I named him Mr. Wiggles!$10",
@@ -81,10 +81,10 @@
 "fall_Mon2":"I can't believe I have a job...$2
 #$q 120/121 Job_Followup#It almost feels like I'm not old enough yet.
 #$r 120 0 Job_Ready#You just need a little more time before you're ready.
-#$r 120 0 Job_Pretend#You could always just stop pretending to be a big boy. 
+#$r 120 0 Job_Pretend#You could always just stop pretending to be a big boy.
 ",
-"Job_Ready": "Yeah, I guess I do, but I'm supposed to be responsible for Mommy...$9#$b#I mean Mom...$8", 
-"Job_Pretend": "Man I wish. It'd be so much better to just play all day. Just like Vincent.$4#$b#He doesn't have to work.$5", 
+"Job_Ready": "Yeah, I guess I do, but I'm supposed to be responsible for Mommy...$9#$b#I mean Mom...$8",
+"Job_Pretend": "Man I wish. It'd be so much better to just play all day. Just like Vincent.$4#$b#He doesn't have to work.$5",
 "Job_Followup":"#$p 120#It felt good to admit I wasn't ready. Thank you.$3|I wonder if I should skip a day and just play in the forest all day!$1",
 
 "fall_Mon8":"#$p 102#@! Mommy got freezy pops for us! Score!$1|We watched a movie as a family last night.$7#$b#Vincent messed his diaper right at the beginning, but since he didn't seem bothered Mommy waited until the movie ended to change him.#$e#I wanted to be in his shoes.$4",
@@ -92,10 +92,10 @@
 "fall_Wed6":"Can I share a secret with you?$7
 #$q 122/123 Diapers_Followup#I've never told this to anybody, but I really want to go back to wearing diapers.
 #$r 122 0 Diapers_Nice#Awww, you're such a precious little boy.
-#$r 123 0 Diapers_Join#Really?! Me too! 
+#$r 123 0 Diapers_Join#Really?! Me too!
 ",
-"Diapers_Nice": "R-Really?!$10%Sam is so overwhelmed he starts to tear up a little. You hold him close and rub his back until he calms down.#$e#T-Thanks @.$4%Sam looks like a huge weight's been lifted off his shoulders.", 
-"Diapers_Join": "Really?! For real?! You'd look so cute in one @! We could be diaper buddies!$10#$e#Man it feels weird being able to say that out loud to somebody.$4", 
+"Diapers_Nice": "R-Really?!$10%Sam is so overwhelmed he starts to tear up a little. You hold him close and rub his back until he calms down.#$e#T-Thanks @.$4%Sam looks like a huge weight's been lifted off his shoulders.",
+"Diapers_Join": "Really?! For real?! You'd look so cute in one @! We could be diaper buddies!$10#$e#Man it feels weird being able to say that out loud to somebody.$4",
 "Diapers_Followup":"I used to wet the bed until I was a teenager.$9#$b#I was embarrassed about needing diapers at night for so long! But now I miss them.$4#$b#Isn't that funny?$10",
 
 "fall_Fri8":"It's been wonderful getting to know you @. I feel like I can be perfectly honest with you.
@@ -105,8 +105,8 @@
 #$r 124 0 Little_Excited#Yeah, being big is gross. We should play together!
 #$r 125 0 Little_Excited#I'll change your diapers if you change mine.
 ",
-"Little_Little": "Uh huh!$3#$b#%Sam squeals happily and hides his blushing face.", 
-"Little_Excited": "Yeah!$3#$b#%Sam squeals happily and hides his blushing face.", 
+"Little_Little": "Uh huh!$3#$b#%Sam squeals happily and hides his blushing face.",
+"Little_Excited": "Yeah!$3#$b#%Sam squeals happily and hides his blushing face.",
 "Little_Followup":"#$p 124#You always make me feel so little. It means so much to me, thank you.$4|I really want to go back to diapers full time.$4#$b#I just don't think I can while I'm still living with Mommy.$10",
 
 "winter_Tue4": "Hi, @. Do you want to hang out or something?#$e#We could make a snow fort!$1",
@@ -116,19 +116,19 @@
 "winter_Mon2":"I can't believe I have a job...$2
 #$q 120/121 Job_Followup#It almost feels like I'm not old enough yet.
 #$r 120 0 Job_Ready#You just need a little more time before you're ready.
-#$r 120 0 Job_Pretend#You could always just stop pretending to be a big boy. 
+#$r 120 0 Job_Pretend#You could always just stop pretending to be a big boy.
 ",
-"Job_Ready": "Yeah, I guess I do, but I'm supposed to be responsible for Mommy...$9#$b#I mean Mom...$8", 
-"Job_Pretend": "Man I wish. It'd be so much better to just play all day. Just like Vincent.$4#$b#He doesn't have to work.$5", 
+"Job_Ready": "Yeah, I guess I do, but I'm supposed to be responsible for Mommy...$9#$b#I mean Mom...$8",
+"Job_Pretend": "Man I wish. It'd be so much better to just play all day. Just like Vincent.$4#$b#He doesn't have to work.$5",
 "Job_Followup":"#$p 120#You're right, I don't think I'm quite ready to be a grown up yet.$4|I wonder if I should skip a day and just play in the snow all day!$1",
 
 "winter_Wed6":"Can I share a secret with you?$7
 #$q 122/123 Diapers_Followup#I've never told this to anybody, but I really want to go back to wearing diapers.
 #$r 122 0 Diapers_Nice#Awww, you're such a precious little boy.
-#$r 123 0 Diapers_Join#Really?! Me too! 
+#$r 123 0 Diapers_Join#Really?! Me too!
 ",
-"Diapers_Nice": "R-Really?!$10%Sam is so overwhelmed he starts to tear up a little. You hold him close and rub his back until he calms down.#$e#T-Thanks @.$4%Sam looks like a huge weight's been lifted off his shoulders.", 
-"Diapers_Join": "Really?! For real?! You'd look so cute in one @! We could be diaper buddies!$10#$e#Man it feels weird being able to say that out loud to somebody.$4", 
+"Diapers_Nice": "R-Really?!$10%Sam is so overwhelmed he starts to tear up a little. You hold him close and rub his back until he calms down.#$e#T-Thanks @.$4%Sam looks like a huge weight's been lifted off his shoulders.",
+"Diapers_Join": "Really?! For real?! You'd look so cute in one @! We could be diaper buddies!$10#$e#Man it feels weird being able to say that out loud to somebody.$4",
 "Diapers_Followup":"I used to wet the bed until I was a teenager.$9#$b#I was embarrassed about needing diapers at night for so long! But now I miss them.$4#$b#Isn't that funny?$10",
 
 "winter_Sat8":"It's been wonderful getting to know you @. I feel like I can be perfectly honest with you.
@@ -138,19 +138,19 @@
 #$r 124 0 Little_Excited#Yeah, being big is gross. We should play together!
 #$r 125 0 Little_Excited#I'll change your diapers if you change mine.
 ",
-"Little_Little": "Uh huh!$3#$b#%Sam squeals happily and hides his blushing face.", 
-"Little_Excited": "Yeah!$3#$b#%Sam squeals happily and hides his blushing face.", 
+"Little_Little": "Uh huh!$3#$b#%Sam squeals happily and hides his blushing face.",
+"Little_Excited": "Yeah!$3#$b#%Sam squeals happily and hides his blushing face.",
 "Little_Followup":"#$p 124#You always make me feel so little. It means so much to me, thank you.$4|I really want to go back to diapers full time.$4#$b#I just don't think I can while I'm still living with Mommy.$10",
 
 			}
 		},
-		
+
 		{
 			"LogName":"Sam Marriage",
 			"Action":"EditData",
 			"Target":"Characters/Dialogue/MarriageDialogueSam",
 			"Entries":{
-				
+
   "Rainy_Day_0": "%Sam is staring out the window, watching the rain roll down wearing just his soggy night diaper and pajama shirt.#$e#%He doesn't seem to notice you. He bends his knees slightly, gently pushing a soft mess into his diaper without a second though. Only then do you tap his shoulder.#$b#@!8#$b#I-I was just watchin' the rain$10.",
   "Rainy_Day_1": "Sebastian loves this kind of weather. When we were little we used to go frog catching when it rained.#$e#Do you wanna go catch frogs?!$1",
   "Rainy_Day_2": "Hey, I found one of these rolling around in the back of a drawer. [90 88 86 535]#$e#I thought you might be able to use it.",
@@ -205,6 +205,6 @@
   "winter_7": "Are we going to stop by the ice festival tomorrow? It might be fun to see everyone again...",
   "winter_28": "We had a great year, @... it's kind of sad that it's over.#$e#We'll just have to make next year even better!$h",
 			}
-		}	
+		}
 	]
 }
