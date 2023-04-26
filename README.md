@@ -63,7 +63,7 @@ Follow instructions provided by the individual prerequisite mods and programs.
 
 ### In Debug
 - Left Alt + F1: Make more thirsty and hungry
-- Left Alt + F2: Make less thirsy and hungry. Make Bladder and Bowels fuller.
+- Left Alt + F2: Make less thirsty and hungry. Make Bladder and Bowels fuller.
 - Left Alt + F3: Open a menu with all valid underwear types. ( + some wine ;) )
 - Left Alt + F4: (Reserved by Windows to force quit)
 - Left Alt + F5: Fast forward time a bit (do not hold down. Wait for fast forward to finish before pressing again.)
@@ -76,7 +76,7 @@ Follow instructions provided by the individual prerequisite mods and programs.
 - Left Alt + Left Shift + S: Decrease Bowel Continence
 
 ## Basic Mechanics
-You now get hungry and thristy over time and from doing work. Getting too hungry or thirsty gives you de-buffs. Of course, you can alleviate your hunger by eating food, and slake your thirst by drinking beverages (including water from a water source, your watering can, or things like wine, coffee, etc.).
+You now get hungry and thirsty over time, and from doing work. Getting too hungry or thirsty gives you de-buffs. Of course, you can alleviate your hunger by eating food, and slake your thirst by drinking beverages (including water from a water source, your watering can, or things like wine, coffee, etc.).
 
 Of course, that food and water have to go somewhere :). You now also have to worry about having to go potty. Your bladder and bowels increase naturally over time, and will increase more/faster depending on what you eat/drink. Currently the only toilet is in your house, so if you're out and about, you have a few options:
 - Try to hold it and run home to use the potty like a big boy/girl.
