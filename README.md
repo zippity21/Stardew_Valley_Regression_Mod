@@ -49,7 +49,14 @@ Follow instructions provided by the individual prerequisite mods and programs.
 - F5: Check State of Underwear
 - F6: Check State of Pants
 - F9: Toggle Debug Mode
-- (Use Left shift to pull down pants. If in your house, it'll be considered making it to the toilet. Elsewhere, its on the ground.)
+- The following locations have toilets (use you imagination, there is no icon/sprite). Pulling down your pants anywhere else will result in you going on the floor (*gross*).
+  - House
+  - Hospital
+  - Club
+  - Joja-Mart
+  - Movie Theater
+  - Saloon
+  - Bathhouse Locker-room
 - Left Shift + F1: Pull down pants and attempt to pee.
 - Left Shift + F2: Pull down pants and attempt to poop.
 - Left Shift + Left Click: Drink when near water source or holding watering can.
@@ -69,7 +76,7 @@ Follow instructions provided by the individual prerequisite mods and programs.
 - Left Alt + Left Shift + S: Decrease Bowel Continence
 
 ## Basic Mechanics
-You now get hungry and thirsty over time, and from doing work. Getting too hungry/thirsty gives you de-buffs. You can become less hungry by eating food, and less thirst by drinking beverages (including water from a water source, your watering can, or things like wine, coffee, etc.).
+You now get hungry and thirsty over time, and from doing work. Getting too hungry or thirsty gives you de-buffs. Of course, you can alleviate your hunger by eating food, and slake your thirst by drinking beverages (including water from a water source, your watering can, or things like wine, coffee, etc.).
 
 Of course, that food and water have to go somewhere :). You now also have to worry about having to go potty. Your bladder and bowels increase naturally over time, and will increase more/faster depending on what you eat/drink. Currently the only toilet is in your house, so if you're out and about, you have a few options:
 - Try to hold it and run home to use the potty like a big boy/girl.
