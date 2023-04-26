@@ -49,7 +49,14 @@ Follow instructions provided by the individual prerequisite mods and programs.
 - F5: Check State of Underwear
 - F6: Check State of Pants
 - F9: Toggle Debug Mode
-- (Use Left shift to pull down pants. If in your house, it'll be considered making it to the toilet. Elsewhere, its on the ground.)
+- The following locations have toilets (use you imagination, there is no icon/sprite). Pulling down your pants anywhere else will result in you going on the floor (*gross*).
+  - House
+  - Hospital
+  - Club
+  - Joja-Mart
+  - Movie Theater
+  - Saloon
+  - Bathhouse Locker-room
 - Left Shift + F1: Pull down pants and attempt to pee.
 - Left Shift + F2: Pull down pants and attempt to poop.
 - Left Shift + Left Click: Drink when near water source or holding watering can.
