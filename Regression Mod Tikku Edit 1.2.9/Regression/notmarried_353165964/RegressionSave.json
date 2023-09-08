@@ -1,0 +1,79 @@
+{
+  "bedtime": 1110,
+  "bladderCapacity": 600.0,
+  "bladderContinence": 1.0,
+  "bladderFullness": 0.0,
+  "bowelCapacity": 1172.5,
+  "bowelContinence": 1.0,
+  "bowelFullness": 0.0,
+  "hunger": 2550.9985,
+  "thirst": 5830.8535,
+  "isSleeping": true,
+  "bed": {
+    "absorbency": 2500.0,
+    "containment": 1000.0,
+    "description": "cozy bed",
+    "messiness": 0.0,
+    "name": "bed",
+    "plural": false,
+    "price": 0,
+    "spriteIndex": -1,
+    "washable": true,
+    "wetness": 0.0,
+    "dryingTime": 0,
+    "removable": false,
+    "durability": -1,
+    "timeWhenDoneDrying": {
+      "time": 600,
+      "day": 2,
+      "season": 0,
+      "year": 1
+    }
+  },
+  "pants": {
+    "absorbency": 300.0,
+    "containment": 60.0,
+    "description": "sturdy blue jeans",
+    "messiness": 0.0,
+    "name": "blue jeans",
+    "plural": true,
+    "price": 2000,
+    "spriteIndex": -1,
+    "washable": true,
+    "wetness": 0.0,
+    "dryingTime": 600,
+    "removable": true,
+    "durability": -1,
+    "timeWhenDoneDrying": {
+      "time": 0,
+      "day": 0,
+      "season": 0,
+      "year": 0
+    }
+  },
+  "underwear": {
+    "absorbency": 150.0,
+    "containment": 115.0,
+    "description": "green undies covered in adorable dinosaurs",
+    "messiness": 0.0,
+    "name": "dinosaur undies",
+    "plural": true,
+    "price": 10,
+    "spriteIndex": 3,
+    "washable": true,
+    "wetness": 0.0,
+    "dryingTime": 400,
+    "removable": true,
+    "durability": 4,
+    "timeWhenDoneDrying": {
+      "time": 0,
+      "day": 0,
+      "season": 0,
+      "year": 0
+    }
+  },
+  "numPottyPooAtNight": 2,
+  "numPottyPeeAtNight": 1,
+  "numAccidentPooAtNight": 0,
+  "numAccidentPeeAtNight": 0
+}

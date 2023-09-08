@@ -1,0 +1,45 @@
+{
+    "Format": "1.19.0",
+    "Changes": [
+		{
+            "LogName": "Sebastian",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Sebastian.json"
+        },
+		{
+            "LogName": "Jodi",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Jodi.json"
+        },
+		{
+            "LogName": "Harvey",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Harvey.json"
+        },
+		{
+            "LogName": "Gus",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Gus.json"
+        },
+		{
+            "LogName": "Sam",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Sam.json"
+        },		
+		{
+            "LogName": "Penny",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Penny.json"
+        },				
+		{
+            "LogName": "Vincent",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Vincent.json"
+        },
+		{
+		    "LogName": "Jas",
+            "Action": "Include",
+            "FromFile": "Dialogue/NPCs/Jas.json"
+		},	
+	]
+}

@@ -1,0 +1,14 @@
+{
+  "AlwaysNoticeAccidents": true,
+  "Debug": false,
+  "Easymode": false,
+  "Lang": "en",
+  "Messing": true,
+  "NoFriendshipPenalty": false,
+  "NoHungerAndThirst": false,
+  "Wetting": true,
+  "BladderLossContinenceRate": 1,
+  "BowelLossContinenceRate": 1,
+  "BladderGainContinenceRate": 1,
+  "BowelGainContinenceRate": 1
+}
