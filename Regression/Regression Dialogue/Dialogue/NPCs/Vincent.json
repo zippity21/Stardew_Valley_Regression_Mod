@@ -6,12 +6,12 @@
 			"Target":"Characters/Dialogue/Vincent",
 			"Entries":{
   "Introduction": "Oh, a stranger! My name's Vincent.#$b#Mommy says not to talk to strangers... But you seem okay.
-  #$q 101/102 ABDLChild_fallback#%Would you be comfortable seeing ABDL dialogue from Vincent and Jas?
+  #$q 101/102 ABDLChild_fallback#%The kids can have dialogue about being in diapers and reacting to yours. Would you be comfortable with that?
   #$r 101 0 ABDLChild_Yes#Yes, I am comfortable with that.
   #$r 102 0 ABDLChild_No#No, I would like to see the original dialogue.",
   //-----------------
-  "ABDLChild_Yes":"%The more hearts you have with them the more ABDL dialogue there will be.",
-  "ABDLChild_No":"%Okay. All the original lines will be unchanged, and they also won't notice you using your pants.",
+  "ABDLChild_Yes":"%The more hearts you have with any villager the more diaper related dialogue there will be.",
+  "ABDLChild_No":"%Okay. All the kids' original lines will be unchanged, and they also won't notice you using your pants. The more hearts you have with any other villager the more diaper related dialogue there will be.",
   "ABDLChild_fallback":"#$p 102#What's your name?|%You hear a crinkle with each step Vincent takes.",
   //The question above happens during the introduction of Vincent or Jas, whomever the player interacts with first. They'll get to choose whether or not they want ABDL dialogue for the two of them.
   //Unfortunately, this only works for new farms, not if a player installs the mod and loads an old save where they've already met both Vincent and Jas. Then it defaults to the ABDL text.

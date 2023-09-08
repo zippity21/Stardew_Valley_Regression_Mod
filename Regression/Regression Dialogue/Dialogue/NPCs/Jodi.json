@@ -41,9 +41,9 @@
 
 
   "fall_Mon2":"#$p 102#There's the little farmer!|Sam doesn't think I notice that Vincent's diapers run out faster than they should.#$e#I guess I still have two little boys, don't I!$1",
-  "fall_Tue4":"#$c .5#Do you have any animals on your farm? Can you tell me what the dog says?#$e#That's right! Dog says bark!$1|Do you have any animals on your farm? Can you tell me what the cat says?#$e#That's right! Cat says meow!$1",
+  "fall_Tue4":"#$c .5#Do you have any animals on your farm? Can you tell me what the dog says?#$b#That's right! Dog says bark!$1|Do you have any animals on your farm? Can you tell me what the cat says?#$b#That's right! Cat says meow!$1",
   "fall_Wed8":"If you ever need help with one of your little accidents, don't be afraid to ask, okay?#$e#You're so cute when you're blushing!$1",
-  "fall_Thu2":"Are you hungry?#$b#%Jodi pulls out a granola bar for you and smiles warmly as you take it.#$e#That should hold you over for now.",
+  "fall_Thu2":"Are you hungry?#$b#%Jodi pulls out a granola bar for you and smiles warmly as you take it.[403]#$e#That should hold you over for now.",
   "fall_Fri2":"#$p 102#I bet you've already run out of the diapers I gave you by now.|I guess I'd have less work to do if Vincent was potty trained.#$e#At least boys are easy to clean.",
   "fall_Sat":"There's the little farmer!#$e#How's the town treating you?",
   "fall_Sat8":"There's the little farmer!#$b#%Jodi pulls the back your waist band for a quick check.#$e#You should be okay for now.",
