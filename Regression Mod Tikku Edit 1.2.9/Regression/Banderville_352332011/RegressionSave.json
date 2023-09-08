@@ -1,0 +1,79 @@
+{
+  "bedtime": 2040,
+  "bladderCapacity": 120.0,
+  "bladderContinence": 0.05,
+  "bladderFullness": 0.0,
+  "bowelCapacity": 234.5,
+  "bowelContinence": 0.05,
+  "bowelFullness": 50.433483,
+  "hunger": 3500.0,
+  "thirst": 6846.637,
+  "isSleeping": true,
+  "bed": {
+    "absorbency": 2500.0,
+    "containment": 1000.0,
+    "description": "cozy bed",
+    "messiness": 0.0,
+    "name": "bed",
+    "plural": false,
+    "price": 0,
+    "spriteIndex": -1,
+    "washable": true,
+    "wetness": 0.0,
+    "dryingTime": 1000,
+    "removable": false,
+    "durability": -1,
+    "timeWhenDoneDrying": {
+      "time": 1600,
+      "day": 24,
+      "season": 2,
+      "year": 1
+    }
+  },
+  "pants": {
+    "absorbency": 300.0,
+    "containment": 60.0,
+    "description": "sturdy blue jeans",
+    "messiness": 0.0,
+    "name": "blue jeans",
+    "plural": true,
+    "price": 2000,
+    "spriteIndex": -1,
+    "washable": true,
+    "wetness": 0.0,
+    "dryingTime": 600,
+    "removable": true,
+    "durability": -1,
+    "timeWhenDoneDrying": {
+      "time": 0,
+      "day": 0,
+      "season": 0,
+      "year": 0
+    }
+  },
+  "underwear": {
+    "absorbency": 600.0,
+    "containment": 170.0,
+    "description": "soft and snug flowery lavender pullup",
+    "messiness": 0.0,
+    "name": "lavender pullup",
+    "plural": false,
+    "price": 25,
+    "spriteIndex": 4,
+    "washable": false,
+    "wetness": 471.29465,
+    "dryingTime": 0,
+    "removable": true,
+    "durability": 0,
+    "timeWhenDoneDrying": {
+      "time": 0,
+      "day": 0,
+      "season": 0,
+      "year": 0
+    }
+  },
+  "numPottyPooAtNight": 0,
+  "numPottyPeeAtNight": 0,
+  "numAccidentPooAtNight": 0,
+  "numAccidentPeeAtNight": 3
+}

@@ -1,0 +1,19 @@
+{
+	"Changes":[
+		{
+			"LogName":"Gus",
+			"Action":"EditData",
+			"Target":"Characters/Dialogue/Gus",
+			"Entries":{	
+			
+
+"Saloon4": "Good evening. Make yourself at home.#$e#%Gus leans in close so no one else can hear.#$b#If you need to change you can use my room. It's private.$1",
+"Saloon8": "Must be nice to just go wherever… I’m holding a big one in, now, honestly.#$b#I can't just step away when the saloon is packed!$1",
+
+"Mon2": "Yeah, I know a lot about the people living here.#$e#That's one of the benefits of being a bartender.$h#$e#Sometimes I hear too much...#$b#%Gus winks and glances down at your pants.",
+"Sat4": "Are you much of a chef, @?#$e#If you have a kitchen and some recipes, you can cook some useful dishes.#$e#Though it's easier picturing you getting fed than doing the cooking!$1",
+
+			},
+		},
+	]
+}
