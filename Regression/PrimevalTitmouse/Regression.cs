@@ -123,14 +123,12 @@ namespace PrimevalTitmouse
                 int locId = 0;
                 foreach (var location in Game1.locations)
                 {
-                    int chestId = 0;
                     foreach (var obj in location.Objects.Values)
                     {
-                        var id = string.Format("{0}-{1}", locId, chestId);
+                        var id = string.Format("{0}-{1}-{2}", locId, obj.TileLocation.X, obj.TileLocation.Y);
                         if (obj is Chest chest && chestReplacement.ContainsKey(id))
                         {
                             restoreItems(chest.Items, chestReplacement[id]);
-                            chestId++;
                         }
                     }
                     locId++;
@@ -178,14 +176,12 @@ namespace PrimevalTitmouse
             int locId = 0;
             foreach (var location in Game1.locations)
             {
-                int chestId = 0;
                 foreach (var obj in location.Objects.Values)
                 {
                     if (obj is Chest chest)
                     {
-                        var id = string.Format("{0}-{1}", locId, chestId);
+                        var id = string.Format("{0}-{1}-{2}", locId, obj.TileLocation.X, obj.TileLocation.Y);
                         chestReplacements.Add(id, replaceItems(chest.Items));
-                        chestId++;
                     }
                 }
 
