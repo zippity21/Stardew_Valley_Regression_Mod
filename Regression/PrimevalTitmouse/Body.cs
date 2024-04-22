@@ -160,8 +160,6 @@ namespace PrimevalTitmouse
             //Did we go over? Then have an accident.
             if (bowelFullness >= bowelCapacity)
             {
-                Regression.monitor.Log(string.Format("Exceeded bowel capacity {0} {1}", bowelFullness, bowelCapacity));
-
                 Mess(voluntary: false, inUnderwear: true);
             }
             else
@@ -445,24 +443,19 @@ namespace PrimevalTitmouse
                 StartMessing(voluntary, true); //Always in underwear in bed
                                                //Any overage in the container, add to the pants. Ignore overage over that.
 
-                Regression.monitor.Log("Mess - inUnderwear");
                 if (bowelFullness >= GetBowelAttemptThreshold())
                 {
                     _ = this.pants.AddPoop(this.underwear.AddPoop(bowelFullness));
-                    Regression.monitor.Log("Reset to 0");
                     this.bowelFullness = 0.0f;
                 }
             }
             else
             {
                 StartMessing(voluntary, false);
-                Regression.monitor.Log("Mess - not inUnderwear");
                 if (underwear.removable)
                 {
-                    Regression.monitor.Log("Removable");
                     if (bowelFullness >= GetBowelAttemptThreshold())
                     {
-                        Regression.monitor.Log("Reset to 0");
                         this.bowelFullness = 0.0f;
                     }
                 }

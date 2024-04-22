@@ -37,7 +37,6 @@ namespace PrimevalTitmouse
             monitor = Monitor;
             config = Helper.ReadConfig<Config>();
             t = Helper.Data.ReadJsonFile<Data>(string.Format("{0}.json", (object)config.Lang)) ?? Helper.Data.ReadJsonFile<Data>("en.json");
-
             h.Events.GameLoop.Saving += new EventHandler<SavingEventArgs>(this.BeforeSave);
             h.Events.GameLoop.DayStarted += new EventHandler<DayStartedEventArgs>(ReceiveAfterDayStarted);
             h.Events.GameLoop.OneSecondUpdateTicking += new EventHandler<OneSecondUpdateTickingEventArgs>(ReceiveUpdateTick);
@@ -489,6 +488,11 @@ namespace PrimevalTitmouse
             //If its 6:10AM, handle delivering mail
             if (Game1.timeOfDay == 610)
                 Mail.CheckMail();
+
+            //If its earlier than 6:30, we aren't wet/messy don't notice that we're still soiled (or don't notice with ~5% chance even if soiled)
+            if (rnd.NextDouble() >= 0.0555555559694767 || body.underwear.wetness + (double)body.underwear.messiness <= 0.0 || Game1.timeOfDay < 630)
+                return;
+            Animations.AnimateStillSoiled(this.body);
         }
 
         public Regression()
