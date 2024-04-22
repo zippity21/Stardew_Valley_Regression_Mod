@@ -3,7 +3,7 @@ using StardewValley;
 
 namespace PrimevalTitmouse
 {
-
+    [Serializable]
     public class Container
     {
         public float absorbency;

@@ -24,17 +24,11 @@ namespace Regression
             for (int index = 0; index < 12; ++index)
             {
                 // ISSUE: method pointer
-                DelayedAction delayedAction = new DelayedAction((index + 1) * 1000 / 2)
-                {
-                    behavior = new DelayedAction.delayedBehavior(moveTimeForward)
-                };
+                DelayedAction delayedAction = new DelayedAction((index + 1) * 1000 / 2, moveTimeForward);
                 ((List<DelayedAction>)Game1.delayedActions).Add(delayedAction);
             }
             // ISSUE: method pointer
-            DelayedAction delayedAction1 = new DelayedAction(7000)
-            {
-                behavior = new DelayedAction.delayedBehavior(slowDown)
-            };
+            DelayedAction delayedAction1 = new DelayedAction(7000, slowDown);
             ((List<DelayedAction>)Game1.delayedActions).Add(delayedAction1);
         }
 

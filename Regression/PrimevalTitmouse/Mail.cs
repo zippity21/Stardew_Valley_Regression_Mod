@@ -23,7 +23,7 @@ namespace PrimevalTitmouse
                 initialSupplies = new();
                 letterShown = false;
                 //Always give turnips and diapers
-                initialSupplies.Add(new StardewValley.Object(399, 20, false, -1, 0));
+                initialSupplies.Add(new StardewValley.Object("399", 20, false, -1, 0));
                 initialSupplies.Add(new Underwear("pawprint diaper", 0.0f, 0.0f, 40));
                 //If we're in Hard mode, also give pull-up.
                 if (!Regression.config.Easymode)
