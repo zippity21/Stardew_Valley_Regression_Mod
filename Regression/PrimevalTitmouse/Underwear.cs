@@ -73,6 +73,10 @@ namespace PrimevalTitmouse
                 {
                   "stack",
                   string.Format("{0}",  Stack)
+                },
+                {
+                  "dryingTime",
+                  container.serializeDryingDate()
                 }
             };
         }
@@ -115,6 +119,10 @@ namespace PrimevalTitmouse
         public void rebuild(Dictionary<string, string> data, object replacement)
         {
             Initialize(data["type"], float.Parse(data["wetness"]), float.Parse(data["messiness"]), int.Parse(data["stack"]));
+            if (data.ContainsKey("dryingTime"))
+            {
+                this.container.parseDryingDate(data["dryingTime"]);
+            }
         }
 
         public override string DisplayName
