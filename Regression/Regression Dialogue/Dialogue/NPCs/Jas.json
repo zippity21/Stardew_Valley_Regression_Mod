@@ -7,12 +7,12 @@
 			"Entries":{
 
 			  "Introduction": "...$u#$b#Hi...$u
-  #$q 101/102 ABDLChild_fallback#%Would you be comfortable seeing ABDL dialogue from Vincent and Jas?
+  #$q 101/102 ABDLChild_fallback#%The kids can have dialogue about being in diapers and reacting to yours. Would you be comfortable with that?
   #$r 101 0 ABDLChild_Yes#Yes, I am comfortable with that.
   #$r 102 0 ABDLChild_No#No, I would like to see the original dialogue.",
   //-----------------
-  "ABDLChild_Yes":"%The more hearts you have with them the more ABDL dialogue there will be.",
-  "ABDLChild_No":"%Okay. All the original lines will be unchanged, and they also won't notice you using your pants.",
+  "ABDLChild_Yes":"%The more hearts you have with any villager the more diaper related dialogue there will be.",
+  "ABDLChild_No":"%Okay. All the kids' original lines will be unchanged, and they also won't notice you using your pants. The more hearts you have with any other villager the more diaper related dialogue there will be.",
   "ABDLChild_fallback":"#$p 102#...$u|%The waistband of Jas's pull up faintly peeks out.",
   //The question above happens durring the introduction of Vincent or Jas, whomever the player interacts with first. They'll get to choose whether or not they want ABDL dialogue for the two of them.
   //Unfortunately, this only works for new farms, not if a player installs the mod and loads an old save where they've already met both Vincent and Jas. Then it defaults to the ABDL text.
@@ -60,8 +60,8 @@
 "fall_Sun6":"#$p 102#|Shane's gone a lot, and Aunt Marnie is busy all the time... so I'm thankful for all my toys.$h#$e#Do you want to play with me? We could play house!",
 "fall_15_1":"I'm excited for the fair tomorrow. Last year Shane won me a whole bunch of toys!",
 "fall_15_2":"I'm excited for the fair tomorrow. Last year Shane won me a whole bunch of toys!",
-"fall_26_1":"I'm going to do the whole maze tomorrow and I'm going going to be scared once!",
-"fall_26_2":"I'm going to do the whole maze tomorrow and I'm going going to be scared once!",
+"fall_26_1":"I'm going to do the whole maze tomorrow and I'm not going to be scared once!",
+"fall_26_2":"I'm going to do the whole maze tomorrow and I'm not going to be scared once!",
 
 
 "winter_Mon8":"#$p 102#It's fun to live on a farm.$h|I'm a big girl, see!$1#$b#%Jas lifts her skirt up high to show off her pull ups. She seems very proud.#$e#Told you.$4",
