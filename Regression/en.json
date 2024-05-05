@@ -1560,8 +1560,8 @@
 			"removable": false,
 			"durability": 0
 		},
-		"cloth diaper": {
-			"name": "cloth diaper",
+		"Cloth diaper": {
+			"name": "Cloth diaper",
 			"description": "thick and soft white cloth diaper",
 			"absorbency": 2000.0,
 			"containment": 1500.0,
