@@ -5,10 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace PrimevalTitmouse
 {
-    public class Underwear : StardewValley.Object, PyTK.CustomElementHandler.ISaveElement
+    public class Underwear : StardewValley.Object
     {
         public static Color color;
         public Container container;
@@ -50,7 +51,7 @@ namespace PrimevalTitmouse
         public override void drawWhenHeld(SpriteBatch spriteBatch, Vector2 objectPosition, Farmer f)
         {
             Rectangle rectangle = Animations.UnderwearRectangle(this.container, FullnessType.None, Animations.LARGE_SPRITE_DIM);
-            spriteBatch.Draw(Animations.sprites, objectPosition, new Rectangle?(rectangle), Color.White, 0.0f, Vector2.Zero, Game1.pixelZoom/(Animations.LARGE_SPRITE_DIM/Animations.SMALL_SPRITE_DIM), SpriteEffects.None, Math.Max(0.0f, (f.getStandingY() + 2) / 10000f));
+            spriteBatch.Draw(Animations.sprites, objectPosition, new Rectangle?(rectangle), Color.White, 0.0f, Vector2.Zero, Game1.pixelZoom/(Animations.LARGE_SPRITE_DIM/Animations.SMALL_SPRITE_DIM), SpriteEffects.None, Math.Max(0.0f, (f.StandingPixel.Y + 2) / 10000f));
         }
 
         public Dictionary<string, string> getAdditionalSaveData()
@@ -72,6 +73,10 @@ namespace PrimevalTitmouse
                 {
                   "stack",
                   string.Format("{0}",  Stack)
+                },
+                {
+                  "dryingTime",
+                  container.serializeDryingDate()
                 }
             };
         }
@@ -82,14 +87,14 @@ namespace PrimevalTitmouse
             return Game1.parseText(source.First().ToString().ToUpper() + source.Substring(1), Game1.smallFont, Game1.tileSize * 6 + Game1.tileSize / 6);
         }
 
-        public override Item getOne()
+        protected override Item GetOneNew()
         {
             return new Underwear(this.name, this.container.wetness, this.container.messiness, 1);
         }
 
-        public object getReplacement()
+        public StardewValley.Object getReplacement()
         {
-            return new StardewValley.Object(685, 1, false, -1, 0);
+            return new StardewValley.Object("685", 1, false, -1, 0);
         }
 
         public void Initialize(string type, float wetness, float messiness, int count = 1)
@@ -114,6 +119,10 @@ namespace PrimevalTitmouse
         public void rebuild(Dictionary<string, string> data, object replacement)
         {
             Initialize(data["type"], float.Parse(data["wetness"]), float.Parse(data["messiness"]), int.Parse(data["stack"]));
+            if (data.ContainsKey("dryingTime"))
+            {
+                this.container.parseDryingDate(data["dryingTime"]);
+            }
         }
 
         public override string DisplayName
@@ -121,10 +130,6 @@ namespace PrimevalTitmouse
             get
             {
                 return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Status + id);
-            }
-            set
-            {
-                displayName = value;
             }
         }
 

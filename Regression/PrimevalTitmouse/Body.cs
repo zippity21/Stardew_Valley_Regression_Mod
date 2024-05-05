@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
+using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Buffs;
 using StardewValley.Locations;
-using StardewValley.Menus;
 using StardewValley.Tools;
 using System;
-using System.Collections.Generic;
 
 namespace PrimevalTitmouse
 {
@@ -41,8 +41,8 @@ namespace PrimevalTitmouse
         private static readonly string[][] HUNGER_MESSAGES = { Regression.t.Food_None, Regression.t.Food_Low };
         private static readonly float[] THIRST_THRESHOLDS = { 0.0f, 0.25f };
         private static readonly string[][] THIRST_MESSAGES = { Regression.t.Water_None, Regression.t.Water_Low };
-        private static readonly int MESSY_DEBUFF = 222;
-        private static readonly int WET_DEBUFF = 111;
+        private static readonly string MESSY_DEBUFF = "Regression.Messy";
+        private static readonly string WET_DEBUFF = "Regression.Wet";
         private static readonly int wakeUpPenalty = 4;
 
         //Things that describe an individual
@@ -161,7 +161,6 @@ namespace PrimevalTitmouse
             if (bowelFullness >= bowelCapacity)
             {
                 Mess(voluntary: false, inUnderwear: true);
-                newFullness = bowelFullness / maxBowelCapacity;
             }
             else
             {
@@ -443,6 +442,7 @@ namespace PrimevalTitmouse
 
                 StartMessing(voluntary, true); //Always in underwear in bed
                                                //Any overage in the container, add to the pants. Ignore overage over that.
+
                 if (bowelFullness >= GetBowelAttemptThreshold())
                 {
                     _ = this.pants.AddPoop(this.underwear.AddPoop(bowelFullness));
@@ -501,17 +501,17 @@ namespace PrimevalTitmouse
             Animations.Write(Regression.t.Poop_Overflow, this, Animations.poopAnimationTime);
             float howMessy = pants.messiness / pants.containment;
             int speedReduction = howMessy >= 0.5 ? (howMessy > 1.0 ? -3 : -2) : -1;
-            Buff buff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, speedReduction, 0, 0, 15, "", "")
+            Buff buff = new Buff(id: MESSY_DEBUFF, displayName: "Messy", effects: new BuffEffects() {
+                Speed = { speedReduction }
+            })
             {
                 description = string.Format("{0} {1} Speed.", Strings.RandString(Regression.t.Debuff_Messy_Pants), (object)speedReduction),
                 millisecondsDuration = 1080000,
-                glow = Color.Brown,
-                sheetIndex = -1,
-                which = MESSY_DEBUFF
+                glow = Color.Brown
             };
-            if (Game1.buffsDisplay.hasBuff(MESSY_DEBUFF))
+            if (Game1.player.hasBuff(MESSY_DEBUFF))
                 this.RemoveBuff(MESSY_DEBUFF);
-            Game1.buffsDisplay.addOtherBuff(buff);
+            Game1.player.applyBuff(buff);
         }
 
         public void StartWetting(bool voluntary = false, bool inUnderwear = true)
@@ -548,17 +548,19 @@ namespace PrimevalTitmouse
             Animations.Write(Regression.t.Pee_Overflow, this, Animations.peeAnimationTime);
 
             int defenseReduction = -Math.Max(Math.Min((int)(pants.wetness / pants.absorbency * 10.0), 10), 1);
-            Buff buff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, defenseReduction, 0, 15, "", "")
+
+            Buff buff = new Buff(id: WET_DEBUFF, displayName: "Wet", effects: new BuffEffects()
+            {
+                Defense = { defenseReduction }
+            })
             {
                 description = string.Format("{0} {1} Defense.", Strings.RandString(Regression.t.Debuff_Wet_Pants), defenseReduction),
-                millisecondsDuration = 1080000
+                millisecondsDuration = 1080000,
+                glow = pants.messiness != 0.0 ? Color.Brown : Color.Yellow
             };
-            buff.glow = pants.messiness != 0.0 ? Color.Brown : Color.Yellow;
-            buff.sheetIndex = -1;
-            buff.which = WET_DEBUFF;
-            if (Game1.buffsDisplay.hasBuff(WET_DEBUFF))
+            if (Game1.player.hasBuff(WET_DEBUFF))
                 this.RemoveBuff(WET_DEBUFF);
-            Game1.buffsDisplay.addOtherBuff(buff);
+            Game1.player.applyBuff(buff);
         }
 
         public void Wet(bool voluntary = false, bool inUnderwear = true)
@@ -712,18 +714,9 @@ namespace PrimevalTitmouse
             return (currentTool = Game1.player.CurrentTool as FishingRod) != null && (currentTool.isCasting || currentTool.isTimingCast || (currentTool.isNibbling || currentTool.isReeling) || currentTool.castedButBobberStillInAir || currentTool.pullingOutOfWater);
         }
 
-        public void RemoveBuff(int which)
+        public void RemoveBuff(string which)
         {
-            BuffsDisplay buffsDisplay = Game1.buffsDisplay;
-            for (int index = buffsDisplay.otherBuffs.Count - 1; index >= 0; --index)
-            {
-                if (buffsDisplay.otherBuffs[index].which == which)
-                {
-                    buffsDisplay.otherBuffs[index].removeBuff();
-                    buffsDisplay.otherBuffs.RemoveAt(index);
-                    buffsDisplay.syncIcons();
-                }
-            }
+            Game1.player.buffs.Remove(which);
         }
 
         public void Warn(float oldPercent, float newPercent, float[] thresholds, string[][] msgs, bool write = false)

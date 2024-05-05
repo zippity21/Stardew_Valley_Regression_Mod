@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using StardewValley;
+using static StardewValley.Minigames.MineCart.Whale;
 
 namespace PrimevalTitmouse
 {
-
     public class Container
     {
         public float absorbency;
@@ -27,6 +28,7 @@ namespace PrimevalTitmouse
             public int season;
             public int year;
         }
+
         public Date timeWhenDoneDrying;
         private bool drying = false;
 
@@ -182,6 +184,30 @@ namespace PrimevalTitmouse
                 throw new Exception(string.Format("Invalid underwear choice: {0}", type));
 
             Initialize(c, wetness, messiness, durability);
+        }
+        public void parseDryingDate(string date)
+        {
+            if (date == "")
+            {
+                drying = false;
+                return;
+            }
+
+            string[] splitted = date.Split("-");
+            drying = true;
+
+            timeWhenDoneDrying.time = int.Parse(splitted[0]);
+            timeWhenDoneDrying.day = int.Parse(splitted[1]);
+            timeWhenDoneDrying.season = int.Parse(splitted[2]);
+            timeWhenDoneDrying.year = int.Parse(splitted[3]);
+        }
+        public string serializeDryingDate()
+        {
+            if (!drying)
+            {
+                return "";
+            }
+            return string.Format("{0}-{1}-{2}-{3}", timeWhenDoneDrying.time, timeWhenDoneDrying.day, timeWhenDoneDrying.season, timeWhenDoneDrying.year);
         }
     }
 }

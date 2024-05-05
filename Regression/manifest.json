@@ -1,16 +1,11 @@
 ﻿{
   "Name": "Regression",
   "Author": "Various",
-  "Version": "1.2.9",
+  "Version": "1.3.0",
   "Description": "Diaper Wetting Mod",
   "UniqueID": "Zippity21.Regression",
   "EntryDll": "Regression.dll",
   "MinimumApiVersion": "3.13.4",
   "UpdateKeys": [ "GitHub:zippity21/Stardew_Valley_Regression_Mod" ],
-  "Dependencies": [
-    {
-      "UniqueID": "Platonymous.Toolkit",
-      "MinimumVersion": "1.22.8"
-    }
-  ]
+  "Dependencies": []
 }
