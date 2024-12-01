@@ -58,12 +58,14 @@
 		"You can feel the poop starting to push out!",
 		"You can’t hold it anymore! You're about to mess yourself!"
 	],
-	"Bladder_Continence_Yellow": [ "You seem to be getting worse at holding your pee." ],
-	"Bladder_Continence_Orange": [ "You're getting pretty bad at holding your pee." ],
-	"Bladder_Continence_Red": [ "You're getting close to being unable to hold your pee." ],
+	"Bladder_Continence_Green": [ "You're pretty good at holding your pee." ],
+	"Bladder_Continence_Yellow": [ "You can mostly hold your pee it. Mostly." ],
+	"Bladder_Continence_Orange": [ "You're pretty bad at holding your pee." ],
+	"Bladder_Continence_Red": [ "You're close to being unable to hold your pee." ],
 	"Bladder_Continence_Min": [ "You're almost totally unable to hold your pee." ],
-	"Bowel_Continence_Yellow": [ "You seem to be getting worse at holding your poop." ],
-	"Bowel_Continence_Orange": [ "You're getting pretty bad at holding your poop." ],
+	"Bowel_Continence_Green": [ "You pretty good at holding your poop." ],
+	"Bowel_Continence_Yellow": [ "You can hold you poop most of the time." ],
+	"Bowel_Continence_Orange": [ "You're pretty bad at holding your poop." ],
 	"Bowel_Continence_Red": [ "You're getting close to being unable to hold your poop." ],
 	"Bowel_Continence_Min": [ "You're almost totally unable to hold your poop." ],
 	"Pee_Voluntary": [
@@ -250,67 +252,68 @@
 	"Debuff_Wet_Pants": [
 		"Your pants are wet!",
 		"You wet your pants!",
-		"You peed your pants!",
+		"You peed your pants!"
 	],
 	"Debuff_Messy_Pants": [
 		"Your pants are messy!",
 		"Your pants are poopy!",
-		"You messed your pants!",
+		"You messed your pants!"
 	],
 	"Villager_Reactions": {
 		"adult": {
 			"soiled_verynice": [
 				"Aww, do you need me to change you out of your <wet&messy> $UNDERWEAR_NAME$?",
 				"I think little $FARMERNAME$ needs <his/her> diaper changed!",
-				"I know a little farmer who needs <his/her> diaper changed!$1",
+				"I know a little farmer who needs <his/her> diaper changed!$1"
 			],
 			"soiled_nice": [
 				"You poor thing! Did you just <wet&mess> yourself?",
-				"Does someone need a diaper change?",
+				"Does someone need a diaper change?"
 			],
 			"soiled_mean": [
 				"You <&really >might want to go change your pants."
 			],
 			"ground": [
 				"$FARMERNAME$! Living in the country doesn't make us barbarians!$3",
-				"That's not okay! Use a toilet!$3",
+				"That's not okay! Use a toilet!$3"
 			],
 			"ground_attempt": [
-				"$FARMERNAME$! What are you doing!$3",
-			],
+				"$FARMERNAME$! What are you doing!$3"
+			]
 		},
 		"teen": {
 			"soiled_verynice": [
 				"Awww, you're so cute when you're embarrassed!$1",
-				"Where's your Mommy $FARMERNAME$? I think you need a change.",
+				"Where's your Mommy $FARMERNAME$? I think you need a change."
 			],
 			"soiled_nice": [
 				"Did you just <wet&mess> yourself $FARMERNAME$?",
-				"Just letting you know $FARMERNAME$, you should probably change your diaper soon.",
+				"Just letting you know $FARMERNAME$, you should probably change your diaper soon."
 			],
 			"soiled_mean": [
 				"...$5",
-				"...Did you just...$2",
+				"...Did you just...$2"
 			],
 			"ground": [
 				"Eww. Is that normal in the city?$5",
-				"What... Ugh!$5", "Did you just <pee&poop> on the ground? Gross!$5",
+				"What... Ugh!$5",
+				"Did you just <pee&poop> on the ground? Gross!$5"
 			],
 			"ground_attempt": [
-				"What... Put your pants back on!$5",
-			],
+				"What... Put your pants back on!$5"
+			]
 		},
 		"animal": {
 			"soiled_nice": [
 				"...",
-				"???",
+				"???"
 			],
 			"ground": [
-				"<...&!!!>",
+				"<...&!!!>"
 			],
 			"ground_attempt": [
-				"<...&???>",
-			],
+				"<...&???>"
+			]
 		},
 		"abigail": {
 			"soiled_verynice": [
@@ -335,7 +338,7 @@
 				"*Feels own backside quickly* Eww! That's gross! You shouldn't do that in public!",
 				"I thought only babies <wet&messed> their pants! Grow up!",
 				"Did you just <pee&poop> your pants? You need diapers!"
-			],
+			]
 		},
 		"haley": {
 			"soiled_verynice": [
@@ -351,7 +354,7 @@
 				"$uDiapers are NOT in fashion, and neither is <peeing&pooping> your pants like a baby!",
 				"$uLike, eww. Why is everyone in this town so gross?!",
 				"$uI was gonna tell you to change your clothes because of how unstylish they are, but it looks like you need your diaper changed more, you big baby!"
-			],
+			]
 		},
 		"jodi": {
 			"soiled_verynice": [
@@ -359,15 +362,15 @@
 				"You don't need to rush potty training if you're not ready yet.",
 				"It can be hard for little <boys/girls> to remember to go potty sometimes. It's okay.",
 				"Oh goodness!$1",
-				"Awww, you're so cute when you're embarrassed!$1",
+				"Awww, you're so cute when you're embarrassed!$1"
 			],
 			"soiled_nice": [
 				"$FARMERNAME$, I  think you might need to go change.",
-				"You poor thing! Did you just <wet&mess> yourself?",
+				"You poor thing! Did you just <wet&mess> yourself?"
 			],
 			"soiled_mean": [
-				"You might need to tap into those supplies I left you$4",
-			],
+				"You might need to tap into those supplies I left you$4"
+			]
 		},
 		"sam": {
 			"soiled_verynice": [
@@ -381,21 +384,21 @@
 				"Awww, did the little farmer have a little accident?",
 				"I bet I could get Mommy to go change you.$3#$b#I'm kidding I'm kidding!$1",
 				"Man, it looks like you really need diapers, don't you.",
-				"Oh wow, you really <wet&messed> yourself!#$b#$y 'Can I feel it?_Yes._%Sam blushes as he presses his hand into your squishy diaper._No thank you._Okay, I won't.'",
+				"Oh wow, you really <wet&messed> yourself!#$b#$y 'Can I feel it?_Yes._%Sam blushes as he presses his hand into your squishy diaper._No thank you._Okay, I won't.'"
 			],
 			"soiled_nice": [
 				"You might wanna change. Just incase someone else says something.$7",
 				"A-are you okay?$8",
 				"%Sam just blushes a as you <wet&mess> yourself. You take note of how closely he watches the whole scene.",
-				"Oh man, I'm sorry. That can't feel good.",
+				"Oh man, I'm sorry. That can't feel good."
 			],
 			"soiled_mean": [
 				"I'm just..nevermind.$5",
 				"This is pretty awkward.$2",
 				"...Oh$2",
 				"You might want to take care of that...",
-				"#$p 102#You might want to take care of that...|Great, more potty issues to be witness to. Thanks.$5",
-			],
+				"#$p 102#You might want to take care of that...|Great, more potty issues to be witness to. Thanks.$5"
+			]
 		},
 		"penny": {
 			"soiled_verynice": [
@@ -406,20 +409,20 @@
 				"Did you have an accident in your $UNDERWEAR_NAME$ $FARMERNAME$?#$b#You have to tell me as soon as your body says you have to go potty, okay?$3",
 				"#$p 102#Did you have an accident in your $UNDERWEAR_NAME$ $FARMERNAME$?|You have the same potty face as Vincent.$1#$b#Do you need help getting changed like him too?#$b#%Penny tickles your tummy teasingly.",
 				"I saw that.$3#$b#$y 'Was that REALLY an accident?_Uh huh, I tried to hold it._Oh $FARMERNAME$, I know it's hard for you. I'm very proud of you for trying._I didn't wanna use the potty._$FARMERNAME$, I know it's hard for you, but you still have to try, okay?$3'",
-				"We're supposed to do that on the potty $FARMERNAME$. What happened?$3#$b#It's okay, I'm not angry. You're trying really hard. It's okay if you still have accidents sometimes.#$b#<Boys/Girls> are easy to clean!$1",
+				"We're supposed to do that on the potty $FARMERNAME$. What happened?$3#$b#It's okay, I'm not angry. You're trying really hard. It's okay if you still have accidents sometimes.#$b#<Boys/Girls> are easy to clean!$1"
 			],
 			"soiled_nice": [
 				"You might wanna change. Just incase someone else says something.",
 				"A-are you okay?$3",
 				"Do you need help making it to the potty?",
-				"I'm sorry. That can't feel good.$3",
+				"I'm sorry. That can't feel good.$3"
 			],
 			"soiled_mean": [
 				"...$5",
 				"Uhmm...$2",
 				"...Oh$2",
-				"#$p 102#D-did you...|You too?$5",
-			],
+				"#$p 102#D-did you...|You too?$5"
+			]
 		},
 		"gus": {
 			"soiled_verynice": [
@@ -431,18 +434,18 @@
 				"Wow, you were really <satisfied&pushing> with that one.$1",
 				"Well, at least it feels good to take a load off...#$b#Even if it’s in your pants, yeah?$1",
 				"You makin’ your own fertilizer there $FARMERNAME$?",
-				"You got any clean diapers? I always keep some spare in back for ya, just in case, pal.$1#$b#Well, you and anyone else who happens to need one.",
+				"You got any clean diapers? I always keep some spare in back for ya, just in case, pal.$1#$b#Well, you and anyone else who happens to need one."
 			],
 			"soiled_nice": [
 				"You mind takin' care of that please?#$b#Thanks$1",
 				"When you gotta go I guess!$1",
 				"Couldn’t quite make it? That's alright, go get cleaned up. The Saloon will still be here when you get back.",
-				"I hope that smell’s a dirty diaper and not some rotting food in back…",
+				"I hope that smell’s a dirty diaper and not some rotting food in back…"
 			],
 			"soiled_mean": [
 				"You mind takin' care of that before it bothers anyone else buddy?$2",
-				"I have enough to clean up.$3",
-			],
+				"I have enough to clean up.$3"
+			]
 		},
 		"vincent": {
 			"soiled_verynice": [
@@ -451,7 +454,7 @@
 				"#$p 102#%Vincent doesn't seem to notice what happened.|%You notice Vincent watching as you <wet&mess> yourself.#$b#All better?",
 				"#$p 102#%Vincent doesn't seem to notice what happened.|%Vincent watches the whole scene curiously and giggles when you look over. #$b# You <peed&pooped>!$1",
 				"#$p 102#%Vincent doesn't seem to notice what happened.|If you want I could ask my Mommy to change you.#$b#No?#$b#That's okay, I like being <wet&messy> too!$1",
-				"#$p 102#%Vincent doesn't seem to notice what happened.|$FARMERNAME$'s <wet&messy> and I'm still dry!$1#$b#...#$b#Wait...$2",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|$FARMERNAME$'s <wet&messy> and I'm still dry!$1#$b#...#$b#Wait...$2"
 			],
 			"soiled_nice": [
 				"#$p 102#%Vincent doesn't seem to notice what happened.|Don't cry, Mommy says it's okay to have accidents sometimes.",
@@ -464,15 +467,16 @@
 				"#$p 102#%Vincent doesn't seem to notice what happened.|Was that an accident?",
 				"#$p 102#%Vincent doesn't seem to notice what happened.|Ha! Gross!$1",
 				"#$p 102#%Vincent doesn't seem to notice what happened.|$FARMERNAME$ just <peed&pooped> <himself/herself>!$1",
-				"#$p 102#%Vincent doesn't seem to notice what happened.|Hah! I just watched you <pee&poop> yourself!$1",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|Hah! I just watched you <pee&poop> yourself!$1"
 			],
 			"ground": [
-				"#$p 102#%Vincent doesn't seem to notice what happened.|Ewww!$3", "Ewww! Don't <pee&poop> there!$3",
+				"#$p 102#%Vincent doesn't seem to notice what happened.|Ewww!$3",
+				"Ewww! Don't <pee&poop> there!$3",
 				"#$p 102#%Vincent doesn't seem to notice what happened.|Hey everyone! $FARMERNAME$ just <peed&pooped> on the ground!$1"
 			],
 			"ground_attempt": [
 				"#$p 102#%Vincent doesn't seem to notice what happened.|Eww! Why are you trying to <pee&poop> on on the ground?$3"
-			],
+			]
 		},
 		"jas": {
 			"soiled_verynice": [
@@ -481,26 +485,27 @@
 				"#$p 102#%Jas doesn't seem to notice what happened.|It's okay, I won't tell anyone you had an accident $FARMERNAME$",
 				"#$p 102#%Jas doesn't seem to notice what happened.|It's okay $FARMERNAME$, I still have accidents too.$1",
 				"#$p 102#%Jas doesn't seem to notice what happened.|I can see you waddling!$4",
-				"#$p 102#%Jas doesn't seem to notice what happened.|Did you have an accident? It's okay, once you're all clean you'll feel all better.",
+				"#$p 102#%Jas doesn't seem to notice what happened.|Did you have an accident? It's okay, once you're all clean you'll feel all better."
 			],
 			"soiled_nice": [
 				"#$p 102#%Jas doesn't seem to notice what happened.|*Giggles* Uh oh!$1",
 				"#$p 102#%Jas doesn't seem to notice what happened.|You're supposed to do that on the potty you know.$4",
-				"#$p 102#%Jas doesn't seem to notice what happened.|Do you need me to get Aunt Marnie? She always helps me when I have an accident.$3",
+				"#$p 102#%Jas doesn't seem to notice what happened.|Do you need me to get Aunt Marnie? She always helps me when I have an accident.$3"
 			],
 			"soiled_mean": [
 				"#$p 102#%Jas doesn't seem to notice what happened.|Oh... gross...$3",
 				"#$p 102#%Jas doesn't seem to notice what happened.|Ewww$3",
-				"#$p 102#%Jas doesn't seem to notice what happened.|...$2",
+				"#$p 102#%Jas doesn't seem to notice what happened.|...$2"
 			],
 			"ground": [
-				"#$p 102#%Jas doesn't seem to notice what happened.|Ewww!$3", "Ewww! Don't <pee&poop> there!$3",
-				"#$p 102#%Jas doesn't seem to notice what happened.|...$2",
+				"#$p 102#%Jas doesn't seem to notice what happened.|Ewww!$3",
+				"Ewww! Don't <pee&poop> there!$3",
+				"#$p 102#%Jas doesn't seem to notice what happened.|...$2"
 			],
 			"ground_attempt": [
 				"#$p 102#%Jas doesn't seem to notice what happened.|Eww! Why are you trying to <pee&poop> on on the ground?$3"
-			],
-		},
+			]
+		}
 	},
 
 	"Change": [
@@ -509,6 +514,9 @@
 	],
 	"Change_Destroyed": [
 		"You ruined your $UNDERWEAR_NAME$ when taking <it#them> off. So you throw <it#them> away."
+	],
+	"Change_Requires_Pants": [
+		"You don't have another pair of $PANTS_NAME$ here to change into. You probably need to go home first."
 	],
 	"PeekWaistband": [
 		"You peek inside your waistband and see"
@@ -534,18 +542,18 @@
 		"$UNDERWEAR_DESC$ with poop squishing out"
 	],
 	"Consumables": {
-	//
-	//Working on creating entries for every consumable.
-	//Water values are arbitrary, but should be accurate to each other relatively. Poisons mean vomitting, indigestion, and other issues, therefore poisonous items cause a loss to calories and water.
+		//
+		//Working on creating entries for every consumable.
+		//Water values are arbitrary, but should be accurate to each other relatively. Poisons mean vomitting, indigestion, and other issues, therefore poisonous items cause a loss to calories and water.
 		//
 		//Crops
 		//With a lot of these, I looked up the calorie count for an average size or average amount for small items like berries, then rounded out the numbers. For balance, some really small numbers are unnaturally high. For grains, I went with half a cup of grains. All items are assumed to undergo basic cooking if necesary to make edible, such as with potatoes.
-			//
-			//Veggies
-			//
+		//
+		//Veggies
+		//
 		"Amaranth": {
 			"name": "Amaranth",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 350 //Half cup Amaranth, made as simple bread or cooked directly like rice
 		},
 		"Artichoke": {
@@ -638,9 +646,9 @@
 			"waterContent": 25,
 			"calorieContent": 180 //One Large yam, cooked simply
 		},
-			//
-			//Fruit
-			//
+		//
+		//Fruit
+		//
 		"Apple": {
 			"name": "Apple",
 			"waterContent": 100,
@@ -756,9 +764,9 @@
 			"waterContent": 50,
 			"calorieContent": 120 //Four plums, raw
 		},
-			//
-			//Flower
-			//
+		//
+		//Flower
+		//
 		"Blue Jazz": {
 			"name": "Blue Jazz",
 			"waterContent": 25,
@@ -799,9 +807,9 @@
 			"waterContent": 25,
 			"calorieContent": 50
 		},
-			//
-			//Forage
-			//
+		//
+		//Forage
+		//
 		"Cave Carrot": {
 			"name": "Cave Carrot",
 			"waterContent": 25,
@@ -834,7 +842,7 @@
 		},
 		"Hazelnut": {
 			"name": "Hazelnut",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 425 //Half cup of Hazelnuts. They're also called filberts, lol.
 		},
 		"Holly": {
@@ -884,7 +892,7 @@
 		},
 		"Wild Horseradish": {
 			"name": "Wild Horseradish",
-			"waterContent": -2500, //This is wasabi's crappy tasting cousin, but the spice is still there.
+			"waterContent": -250, //This is wasabi's crappy tasting cousin, but the spice is still there. Corrected to -250 from -2500
 			"calorieContent": 115 //One cup of raw horseradish, about the size of a normal prepared root.
 		},
 		"Winter Root": {
@@ -956,21 +964,21 @@
 		"Algae Soup": {
 			"name": "Algae Soup",
 			"waterContent": 660,
-			"calorieContent": 760 
+			"calorieContent": 760
 		},
 		"Artichoke Dip": {
 			"name": "Artichoke Dip",
-			"waterContent": 200, 
+			"waterContent": 200,
 			"calorieContent": 900 //2cups
 		},
 		"Autumn's Bounty": {
 			"name": "Autumn's Bounty", //1 whole extra large pumpkin makes about 36cups of cooked pumpkin. 1 cup is about 100 calories. Assuming not oversized pumpkins, 24 cups of cooked pumpkin seems fine.
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 2580
 		},
 		"Baked Fish": {
 			"name": "Baked Fish",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 660
 		},
 		"Banana Pudding": {
@@ -980,32 +988,32 @@
 		},
 		"Bean Hotpot": {
 			"name": "Bean Hotpot",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 600 //4cups
 		},
 		"Blackberry Cobbler": {
 			"name": "Blackberry Cobbler",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 2500 //About 4cups filling and one cup crust
 		},
 		"Blueberry Tart": {
 			"name": "Blueberry Tart",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 520 //About 2cups in volume
 		},
 		"Bread": {
 			"name": "Bread",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 900 //Calories in standard baguette
 		},
 		"Bruschetta": {
 			"name": "Bruschetta",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 1200 //Big piece, but it uses an entire loaf of bread, so...
 		},
 		"Cheese Cauliflower": {
 			"name": "Cheese Cauliflower",
-			"waterContent": 000,
+			"waterContent": "000",
 			"calorieContent": 540 //4 cups
 		},
 		"Chocolate Cake": {
@@ -1044,7 +1052,7 @@
 			"calorieContent": 320 //16oz
 		},
 		"Cranberry Sauce": {
-			"name": "Cranberry Sauce", 
+			"name": "Cranberry Sauce",
 			"waterContent": 25,
 			"calorieContent": 880 //2 cups
 		},
@@ -1150,42 +1158,42 @@
 		},
 		"Magic Rock Candy": {
 			"name": "Magic Rock Candy",
-			"waterContent": 000,
+			"waterContent": "000",
 			"calorieContent": 2500 //Pure, unadulterated magic rainbow sugar crystals.
 		},
 		"Maki Roll": {
 			"name": "Maki Roll",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 800 //4 rolls.
 		},
 		"Mango Sticky Rice": {
 			"name": "Mango Sticky Rice",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 920 //4 cups
 		},
 		"Maple Bar": {
 			"name": "Maple Bar", //Weird name for a maple donut, but okay.
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 600 //One doughnut, apparently
 		},
 		"Miner's Treat": {
 			"name": "Miner's Treat",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 1000 //Extra large lollipop, just to stay higher than sum of ingredients
 		},
 		"Oil": {
 			"name": "Oil",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 120 //1 tablespoon. Seriously.
 		},
 		"Oil of Garlic": {
 			"name": "Oil of Garlic",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 125 //1 tablespoon
 		},
 		"Omelet": {
 			"name": "Omelet", //Can it really be called an omelette without cheese?
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 450 //4 medium egg omelette
 		},
 		"Pale Broth": {
@@ -1195,7 +1203,7 @@
 		},
 		"Pancakes": {
 			"name": "Pancakes",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 400 //4 4inch pancakes
 		},
 		"Parsnip Soup": {
@@ -1205,7 +1213,7 @@
 		},
 		"Pepper Poppers": {
 			"name": "Pepper Poppers",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 800 //12 poppers
 		},
 		"Piña Colada": {
@@ -1215,17 +1223,17 @@
 		},
 		"Pink Cake": {
 			"name": "Pink Cake",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 1900 //An entire cake. Fewer calories than I expected, tbh.
 		},
 		"Pizza": {
 			"name": "Pizza",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 1840 //A 12" cheese pizza
 		},
 		"Plum Pudding": {
 			"name": "Plum Pudding",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 1000 //Apparently Plum Puddings are measured in loafs?
 		},
 		"Poi": {
@@ -1281,7 +1289,7 @@
 		"Roots Platter": {
 			"name": "Roots Platter",
 			"waterContent": 50,
-			"calorieContent": 750 
+			"calorieContent": 750
 		},
 		"Salad": {
 			"name": "Salad",
@@ -1340,7 +1348,7 @@
 		},
 		"Sugar": {
 			"name": "Sugar", //Beets UOM is 4 beets per item to get calorie. 1 beet has about 6g sugar, 20 24g per 1 item. Therefore, 8g of sugar per 1 sugar item.
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 35
 		},
 		"Super Meal": {
@@ -1366,7 +1374,7 @@
 		"Triple Shot Espresso": {
 			"name": "Triple Shot Espresso",
 			"waterContent": 115, //4 oz
-			"calorieContent": 000
+			"calorieContent": 0
 		},
 		"Tropical Curry": {
 			"name": "Tropical Curry",
@@ -1385,7 +1393,7 @@
 		},
 		"Wheat Flour": {
 			"name": "Wheat Flour",
-			"waterContent": 000,
+			"waterContent": 0,
 			"calorieContent": 400 //half cup
 		},
 		"Cola": {
@@ -1412,11 +1420,6 @@
 			"name": "Beer",
 			"waterContent": 355,
 			"calorieContent": 154
-		},
-		"Milk": {
-			"name": "Milk",
-			"waterContent": 240,
-			"calorieContent": 148
 		},
 		"Tea": {
 			"name": "Tea",

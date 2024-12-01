@@ -16,7 +16,7 @@ namespace Regression
                 for (int j = 0; j < cLocation.characters.Count; j++)
                 {
                     NPC cNPC = cLocation.characters[j];
-                    if (cNPC.isVillager())
+                    if (cNPC.IsVillager)
                         ((Character)cNPC).addedSpeed = 10;
                 }
             }
@@ -46,7 +46,7 @@ namespace Regression
                 for (int j = 0; j < cLocation.characters.Count; j++)
                 {
                     NPC cNPC = cLocation.characters[j];
-                    if (cNPC.isVillager())
+                    if (cNPC.IsVillager)
                         ((Character)cNPC).addedSpeed = 0;
                 }
             }

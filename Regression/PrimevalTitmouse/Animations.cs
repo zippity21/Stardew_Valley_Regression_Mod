@@ -303,13 +303,38 @@ namespace PrimevalTitmouse
 
         public static void CheckPants(Body b)
         {
-            StardewValley.Objects.Clothing pants = (StardewValley.Objects.Clothing)Animations.GetWho().pantsItem.Value;
+            StardewValley.Objects.Clothing pants = b.GetPantsStardew();
             b.pants.name = pants.displayName;
             b.pants.description = pants.displayName;
             b.pants.plural = true;
             Animations.Say(Animations.GetData().LookPants[0] + " " + Strings.DescribeUnderwear(b.pants, null) + ".", b);
         }
+        public static void CheckContinence(Body b)
+        {
+            if (Regression.config.Wetting)
+            {
+                for (int index = Body.BLADDER_CONTINENCE_THRESHOLDS.Length - 1; index > 0; index--)
+                {
+                    if(Body.BLADDER_CONTINENCE_THRESHOLDS[index] <= b.bladderContinence)
+                    {
+                        Animations.Say(Body.BLADDER_CONTINENCE_MESSAGES[index]);
+                        break;
+                    }
+                }
+            }
 
+            if (Regression.config.Messing)
+            {
+                for (int index = Body.BOWEL_CONTINENCE_THRESHOLDS.Length -1; index > 0; index--)
+                {
+                    if (Body.BOWEL_CONTINENCE_THRESHOLDS[index] <= b.bowelContinence)
+                    {
+                        Animations.Say(Body.BOWEL_CONTINENCE_MESSAGES[index]);
+                        break;
+                    }
+                }
+            }
+        }
         public static void CheckUnderwear(Body b)
         {
             Say(Animations.GetData().PeekWaistband[0] + " " + Strings.DescribeUnderwear(b.underwear, (string)null) + ".", b);
@@ -347,17 +372,21 @@ namespace PrimevalTitmouse
             npc.CurrentDialogue.Push(new Dialogue(npc, null, "Oh wow, your diaper is all wet!"));
         }
 
-        public static bool HandleVillager(Body b, bool mess, bool inUnderwear, bool overflow, bool attempt = false, int baseFriendshipLoss = 20, int radius = 3)
+        public static bool HandleVillager(Body b, bool mess, bool inUnderwear, bool overflow, bool attempt = false)
         {
+            int baseFriendshipLoss = (mess ? Regression.config.FriendshipPenaltyBowelMultiplier : Regression.config.FriendshipPenaltyBladderMultiplier);
+
+            int radius = 3;
+
             bool someoneNoticed = true;
-            int actualLoss = -(baseFriendshipLoss / 20);
+            float actualLoss = -(baseFriendshipLoss/100);
 
             //If we are messing, increase the radius of noticeability (stinky)
-            //Double how much friendship we lose (mess is gross)
+            // OLD: Double how much friendship we lose (mess is gross)
             if (mess)
             {
                 radius *= 2;
-                actualLoss *= 2;
+                //actualLoss *= 2f; Unnessesary. Its now defined over config already as such.
             }
 
             //If we pulled down our pants, quadruple the radius (not contained and visible!)
@@ -365,12 +394,12 @@ namespace PrimevalTitmouse
             if (!inUnderwear)
             {
                 radius *= 4;
-                actualLoss *= 2;
+                actualLoss *= 2f;
             }
 
             //Did we try, but not actually succeed? (not full enough)
             if (attempt)
-                actualLoss /= 2;
+                actualLoss /= 2f;
 
             //Double noticeability is we had a blow-out/leak (people can see)
             if (overflow)
@@ -385,12 +414,12 @@ namespace PrimevalTitmouse
             int heartLevelForNpc = Animations.GetWho().getFriendshipHeartLevelForNPC(npc.getName());
 
             //Does this leave the possibility of friendship gain if we have enough hearts already? Maybe because they find the vulnerability endearing?
-            int friendshipLoss = actualLoss + (heartLevelForNpc - 2) / 2 * baseFriendshipLoss;
+            float friendshipLoss = actualLoss + (heartLevelForNpc - 2) / 2 * (baseFriendshipLoss / 5);
 
             //Make a list based on who saw us.
             List<string> npcType = new List<string>();
             string npcName = "";
-            if (npc is Horse || npc is Cat || npc is Dog)
+            if (npc is Horse || npc is Pet)
             {
                 npcType.Add("animal");
                 npcName += string.Format("{0}: ", npc.Name);
@@ -446,13 +475,15 @@ namespace PrimevalTitmouse
                     friendshipLoss = 0;
             }
 
+            int finalLossValue = (int)Math.Round(friendshipLoss);
             //If we're in debug mode, notify how the relationship was effected
             if (Regression.config.Debug)
-                Animations.Say(string.Format("{0} ({1}) changed friendship from {2} by {3}.", npc.Name, npc.Age, heartLevelForNpc, friendshipLoss), (Body)null);
+                Animations.Say(string.Format("{0} ({1}) changed friendship from {2} by {3}.", npc.Name, npc.Age, heartLevelForNpc, finalLossValue), (Body)null);
 
-            //If we didn't lose any friendship, or we disabled friendship penalties, then don't adjust the value
-            if (friendshipLoss < 0 && !Regression.config.NoFriendshipPenalty)
-                Animations.GetWho().changeFriendship(friendshipLoss, npc);
+            
+            //If we didn't lose any friendship, or we disabled friendship penalties (by adjusting it to 0), then don't adjust the value
+            if (finalLossValue < 0)
+                Animations.GetWho().changeFriendship(finalLossValue, npc);
 
 
             List<string> stringList3 = new List<string>();
