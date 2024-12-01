@@ -271,7 +271,7 @@
 				"Does someone need a diaper change?"
 			],
 			"soiled_mean": [
-				"You <&really >might want to go change your pants."
+				"You <&really >might want to go change your pants.$u"
 			],
 			"ground": [
 				"$FARMERNAME$! Living in the country doesn't make us barbarians!$3",
@@ -355,6 +355,32 @@
 				"$uLike, eww. Why is everyone in this town so gross?!",
 				"$uI was gonna tell you to change your clothes because of how unstylish they are, but it looks like you need your diaper changed more, you big baby!"
 			]
+		},
+		"harvey": {
+			"soiled_verynice": [
+				"%Harvey raises an eyebrow at you before silently moving to check your $UNDERWEAR_NAME$.#$b#It is my expert medical opinion that this diaper is <wet&messy>.$3#$b#%He gives your bottom a gentle pat.",
+				"%Harvey chuckles and pats your bottom#$b#Goodness.$1",
+				"It's okay, that's just a sign of a healthy diet.$1#$b#You're okay, just go back to playing.",
+				"%Harvey pinches your cheek.#$b#Don't be shy, that's why I keep you in diapers.",
+				"Do they make thicker diapers than those yet?$2#$b#You might need them.$3",
+				"Oh $FARMERNAME$, you're so cute when you're embarrassed!$1",
+				"%Harvey puts a firm hand on your shoulder#$b#Do you want to tell me what just happened or do you want me to check?",
+				"Either your symptoms are getting worse or you're enjoying yourself.$1#$b#$y 'Well, which is it?_Y-yes..._Awwww. Thank you for telling the truth little <boy/girl>._No!_Well then. I guess that means you're going to need an exam soon, aren't you.$3'",
+			],
+			"soiled_nice": [
+				"Hey, you might have something you need to take care of.$4",
+				"Are you feeling okay? Did you eat something that didn't agree with you?$8",
+				"At least your symptoms are consistant...$2",
+				"%Harvey doesn't speak up, but he gives you a little wink to let you know he saw what happened.",
+				"I have supplies from Joja in my office...#$b#You might be better off going to Pierre's.$2",
+			],
+			"soiled_mean": [
+				"Oh. That's certainly a symptom...$8",
+				"My office is supposed to be sterile...$5",
+				"I can see your medical history is accurate.$2",
+				"%Harvey tries not to pay what happened any attention. His awkward glasses adjustment gives him away.",
+				"%Harvey clears his throat.#$b#U-uhmm. There's 'supplies' at Pierre's if you need them.$7",
+			],
 		},
 		"jodi": {
 			"soiled_verynice": [
@@ -1430,7 +1456,16 @@
 			"name": "Juice",
 			"waterContent": 240,
 			"calorieContent": 114
-		}
+		},
+		
+		//This is a Tikku addition with the goal of being a laxitive.
+		//As it is, when taken you'll mess immediately which is pretty entertaining.
+		//Item ID is [351] to have a character give you this item to take.
+		"Muscle Remedy": {
+			"name": "Muscle Remedy",
+			"waterContent": 50,
+			"calorieContent": 10000
+		},
 	},
 	"Underwear_Options": {
 		"bed": {
