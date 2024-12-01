@@ -26,10 +26,9 @@ The Original Author is u/Primeval_Titmouse, who has long since deleted his reddi
 ## Installation Instructions
 ### Prerequisites
 Follow instructions provided by the individual prerequisite mods and programs.
-- Stardew Valley (version 1.5.6)
-- [SMAPI](https://smapi.io/) (version 3.13.4)
-- [PyTk](https://www.nexusmods.com/stardewvalley/mods/1726?tab=files) (version 1.22.8)
-- [Content Manager](https://www.nexusmods.com/stardewvalley/mods/1915?tab=files) (version 1.24.8)
+- Stardew Valley (version 1.6.14)
+- [SMAPI](https://smapi.io/) (version 4.1.8)
+- [Content Patcher](https://www.nexusmods.com/stardewvalley/mods/1915?tab=files) (version 2.4.4)
 
 ### Installation
 1) Download the [latest release](https://github.com/zippity21/Stardew_Valley_Regression_Mod/releases). Be careful that you don't download the source code. The release is the one that contains Regression.dll.
@@ -48,6 +47,7 @@ Follow instructions provided by the individual prerequisite mods and programs.
 - F4: (Reserved by Game for Screenshot Mode)
 - F5: Check State of Underwear
 - F6: Check State of Pants
+- F7: Check State of Potty Training
 - F9: Toggle Debug Mode
 - Left Shift + F1: Pull down pants and attempt to pee.
 - Left Shift + F2: Pull down pants and attempt to poop.
@@ -79,7 +79,7 @@ Follow instructions provided by the individual prerequisite mods and programs.
 You now get hungry and thirsty over time, and from doing work. Getting too hungry or thirsty gives you de-buffs. Of course, you can alleviate your hunger by eating food, and slake your thirst by drinking beverages (including water from a water source, your watering can, or things like wine, coffee, etc.).
 
 Just remember, what goes in will eventually come out. You now also have to worry about managing your more private needs. The fullness of your bladder and bowels increase naturally over time, given that you're neither starving nor dying of thirst. Be careful not to over eat or over drink though, it'll quickly pass through you! Currently the only toilet is in your house, so if you're out and about, you have a few options:
-- Try to hold it and run home to use the potty like a big boy/girl.
+- Try to hold it and run home (or another toilet) to use the potty like a big boy/girl.
 - Pull down your pants and go right where you are. But be warned! If anyone can see/smell you, they may not quite appreciate your 'performance'!
 - Go in your pants! Of course, if you want to do that, you may want to consider some protection, available at Pierre's Seed Shop, who is definitely not our sponsor!
   - If you rely too much on your protection, though, you may just find that it becomes a little bit harder to stop yourself. If you even notice, that is.
