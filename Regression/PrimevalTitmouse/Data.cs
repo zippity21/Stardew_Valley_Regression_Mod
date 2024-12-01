@@ -10,6 +10,7 @@ namespace PrimevalTitmouse
         public string[] Bladder_Continence_Orange;
         public string[] Bladder_Continence_Red;
         public string[] Bladder_Continence_Yellow;
+        public string[] Bladder_Continence_Green;
         public string[] Bladder_Orange;
         public string[] Bladder_Red;
         public string[] Bladder_Yellow;
@@ -17,12 +18,14 @@ namespace PrimevalTitmouse
         public string[] Bowel_Continence_Orange;
         public string[] Bowel_Continence_Red;
         public string[] Bowel_Continence_Yellow;
+        public string[] Bowel_Continence_Green;
         public string[] Bowels_Orange;
         public string[] Bowels_Red;
         public string[] Bowels_Yellow;
         public string[] Cant_Remove;
         public string[] Change;
         public string[] Change_Destroyed;
+        public string[] Change_Requires_Pants;
         public string[] Debuff_Messy_Pants;
         public string[] Debuff_Wet_Pants;
         public string[] Drink_Water_Source;

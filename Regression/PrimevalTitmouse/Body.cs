@@ -5,6 +5,7 @@ using StardewValley.Buffs;
 using StardewValley.Locations;
 using StardewValley.Tools;
 using System;
+using System.Reflection;
 
 namespace PrimevalTitmouse
 {
@@ -33,10 +34,10 @@ namespace PrimevalTitmouse
         private static readonly string[][] WETTING_MESSAGES = { Regression.t.Bladder_Red, Regression.t.Bladder_Orange, Regression.t.Bladder_Yellow };
         private static readonly float[] MESSING_THRESHOLDS = { 0.15f, 0.4f, 0.6f };
         private static readonly string[][] MESSING_MESSAGES = { Regression.t.Bowels_Red, Regression.t.Bowels_Orange, Regression.t.Bowels_Yellow };
-        private static readonly float[] BLADDER_CONTINENCE_THRESHOLDS = { 0.2f, 0.5f, 0.6f, 0.8f };
-        private static readonly string[][] BLADDER_CONTINENCE_MESSAGES = { Regression.t.Bladder_Continence_Min, Regression.t.Bladder_Continence_Red, Regression.t.Bladder_Continence_Orange, Regression.t.Bladder_Continence_Yellow };
-        private static readonly float[] BOWEL_CONTINENCE_THRESHOLDS = { 0.2f, 0.5f, 0.6f, 0.8f };
-        private static readonly string[][] BOWEL_CONTINENCE_MESSAGES = { Regression.t.Bowel_Continence_Min, Regression.t.Bowel_Continence_Red, Regression.t.Bowel_Continence_Orange, Regression.t.Bowel_Continence_Yellow };
+        public static readonly float[] BLADDER_CONTINENCE_THRESHOLDS = { 0.2f, 0.5f, 0.6f, 0.8f, 1.0f };
+        public static readonly string[][] BLADDER_CONTINENCE_MESSAGES = { Regression.t.Bladder_Continence_Min, Regression.t.Bladder_Continence_Red, Regression.t.Bladder_Continence_Orange, Regression.t.Bladder_Continence_Yellow, Regression.t.Bladder_Continence_Green};
+        public static readonly float[] BOWEL_CONTINENCE_THRESHOLDS = { 0.2f, 0.5f, 0.6f, 0.8f, 1.0f };
+        public static readonly string[][] BOWEL_CONTINENCE_MESSAGES = { Regression.t.Bowel_Continence_Min, Regression.t.Bowel_Continence_Red, Regression.t.Bowel_Continence_Orange, Regression.t.Bowel_Continence_Yellow, Regression.t.Bowel_Continence_Green };
         private static readonly float[] HUNGER_THRESHOLDS = { 0.0f, 0.25f };
         private static readonly string[][] HUNGER_MESSAGES = { Regression.t.Food_None, Regression.t.Food_Low };
         private static readonly float[] THIRST_THRESHOLDS = { 0.0f, 0.25f };
@@ -68,7 +69,7 @@ namespace PrimevalTitmouse
         public Body()
         {
             bed = new("bed");
-            pants = new("blue jeans");
+            pants = CreateNewPants();
             underwear = new("dinosaur undies");
     }
 
@@ -268,9 +269,13 @@ namespace PrimevalTitmouse
             //Ceiling at base value and floor at 25% base value
             bladderCapacity = Math.Max(bladderCapacity, minBladderCapacity);
 
-            //If we're increasing, no need to warn. (maybe we should tell people that they're regaining?)
-            if (percent <= 0)
+            //OLD: If we're increasing, no need to warn. (maybe we should tell people that they're regaining?)
+            // We now only return if something has changed. Otherwise we can handle changes now in both directions (new)
+            if (percent == 0f)
                 return;
+
+            if (Regression.config.Debug)
+                Animations.Say(string.Format("Bladder continence changed from {0} to {1}, bladder capacity now {2}", previousContinence, bladderContinence, bladderCapacity), (Body)null);
 
             //Warn that we may be losing control
             Warn(previousContinence, bladderContinence, BLADDER_CONTINENCE_THRESHOLDS, BLADDER_CONTINENCE_MESSAGES, true);
@@ -293,11 +298,15 @@ namespace PrimevalTitmouse
             //Ceiling at base value and floor at 25% base value
             bowelCapacity = Math.Max(bowelCapacity, minBowelCapacity);
 
-            //If we're increasing, no need to warn. (maybe we should tell people that they're regaining?)
-            if (percent <= 0)
+            //OLD: If we're increasing, no need to warn. (maybe we should tell people that they're regaining?)
+            // We now only return if something was changed. Otherwise we can handle changes now in both directions (new)
+            if (percent == 0f)
                 return;
 
-            //Warn that we may be losing control
+            if (Regression.config.Debug)
+                Animations.Say(string.Format("Bowel continence changed from {0} to {1}, bowel capacity now {2}", previousContinence, bowelContinence, bowelCapacity), (Body)null);
+
+            //Inform about major changes
             Warn(previousContinence, bowelContinence, BOWEL_CONTINENCE_THRESHOLDS, BOWEL_CONTINENCE_MESSAGES, true);
         }
 
@@ -305,15 +314,41 @@ namespace PrimevalTitmouse
         private Container ChangeUnderwear(Container container)
         {
             Container oldUnderwear = this.underwear;
-            Container newPants;
             if (!oldUnderwear.removable)
                 Animations.Warn(Regression.t.Change_Destroyed, this);
             this.underwear = container;
-            Regression.t.Underwear_Options.TryGetValue("blue jeans", out newPants);
-            pants = new Container(newPants);
+
+            pants = CreateNewPants();
             CleanPants();
             Animations.Say(Regression.t.Change, this);
             return oldUnderwear;
+        }
+
+        public StardewValley.Objects.Clothing GetPantsStardew()
+        {
+            var farmer = Animations.GetWho();
+            StardewValley.Objects.Clothing pants = (StardewValley.Objects.Clothing)farmer.pantsItem.Value;
+            if (pants != null) pants.LoadData(); // YES, this is nessesary to load the data of the pants before accessing them... if there are pants (watch out for null)
+
+            return pants;
+        }
+        public Container CreateNewPants()
+        {
+            var myPants = GetPantsStardew();
+            Container newPants;
+            Regression.t.Underwear_Options.TryGetValue("blue jeans", out newPants);
+            var newObject = new Container(newPants);
+            if (myPants != null)
+            {
+                newObject.name = myPants.displayName;
+                newObject.description = myPants.description;
+            }
+            else
+            {
+                newObject.name = "Legs";
+                newObject.description = "Your two Legs";
+            }
+            return newObject;
         }
 
         public Container ChangeUnderwear(Underwear uw)
@@ -337,6 +372,10 @@ namespace PrimevalTitmouse
             RemoveBuff(WET_DEBUFF);
             RemoveBuff(MESSY_DEBUFF);
         }
+        public bool HasWetOrMessyDebuff()
+        {
+            return Game1.player.hasBuff(MESSY_DEBUFF) || Game1.player.hasBuff(WET_DEBUFF);
+        }
 
         //Debug Function, Add a bit of everything
         public void DecreaseEverything()
@@ -359,15 +398,16 @@ namespace PrimevalTitmouse
         {
             Farmer player = Game1.player;
             WateringCan currentTool = (WateringCan)player.CurrentTool;
-            if (currentTool.WaterLeft * 100 >= thirst)
+            // Half a watering can should be good in any case?!
+            if (currentTool.WaterLeft * 200 >= thirst)
             {
                 this.AddWater(thirst);
-                currentTool.WaterLeft -= (int)(thirst / 100f);
+                currentTool.WaterLeft -= (int)(thirst / 200f);
                 Animations.AnimateDrinking(false);
             }
             else if (currentTool.WaterLeft > 0)
             {
-                this.AddWater(currentTool.WaterLeft * 100);
+                this.AddWater(currentTool.WaterLeft * 200);
                 currentTool.WaterLeft = 0;
                 Animations.AnimateDrinking(false);
             }
@@ -387,6 +427,10 @@ namespace PrimevalTitmouse
         public bool InToilet(bool inUnderwear)
         {
             return !inUnderwear && (Game1.currentLocation is FarmHouse || Game1.currentLocation is JojaMart || Game1.currentLocation is Club || Game1.currentLocation is MovieTheater || Game1.currentLocation is IslandFarmHouse || Game1.currentLocation.Name == "Saloon" || Game1.currentLocation.Name == "Hospital" || Game1.currentLocation.Name == "BathHouse_MensLocker" || Game1.currentLocation.Name == "BathHouse_WomensLocker");
+        }
+        public bool InPlaceWithPants()
+        {
+            return Game1.currentLocation is FarmHouse;
         }
 
         public void Mess(bool voluntary = false, bool inUnderwear = true)
@@ -478,16 +522,16 @@ namespace PrimevalTitmouse
                 //If we use the potty before we REALLY have to go (we go before we reach some threshold), increase continence
                 //Otherwise, if it is voluntary but waited until we almost had an accident (fullness above some threshold) don't change anything
                 if (!voluntary)
-                    this.ChangeBowelContinence(0.01f * Regression.config.BowelLossContinenceRate);
-                else if (bowelFullness < GetBowelTrainingThreshold())
-                    this.ChangeBowelContinence(-0.01f * Regression.config.BowelGainContinenceRate);
+                    this.ChangeBowelContinence(0.01f * Regression.config.BowelLossContinenceRate * situationMultiplier(voluntary, inUnderwear));
+                else if (bowelFullness > GetBowelTrainingThreshold())
+                    this.ChangeBowelContinence(-0.01f * Regression.config.BowelGainContinenceRate * situationMultiplier(voluntary, inUnderwear));
 
                 Animations.AnimateMessingStart(this, voluntary, inUnderwear);
             }
 
             Animations.AnimateMessingEnd(this);
             if (!this.InToilet(inUnderwear))
-                _ = Animations.HandleVillager(this, true, inUnderwear, pants.messiness > 0.0, false, 20, 3);
+                _ = Animations.HandleVillager(this, true, inUnderwear, pants.messiness > 0.0, false);
             if (pants.messiness <= 0.0 || !inUnderwear)
                 return;
             HandlePoopOverflow();
@@ -513,6 +557,27 @@ namespace PrimevalTitmouse
                 this.RemoveBuff(MESSY_DEBUFF);
             Game1.player.applyBuff(buff);
         }
+        public float situationMultiplier(bool voluntary, bool inUnderwear)
+        {
+            float multiplier = 1.0f;
+            // If we are sleeping, night time modifiers apply. As the player is no longer in charge we use other values for game balance reasons
+            if (isSleeping)
+            {
+                multiplier = (voluntary ? (float)Regression.config.NighttimeGainMultiplier : (float)Regression.config.NighttimeLossMultiplier) / 100f;
+            }
+            // InToilet does its own checks, making sure it's a valid use of the toilet. Handled differently, usually giving a gain bonus. Loss doesn't mather as the function checks on valid attempts.
+            else if (InToilet(inUnderwear))
+            {
+                multiplier = (float)Regression.config.ToiletGainMultiplier / 100f;
+            }
+            // If we voluntary pee/poop our pants, this adds situational modifiers. Usually negates possible gains or at least reduces them.
+            else if(voluntary && inUnderwear)
+            {
+                multiplier = (float)Regression.config.GoingVoluntaryInUnderwearGainMultiplier / 100f;
+            }
+     
+            return multiplier;
+        }
 
         public void StartWetting(bool voluntary = false, bool inUnderwear = true)
         {
@@ -527,15 +592,15 @@ namespace PrimevalTitmouse
                 //If we use the potty before we REALLY have to go (we go before we reach some threshold), increase continence
                 //Otherwise, if it is voluntary but waited until we almost had an accident (fullness above some threshold) don't change anything
                 if (!voluntary)
-                    this.ChangeBladderContinence(0.01f * Regression.config.BladderLossContinenceRate);
-                else if(bladderFullness < GetBladderTrainingThreshold())
-                    this.ChangeBladderContinence(-0.01f * Regression.config.BladderGainContinenceRate);
+                    this.ChangeBladderContinence(0.01f * (float)Regression.config.BladderLossContinenceRate * situationMultiplier(voluntary, inUnderwear));
+                else if(bladderFullness > GetBladderTrainingThreshold())
+                    this.ChangeBladderContinence(-0.01f * (float)Regression.config.BladderGainContinenceRate * situationMultiplier(voluntary, inUnderwear));
                 Animations.AnimateWettingStart(this, voluntary, inUnderwear);
             }
 
             Animations.AnimateWettingEnd(this);
             if (!this.InToilet(inUnderwear))
-                _ = Animations.HandleVillager(this, false, inUnderwear, pants.wetness > 0.0, false, 20, 3);
+                _ = Animations.HandleVillager(this, false, inUnderwear, pants.wetness > 0.0, false);
             if ((pants.wetness <= 0.0 || !inUnderwear))
                 return;
             HandlePeeOverflow();
@@ -719,23 +784,48 @@ namespace PrimevalTitmouse
             Game1.player.buffs.Remove(which);
         }
 
+        public static string[] GetMessagesByTreshold(float oldPercent, float newPercent, float[] thresholds, string[][] msgs)
+        {
+            if (newPercent > oldPercent)
+            {
+                for (int index = thresholds.Length-1; index > 0; --index)
+                {
+                    if ((double)oldPercent <= (double)thresholds[index] && (double)newPercent > (double)thresholds[index])
+                    {
+                        if(thresholds.Length-1 > index)
+                        {
+                            return msgs[index+1];
+                        }
+                        
+                    }
+                }
+
+            }
+            else
+            {
+                for (int index = 0; index < thresholds.Length; ++index)
+                {
+                    if ((double)oldPercent > (double)thresholds[index] && (double)newPercent <= (double)thresholds[index])
+                    {
+                        return msgs[index];
+                    }
+                }
+            }
+            
+            return null;
+        }
         public void Warn(float oldPercent, float newPercent, float[] thresholds, string[][] msgs, bool write = false)
         {
             if (isSleeping)
                 return;
-            for (int index = 0; index < thresholds.Length; ++index)
+
+            var messages = GetMessagesByTreshold(oldPercent, newPercent, thresholds, msgs);
+            if (messages == null) return;
+            if (write)
             {
-                if ((double)oldPercent > (double)thresholds[index] && (double)newPercent <= (double)thresholds[index])
-                {
-                    if (write)
-                    {
-                        Animations.Write(msgs[index], this);
-                        break;
-                    }
-                    Animations.Warn(msgs[index], this);
-                    break;
-                }
+                Animations.Write(messages, this);
             }
+            Animations.Warn(messages, this);
         }
 
         //<TODO> Expand Consumables to add food. But we'd need a lot more info. For now, treat all food the same.

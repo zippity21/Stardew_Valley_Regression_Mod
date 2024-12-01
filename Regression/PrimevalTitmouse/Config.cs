@@ -6,10 +6,16 @@
         public bool Debug;
         public bool Easymode;
         public string Lang;
+        public bool PantsChangeRequiresHome;
         public bool Messing;
-        public bool NoFriendshipPenalty;
+        public int FriendshipPenaltyBladderMultiplier;
+        public int FriendshipPenaltyBowelMultiplier;
         public bool NoHungerAndThirst;
         public bool Wetting;
+        public int ToiletGainMultiplier;
+        public int NighttimeLossMultiplier;
+        public int NighttimeGainMultiplier;
+        public int GoingVoluntaryInUnderwearGainMultiplier;
         public int BladderLossContinenceRate;
         public int BowelLossContinenceRate;
         public int BladderGainContinenceRate;

@@ -308,6 +308,9 @@ namespace PrimevalTitmouse
                     case SButton.F6: /*F4 is reserved for screenshot mode*/
                         Animations.CheckPants(body);
                         break;
+                    case SButton.F7:
+                        Animations.CheckContinence(body);
+                        break;
                     case SButton.F9:
                         config.Debug = !config.Debug;
                         break;
@@ -434,6 +437,11 @@ namespace PrimevalTitmouse
                     //If the Underwear we are holding isn't currently wet, messy, or drying; change into it.
                     if ((double)activeObject.container.wetness + (double)activeObject.container.messiness == 0.0 && !activeObject.container.IsDrying())
                     {
+                        if(Regression.config.PantsChangeRequiresHome && body.HasWetOrMessyDebuff() && !body.InPlaceWithPants())
+                        {
+                            Animations.Say(Regression.t.Change_Requires_Pants, body);
+                            return;
+                        }
                         who.reduceActiveItemByOne(); //Take it out of inventory
                         Container container = body.ChangeUnderwear(activeObject); //Put on the new underwear and return the old
                         Underwear underwear = new Underwear(container.name, container.wetness, container.messiness, 1);

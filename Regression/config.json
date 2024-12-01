@@ -4,13 +4,18 @@
 	"Wetting": true,
 	"Messing": true,
 	"Easymode": false,
-	"NoFriendshipPenalty": false,
-	"NoHungerAndThirst": false,
+	"PantsChangeRequiresHome": true, // If changing your pants (in case you soiled your cloth) requires you to be at home
+	"FriendshipPenaltyBladderMultiplier": 100, // How peeing in public impacts friendships. 100 is normal, 50 would be half, 200 double the impact. 0 deactivates loss of frienship for pee incidents
+	"FriendshipPenaltyBowelMultiplier": 200, // How pooping in public impacts friendships. 100 is normal, 50 would be half, 200 double the impact. 0 deactivates loss of frienship for poop incidents
 	"AlwaysNoticeAccidents": true,
 	"Debug": false,
-	"BladderLossContinenceRate": 1, //in 1% increments. i.e. 5 = 5% loss per accident
-	"BowelLossContinenceRate": 1, //in 1% increments. i.e. 5 = 5% loss per accident
-	"BladderGainContinenceRate": 1, //in 1% increments. i.e. 5 = 5% gain per success
-	"BowelGainContinenceRate": 1, //in 1% increments. i.e. 5 = 5% gain per success
+	"ToiletGainMultiplier": 200, //0 would be no gain, 50 half as much, 200 twice as much. Only applies while daytime.
+	"NighttimeLossMultiplier": 50, //0 would be no loss, 50 half as much, 200 twice as much. Half may be more balanced, because otherwise there is no coming back.
+	"NighttimeGainMultiplier": 100, //0 would be no gain, 50 half as much, 200 twice as much
+	"GoingVoluntaryInUnderwearGainMultiplier": 0, //If you go in your pants on purpose, the continence gained should probably not be as high as making it to a toilet (+toilet multiplier) or at least on the floor. 0 would be no gain, 50 half as much, 200 twice as much. 0 is balanced as it doesn't reduce continence at least.
+	"BladderLossContinenceRate": 2, //in 1% increments. i.e. 5 = 5% loss per accident. 3% seams balanced
+	"BowelLossContinenceRate": 2, //in 1% increments. i.e. 5 = 5% loss per accident
+	"BladderGainContinenceRate": 2, //in 1% increments. i.e. 5 = 5% gain per success. 3% seams balanced, as it is probably doubled to 6% for potty runs (toilet multiplier). It's efford for the player.
+	"BowelGainContinenceRate": 2, //in 1% increments. i.e. 5 = 5% gain per success
 	"Lang": "en"
 }
